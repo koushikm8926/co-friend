@@ -509,126 +509,254 @@ export default function HomePage() {
         <div className="dots-pattern absolute inset-0 opacity-40 pointer-events-none" />
         
         {/* Ambient Glows */}
-        <div className="absolute top-10 left-1/2 -translate-x-1/2 w-[600px] h-[350px] bg-purple-400/20 rounded-full blur-3xl -z-10" />
-        <div className="absolute top-40 right-10 w-[300px] h-[300px] bg-pink-400/15 rounded-full blur-3xl -z-10" />
+        <div className="absolute top-10 left-10 w-[450px] h-[450px] bg-purple-400/20 rounded-full blur-3xl -z-10" />
+        <div className="absolute bottom-10 right-10 w-[450px] h-[450px] bg-pink-400/20 rounded-full blur-3xl -z-10" />
+        <div className="absolute top-1/2 left-1/3 w-[350px] h-[350px] bg-blue-400/15 rounded-full blur-3xl -z-10" />
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="text-center max-w-3xl mx-auto space-y-6">
-            {/* Pill Badge */}
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-purple-50 border border-purple-200/80 text-purple-700 text-xs sm:text-sm font-semibold shadow-xs">
-              <span className="w-2 h-2 rounded-full bg-purple-600 animate-ping" />
-              <span>15,000+ Trust-Verified Companions in 24+ Indian Metros</span>
-            </div>
+          <div className="grid grid-cols-1 lg:grid-cols-[1.05fr_0.95fr] gap-12 lg:gap-8 items-center">
+            {/* Left Column: Copy & Search */}
+            <div className="space-y-6 text-left">
+              {/* Pill Badge */}
+              <div className="inline-flex items-center gap-2 rounded-full border border-purple-200 bg-white/80 px-4 py-2 shadow-xs backdrop-blur-md">
+                <Sparkles className="w-4 h-4 text-purple-600 animate-pulse" />
+                <span className="font-outfit text-xs font-bold uppercase tracking-[0.16em] text-purple-700">
+                  India&apos;s most loved companion marketplace
+                </span>
+              </div>
 
-            {/* Big Headline in Outfit */}
-            <h1 className="font-outfit text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight text-slate-900 leading-[1.08]">
-              Life&apos;s Better <br />
-              <span className="gradient-text">Together.</span>
-            </h1>
+              {/* Big Headline in Outfit with SVG Underline */}
+              <h1 className="font-outfit text-5xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight text-slate-900 leading-[0.98]">
+                Life&apos;s Better <br />
+                <span className="relative inline-block mt-2">
+                  <span className="gradient-text">Together.</span>
+                  <svg
+                    viewBox="0 0 220 14"
+                    className="absolute -bottom-2 left-0 w-full"
+                    fill="none"
+                    aria-hidden="true"
+                  >
+                    <path
+                      d="M4 10 C 60 2, 160 2, 216 8"
+                      stroke="#F43F5E"
+                      strokeWidth="5"
+                      strokeLinecap="round"
+                    />
+                  </svg>
+                </span>
+              </h1>
 
-            {/* Subtitle */}
-            <p className="font-body text-base sm:text-lg text-slate-600 leading-relaxed max-w-2xl mx-auto">
-              Book verified, friendly people for movies, coffee, shopping, travel, events, elder care, fitness, and engaging conversations. 100% safe, platonic, and transparent by the hour.
-            </p>
+              {/* Subtitle */}
+              <p className="font-body text-base sm:text-lg text-slate-600 leading-relaxed max-w-xl">
+                Find trusted, verified people for movies, coffee, shopping, travel, events, elder care, fitness and more. Book by the hour, meet safely in public, and turn any plan into a memory worth keeping.
+              </p>
 
-            {/* Main Interactive Search Bar */}
-            <div className="pt-4 max-w-4xl mx-auto">
-              <div className="bg-white p-3 sm:p-4 rounded-3xl sm:rounded-full border border-purple-100 shadow-xl shadow-purple-500/10 flex flex-col sm:flex-row items-center gap-3">
-                {/* City Dropdown */}
-                <div className="flex items-center gap-2.5 px-4 py-2 w-full sm:w-auto border-b sm:border-b-0 sm:border-r border-slate-100 text-left">
-                  <MapPin className="w-5 h-5 text-purple-600 shrink-0" />
-                  <div>
-                    <div className="text-[11px] font-bold uppercase tracking-wider text-slate-400">
-                      City
-                    </div>
-                    <select
-                      value={selectedCity}
-                      onChange={(e) => setSelectedCity(e.target.value)}
-                      className="text-sm font-bold text-slate-800 bg-transparent focus:outline-none cursor-pointer"
-                    >
-                      {CITIES.map((c) => (
-                        <option key={c} value={c}>
-                          {c}
-                        </option>
+              {/* 3-Item Search Box */}
+              <div className="mt-8 rounded-[1.6rem] border border-purple-100 bg-white/95 p-3 shadow-[0_24px_60px_-20px_rgba(124,58,237,0.3)] backdrop-blur-md">
+                <div className="grid items-center gap-2 md:grid-cols-[1.2fr_1fr_auto]">
+                  {/* Service Select */}
+                  <label className="group relative flex items-center gap-3 rounded-2xl px-4 py-3 transition-colors hover:bg-purple-50/70 cursor-pointer">
+                    <Film className="w-5 h-5 shrink-0 text-purple-500" />
+                    <span className="w-full">
+                      <span className="block text-[0.65rem] font-bold uppercase tracking-[0.14em] text-slate-400">
+                        What are you looking for?
+                      </span>
+                      <select
+                        value={selectedCategory}
+                        onChange={(e) => setSelectedCategory(e.target.value)}
+                        className="w-full cursor-pointer appearance-none bg-transparent text-sm font-semibold text-slate-800 outline-none"
+                      >
+                        <option value="All">Anything fun or helpful</option>
+                        {SERVICES_DATA.map((s) => (
+                          <option key={s.id} value={s.title}>
+                            {s.title}
+                          </option>
+                        ))}
+                      </select>
+                    </span>
+                  </label>
+
+                  {/* City Select */}
+                  <label className="group relative flex items-center gap-3 rounded-2xl px-4 py-3 transition-colors hover:bg-purple-50/70 cursor-pointer border-t md:border-t-0 md:border-l border-slate-100">
+                    <MapPin className="w-5 h-5 shrink-0 text-pink-500" />
+                    <span className="w-full">
+                      <span className="block text-[0.65rem] font-bold uppercase tracking-[0.14em] text-slate-400">
+                        Which city?
+                      </span>
+                      <select
+                        value={selectedCity}
+                        onChange={(e) => setSelectedCity(e.target.value)}
+                        className="w-full cursor-pointer appearance-none bg-transparent text-sm font-semibold text-slate-800 outline-none"
+                      >
+                        {CITIES.map((c) => (
+                          <option key={c} value={c}>
+                            {c === "All Cities" ? "Any city across India" : c}
+                          </option>
+                        ))}
+                      </select>
+                    </span>
+                  </label>
+
+                  {/* CTA Button */}
+                  <Link
+                    href="/explore"
+                    className="group relative flex items-center justify-center gap-2 rounded-2xl bg-gradient-to-r from-purple-600 via-violet-600 to-pink-500 px-7 py-4 text-sm font-bold text-white shadow-lg shadow-purple-500/30 transition-all hover:scale-[1.02] hover:shadow-xl hover:shadow-purple-500/40 active:scale-98"
+                  >
+                    <span>Find a Co-Friend</span>
+                    <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+                  </Link>
+                </div>
+              </div>
+
+              {/* Popular Chips */}
+              <div className="flex flex-wrap items-center gap-2 text-xs text-slate-500 pt-2">
+                <span className="font-semibold text-slate-700">Popular:</span>
+                {[
+                  "Movie Companion",
+                  "Coffee & Conversations",
+                  "Shopping Companion",
+                  "City Tour Guide",
+                  "Elder Care",
+                  "Fitness Partner",
+                ].map((item) => (
+                  <button
+                    key={item}
+                    onClick={() => {
+                      setSelectedCategory(item);
+                    }}
+                    className="rounded-full border border-purple-100 bg-white/80 px-3 py-1 text-slate-700 backdrop-blur-xs transition-colors hover:border-purple-300 hover:bg-purple-50 hover:text-purple-700 cursor-pointer"
+                  >
+                    {item}
+                  </button>
+                ))}
+              </div>
+
+              {/* Social Proof Avatar Row */}
+              <div className="flex items-center gap-4 pt-4 border-t border-purple-100/70">
+                <div className="flex -space-x-2.5 shrink-0">
+                  <div className="relative w-9 h-9 rounded-full overflow-hidden ring-2 ring-white shadow-xs">
+                    <Image
+                      src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=120&q=80"
+                      alt="user"
+                      fill
+                      className="object-cover"
+                    />
+                  </div>
+                  <div className="relative w-9 h-9 rounded-full overflow-hidden ring-2 ring-white shadow-xs">
+                    <Image
+                      src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=120&q=80"
+                      alt="user"
+                      fill
+                      className="object-cover"
+                    />
+                  </div>
+                  <div className="relative w-9 h-9 rounded-full overflow-hidden ring-2 ring-white shadow-xs">
+                    <Image
+                      src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=120&q=80"
+                      alt="user"
+                      fill
+                      className="object-cover"
+                    />
+                  </div>
+                  <div className="relative w-9 h-9 rounded-full overflow-hidden ring-2 ring-white shadow-xs">
+                    <Image
+                      src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=120&q=80"
+                      alt="user"
+                      fill
+                      className="object-cover"
+                    />
+                  </div>
+                </div>
+                <div>
+                  <div className="flex items-center gap-1.5 text-xs font-bold text-slate-800">
+                    <div className="flex text-amber-400">
+                      {[...Array(5)].map((_, i) => (
+                        <Star key={i} className="w-3.5 h-3.5 fill-amber-400" />
                       ))}
-                    </select>
-                  </div>
-                </div>
-
-                {/* Category Dropdown */}
-                <div className="flex items-center gap-2.5 px-4 py-2 w-full sm:w-auto border-b sm:border-b-0 sm:border-r border-slate-100 text-left">
-                  <Film className="w-5 h-5 text-pink-500 shrink-0" />
-                  <div>
-                    <div className="text-[11px] font-bold uppercase tracking-wider text-slate-400">
-                      Activity
                     </div>
-                    <select
-                      value={selectedCategory}
-                      onChange={(e) => setSelectedCategory(e.target.value)}
-                      className="text-sm font-bold text-slate-800 bg-transparent focus:outline-none cursor-pointer"
-                    >
-                      <option value="All">All Categories</option>
-                      <option value="Movie">Movie Companion</option>
-                      <option value="Coffee">Coffee & Conversations</option>
-                      <option value="Shopping">Shopping Partner</option>
-                      <option value="Tour">City Tour Guide</option>
-                      <option value="Event">Concert & Events</option>
-                      <option value="Elder">Elder Care</option>
-                      <option value="Fitness">Fitness Partner</option>
-                    </select>
+                    <span className="text-slate-900 font-extrabold ml-1">4.95 / 5.0</span>
+                  </div>
+                  <div className="text-[11.5px] text-slate-500 font-medium">
+                    15,000+ happy customers booked a Co-Friend this year
                   </div>
                 </div>
-
-                {/* Search Input */}
-                <div className="flex items-center gap-2.5 px-4 py-2 w-full sm:flex-1 text-left">
-                  <Search className="w-5 h-5 text-slate-400 shrink-0" />
-                  <input
-                    type="text"
-                    placeholder="Search by hobby, interest, cinema..."
-                    value={searchQuery}
-                    onChange={(e) => setSearchQuery(e.target.value)}
-                    className="w-full text-sm font-medium text-slate-800 bg-transparent focus:outline-none placeholder:text-slate-400"
-                  />
-                </div>
-
-                {/* Search CTA */}
-                <Link
-                  href="/explore"
-                  className="w-full sm:w-auto bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white px-7 py-3.5 rounded-2xl sm:rounded-full font-bold text-sm transition-all shadow-md shadow-purple-500/25 flex items-center justify-center gap-2 shrink-0"
-                >
-                  <span>Find Companions</span>
-                  <ArrowRight className="w-4 h-4" />
-                </Link>
               </div>
             </div>
 
-            {/* Quick Keyword Chips */}
-            <div className="flex flex-wrap items-center justify-center gap-2 text-xs text-slate-500 pt-2">
-              <span className="font-semibold text-slate-700">Trending Now:</span>
-              <button
-                onClick={() => setSearchQuery("Christopher Nolan")}
-                className="px-3 py-1 rounded-full bg-white hover:bg-purple-50 text-slate-700 border border-slate-200 hover:border-purple-300 transition-colors"
-              >
-                🎬 Movie Premieres
-              </button>
-              <button
-                onClick={() => setSearchQuery("Coffee")}
-                className="px-3 py-1 rounded-full bg-white hover:bg-purple-50 text-slate-700 border border-slate-200 hover:border-purple-300 transition-colors"
-              >
-                ☕ Specialty Café
-              </button>
-              <button
-                onClick={() => setSearchQuery("Heritage")}
-                className="px-3 py-1 rounded-full bg-white hover:bg-purple-50 text-slate-700 border border-slate-200 hover:border-purple-300 transition-colors"
-              >
-                🏛️ Heritage Walks
-              </button>
-              <button
-                onClick={() => setSearchQuery("Hospital")}
-                className="px-3 py-1 rounded-full bg-white hover:bg-purple-50 text-slate-700 border border-slate-200 hover:border-purple-300 transition-colors"
-              >
-                👵 Elder Hospital Assist
-              </button>
+            {/* Right Column: Hero Visual Card Composition */}
+            <div className="relative mx-auto max-w-lg lg:max-w-none w-full">
+              {/* Ambient Blob Backdrops */}
+              <div className="absolute -top-10 -left-10 h-72 w-72 rounded-full bg-purple-400/30 blur-3xl -z-10" />
+              <div className="absolute -bottom-10 -right-10 h-72 w-72 rounded-full bg-pink-400/30 blur-3xl -z-10" />
+
+              {/* Main Framed Photo */}
+              <div className="relative overflow-hidden rounded-[2.5rem] border-4 border-white/90 bg-gradient-to-br from-purple-100 to-pink-100 shadow-[0_30px_90px_-20px_rgba(124,58,237,0.35)]">
+                <div className="relative aspect-[4/3] sm:aspect-[1.15/1] w-full">
+                  <Image
+                    src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=1200&q=80"
+                    alt="Friends enjoying a day out together"
+                    fill
+                    priority
+                    className="object-cover"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950/60 via-transparent to-transparent" />
+
+                  {/* Photo Caption Overlay */}
+                  <div className="absolute bottom-4 left-5 right-5 text-white">
+                    <div className="flex items-center justify-between">
+                      <div>
+                        <div className="text-xs font-bold uppercase tracking-wider text-pink-300">
+                          Featured Outing
+                        </div>
+                        <div className="font-outfit text-base font-bold">
+                          Coffee & Weekend Conversations
+                        </div>
+                      </div>
+                      <span className="font-outfit text-xs font-extrabold bg-white/20 px-3 py-1 rounded-full backdrop-blur-md">
+                        ₹299 / hr
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Floating Top-Left Instant Match Card */}
+              <div className="absolute -top-6 -left-4 sm:-left-6 flex items-center gap-3 rounded-2xl border border-white/80 bg-white/95 px-4 py-3 shadow-xl shadow-purple-500/15 backdrop-blur-md">
+                <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-purple-50 text-purple-600">
+                  <Zap className="w-5 h-5 fill-purple-600 text-purple-600" />
+                </div>
+                <div>
+                  <div className="text-[11px] font-bold uppercase tracking-wider text-purple-700">
+                    Instant Match
+                  </div>
+                  <div className="text-xs font-bold text-slate-800">
+                    Response in &lt; 10 mins
+                  </div>
+                </div>
+              </div>
+
+              {/* Floating Bottom-Right 15,000+ Verified Card */}
+              <div className="absolute -bottom-6 -right-3 sm:-right-6 flex items-center gap-3.5 rounded-2xl border border-white/80 bg-white/95 px-4.5 py-3.5 shadow-2xl shadow-purple-500/20 backdrop-blur-md">
+                <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-gradient-to-br from-emerald-400 to-teal-500 text-white shadow-md shadow-emerald-500/20">
+                  <CheckCircle2 className="w-6 h-6" />
+                </div>
+                <div>
+                  <p className="font-outfit text-sm font-extrabold text-slate-900">
+                    15,000+ Co-Friends
+                  </p>
+                  <p className="text-[11px] font-semibold text-slate-500">
+                    Aadhaar & Police Verified
+                  </p>
+                </div>
+              </div>
+
+              {/* Floating Escrow Pill */}
+              <div className="hidden sm:flex absolute top-1/2 -right-6 -translate-y-1/2 items-center gap-2 rounded-full border border-white/80 bg-white/95 px-4 py-2 shadow-lg shadow-purple-500/15 backdrop-blur-md">
+                <span className="flex h-2.5 w-2.5 rounded-full bg-emerald-500 animate-pulse" />
+                <span className="text-xs font-bold text-slate-800">
+                  100% Platonic & Escrow Protected
+                </span>
+              </div>
             </div>
           </div>
         </div>
