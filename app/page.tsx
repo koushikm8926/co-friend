@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useMemo } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import {
@@ -11,13 +11,16 @@ import {
   Clock,
   ShieldCheck,
   Film,
-  Sparkles,
-  UtensilsCrossed,
-  Mountain,
-  Wine,
+  Coffee,
   ShoppingBag,
-  Landmark,
+  Compass,
   Music,
+  HeartHandshake,
+  Dumbbell,
+  UtensilsCrossed,
+  BookOpen,
+  PartyPopper,
+  Dog,
   ArrowRight,
   ArrowUpRight,
   CheckCircle2,
@@ -29,1455 +32,1460 @@ import {
   Zap,
   PhoneCall,
   Users,
-  Compass,
   DollarSign,
-  HeartHandshake,
   Activity,
   AlertTriangle,
+  Sparkles,
+  Shield,
+  HelpCircle,
+  Sliders,
+  ChevronLeft,
+  ChevronRight,
+  TrendingUp,
 } from "lucide-react";
 
-interface CompanionProfile {
+interface ServiceItem {
   id: string;
-  name: string;
-  avatar: string;
   title: string;
-  bio: string;
-  priceHourly: number;
-  rating: number;
-  reviewsCount: number;
-  hoursBooked: string;
-  specialityTag: string;
-  city: string;
-  languages: string[];
-  responseSpeed: string;
+  tag: string;
+  price: string;
+  blurb: string;
+  image: string;
+  icon: any;
+  category: string;
 }
 
-const FEATURED_PROFILES: CompanionProfile[] = [
+const SERVICES_DATA: ServiceItem[] = [
+  {
+    id: "movies",
+    title: "Movie Companion",
+    tag: "Popular",
+    price: "₹399/hr",
+    blurb: "Never watch alone again — cinema, film festivals & premieres",
+    image:
+      "https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?auto=format&fit=crop&w=800&q=80",
+    icon: Film,
+    category: "Entertainment",
+  },
+  {
+    id: "coffee",
+    title: "Coffee & Conversations",
+    tag: "Trending",
+    price: "₹299/hr",
+    blurb: "Great talks, peaceful vibes & venting over your favorite brew",
+    image:
+      "https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?auto=format&fit=crop&w=800&q=80",
+    icon: Coffee,
+    category: "Social",
+  },
+  {
+    id: "shopping",
+    title: "Shopping Companion",
+    tag: "Top Rated",
+    price: "₹349/hr",
+    blurb: "Honest style feedback, bag holding & wardrobe curations",
+    image:
+      "https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=800&q=80",
+    icon: ShoppingBag,
+    category: "Lifestyle",
+  },
+  {
+    id: "city-tour",
+    title: "City Tour Guide",
+    tag: "Must Try",
+    price: "₹449/hr",
+    blurb: "Hidden gem spots, local delicacies & historical heritage trails",
+    image:
+      "https://images.unsplash.com/photo-1524492412937-b28074a5d7da?auto=format&fit=crop&w=800&q=80",
+    icon: Compass,
+    category: "Travel",
+  },
+  {
+    id: "concerts",
+    title: "Event & Concert Buddy",
+    tag: "Exciting",
+    price: "₹499/hr",
+    blurb: "Music gigs, stand-up comedy nights & cultural exhibitions",
+    image:
+      "https://images.unsplash.com/photo-1470225620780-dba8ba36b745?auto=format&fit=crop&w=800&q=80",
+    icon: Music,
+    category: "Entertainment",
+  },
+  {
+    id: "elderly",
+    title: "Elder Assistance & Care",
+    tag: "High Trust",
+    price: "₹299/hr",
+    blurb: "Doctor clinic appointments, gentle walks & engaging company",
+    image:
+      "https://images.unsplash.com/photo-1581579438747-1dc8d17bbce4?auto=format&fit=crop&w=800&q=80",
+    icon: HeartHandshake,
+    category: "Care",
+  },
+  {
+    id: "fitness",
+    title: "Fitness & Gym Partner",
+    tag: "Active",
+    price: "₹349/hr",
+    blurb: "Workout motivation, morning jogs & badminton doubles companion",
+    image:
+      "https://images.unsplash.com/photo-1517838277536-f5f99be501cd?auto=format&fit=crop&w=800&q=80",
+    icon: Dumbbell,
+    category: "Wellness",
+  },
+  {
+    id: "foodie",
+    title: "Dining & Foodie Explorer",
+    tag: "Popular",
+    price: "₹399/hr",
+    blurb: "Explore street food alleys, fine-dining tastings & culinary trails",
+    image:
+      "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=800&q=80",
+    icon: UtensilsCrossed,
+    category: "Lifestyle",
+  },
+  {
+    id: "coworking",
+    title: "Study & Coworking Buddy",
+    tag: "Productive",
+    price: "₹249/hr",
+    blurb: "Shared focus sessions, library deep-work & café productivity",
+    image:
+      "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=800&q=80",
+    icon: BookOpen,
+    category: "Work",
+  },
+  {
+    id: "party-plus-one",
+    title: "Wedding & Party Plus-One",
+    tag: "Verified",
+    price: "₹599/hr",
+    blurb: "Well-dressed, polite & charismatic platonic guest accompaniment",
+    image:
+      "https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=800&q=80",
+    icon: PartyPopper,
+    category: "Social",
+  },
+  {
+    id: "pets",
+    title: "Pet Walking & Strolls",
+    tag: "Friendly",
+    price: "₹249/hr",
+    blurb: "Dog park outings, pet friendly café visits & breezy afternoon walks",
+    image:
+      "https://images.unsplash.com/photo-1548199973-03cce0bbc87b?auto=format&fit=crop&w=800&q=80",
+    icon: Dog,
+    category: "Lifestyle",
+  },
+];
+
+interface ProfileItem {
+  id: string;
+  name: string;
+  age: number;
+  city: string;
+  location: string;
+  avatar: string;
+  rating: number;
+  reviews: number;
+  priceHourly: number;
+  minDuration: string;
+  badge: string;
+  verified: boolean;
+  category: string;
+  languages: string[];
+  bio: string;
+  tags: string[];
+}
+
+const PROFILES_DATA: ProfileItem[] = [
   {
     id: "ananya",
-    name: "Ananya S.",
+    name: "Ananya Sharma",
+    age: 24,
+    city: "Kolkata",
+    location: "South City & Park Street",
     avatar:
       "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=800&q=80",
-    title: "Sociology Student & Cinephile",
-    bio: "Love indie movie festivals, museum walks, and discussing literature over hot Darjeeling tea in South Kolkata.",
+    rating: 4.95,
+    reviews: 142,
     priceHourly: 300,
-    rating: 4.9,
-    reviewsCount: 120,
-    hoursBooked: "Booked for 340+ hours",
-    specialityTag: "Aadhaar Verified",
-    city: "Kolkata",
-    languages: ["Hindi", "English", "Bengali"],
-    responseSpeed: "Avg 18m reply",
+    minDuration: "Min 3 hrs",
+    badge: "Top 1% Companion",
+    verified: true,
+    category: "Movie Companion",
+    languages: ["Bengali", "English", "Hindi"],
+    bio: "Film studies graduate & arthouse cinema enthusiast. Loves Christopher Nolan, Satyajit Ray, and contemporary world film. Punctual, polite and cultured.",
+    tags: ["Cinema Buff", "Art & Design", "Coffee Explorer"],
   },
   {
     id: "rohan",
-    name: "Rohan M.",
+    name: "Rohan Nair",
+    age: 27,
+    city: "Bengaluru",
+    location: "Indiranagar & Koramangala",
     avatar:
       "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=800&q=80",
-    title: "Tech PM & Weekend Trekker",
-    bio: "Trail enthusiast and avid board gamer. Always up for Western Ghats hikes, artisan coffee, or tech summits.",
+    rating: 4.9,
+    reviews: 98,
     priceHourly: 350,
-    rating: 5.0,
-    reviewsCount: 98,
-    hoursBooked: "Top Host in Indiranagar",
-    specialityTag: "Aadhaar Verified",
-    city: "Bengaluru",
-    languages: ["English", "Kannada", "Hindi"],
-    responseSpeed: "Avg 12m reply",
+    minDuration: "Min 2 hrs",
+    badge: "Tech Enthusiast",
+    verified: true,
+    category: "Coffee & Conversations",
+    languages: ["English", "Malayalam", "Kannada"],
+    bio: "Product designer and avid runner. Great conversationalist for startup brainstorming, coffee chats, and tech discussions.",
+    tags: ["Design & Tech", "Specialty Coffee", "Marathon Runner"],
   },
   {
-    id: "priyadarshini",
-    name: "Priyadarshini K.",
-    avatar:
-      "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=800&q=80",
-    title: "Art History Scholar & Storyteller",
-    bio: "Deep passion for colonial Kolkata heritage, Victoria Memorial strolls, and Kala Ghoda art walk conversations.",
-    priceHourly: 400,
-    rating: 4.9,
-    reviewsCount: 145,
-    hoursBooked: "Cultural Historian & Curator",
-    specialityTag: "Aadhaar Verified",
+    id: "sanya",
+    name: "Sanya Kulkarni",
+    age: 25,
     city: "Mumbai",
-    languages: ["English", "Marathi", "Hindi"],
-    responseSpeed: "Avg 15m reply",
+    location: "Bandra & Lower Parel",
+    avatar:
+      "https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=800&q=80",
+    rating: 4.92,
+    reviews: 116,
+    priceHourly: 400,
+    minDuration: "Min 3 hrs",
+    badge: "Fashion Stylist",
+    verified: true,
+    category: "Shopping Companion",
+    languages: ["English", "Hindi", "Marathi"],
+    bio: "NIFT styling alumna. Gives honest, constructive wardrobe advice, thrift shopping guidance, and weekend gallery accompany.",
+    tags: ["Fashion & Styling", "High Street Shopping", "Contemporary Art"],
   },
   {
     id: "arjun",
-    name: "Arjun V.",
+    name: "Arjun Verma",
+    age: 28,
+    city: "Delhi NCR",
+    location: "Connaught Place & Hauz Khas",
     avatar:
       "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=800&q=80",
-    title: "Squash Player & Fitness Enthusiast",
-    bio: "Need a tennis or squash partner, or running buddy in Cubbon Park? Let's hit the court and keep the tempo high.",
+    rating: 4.88,
+    reviews: 87,
+    priceHourly: 320,
+    minDuration: "Min 2 hrs",
+    badge: "History Buff",
+    verified: true,
+    category: "City Tour Guide",
+    languages: ["English", "Hindi", "Punjabi"],
+    bio: "Passionate storyteller and heritage walk host in Old Delhi and monuments. Loves street food photography and book discussions.",
+    tags: ["Heritage Walks", "Street Food", "Documentary Film"],
+  },
+  {
+    id: "tanya",
+    name: "Tanya Kapoor",
+    age: 26,
+    city: "Hyderabad",
+    location: "Jubilee Hills & Hitec City",
+    avatar:
+      "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=800&q=80",
+    rating: 4.94,
+    reviews: 104,
+    priceHourly: 350,
+    minDuration: "Min 3 hrs",
+    badge: "Concert Lover",
+    verified: true,
+    category: "Event & Concert Buddy",
+    languages: ["English", "Telugu", "Hindi"],
+    bio: "Music enthusiast and foodie. Great plus-one for indie music concerts, food festivals, and board game evenings.",
+    tags: ["Live Music", "Culinary Explorer", "Board Games"],
+  },
+  {
+    id: "priya",
+    name: "Priya Mukherjee",
+    age: 29,
+    city: "Kolkata",
+    location: "Salt Lake & New Town",
+    avatar:
+      "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=800&q=80",
+    rating: 4.98,
+    reviews: 165,
     priceHourly: 300,
-    rating: 4.8,
-    reviewsCount: 110,
-    hoursBooked: "Badminton & Squash Partner",
-    specialityTag: "Aadhaar Verified",
-    city: "Delhi NCR",
-    languages: ["Hindi", "Telugu", "English"],
-    responseSpeed: "Avg 20m reply",
+    minDuration: "Min 2 hrs",
+    badge: "Compassionate Host",
+    verified: true,
+    category: "Elder Assistance & Care",
+    languages: ["Bengali", "English", "Hindi"],
+    bio: "Certified clinical psychology counselor. Patient, respectful companion for senior citizens, doctor clinic visits, and park walks.",
+    tags: ["Elder Care", "Mindfulness", "Classical Music"],
+  },
+];
+
+const CITIES = [
+  "All Cities",
+  "Mumbai",
+  "Bengaluru",
+  "Delhi NCR",
+  "Kolkata",
+  "Hyderabad",
+  "Pune",
+  "Chennai",
+  "Goa",
+];
+
+const TESTIMONIALS = [
+  {
+    name: "Kavya Reddy",
+    city: "Hyderabad",
+    service: "Elder Assistance",
+    rating: 5,
+    date: "2 days ago",
+    comment:
+      "Booked Priya to accompany my mother to her hospital check-up while I was stuck on an urgent work call. She was patient, polite, and sent me updates throughout. Invaluable trust!",
+  },
+  {
+    name: "Aditya Sen",
+    city: "Kolkata",
+    service: "Movie Companion",
+    rating: 5,
+    date: "4 days ago",
+    comment:
+      "None of my friends wanted to watch a 3-hour arthouse screening at South City. Booked Ananya — she was cultured, on time, and our post-film coffee discussion was top notch.",
+  },
+  {
+    name: "Meera Joshi",
+    city: "Mumbai",
+    service: "Shopping Companion",
+    rating: 5,
+    date: "1 week ago",
+    comment:
+      "Sanya helped me pick out festive outfits in Bandra. Honest styling advice with zero awkwardness. Felt like having a fashionable best friend with me!",
+  },
+  {
+    name: "Vikram Malhotra",
+    city: "Bengaluru",
+    service: "Concert Buddy",
+    rating: 5,
+    date: "2 weeks ago",
+    comment:
+      "Had an extra pass for an indie rock gig in Indiranagar. Booked a verified CoFriend and had a blast without feeling out of place. 100% safe and verified.",
+  },
+];
+
+const FAQS = [
+  {
+    q: "Is Co-Friend a dating or matchmaking app?",
+    a: "No, absolutely not. Co-Friend is a professional marketplace strictly for booking verified companions for everyday activities — movies, coffee, travel, shopping, elder support, fitness, and networking. Romantic or inappropriate solicitations are strictly prohibited and result in immediate permanent account banning.",
+  },
+  {
+    q: "How does the Dual-OTP verification handshake work?",
+    a: "When your booking is confirmed, a unique 4-digit Start OTP is generated in your dashboard. When you meet at the public venue, you share this code to begin the session. When the outing concludes, your companion provides their End OTP to authorize safe escrow payout.",
+  },
+  {
+    q: "How are Co-Friends vetted and verified?",
+    a: "Every single companion undergoes a rigorous 4-step onboarding protocol: 1) Aadhaar biometric KYC verification, 2) Criminal background record check, 3) 1-on-1 video screening interview, and 4) Mandatory platonic safety pledge signing.",
+  },
+  {
+    q: "What is the cancellation and refund policy?",
+    a: "All payments are protected in an escrow vault. You receive a 100% full refund with zero cancellation fee up to 4 hours before the scheduled outing time. In case of companion delay exceeding 15 minutes, you receive an instant full refund plus a ₹200 concierge credit.",
+  },
+  {
+    q: "Can I extend my outing session while it is ongoing?",
+    a: "Yes! If both you and your Co-Friend agree to continue your conversation or activity, you can tap 'Extend Session' directly in your booking dashboard at the transparent hourly rate.",
   },
 ];
 
 export default function HomePage() {
-  const [selectedCityTab, setSelectedCityTab] = useState("All Hubs");
-  const [hoursPerWeekend, setHoursPerWeekend] = useState(12);
-  const [selectedActivity, setSelectedActivity] = useState("Movie & Cinema - Multiplex Premiere");
-  const [selectedMetro, setSelectedMetro] = useState("Kolkata (Park St, Salt Lake, South...)");
-  const [selectedTime, setSelectedTime] = useState("Today / Tomorrow (Any time)");
-  const [bookingProfile, setBookingProfile] = useState<CompanionProfile | null>(null);
-  const [bookingConfirmed, setBookingConfirmed] = useState(false);
-  const [searchSubmitted, setSearchSubmitted] = useState(false);
+  const [selectedCity, setSelectedCity] = useState("All Cities");
+  const [selectedCategory, setSelectedCategory] = useState("All");
+  const [activeModalProfile, setActiveModalProfile] = useState<ProfileItem | null>(
+    null
+  );
+  const [modalBookingSuccess, setModalBookingSuccess] = useState(false);
+  const [searchQuery, setSearchQuery] = useState("");
+  const [hoursPerWeek, setHoursPerWeek] = useState(15);
+  const [openFaq, setOpenFaq] = useState<number | null>(0);
 
-  const filteredProfiles =
-    selectedCityTab === "All Hubs"
-      ? FEATURED_PROFILES
-      : FEATURED_PROFILES.filter((p) => p.city === selectedCityTab);
+  const estimatedMonthlyEarnings = useMemo(() => {
+    return (hoursPerWeek * 350 * 4).toLocaleString("en-IN");
+  }, [hoursPerWeek]);
 
-  // Estimator calculation: Hours * 4 weekends * Rs. 350
-  const monthlyEarnings = hoursPerWeekend * 4 * 350;
+  const filteredProfiles = useMemo(() => {
+    return PROFILES_DATA.filter((p) => {
+      const matchCity =
+        selectedCity === "All Cities" || p.city.toLowerCase() === selectedCity.toLowerCase();
+      const matchCat =
+        selectedCategory === "All" || p.category.toLowerCase().includes(selectedCategory.toLowerCase());
+      const matchQuery =
+        !searchQuery ||
+        p.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        p.bio.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        p.city.toLowerCase().includes(searchQuery.toLowerCase());
+      return matchCity && matchCat && matchQuery;
+    });
+  }, [selectedCity, selectedCategory, searchQuery]);
 
   return (
-    <div className="min-h-screen bg-[#FAF9F5] text-[#1E2421] font-sans antialiased flex flex-col selection:bg-[#F2DDD7] selection:text-[#832913]">
-      {/* 1. Top Notice Bar */}
-      <div className="bg-[#FFF9E6] border-b border-[#F4E3A8] px-4 py-1.5 text-center text-[11px] sm:text-xs font-semibold text-[#8F6200] tracking-wide flex items-center justify-center gap-2">
-        <span className="w-2 h-2 rounded-full bg-[#E59819] shrink-0 animate-pulse" />
+    <div className="min-h-screen bg-[#FAFAFD] text-[#0F172A] font-sans antialiased flex flex-col selection:bg-[#F3E8FF] selection:text-[#7C3AED]">
+      {/* Top Banner */}
+      <div className="bg-gradient-to-r from-purple-700 via-purple-600 to-pink-600 text-white px-4 py-2 text-center text-xs sm:text-[13px] font-medium tracking-wide flex items-center justify-center gap-2 shadow-sm">
+        <Sparkles className="w-4 h-4 text-pink-200 animate-pulse shrink-0" />
         <span>
-          100% STRICT PLATONIC & IDENTITY VERIFIED NETWORK • ALL COMPANIONS GO
-          THROUGH 4-STEP POLICE & AADHAAR BACKGROUND CHECKS
+          <strong>India&apos;s #1 Verified Companionship Marketplace</strong> • 100% Strict Platonic & Aadhaar Vetted Network
         </span>
       </div>
 
-      {/* 2. Top Header / Navbar */}
-      <header className="sticky top-0 z-40 bg-[#FAF9F5]/90 backdrop-blur-md border-b border-[#EAE8E0]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-18 flex items-center justify-between">
+      {/* Main Header / Navbar */}
+      <header className="sticky top-0 z-40 bg-[#FAFAFD]/90 backdrop-blur-md border-b border-purple-100/80 shadow-xs">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
           {/* Brand Logo */}
-          <div className="flex items-center gap-2">
-            <Link href="/" className="flex items-baseline group">
-              <span className="font-serif text-2xl sm:text-3xl font-bold tracking-tight text-[#171A19]">
-                CoFriend
+          <Link href="/" className="flex items-center gap-2 group">
+            <div className="w-10 h-10 rounded-2xl bg-gradient-to-tr from-purple-600 to-pink-500 flex items-center justify-center text-white font-outfit font-extrabold text-xl shadow-md shadow-purple-500/30 group-hover:scale-105 transition-transform">
+              C
+            </div>
+            <div className="flex flex-col">
+              <div className="flex items-baseline">
+                <span className="font-outfit text-2xl font-extrabold tracking-tight text-slate-900">
+                  Co-Friend
+                </span>
+                <span className="w-2 h-2 rounded-full bg-pink-500 ml-1"></span>
+              </div>
+              <span className="text-[10px] font-medium text-purple-600 tracking-wider uppercase -mt-1">
+                Life&apos;s Better Together
               </span>
-              <span className="font-sans text-xl font-bold text-[#A8381E]">
-                .in
-              </span>
-            </Link>
-          </div>
+            </div>
+          </Link>
 
-          {/* Center Navigation Links */}
-          <nav className="hidden lg:flex items-center gap-7 text-[14.5px] font-medium text-[#4D5350]">
+          {/* Desktop Navigation Links */}
+          <nav className="hidden lg:flex items-center gap-8 text-[14.5px] font-semibold text-slate-600">
             <Link
               href="/"
-              className="text-[#171A19] font-semibold py-1 border-b-2 border-[#A8381E]"
+              className="text-purple-700 font-bold border-b-2 border-purple-600 py-1"
             >
               Home
             </Link>
             <Link
               href="/services"
-              className="transition-colors hover:text-[#171A19] py-1"
+              className="transition-colors hover:text-purple-700 py-1"
             >
               Services
             </Link>
             <Link
               href="/explore"
-              className="transition-colors hover:text-[#171A19] py-1"
+              className="transition-colors hover:text-purple-700 py-1"
             >
-              Explore CoFriends
+              Explore People
             </Link>
             <Link
               href="/available-now"
-              className="transition-colors hover:text-[#171A19] py-1"
+              className="transition-colors hover:text-purple-700 py-1 flex items-center gap-1.5"
             >
-              Available Now
+              <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+              <span>Available Now</span>
             </Link>
             <Link
               href="/how-it-works"
-              className="transition-colors hover:text-[#171A19] py-1"
+              className="transition-colors hover:text-purple-700 py-1"
             >
-              How it Works
+              How It Works
             </Link>
             <Link
               href="/book/confirmation"
-              className="transition-colors hover:text-[#171A19] py-1"
+              className="transition-colors hover:text-purple-700 py-1"
             >
               My Bookings
             </Link>
           </nav>
 
-          {/* Right Action */}
+          {/* Action CTAs */}
           <div className="flex items-center gap-3">
-            <a
-              href="#become-cofriend"
-              className="bg-[#9E331A] hover:bg-[#852A14] text-white px-4.5 py-2.5 rounded-full text-sm font-semibold tracking-wide transition-all shadow-sm hover:shadow active:scale-98 flex items-center gap-2 cursor-pointer"
+            <Link
+              href="/#partner"
+              className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white px-5 py-2.5 rounded-full text-sm font-bold tracking-wide transition-all shadow-md shadow-purple-500/25 active:scale-98 flex items-center gap-2"
             >
-              <span>Become a CoFriend</span>
-            </a>
-            <div className="w-9 h-9 rounded-full bg-[#E5DFD4] border border-[#D5CDBC] flex items-center justify-center text-xs font-semibold text-[#5A5043] cursor-pointer hover:bg-[#DDD6C9] transition-colors">
-              <span>JD</span>
-            </div>
+              <span>Become a Co-Friend</span>
+              <ArrowRight className="w-4 h-4" />
+            </Link>
           </div>
         </div>
       </header>
 
-      {/* Main Content */}
-      <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 pt-8 pb-24 space-y-16">
-        {/* 3. Hero Section */}
-        <section className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
-          {/* Left Column: Heading & Trust Copy */}
-          <div className="lg:col-span-6 space-y-6">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#FCECE8] border border-[#F6D0C7] text-[#9E331A] text-[11px] font-bold tracking-wider uppercase">
-              <ShieldCheck className="w-3.5 h-3.5 text-[#9E331A]" />
-              <span>100% Platonic Social Companionship</span>
+      {/* Hero Section */}
+      <section className="relative overflow-hidden pt-12 pb-20 md:pt-20 md:pb-28 gradient-hero-bg">
+        <div className="dots-pattern absolute inset-0 opacity-40 pointer-events-none" />
+        
+        {/* Ambient Glows */}
+        <div className="absolute top-10 left-1/2 -translate-x-1/2 w-[600px] h-[350px] bg-purple-400/20 rounded-full blur-3xl -z-10" />
+        <div className="absolute top-40 right-10 w-[300px] h-[300px] bg-pink-400/15 rounded-full blur-3xl -z-10" />
+
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="text-center max-w-3xl mx-auto space-y-6">
+            {/* Pill Badge */}
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-purple-50 border border-purple-200/80 text-purple-700 text-xs sm:text-sm font-semibold shadow-xs">
+              <span className="w-2 h-2 rounded-full bg-purple-600 animate-ping" />
+              <span>15,000+ Trust-Verified Companions in 24+ Indian Metros</span>
             </div>
 
-            <div className="space-y-4">
-              <h1 className="text-3xl sm:text-4xl lg:text-[46px] leading-[1.15] font-serif tracking-tight text-[#171A19]">
-                Find trusted company for{" "}
-                <span className="font-serif italic text-[#9E331A] font-normal">
-                  everyday plans
-                </span>
-                , outings & hobbies across India.
-              </h1>
-              <p className="text-[#555C58] text-sm sm:text-base leading-relaxed max-w-xl">
-                From premiere film screenings in South City to weekend hikes in
-                Coorg or spontaneous gallery strolls in Kala Ghoda — book
-                vetted, platonic companions on your own terms.
+            {/* Big Headline in Outfit */}
+            <h1 className="font-outfit text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight text-slate-900 leading-[1.08]">
+              Life&apos;s Better <br />
+              <span className="gradient-text">Together.</span>
+            </h1>
+
+            {/* Subtitle */}
+            <p className="font-body text-base sm:text-lg text-slate-600 leading-relaxed max-w-2xl mx-auto">
+              Book verified, friendly people for movies, coffee, shopping, travel, events, elder care, fitness, and engaging conversations. 100% safe, platonic, and transparent by the hour.
+            </p>
+
+            {/* Main Interactive Search Bar */}
+            <div className="pt-4 max-w-4xl mx-auto">
+              <div className="bg-white p-3 sm:p-4 rounded-3xl sm:rounded-full border border-purple-100 shadow-xl shadow-purple-500/10 flex flex-col sm:flex-row items-center gap-3">
+                {/* City Dropdown */}
+                <div className="flex items-center gap-2.5 px-4 py-2 w-full sm:w-auto border-b sm:border-b-0 sm:border-r border-slate-100 text-left">
+                  <MapPin className="w-5 h-5 text-purple-600 shrink-0" />
+                  <div>
+                    <div className="text-[11px] font-bold uppercase tracking-wider text-slate-400">
+                      City
+                    </div>
+                    <select
+                      value={selectedCity}
+                      onChange={(e) => setSelectedCity(e.target.value)}
+                      className="text-sm font-bold text-slate-800 bg-transparent focus:outline-none cursor-pointer"
+                    >
+                      {CITIES.map((c) => (
+                        <option key={c} value={c}>
+                          {c}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
+                </div>
+
+                {/* Category Dropdown */}
+                <div className="flex items-center gap-2.5 px-4 py-2 w-full sm:w-auto border-b sm:border-b-0 sm:border-r border-slate-100 text-left">
+                  <Film className="w-5 h-5 text-pink-500 shrink-0" />
+                  <div>
+                    <div className="text-[11px] font-bold uppercase tracking-wider text-slate-400">
+                      Activity
+                    </div>
+                    <select
+                      value={selectedCategory}
+                      onChange={(e) => setSelectedCategory(e.target.value)}
+                      className="text-sm font-bold text-slate-800 bg-transparent focus:outline-none cursor-pointer"
+                    >
+                      <option value="All">All Categories</option>
+                      <option value="Movie">Movie Companion</option>
+                      <option value="Coffee">Coffee & Conversations</option>
+                      <option value="Shopping">Shopping Partner</option>
+                      <option value="Tour">City Tour Guide</option>
+                      <option value="Event">Concert & Events</option>
+                      <option value="Elder">Elder Care</option>
+                      <option value="Fitness">Fitness Partner</option>
+                    </select>
+                  </div>
+                </div>
+
+                {/* Search Input */}
+                <div className="flex items-center gap-2.5 px-4 py-2 w-full sm:flex-1 text-left">
+                  <Search className="w-5 h-5 text-slate-400 shrink-0" />
+                  <input
+                    type="text"
+                    placeholder="Search by hobby, interest, cinema..."
+                    value={searchQuery}
+                    onChange={(e) => setSearchQuery(e.target.value)}
+                    className="w-full text-sm font-medium text-slate-800 bg-transparent focus:outline-none placeholder:text-slate-400"
+                  />
+                </div>
+
+                {/* Search CTA */}
+                <Link
+                  href="/explore"
+                  className="w-full sm:w-auto bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white px-7 py-3.5 rounded-2xl sm:rounded-full font-bold text-sm transition-all shadow-md shadow-purple-500/25 flex items-center justify-center gap-2 shrink-0"
+                >
+                  <span>Find Companions</span>
+                  <ArrowRight className="w-4 h-4" />
+                </Link>
+              </div>
+            </div>
+
+            {/* Quick Keyword Chips */}
+            <div className="flex flex-wrap items-center justify-center gap-2 text-xs text-slate-500 pt-2">
+              <span className="font-semibold text-slate-700">Trending Now:</span>
+              <button
+                onClick={() => setSearchQuery("Christopher Nolan")}
+                className="px-3 py-1 rounded-full bg-white hover:bg-purple-50 text-slate-700 border border-slate-200 hover:border-purple-300 transition-colors"
+              >
+                🎬 Movie Premieres
+              </button>
+              <button
+                onClick={() => setSearchQuery("Coffee")}
+                className="px-3 py-1 rounded-full bg-white hover:bg-purple-50 text-slate-700 border border-slate-200 hover:border-purple-300 transition-colors"
+              >
+                ☕ Specialty Café
+              </button>
+              <button
+                onClick={() => setSearchQuery("Heritage")}
+                className="px-3 py-1 rounded-full bg-white hover:bg-purple-50 text-slate-700 border border-slate-200 hover:border-purple-300 transition-colors"
+              >
+                🏛️ Heritage Walks
+              </button>
+              <button
+                onClick={() => setSearchQuery("Hospital")}
+                className="px-3 py-1 rounded-full bg-white hover:bg-purple-50 text-slate-700 border border-slate-200 hover:border-purple-300 transition-colors"
+              >
+                👵 Elder Hospital Assist
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Live Stats Bar */}
+      <section className="bg-white border-y border-purple-100 py-8 shadow-xs relative z-20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center divide-y md:divide-y-0 md:divide-x divide-purple-100">
+            <div className="p-3">
+              <div className="font-outfit text-3xl sm:text-4xl font-extrabold text-purple-700">
+                15,000+
+              </div>
+              <div className="text-xs sm:text-sm font-semibold text-slate-500 mt-1">
+                Verified Co-Friends
+              </div>
+            </div>
+            <div className="p-3">
+              <div className="font-outfit text-3xl sm:text-4xl font-extrabold text-pink-600">
+                85,000+
+              </div>
+              <div className="text-xs sm:text-sm font-semibold text-slate-500 mt-1">
+                Completed Outings
+              </div>
+            </div>
+            <div className="p-3">
+              <div className="font-outfit text-3xl sm:text-4xl font-extrabold text-purple-700">
+                24+
+              </div>
+              <div className="text-xs sm:text-sm font-semibold text-slate-500 mt-1">
+                Cities Across India
+              </div>
+            </div>
+            <div className="p-3">
+              <div className="font-outfit text-3xl sm:text-4xl font-extrabold text-amber-500 flex items-center justify-center gap-1">
+                <span>4.95</span>
+                <Star className="w-6 h-6 fill-amber-400 text-amber-400" />
+              </div>
+              <div className="text-xs sm:text-sm font-semibold text-slate-500 mt-1">
+                Average Companion Rating
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Services & Categories Section */}
+      <section id="services" className="py-16 sm:py-24 bg-[#FAFAFD]">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4">
+            <div>
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-purple-50 text-purple-700 text-xs font-bold uppercase tracking-wider mb-3">
+                <Sparkles className="w-3.5 h-3.5" />
+                <span>Curated Companion Formats</span>
+              </div>
+              <h2 className="font-outfit text-3xl sm:text-4xl font-extrabold text-slate-900">
+                Explore Services & Activities
+              </h2>
+              <p className="font-body text-slate-600 text-sm sm:text-base mt-2 max-w-xl">
+                Choose from 11 verified categories with transparent hourly tariffs and zero hidden fees.
+              </p>
+            </div>
+            <Link
+              href="/services"
+              className="inline-flex items-center gap-2 font-bold text-sm text-purple-700 hover:text-purple-800 transition-colors"
+            >
+              <span>View All 11 Services</span>
+              <ArrowRight className="w-4 h-4" />
+            </Link>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+            {SERVICES_DATA.slice(0, 8).map((srv) => {
+              const Icon = srv.icon;
+              return (
+                <div
+                  key={srv.id}
+                  className="bg-white rounded-3xl overflow-hidden border border-purple-100/80 shadow-md hover:shadow-xl hover:shadow-purple-500/10 transition-all duration-300 group flex flex-col justify-between"
+                >
+                  <div className="relative h-48 w-full overflow-hidden bg-slate-100">
+                    <Image
+                      src={srv.image}
+                      alt={srv.title}
+                      fill
+                      className="object-cover group-hover:scale-105 transition-transform duration-500"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-slate-900/70 via-transparent to-transparent" />
+                    <div className="absolute top-3 left-3">
+                      <span className="px-3 py-1 rounded-full bg-white/95 backdrop-blur-md text-purple-700 text-xs font-bold shadow-xs">
+                        {srv.tag}
+                      </span>
+                    </div>
+                    <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between text-white">
+                      <div className="flex items-center gap-1.5 text-xs font-medium">
+                        <Icon className="w-4 h-4 text-pink-400" />
+                        <span>{srv.category}</span>
+                      </div>
+                      <span className="font-outfit text-sm font-extrabold bg-purple-600/90 px-2.5 py-1 rounded-full backdrop-blur-xs">
+                        {srv.price}
+                      </span>
+                    </div>
+                  </div>
+
+                  <div className="p-5 flex-1 flex flex-col justify-between space-y-4">
+                    <div>
+                      <h3 className="font-outfit text-lg font-bold text-slate-900 group-hover:text-purple-700 transition-colors">
+                        {srv.title}
+                      </h3>
+                      <p className="font-body text-xs text-slate-500 mt-1.5 line-clamp-2">
+                        {srv.blurb}
+                      </p>
+                    </div>
+
+                    <Link
+                      href={
+                        srv.id === "movies"
+                          ? "/available-now"
+                          : `/explore?category=${srv.id}`
+                      }
+                      className="w-full bg-purple-50 hover:bg-purple-100 text-purple-700 font-bold text-xs py-2.5 rounded-xl transition-all flex items-center justify-center gap-1.5"
+                    >
+                      <span>Find {srv.title}</span>
+                      <ArrowRight className="w-3.5 h-3.5" />
+                    </Link>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* Featured Co-Friends Directory Section */}
+      <section id="explore" className="py-16 sm:py-24 bg-white border-t border-purple-100">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-4">
+            <div>
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-50 text-emerald-700 text-xs font-bold uppercase tracking-wider mb-3">
+                <CheckCircle2 className="w-3.5 h-3.5" />
+                <span>100% Identity & Police Verified</span>
+              </div>
+              <h2 className="font-outfit text-3xl sm:text-4xl font-extrabold text-slate-900">
+                Top Rated Co-Friends
+              </h2>
+              <p className="font-body text-slate-600 text-sm sm:text-base mt-2">
+                Browse verified individuals ready to accompany you for hobbies, outings, and events.
               </p>
             </div>
 
-            {/* Trust Highlights (3 items) */}
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-2">
-              <div className="flex items-center gap-2 text-xs font-semibold text-[#171A19]">
-                <div className="w-2 h-2 rounded-full bg-[#9E331A]" />
-                <div>
-                  <div className="font-bold">10,000+ HOURS</div>
-                  <div className="text-[10.5px] font-normal text-[#737A76]">
-                    Accompanied across metros
-                  </div>
-                </div>
-              </div>
-
-              <div className="flex items-center gap-2 text-xs font-semibold text-[#171A19]">
-                <div className="w-2 h-2 rounded-full bg-[#1E7E34]" />
-                <div>
-                  <div className="font-bold">4-STEP ONBOARDING</div>
-                  <div className="text-[10.5px] font-normal text-[#737A76]">
-                    Aadhaar & Police check
-                  </div>
-                </div>
-              </div>
-
-              <div className="flex items-center gap-2 text-xs font-semibold text-[#171A19]">
-                <div className="w-2 h-2 rounded-full bg-[#B47414]" />
-                <div>
-                  <div className="font-bold">FLAT HOURLY RATES</div>
-                  <div className="text-[10.5px] font-normal text-[#737A76]">
-                    No hidden surge fees
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* Right Column: Hero Visual with Overlays & Floating Notification */}
-          <div className="lg:col-span-6 relative">
-            <div className="relative rounded-3xl overflow-hidden aspect-[4/3] sm:aspect-[14/10] bg-stone-200 border border-[#E7E4DC] shadow-sm">
-              <Image
-                src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=1200&q=80"
-                alt="Friends having coffee and discussing plans"
-                fill
-                priority
-                className="object-cover"
-              />
-
-              {/* Gradient Overlay */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-black/20" />
-
-              {/* Top Tag */}
-              <div className="absolute top-4 right-4">
-                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-black/60 backdrop-blur-md text-white text-xs font-medium border border-white/20">
-                  <Sparkles className="w-3.5 h-3.5 text-amber-300" />
-                  <span>Verified Companion Outing</span>
-                </span>
-              </div>
-
-              {/* Bottom Quote on Image */}
-              <div className="absolute bottom-4 left-4 right-4 text-white text-xs sm:text-sm font-medium leading-snug drop-shadow-sm pr-12">
-                “A peaceful Saturday morning photography walk in Victoria Memorial
-                with an art historian...”
-              </div>
-            </div>
-
-            {/* Floating Booking Notification Card */}
-            <div className="absolute -bottom-6 left-4 sm:left-6 bg-white/95 backdrop-blur-md rounded-2xl p-3 sm:p-3.5 shadow-xl border border-[#E2DFD6] flex items-center gap-3 max-w-sm animate-in fade-in slide-in-from-bottom-3 duration-500">
-              <div className="relative w-10 h-10 rounded-full overflow-hidden bg-stone-100 shrink-0 border border-emerald-500">
-                <Image
-                  src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&q=80"
-                  alt="Priya S."
-                  fill
-                  className="object-cover"
-                />
-                <span className="absolute bottom-0 right-0 w-2.5 h-2.5 rounded-full bg-emerald-500 border-2 border-white" />
-              </div>
-              <div className="text-xs">
-                <div className="font-bold text-[#171A19]">
-                  Priya S. booked for Art Walk
-                </div>
-                <div className="text-[11px] text-[#555C58]">
-                  Joined by Debabrata for gallery hopping in South Kolkata • ₹350/hr
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* 4. Search & Booking Bar (White box with orange accents) */}
-        <section
-          id="booking-search"
-          className="bg-white rounded-3xl shadow-sm border border-[#E5E2DA] p-5 sm:p-6 space-y-4"
-        >
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-[#F0EEE7] pb-3">
-            <div className="flex items-center gap-2">
-              <span className="text-[#9E331A] font-bold text-xs uppercase tracking-wider flex items-center gap-1.5">
-                <MapPin className="w-4 h-4 text-[#9E331A]" />
-                Book a Verified CoFriend in 45 Mins
-              </span>
-            </div>
-            <div className="text-xs font-medium text-[#737A76] flex items-center gap-1">
-              <Sparkles className="w-3.5 h-3.5 text-amber-500" />
-              <span>Instant matching in 5 metro hubs</span>
-            </div>
-          </div>
-
-          {/* Form Fields */}
-          <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-3 items-center">
-            {/* Activity Field */}
-            <div className="bg-[#FAF9F5] rounded-xl p-2.5 border border-[#E7E4DC] hover:border-[#9E331A] transition-colors">
-              <label className="block text-[10px] font-bold uppercase tracking-wider text-[#737A76] mb-0.5">
-                Select Activity / Plan
-              </label>
-              <select
-                value={selectedActivity}
-                onChange={(e) => setSelectedActivity(e.target.value)}
-                className="w-full bg-transparent text-xs font-semibold text-[#171A19] focus:outline-none cursor-pointer"
-              >
-                <option>Movie & Cinema - Multiplex Premiere</option>
-                <option>Weekend Dining & Cafes</option>
-                <option>Trekking & Mountain Hikes</option>
-                <option>Gallery & Art Museum Walks</option>
-                <option>Childcare & Playful Mentoring</option>
-                <option>Shopping & Wardrobe Styling</option>
-                <option>Badminton & Sports Buddy</option>
-              </select>
-            </div>
-
-            {/* Metro Field */}
-            <div className="bg-[#FAF9F5] rounded-xl p-2.5 border border-[#E7E4DC] hover:border-[#9E331A] transition-colors">
-              <label className="block text-[10px] font-bold uppercase tracking-wider text-[#737A76] mb-0.5">
-                Select Metro
-              </label>
-              <select
-                value={selectedMetro}
-                onChange={(e) => setSelectedMetro(e.target.value)}
-                className="w-full bg-transparent text-xs font-semibold text-[#171A19] focus:outline-none cursor-pointer"
-              >
-                <option>Kolkata (Park St, Salt Lake, South...)</option>
-                <option>Bengaluru (Indiranagar, Koramangala...)</option>
-                <option>Mumbai (Bandra, South Bombay...)</option>
-                <option>Delhi NCR (Lodhi, HKV, Gurgaon...)</option>
-                <option>Hyderabad (Jubilee Hills, Hitec City...)</option>
-              </select>
-            </div>
-
-            {/* Date & Time Field */}
-            <div className="bg-[#FAF9F5] rounded-xl p-2.5 border border-[#E7E4DC] hover:border-[#9E331A] transition-colors">
-              <label className="block text-[10px] font-bold uppercase tracking-wider text-[#737A76] mb-0.5">
-                Date & Time
-              </label>
-              <select
-                value={selectedTime}
-                onChange={(e) => setSelectedTime(e.target.value)}
-                className="w-full bg-transparent text-xs font-semibold text-[#171A19] focus:outline-none cursor-pointer"
-              >
-                <option>Today / Tomorrow (Any time)</option>
-                <option>This Weekend (Morning 8 AM - 12 PM)</option>
-                <option>This Weekend (Evening 5 PM - 9 PM)</option>
-                <option>Custom Date (Next 7 Days)</option>
-              </select>
-            </div>
-
-            {/* CTA Button */}
-            <button
-              onClick={() => setSearchSubmitted(true)}
-              className="w-full bg-[#9E331A] hover:bg-[#852A14] text-white py-3.5 px-4 rounded-xl text-xs sm:text-sm font-semibold transition-all shadow-xs active:scale-98 flex items-center justify-center gap-2 cursor-pointer"
-            >
-              <Search className="w-4 h-4" />
-              <span>Find a CoFriend</span>
-            </button>
-          </div>
-
-          {searchSubmitted && (
-            <div className="p-3 bg-[#F0FDF4] border border-[#BBF7D0] rounded-xl text-xs text-[#166534] flex items-center justify-between">
-              <span>
-                Found <strong>14 verified companions</strong> matching &quot;{selectedActivity}&quot; in {selectedMetro.split("(")[0]}.
-              </span>
-              <button
-                onClick={() => setSearchSubmitted(false)}
-                className="text-xs font-bold underline"
-              >
-                Dismiss
-              </button>
-            </div>
-          )}
-
-          {/* Badges Under Search */}
-          <div className="flex flex-wrap items-center justify-between gap-3 pt-2 text-[11.5px] text-[#555C58]">
-            <div className="flex flex-wrap items-center gap-4">
-              <span className="flex items-center gap-1.5">
-                <ShieldCheck className="w-3.5 h-3.5 text-emerald-600" />
-                100% Aadhaar Verified
-              </span>
-              <span className="flex items-center gap-1.5">
-                <Lock className="w-3.5 h-3.5 text-amber-600" />
-                Escrow Paid to CoFriend
-              </span>
-              <span className="flex items-center gap-1.5">
-                <Zap className="w-3.5 h-3.5 text-blue-600" />
-                Instant Booking Available
-              </span>
-              <span className="flex items-center gap-1.5">
-                <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600" />
-                Clear OTP Authentication
-              </span>
-            </div>
-
-            <Link
-              href="/services"
-              className="text-[#9E331A] font-semibold hover:underline flex items-center gap-1 text-xs"
-            >
-              <span>Why Trust CoFriend Plans</span>
-              <ArrowRight className="w-3 h-3" />
-            </Link>
-          </div>
-        </section>
-
-        {/* 5. Section: Bespoke fellows for every lifestyle occasion */}
-        <section className="space-y-6">
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
-            <div className="space-y-1">
-              <div className="text-[11px] font-bold uppercase tracking-widest text-[#737A76]">
-                Companionship Collections
-              </div>
-              <h2 className="text-2xl sm:text-3xl font-serif font-bold text-[#171A19]">
-                Bespoke fellows for every lifestyle occasion.
-              </h2>
-            </div>
-            <p className="text-xs sm:text-sm text-[#555C58] max-w-md">
-              Curated accompaniment formats tailored to your mood, pace, and
-              interests. No dating dynamics — strictly curated platonic
-              companionship.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-            {/* Card 1: Movie */}
-            <div className="bg-white rounded-2xl border border-[#E7E4DC] overflow-hidden shadow-xs hover:shadow-md transition-all flex flex-col group">
-              <div className="relative aspect-[16/10] w-full bg-stone-200 overflow-hidden">
-                <Image
-                  src="https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c?auto=format&fit=crop&w=600&q=80"
-                  alt="Movie CoFriend"
-                  fill
-                  className="object-cover group-hover:scale-105 transition-transform duration-500"
-                />
-                <div className="absolute top-2.5 left-2.5">
-                  <span className="px-2.5 py-0.5 rounded-full bg-black/65 backdrop-blur-md text-[11px] font-medium text-white">
-                    Popular in Cinema
-                  </span>
-                </div>
-              </div>
-              <div className="p-4 flex-1 flex flex-col justify-between space-y-3">
-                <div className="space-y-1">
-                  <div className="flex items-center justify-between">
-                    <h3 className="text-base font-serif font-bold text-[#171A19]">
-                      Movie CoFriend
-                    </h3>
-                    <span className="text-xs font-bold text-[#9E331A]">
-                      ₹300/hr
-                    </span>
-                  </div>
-                  <p className="text-xs text-[#555C58] leading-relaxed">
-                    Enthusiasts for multiplex premieres, regional cinema, indie film
-                    festivals, and post-movie discussions.
-                  </p>
-                </div>
-                <Link
-                  href="/services"
-                  className="text-xs font-semibold text-[#171A19] hover:text-[#9E331A] flex items-center justify-between pt-2 border-t border-[#F2EFE8]"
-                >
-                  <span>Book for Movie</span>
-                  <ArrowRight className="w-3.5 h-3.5" />
-                </Link>
-              </div>
-            </div>
-
-            {/* Card 2: Weekend Dinner */}
-            <div className="bg-white rounded-2xl border border-[#E7E4DC] overflow-hidden shadow-xs hover:shadow-md transition-all flex flex-col group">
-              <div className="relative aspect-[16/10] w-full bg-stone-200 overflow-hidden">
-                <Image
-                  src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=600&q=80"
-                  alt="Weekend Dinner"
-                  fill
-                  className="object-cover group-hover:scale-105 transition-transform duration-500"
-                />
-                <div className="absolute top-2.5 left-2.5">
-                  <span className="px-2.5 py-0.5 rounded-full bg-black/65 backdrop-blur-md text-[11px] font-medium text-white">
-                    Social Dining
-                  </span>
-                </div>
-              </div>
-              <div className="p-4 flex-1 flex flex-col justify-between space-y-3">
-                <div className="space-y-1">
-                  <div className="flex items-center justify-between">
-                    <h3 className="text-base font-serif font-bold text-[#171A19]">
-                      Weekend Dinner
-                    </h3>
-                    <span className="text-xs font-bold text-[#9E331A]">
-                      ₹350/hr
-                    </span>
-                  </div>
-                  <p className="text-xs text-[#555C58] leading-relaxed">
-                    Rooftop evening companions, street food trails, or quiet
-                    coffee conversations in heritage cafes.
-                  </p>
-                </div>
-                <Link
-                  href="/services"
-                  className="text-xs font-semibold text-[#171A19] hover:text-[#9E331A] flex items-center justify-between pt-2 border-t border-[#F2EFE8]"
-                >
-                  <span>Book for Dinner</span>
-                  <ArrowRight className="w-3.5 h-3.5" />
-                </Link>
-              </div>
-            </div>
-
-            {/* Card 3: Trekking & Trails */}
-            <div className="bg-white rounded-2xl border border-[#E7E4DC] overflow-hidden shadow-xs hover:shadow-md transition-all flex flex-col group">
-              <div className="relative aspect-[16/10] w-full bg-stone-200 overflow-hidden">
-                <Image
-                  src="https://images.unsplash.com/photo-1551632811-561732d1e306?auto=format&fit=crop&w=600&q=80"
-                  alt="Trekking & Trails"
-                  fill
-                  className="object-cover group-hover:scale-105 transition-transform duration-500"
-                />
-                <div className="absolute top-2.5 left-2.5">
-                  <span className="px-2.5 py-0.5 rounded-full bg-black/65 backdrop-blur-md text-[11px] font-medium text-white">
-                    Outdoor & Fitness
-                  </span>
-                </div>
-              </div>
-              <div className="p-4 flex-1 flex flex-col justify-between space-y-3">
-                <div className="space-y-1">
-                  <div className="flex items-center justify-between">
-                    <h3 className="text-base font-serif font-bold text-[#171A19]">
-                      Trekking & Trails
-                    </h3>
-                    <span className="text-xs font-bold text-[#9E331A]">
-                      ₹300/hr
-                    </span>
-                  </div>
-                  <p className="text-xs text-[#555C58] leading-relaxed">
-                    Trail-ready buddies to accompany morning hikes, Western Ghats
-                    treks, or nature walks.
-                  </p>
-                </div>
-                <Link
-                  href="/services"
-                  className="text-xs font-semibold text-[#171A19] hover:text-[#9E331A] flex items-center justify-between pt-2 border-t border-[#F2EFE8]"
-                >
-                  <span>Book for Trekking</span>
-                  <ArrowRight className="w-3.5 h-3.5" />
-                </Link>
-              </div>
-            </div>
-
-            {/* Card 4: Gallery & Culture */}
-            <div className="bg-white rounded-2xl border border-[#E7E4DC] overflow-hidden shadow-xs hover:shadow-md transition-all flex flex-col group">
-              <div className="relative aspect-[16/10] w-full bg-stone-200 overflow-hidden">
-                <Image
-                  src="https://images.unsplash.com/photo-1558431382-27e303142255?auto=format&fit=crop&w=600&q=80"
-                  alt="Gallery & Culture"
-                  fill
-                  className="object-cover group-hover:scale-105 transition-transform duration-500"
-                />
-                <div className="absolute top-2.5 left-2.5">
-                  <span className="px-2.5 py-0.5 rounded-full bg-black/65 backdrop-blur-md text-[11px] font-medium text-white">
-                    Heritage & Walk
-                  </span>
-                </div>
-              </div>
-              <div className="p-4 flex-1 flex flex-col justify-between space-y-3">
-                <div className="space-y-1">
-                  <div className="flex items-center justify-between">
-                    <h3 className="text-base font-serif font-bold text-[#171A19]">
-                      Gallery & Culture
-                    </h3>
-                    <span className="text-xs font-bold text-[#9E331A]">
-                      ₹450/hr
-                    </span>
-                  </div>
-                  <p className="text-xs text-[#555C58] leading-relaxed">
-                    Art enthusiasts, museum guides, and heritage architecture lovers
-                    to tour cultural districts.
-                  </p>
-                </div>
-                <Link
-                  href="/services"
-                  className="text-xs font-semibold text-[#171A19] hover:text-[#9E331A] flex items-center justify-between pt-2 border-t border-[#F2EFE8]"
-                >
-                  <span>Book for Gallery</span>
-                  <ArrowRight className="w-3.5 h-3.5" />
-                </Link>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* 6. Section: Featured Verified CoFriends */}
-        <section id="featured-companions" className="space-y-6">
-          <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
-            <div className="space-y-1">
-              <div className="text-[11px] font-bold uppercase tracking-widest text-[#737A76]">
-                Handpicked Professionals
-              </div>
-              <h2 className="text-2xl sm:text-3xl font-serif font-bold text-[#171A19]">
-                Featured Verified CoFriends
-              </h2>
-            </div>
-
             {/* City Tabs */}
-            <div className="flex flex-wrap items-center gap-1.5 bg-[#EAE7DD] p-1 rounded-full border border-[#D5D0C2]">
-              {["All Hubs", "Kolkata", "Bengaluru", "Mumbai", "Delhi NCR"].map(
-                (tab) => {
-                  const isActive = selectedCityTab === tab;
-                  return (
-                    <button
-                      key={tab}
-                      onClick={() => setSelectedCityTab(tab)}
-                      className={`px-3.5 py-1.5 rounded-full text-xs font-semibold transition-all cursor-pointer ${
-                        isActive
-                          ? "bg-[#171A19] text-white shadow-xs"
-                          : "text-[#4A544D] hover:text-[#171A19] hover:bg-white/60"
-                      }`}
-                    >
-                      {tab}
-                    </button>
-                  );
-                }
-              )}
+            <div className="flex items-center gap-2 overflow-x-auto pb-2 sm:pb-0">
+              {CITIES.slice(0, 5).map((city) => (
+                <button
+                  key={city}
+                  onClick={() => setSelectedCity(city)}
+                  className={`px-4 py-2 rounded-full text-xs font-bold whitespace-nowrap transition-all ${
+                    selectedCity === city
+                      ? "bg-purple-600 text-white shadow-sm"
+                      : "bg-purple-50 text-slate-600 hover:bg-purple-100"
+                  }`}
+                >
+                  {city}
+                </button>
+              ))}
             </div>
           </div>
 
-          {/* Profile Cards */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-            {filteredProfiles.map((profile) => (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {filteredProfiles.map((p) => (
               <div
-                key={profile.id}
-                className="bg-white rounded-2xl border border-[#E7E4DC] overflow-hidden shadow-xs hover:shadow-md transition-all flex flex-col group"
+                key={p.id}
+                className="bg-[#FAFAFD] rounded-3xl p-5 border border-purple-100/90 shadow-sm hover:shadow-xl hover:shadow-purple-500/10 transition-all duration-300 flex flex-col justify-between"
               >
-                {/* Photo Thumbnail */}
-                <div className="relative aspect-[4/4.5] w-full bg-stone-200 overflow-hidden">
-                  <Image
-                    src={profile.avatar}
-                    alt={profile.name}
-                    fill
-                    className="object-cover group-hover:scale-105 transition-transform duration-500"
-                  />
-
-                  {/* Top Badges */}
-                  <div className="absolute top-2.5 left-2.5 flex items-center gap-1.5">
-                    <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-emerald-700/80 backdrop-blur-md text-[10px] font-semibold text-white">
-                      <ShieldCheck className="w-3 h-3" />
-                      {profile.specialityTag}
-                    </span>
+                <div>
+                  {/* Top Bar */}
+                  <div className="flex items-start gap-4">
+                    <div className="relative w-16 h-16 rounded-2xl overflow-hidden bg-slate-200 shrink-0 border-2 border-white shadow-xs">
+                      <Image
+                        src={p.avatar}
+                        alt={p.name}
+                        fill
+                        className="object-cover"
+                      />
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <div className="flex items-center justify-between">
+                        <span className="text-[11px] font-bold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-full inline-flex items-center gap-1">
+                          <CheckCircle2 className="w-3 h-3" />
+                          <span>Aadhaar Verified</span>
+                        </span>
+                        <div className="flex items-center gap-1 text-xs font-bold text-amber-500 bg-amber-50 px-2 py-0.5 rounded-full">
+                          <Star className="w-3.5 h-3.5 fill-amber-400" />
+                          <span>{p.rating}</span>
+                          <span className="text-slate-400 font-normal">
+                            ({p.reviews})
+                          </span>
+                        </div>
+                      </div>
+                      <h3 className="font-outfit text-base font-bold text-slate-900 truncate mt-1">
+                        {p.name},{" "}
+                        <span className="text-xs font-normal text-slate-500">
+                          {p.age} yrs
+                        </span>
+                      </h3>
+                      <div className="flex items-center gap-1 text-xs text-slate-500 truncate">
+                        <MapPin className="w-3.5 h-3.5 text-purple-600 shrink-0" />
+                        <span>
+                          {p.location}, {p.city}
+                        </span>
+                      </div>
+                    </div>
                   </div>
 
-                  <div className="absolute top-2.5 right-2.5">
-                    <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-black/60 backdrop-blur-md text-[10px] font-semibold text-white">
-                      <Star className="w-2.5 h-2.5 fill-amber-400 text-amber-400" />
-                      {profile.rating.toFixed(1)} ({profile.reviewsCount})
-                    </span>
-                  </div>
+                  {/* Bio */}
+                  <p className="font-body text-xs text-slate-600 mt-4 line-clamp-2 leading-relaxed">
+                    {p.bio}
+                  </p>
 
-                  {/* Bottom Overlay on Image */}
-                  <div className="absolute bottom-2.5 left-2.5 right-2.5 bg-black/60 backdrop-blur-md rounded-lg px-2.5 py-1 text-[10.5px] text-white/95 flex items-center justify-between">
-                    <span>{profile.hoursBooked}</span>
-                    <span className="font-bold text-amber-300">
-                      ₹{profile.priceHourly}/hr
-                    </span>
+                  {/* Tags */}
+                  <div className="flex flex-wrap gap-1.5 mt-3">
+                    {p.tags.map((tag) => (
+                      <span
+                        key={tag}
+                        className="text-[10px] font-medium bg-white text-slate-600 px-2 py-0.5 rounded-md border border-slate-200"
+                      >
+                        {tag}
+                      </span>
+                    ))}
                   </div>
                 </div>
 
-                {/* Profile Details */}
-                <div className="p-4 flex-1 flex flex-col justify-between space-y-3">
-                  <div className="space-y-1.5">
-                    <div className="flex items-baseline justify-between">
-                      <h3 className="text-base font-serif font-bold text-[#171A19]">
-                        {profile.name}
-                      </h3>
-                      <span className="text-sm font-bold text-[#9E331A]">
-                        ₹{profile.priceHourly}{" "}
-                        <span className="text-[10px] font-normal text-[#737A76]">
-                          / hr
-                        </span>
+                {/* Bottom Action */}
+                <div className="pt-4 mt-4 border-t border-purple-100 flex items-center justify-between">
+                  <div>
+                    <div className="font-outfit text-base font-extrabold text-slate-900">
+                      ₹{p.priceHourly}
+                      <span className="text-xs font-normal text-slate-500">
+                        {" "}
+                        / hr
                       </span>
                     </div>
-
-                    <div className="text-[11px] font-semibold text-[#8F6200]">
-                      {profile.title}
+                    <div className="text-[10px] text-slate-400">
+                      {p.minDuration}
                     </div>
-
-                    <p className="text-xs text-[#555C58] line-clamp-3 leading-relaxed">
-                      {profile.bio}
-                    </p>
                   </div>
 
-                  <div className="pt-2 border-t border-[#F2EFE8] space-y-2.5">
-                    <div className="flex items-center justify-between text-[11px] text-[#737A76]">
-                      <span>{profile.languages.join(" • ")}</span>
-                      <span className="text-emerald-700 font-medium">
-                        {profile.responseSpeed}
-                      </span>
-                    </div>
-
-                    {profile.id === "ananya" ? (
-                      <Link
-                        href="/profile/ananya-sharma"
-                        className="w-full bg-[#9E331A] hover:bg-[#852A14] text-white py-2 rounded-xl text-xs font-semibold transition-all shadow-xs active:scale-98 cursor-pointer text-center block"
-                      >
-                        Book {profile.name.split(" ")[0]}
-                      </Link>
-                    ) : (
-                      <button
-                        onClick={() => setBookingProfile(profile)}
-                        className="w-full bg-[#9E331A] hover:bg-[#852A14] text-white py-2 rounded-xl text-xs font-semibold transition-all shadow-xs active:scale-98 cursor-pointer"
-                      >
-                        Book {profile.name.split(" ")[0]}
-                      </button>
-                    )}
-                  </div>
+                  {p.id === "ananya" ? (
+                    <Link
+                      href="/profile/ananya-sharma"
+                      className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white px-4 py-2 rounded-xl text-xs font-bold transition-all shadow-sm active:scale-98"
+                    >
+                      Book Ananya
+                    </Link>
+                  ) : (
+                    <button
+                      onClick={() => {
+                        setActiveModalProfile(p);
+                        setModalBookingSuccess(false);
+                      }}
+                      className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white px-4 py-2 rounded-xl text-xs font-bold transition-all shadow-sm active:scale-98"
+                    >
+                      Book Now
+                    </button>
+                  )}
                 </div>
               </div>
             ))}
           </div>
 
-          <div className="text-center pt-2">
+          <div className="mt-12 text-center">
             <Link
-              href="/services"
-              className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-semibold text-[#9E331A] hover:underline"
+              href="/explore"
+              className="inline-flex items-center gap-2 bg-purple-50 hover:bg-purple-100 text-purple-700 font-bold px-6 py-3 rounded-full text-sm transition-all"
             >
-              <span>+ View all 240+ verified companions across India</span>
+              <span>Explore All Verified Co-Friends</span>
               <ArrowRight className="w-4 h-4" />
             </Link>
           </div>
-        </section>
+        </div>
+      </section>
 
-        {/* 7. Section: How CoFriend.in Works */}
-        <section id="how-it-works" className="space-y-8 pt-6">
-          <div className="text-center space-y-2 max-w-2xl mx-auto">
-            <div className="text-[11px] font-bold uppercase tracking-widest text-[#737A76]">
-              Seamless & Safe Onboarding
+      {/* 4-Step How It Works Section */}
+      <section id="how-it-works" className="py-16 sm:py-24 bg-[#FAFAFD]">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center max-w-2xl mx-auto mb-16 space-y-3">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-purple-50 text-purple-700 text-xs font-bold uppercase tracking-wider">
+              <Zap className="w-3.5 h-3.5" />
+              <span>Simple, Safe & Transparent</span>
             </div>
-            <h2 className="text-2xl sm:text-3xl font-serif font-bold text-[#171A19]">
-              How CoFriend.in Works
+            <h2 className="font-outfit text-3xl sm:text-4xl font-extrabold text-slate-900">
+              How Co-Friend Works
             </h2>
-            <p className="text-xs sm:text-sm text-[#555C58]">
-              Book certified companionship in 4 easy steps — from plan selection
-              to safe meetup completion.
+            <p className="font-body text-slate-600 text-sm sm:text-base">
+              Book a verified companion in 4 frictionless steps with dual-OTP protection and escrow assurance.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-            {/* Step 01 */}
-            <div className="bg-white rounded-2xl p-5 border border-[#E7E4DC] shadow-xs flex flex-col justify-between space-y-4">
-              <div className="space-y-3">
-                <div className="flex items-center justify-between">
-                  <span className="text-3xl font-serif font-bold text-[#D0C8BA]">
-                    01
-                  </span>
-                  <span className="w-8 h-8 rounded-full bg-[#FCECE8] text-[#9E331A] flex items-center justify-center">
-                    <Compass className="w-4 h-4" />
-                  </span>
-                </div>
-                <h3 className="text-base font-serif font-bold text-[#171A19]">
-                  Choose Service
-                </h3>
-                <p className="text-xs text-[#555C58] leading-relaxed">
-                  Pick your activity: cinema, food trail, museum stroll, hiking,
-                  or fitness companion from our curated formats.
-                </p>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div className="bg-white p-6 rounded-3xl border border-purple-100 relative shadow-sm">
+              <div className="w-12 h-12 rounded-2xl bg-gradient-to-tr from-purple-600 to-violet-500 text-white font-outfit font-extrabold text-xl flex items-center justify-center mb-5 shadow-md shadow-purple-500/20">
+                01
               </div>
-              <div className="pt-2 border-t border-[#F2EFE8] text-[11px] font-semibold text-[#9E331A]">
-                View 8 Curated Formats
-              </div>
-            </div>
-
-            {/* Step 02 */}
-            <div className="bg-white rounded-2xl p-5 border border-[#E7E4DC] shadow-xs flex flex-col justify-between space-y-4">
-              <div className="space-y-3">
-                <div className="flex items-center justify-between">
-                  <span className="text-3xl font-serif font-bold text-[#D0C8BA]">
-                    02
-                  </span>
-                  <span className="w-8 h-8 rounded-full bg-[#FCECE8] text-[#9E331A] flex items-center justify-center">
-                    <Users className="w-4 h-4" />
-                  </span>
-                </div>
-                <h3 className="text-base font-serif font-bold text-[#171A19]">
-                  Select Your Fellow
-                </h3>
-                <p className="text-xs text-[#555C58] leading-relaxed">
-                  Browse verified profiles, ratings, fluency in languages, and
-                  background-check certifications for instant availability.
-                </p>
-              </div>
-              <div className="pt-2 border-t border-[#F2EFE8] text-[11px] font-semibold text-[#1E7E34]">
-                100% Aadhaar & Background Checked
-              </div>
-            </div>
-
-            {/* Step 03 */}
-            <div className="bg-white rounded-2xl p-5 border border-[#E7E4DC] shadow-xs flex flex-col justify-between space-y-4">
-              <div className="space-y-3">
-                <div className="flex items-center justify-between">
-                  <span className="text-3xl font-serif font-bold text-[#D0C8BA]">
-                    03
-                  </span>
-                  <span className="w-8 h-8 rounded-full bg-[#FCECE8] text-[#9E331A] flex items-center justify-center">
-                    <Lock className="w-4 h-4" />
-                  </span>
-                </div>
-                <h3 className="text-base font-serif font-bold text-[#171A19]">
-                  Secure Protection
-                </h3>
-                <p className="text-xs text-[#555C58] leading-relaxed">
-                  Pay via escrow. Earnings are released to companion only after
-                  completion and safe acknowledgement.
-                </p>
-              </div>
-              <div className="pt-2 border-t border-[#F2EFE8] text-[11px] font-semibold text-[#9E331A]">
-                Protected Escrow Payment
-              </div>
-            </div>
-
-            {/* Step 04 */}
-            <div className="bg-white rounded-2xl p-5 border border-[#E7E4DC] shadow-xs flex flex-col justify-between space-y-4">
-              <div className="space-y-3">
-                <div className="flex items-center justify-between">
-                  <span className="text-3xl font-serif font-bold text-[#D0C8BA]">
-                    04
-                  </span>
-                  <span className="w-8 h-8 rounded-full bg-[#FCECE8] text-[#9E331A] flex items-center justify-center">
-                    <HeartHandshake className="w-4 h-4" />
-                  </span>
-                </div>
-                <h3 className="text-base font-serif font-bold text-[#171A19]">
-                  Meet & Share OTP
-                </h3>
-                <p className="text-xs text-[#555C58] leading-relaxed">
-                  Meet at the public venue. Share the 4-digit verification code
-                  to start the hourly outing session safely.
-                </p>
-              </div>
-              <div className="pt-2 border-t border-[#F2EFE8] text-[11px] font-semibold text-[#1E7E34]">
-                Live GPS + In-App Emergency Button
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* 8. Section: Built on uncompromising safety and absolute dignity */}
-        <section
-          id="safety-protocol"
-          className="bg-[#EFF2EB] rounded-3xl p-6 sm:p-8 md:p-10 border border-[#E2E6DC] space-y-8"
-        >
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-            {/* Left Column */}
-            <div className="lg:col-span-6 space-y-5">
-              <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#E3EBE0] text-[#1E7E34] text-xs font-semibold border border-[#CAD8C5]">
-                <ShieldCheck className="w-3.5 h-3.5" />
-                <span>4-Step Safety & Dignity Protocol</span>
-              </div>
-
-              <h2 className="text-2xl sm:text-3xl font-serif font-bold text-[#171A19] leading-snug">
-                Built on uncompromising safety and absolute dignity.
-              </h2>
-
-              <p className="text-xs sm:text-sm text-[#555C58] leading-relaxed">
-                CoFriend is strictly non-romantic and dedicated to healthy
-                companionship. We have established India&apos;s most rigorous safety
-                and compliance frameworks to protect both guests and companions.
+              <h3 className="font-outfit text-lg font-bold text-slate-900 mb-2">
+                Choose Activity & Companion
+              </h3>
+              <p className="font-body text-xs text-slate-500 leading-relaxed">
+                Filter by activity format, city, spoken languages, and verified reviews to find your match.
               </p>
-
-              <div className="space-y-3.5 pt-2">
-                <div className="flex items-start gap-3">
-                  <div className="w-6 h-6 rounded-full bg-white text-emerald-600 flex items-center justify-center shrink-0 shadow-xs mt-0.5">
-                    <Check className="w-3.5 h-3.5" />
-                  </div>
-                  <div>
-                    <h4 className="text-xs font-bold text-[#171A19]">
-                      Government 20-Point Background Check
-                    </h4>
-                    <p className="text-[11.5px] text-[#555C58] leading-relaxed">
-                      Every fellow undergoes Aadhaar verification, residential
-                      address check, emergency contact validation, and past career
-                      references.
-                    </p>
-                  </div>
-                </div>
-
-                <div className="flex items-start gap-3">
-                  <div className="w-6 h-6 rounded-full bg-white text-emerald-600 flex items-center justify-center shrink-0 shadow-xs mt-0.5">
-                    <Check className="w-3.5 h-3.5" />
-                  </div>
-                  <div>
-                    <h4 className="text-xs font-bold text-[#171A19]">
-                      In-Public Meetups & Escrow Protection
-                    </h4>
-                    <p className="text-[11.5px] text-[#555C58] leading-relaxed">
-                      Outings take place solely at verified public venues with escrow
-                      payments released only on completion.
-                    </p>
-                  </div>
-                </div>
-
-                <div className="flex items-start gap-3">
-                  <div className="w-6 h-6 rounded-full bg-white text-emerald-600 flex items-center justify-center shrink-0 shadow-xs mt-0.5">
-                    <Check className="w-3.5 h-3.5" />
-                  </div>
-                  <div>
-                    <h4 className="text-xs font-bold text-[#171A19]">
-                      24/7 Live Concierge & Emergency Assistance
-                    </h4>
-                    <p className="text-[11.5px] text-[#555C58] leading-relaxed">
-                      Real-time session status tracking, one-tap emergency call
-                      support, and behavioral charter enforcement.
-                    </p>
-                  </div>
-                </div>
-              </div>
             </div>
 
-            {/* Right Column: Safety Onboarding Portal UI Mockup */}
-            <div className="lg:col-span-6 bg-white rounded-2xl p-5 sm:p-6 border border-[#E0DDD5] shadow-xs space-y-4">
-              <div className="flex items-center justify-between pb-3 border-b border-[#F0EEE7]">
-                <div className="flex items-center gap-2">
-                  <ShieldCheck className="w-4 h-4 text-emerald-600" />
-                  <span className="text-xs font-bold text-[#171A19]">
-                    Safety Onboarding Portal
-                  </span>
-                </div>
-                <span className="px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-700 text-[10.5px] font-bold border border-emerald-200">
-                  Status: VETTED & ACTIVE
-                </span>
+            <div className="bg-white p-6 rounded-3xl border border-purple-100 relative shadow-sm">
+              <div className="w-12 h-12 rounded-2xl bg-gradient-to-tr from-violet-600 to-pink-500 text-white font-outfit font-extrabold text-xl flex items-center justify-center mb-5 shadow-md shadow-pink-500/20">
+                02
               </div>
-
-              {/* Progress Checklist */}
-              <div className="space-y-2">
-                {[
-                  "1. Government Aadhaar Identity Verified",
-                  "2. Police Record & Address Cleared",
-                  "3. Platonic Charter Signed & Pledged",
-                  "4. In-Person Video & Behavioral Interview Passed",
-                ].map((item, idx) => (
-                  <div
-                    key={idx}
-                    className="flex items-center justify-between p-2.5 rounded-xl bg-[#FAF9F5] border border-[#EDEAE1] text-xs"
-                  >
-                    <span className="font-medium text-[#1E2421]">{item}</span>
-                    <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
-                  </div>
-                ))}
-              </div>
-
-              {/* Two Trust Subcards */}
-              <div className="grid grid-cols-2 gap-3 pt-1">
-                <div className="p-3 rounded-xl bg-[#FEF6E9] border border-[#FDE5BE] space-y-1">
-                  <div className="text-[10px] font-bold text-[#B47414] uppercase">
-                    Zero Harassment
-                  </div>
-                  <p className="text-[11px] text-[#6A4B1A] leading-tight">
-                    Immediate ban & legal escalation for violation of platonic charter.
-                  </p>
-                </div>
-
-                <div className="p-3 rounded-xl bg-[#EBF7EE] border border-[#CEEAD6] space-y-1">
-                  <div className="text-[10px] font-bold text-[#1E7E34] uppercase">
-                    OTP Commencement
-                  </div>
-                  <p className="text-[11px] text-[#1E5C2C] leading-tight">
-                    Sessions start only upon two-factor OTP exchange at public meetup.
-                  </p>
-                </div>
-              </div>
-
-              <div className="p-2.5 rounded-lg bg-[#FAF9F5] text-[10.5px] text-[#737A76] text-center border border-[#EDEAE1]">
-                Strict Platonic Charter enforced across all activities • Violations
-                reported directly to local authorities.
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* 9. Section: Trusted across India's Metros (Reviews) */}
-        <section className="space-y-6">
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
-            <div className="space-y-1">
-              <div className="text-[11px] font-bold uppercase tracking-widest text-[#737A76]">
-                User Reviews
-              </div>
-              <h2 className="text-2xl sm:text-3xl font-serif font-bold text-[#171A19]">
-                Trusted across India&apos;s Metros
-              </h2>
-            </div>
-            <p className="text-xs sm:text-sm text-[#555C58] max-w-md">
-              Real experiences from solo travellers, cinephiles, and cultural
-              enthusiasts across Indian metros.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
-            {/* Review 1 */}
-            <div className="bg-white rounded-2xl p-5 border border-[#E7E4DC] shadow-xs flex flex-col justify-between space-y-4">
-              <div className="space-y-3">
-                <div className="flex items-center gap-1 text-amber-400">
-                  {[...Array(5)].map((_, i) => (
-                    <Star key={i} className="w-3.5 h-3.5 fill-amber-400" />
-                  ))}
-                </div>
-                <p className="text-xs sm:text-[13px] text-[#171A19] italic leading-relaxed">
-                  “None of my friends wanted to sit through a 3.5-hour European
-                  film festival marathon in Nandan. Ananya was on-time, polite,
-                  and shared amazing post-movie analysis over chai!”
-                </p>
-              </div>
-              <div className="flex items-center gap-3 pt-3 border-t border-[#F2EFE8]">
-                <div className="w-8 h-8 rounded-full bg-[#E5DFD4] flex items-center justify-center text-xs font-bold text-[#5A5043]">
-                  DG
-                </div>
-                <div className="text-xs">
-                  <div className="font-bold text-[#171A19]">Debasish Ghosh</div>
-                  <div className="text-[11px] text-[#737A76]">
-                    Kolkata • Attended Cinema Gathering
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Review 2 */}
-            <div className="bg-white rounded-2xl p-5 border border-[#E7E4DC] shadow-xs flex flex-col justify-between space-y-4">
-              <div className="space-y-3">
-                <div className="flex items-center gap-1 text-amber-400">
-                  {[...Array(5)].map((_, i) => (
-                    <Star key={i} className="w-3.5 h-3.5 fill-amber-400" />
-                  ))}
-                </div>
-                <p className="text-xs sm:text-[13px] text-[#171A19] italic leading-relaxed">
-                  “Moved to Bengaluru recently. Needed a confident outdoor
-                  companion for the Savandurga sunrise trail on a Saturday.
-                  Rohan handled pacing and trailhead logistics flawlessly!”
-                </p>
-              </div>
-              <div className="flex items-center gap-3 pt-3 border-t border-[#F2EFE8]">
-                <div className="w-8 h-8 rounded-full bg-[#E5DFD4] flex items-center justify-center text-xs font-bold text-[#5A5043]">
-                  PS
-                </div>
-                <div className="text-xs">
-                  <div className="font-bold text-[#171A19]">Pooja Sengupta</div>
-                  <div className="text-[11px] text-[#737A76]">
-                    Bengaluru • Weekend Trekking Outing
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Review 3 */}
-            <div className="bg-white rounded-2xl p-5 border border-[#E7E4DC] shadow-xs flex flex-col justify-between space-y-4">
-              <div className="space-y-3">
-                <div className="flex items-center gap-1 text-amber-400">
-                  {[...Array(5)].map((_, i) => (
-                    <Star key={i} className="w-3.5 h-3.5 fill-amber-400" />
-                  ))}
-                </div>
-                <p className="text-xs sm:text-[13px] text-[#171A19] italic leading-relaxed">
-                  “Had a reservation at a premier BKC rooftop restaurant, but
-                  dining solo felt awkward. Priyadarshini made the entire dinner
-                  feel relaxed, respectful, and genuinely memorable.”
-                </p>
-              </div>
-              <div className="flex items-center gap-3 pt-3 border-t border-[#F2EFE8]">
-                <div className="w-8 h-8 rounded-full bg-[#E5DFD4] flex items-center justify-center text-xs font-bold text-[#5A5043]">
-                  AS
-                </div>
-                <div className="text-xs">
-                  <div className="font-bold text-[#171A19]">Abhijeet Singh</div>
-                  <div className="text-[11px] text-[#737A76]">
-                    Mumbai • Weekend Rooftop Dining
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* 10. Section: Become a Companion CTA Banner & Earnings Estimator */}
-        <section
-          id="become-cofriend"
-          className="bg-[#1B211E] rounded-3xl p-6 sm:p-8 md:p-10 text-white shadow-xl"
-        >
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-            {/* Left Content */}
-            <div className="lg:col-span-7 space-y-5">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 text-emerald-400 text-[11px] font-bold tracking-wider uppercase border border-white/15">
-                <span>Become a Verified CoFriend in Your Metro</span>
-              </div>
-
-              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-serif font-bold text-white leading-tight">
-                Turn your spare weekend hours & cultural hobbies into honorable
-                income.
-              </h2>
-
-              <p className="text-xs sm:text-sm text-stone-300 leading-relaxed max-w-xl">
-                Join an exclusive community of respectful, cultured companion
-                hosts. Accompany guests to film screenings, gallery walks, food
-                trails, and cultural events on your own schedule.
+              <h3 className="font-outfit text-lg font-bold text-slate-900 mb-2">
+                Set Public Venue & Time
+              </h3>
+              <p className="font-body text-xs text-slate-500 leading-relaxed">
+                Select your preferred multiplex, café, museum or mall for a safe public outing.
               </p>
-
-              {/* 3 Value Badges */}
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-2">
-                <div className="bg-white/10 rounded-xl p-3 border border-white/10">
-                  <div className="text-lg font-bold text-white">₹300 - ₹600</div>
-                  <div className="text-[11px] text-stone-300">
-                    Hourly Earning Potential
-                  </div>
-                </div>
-                <div className="bg-white/10 rounded-xl p-3 border border-white/10">
-                  <div className="text-lg font-bold text-white">Same-Day</div>
-                  <div className="text-[11px] text-stone-300">
-                    Instant Escrow Payout
-                  </div>
-                </div>
-                <div className="bg-white/10 rounded-xl p-3 border border-white/10">
-                  <div className="text-lg font-bold text-white">Flexible</div>
-                  <div className="text-[11px] text-stone-300">
-                    Choose your own hours
-                  </div>
-                </div>
-              </div>
-
-              <div className="flex flex-wrap items-center gap-3 pt-2">
-                <button
-                  onClick={() =>
-                    alert(
-                      "Thank you for your interest! The CoFriend host onboarding application form is opening."
-                    )
-                  }
-                  className="bg-[#9E331A] hover:bg-[#B83E20] text-white px-6 py-3 rounded-full text-xs sm:text-sm font-semibold transition-all shadow-md active:scale-98 cursor-pointer flex items-center gap-2"
-                >
-                  <span>Apply as a CoFriend</span>
-                  <ArrowRight className="w-4 h-4" />
-                </button>
-                <span className="text-xs text-stone-300 flex items-center gap-1.5">
-                  <ShieldCheck className="w-4 h-4 text-emerald-400" />
-                  100% Platonic Policy Guaranteed
-                </span>
-              </div>
             </div>
 
-            {/* Right Estimator Card */}
-            <div className="lg:col-span-5 bg-white text-[#171A19] rounded-2xl p-5 sm:p-6 border border-[#E0DDD5] shadow-lg space-y-4">
-              <div className="flex items-center justify-between pb-2 border-b border-[#F0EEE7]">
-                <h3 className="text-base font-serif font-bold text-[#171A19]">
-                  Earnings Estimator
-                </h3>
-                <span className="text-[11px] font-bold text-[#9E331A] bg-[#FDF4F1] px-2.5 py-0.5 rounded-full">
-                  All Metro Hubs
-                </span>
+            <div className="bg-white p-6 rounded-3xl border border-purple-100 relative shadow-sm">
+              <div className="w-12 h-12 rounded-2xl bg-gradient-to-tr from-pink-600 to-rose-500 text-white font-outfit font-extrabold text-xl flex items-center justify-center mb-5 shadow-md shadow-rose-500/20">
+                03
               </div>
-
-              {/* Slider for Weekend Hours */}
-              <div className="space-y-2">
-                <div className="flex items-center justify-between text-xs">
-                  <span className="text-[#555C58] font-medium">
-                    Weekend commitment:
-                  </span>
-                  <span className="font-bold text-[#171A19]">
-                    {hoursPerWeekend} hrs / weekend
-                  </span>
-                </div>
-                <input
-                  type="range"
-                  min={4}
-                  max={24}
-                  step={2}
-                  value={hoursPerWeekend}
-                  onChange={(e) => setHoursPerWeekend(Number(e.target.value))}
-                  className="w-full accent-[#9E331A] cursor-pointer"
-                />
-                <div className="flex justify-between text-[10px] text-[#737A76]">
-                  <span>4 hrs (Part-time)</span>
-                  <span>12 hrs</span>
-                  <span>24 hrs (Full weekend)</span>
-                </div>
-              </div>
-
-              {/* Payout Output Box */}
-              <div className="bg-[#EFF2EB] rounded-xl p-4 border border-[#DEE3D7] text-center space-y-1">
-                <div className="text-[10px] font-bold uppercase tracking-wider text-[#667269]">
-                  Estimated Monthly Earnings
-                </div>
-                <div className="text-3xl font-serif font-bold text-[#171A19]">
-                  ₹{monthlyEarnings.toLocaleString("en-IN")}
-                  <span className="text-xs font-normal text-[#555C58]">
-                    {" "}
-                    / month
-                  </span>
-                </div>
-                <p className="text-[10.5px] text-[#555C58] leading-tight pt-1">
-                  Based on an avg rate of ₹350/hr across {hoursPerWeekend} weekend
-                  hours. Escrow payments disbursed directly to your UPI bank
-                  account.
-                </p>
-              </div>
-
-              <div className="flex items-center gap-2 text-xs text-[#1E7E34] font-medium">
-                <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
-                <span>Full zero-commission trial period for first 30 days</span>
-              </div>
-            </div>
-          </div>
-        </section>
-      </main>
-
-      {/* 11. Footer */}
-      <footer className="bg-[#FAF9F5] border-t border-[#E7E4DC] pt-12 pb-8 text-[#4D5350]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
-            {/* Column 1 */}
-            <div className="lg:col-span-2 space-y-4 pr-4">
-              <Link href="/" className="flex items-baseline">
-                <span className="font-serif text-2xl font-bold tracking-tight text-[#171A19]">
-                  CoFriend
-                </span>
-                <span className="font-sans text-lg font-bold text-[#9E331A]">
-                  .in
-                </span>
-              </Link>
-
-              <p className="text-xs text-[#5C6460] leading-relaxed max-w-sm">
-                India&apos;s trusted lifestyle and social companionship concierge.
-                Offering vetted, platonic fellows for events, cinema, gallery
-                walks, wellness retreats, and city discoveries.
+              <h3 className="font-outfit text-lg font-bold text-slate-900 mb-2">
+                Escrow Deposit & Start OTP
+              </h3>
+              <p className="font-body text-xs text-slate-500 leading-relaxed">
+                Funds remain locked in escrow. Share your 4-digit guest OTP when meeting at the venue.
               </p>
+            </div>
 
-              <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-[#FAF9F5] border border-[#DDD7CC] text-[11px] font-bold tracking-wider text-[#3D4440] uppercase">
-                <ShieldCheck className="w-3.5 h-3.5 text-emerald-600" />
-                <span>100% Aadhaar & Background Verified Network</span>
+            <div className="bg-white p-6 rounded-3xl border border-purple-100 relative shadow-sm">
+              <div className="w-12 h-12 rounded-2xl bg-gradient-to-tr from-rose-500 to-amber-500 text-white font-outfit font-extrabold text-xl flex items-center justify-center mb-5 shadow-md shadow-amber-500/20">
+                04
               </div>
-            </div>
-
-            {/* Column 2 */}
-            <div className="space-y-3">
-              <h4 className="text-xs font-bold uppercase tracking-wider text-[#171A19]">
-                Metro Hubs
-              </h4>
-              <ul className="space-y-2 text-xs font-medium">
-                {["Kolkata", "Mumbai", "Bengaluru", "Delhi NCR", "Hyderabad"].map(
-                  (item) => (
-                    <li key={item}>
-                      <Link
-                        href="/services"
-                        className="hover:text-[#9E331A] transition-colors"
-                      >
-                        {item}
-                      </Link>
-                    </li>
-                  )
-                )}
-              </ul>
-            </div>
-
-            {/* Column 3 */}
-            <div className="space-y-3">
-              <h4 className="text-xs font-bold uppercase tracking-wider text-[#171A19]">
-                Concierge & Trust
-              </h4>
-              <ul className="space-y-2 text-xs font-medium">
-                {[
-                  "Safety & Protocol",
-                  "Code of Conduct",
-                  "Identity Verification",
-                  "Concierge Support",
-                  "Emergency Helpline",
-                ].map((item) => (
-                  <li key={item}>
-                    <a href="#safety-protocol" className="hover:text-[#9E331A] transition-colors">
-                      {item}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            {/* Column 4 */}
-            <div className="space-y-3">
-              <h4 className="text-xs font-bold uppercase tracking-wider text-[#171A19]">
-                Institutional
-              </h4>
-              <ul className="space-y-2 text-xs font-medium">
-                {[
-                  "Terms of Service",
-                  "Privacy Policy",
-                  "Platonic Charter",
-                  "Partner with Us",
-                  "Press & Media",
-                ].map((item) => (
-                  <li key={item}>
-                    <a href="#" className="hover:text-[#9E331A] transition-colors">
-                      {item}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
-
-          {/* Bottom Bar */}
-          <div className="pt-6 border-t border-[#EAE7DD] flex flex-col sm:flex-row items-center justify-between gap-3 text-[11px] text-[#78817D]">
-            <div>
-              © 2025 CoFriend Lifestyle Services Pvt. Ltd. Strict Platonic Policy
-              Guaranteed. All rights reserved.
-            </div>
-            <div className="flex items-center gap-1.5 font-medium text-[#555E59]">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#B47414]" />
-              <span>Handcrafted for urban India</span>
+              <h3 className="font-outfit text-lg font-bold text-slate-900 mb-2">
+                Enjoy Outing & End OTP Release
+              </h3>
+              <p className="font-body text-xs text-slate-500 leading-relaxed">
+                Have a great time! Upon safe conclusion, your companion gives their End OTP to release the payout.
+              </p>
             </div>
           </div>
         </div>
-      </footer>
+      </section>
 
-      {/* Booking Companion Modal */}
-      {bookingProfile && (
-        <div className="fixed inset-0 z-50 bg-black/50 backdrop-blur-xs flex items-center justify-center p-4 animate-in fade-in duration-150">
-          <div className="bg-white rounded-3xl max-w-md w-full p-6 shadow-2xl border border-[#E0DDD5] relative animate-in zoom-in-95 duration-200">
+      {/* Safety & Trust Pillars Section */}
+      <section className="py-16 sm:py-24 bg-white border-t border-purple-100">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center max-w-2xl mx-auto mb-16 space-y-3">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-purple-50 text-purple-700 text-xs font-bold uppercase tracking-wider">
+              <Shield className="w-3.5 h-3.5" />
+              <span>Safety Above All</span>
+            </div>
+            <h2 className="font-outfit text-3xl sm:text-4xl font-extrabold text-slate-900">
+              Why Urban India Trusts Co-Friend
+            </h2>
+            <p className="font-body text-slate-600 text-sm sm:text-base">
+              Built with industry-leading security, identity verification, and strict platonic guidelines.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="p-6 rounded-3xl bg-[#FAFAFD] border border-purple-100 space-y-3">
+              <div className="w-12 h-12 rounded-2xl bg-purple-100 text-purple-700 flex items-center justify-center">
+                <ShieldCheck className="w-6 h-6" />
+              </div>
+              <h3 className="font-outfit text-lg font-bold text-slate-900">
+                100% Strict Platonic Charter
+              </h3>
+              <p className="font-body text-xs text-slate-600 leading-relaxed">
+                Strict zero-tolerance policy against romantic or inappropriate solicitations. All outings take place in certified public spaces.
+              </p>
+            </div>
+
+            <div className="p-6 rounded-3xl bg-[#FAFAFD] border border-purple-100 space-y-3">
+              <div className="w-12 h-12 rounded-2xl bg-pink-100 text-pink-600 flex items-center justify-center">
+                <Lock className="w-6 h-6" />
+              </div>
+              <h3 className="font-outfit text-lg font-bold text-slate-900">
+                Escrow Protected Payments
+              </h3>
+              <p className="font-body text-xs text-slate-600 leading-relaxed">
+                Your payment is held safely in escrow and is only released after you confirm the session with the dual-OTP handshake.
+              </p>
+            </div>
+
+            <div className="p-6 rounded-3xl bg-[#FAFAFD] border border-purple-100 space-y-3">
+              <div className="w-12 h-12 rounded-2xl bg-emerald-100 text-emerald-700 flex items-center justify-center">
+                <CheckCircle2 className="w-6 h-6" />
+              </div>
+              <h3 className="font-outfit text-lg font-bold text-slate-900">
+                Police & Aadhaar Vetting
+              </h3>
+              <p className="font-body text-xs text-slate-600 leading-relaxed">
+                Companions undergo government identity checks, video interviews, and criminal background verification before listing.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Become a Co-Friend / Earnings Section */}
+      <section id="partner" className="py-16 sm:py-24 bg-[#FAFAFD]">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-purple-700 via-violet-600 to-pink-500 shadow-2xl shadow-purple-500/30 text-white p-8 sm:p-12 lg:p-16">
+            <div className="dots-pattern-light absolute inset-0 opacity-20 pointer-events-none" />
+
+            <div className="relative grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+              <div className="lg:col-span-7 space-y-6">
+                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/15 backdrop-blur-md text-pink-200 text-xs font-bold uppercase tracking-wider">
+                  <Sparkles className="w-3.5 h-3.5" />
+                  <span>Become a Verified Co-Friend</span>
+                </div>
+                <h2 className="font-outfit text-3xl sm:text-5xl font-extrabold leading-tight">
+                  Turn Your Free Time Into Meaningful Income.
+                </h2>
+                <p className="font-body text-sm sm:text-base text-purple-100 leading-relaxed">
+                  Join India&apos;s most trusted companion network. Accompany people for movies, coffees, city tours, and events on your own schedule.
+                </p>
+
+                <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 pt-2">
+                  <div className="bg-white/10 backdrop-blur-md p-3.5 rounded-2xl border border-white/10">
+                    <div className="font-outfit font-extrabold text-xl">₹45k+</div>
+                    <div className="text-[11px] text-purple-200 mt-0.5">
+                      Monthly Potential
+                    </div>
+                  </div>
+                  <div className="bg-white/10 backdrop-blur-md p-3.5 rounded-2xl border border-white/10">
+                    <div className="font-outfit font-extrabold text-xl">Weekly</div>
+                    <div className="text-[11px] text-purple-200 mt-0.5">
+                      Direct Payouts
+                    </div>
+                  </div>
+                  <div className="bg-white/10 backdrop-blur-md p-3.5 rounded-2xl border border-white/10">
+                    <div className="font-outfit font-extrabold text-xl">100%</div>
+                    <div className="text-[11px] text-purple-200 mt-0.5">
+                      Flexible Hours
+                    </div>
+                  </div>
+                  <div className="bg-white/10 backdrop-blur-md p-3.5 rounded-2xl border border-white/10">
+                    <div className="font-outfit font-extrabold text-xl">24/7</div>
+                    <div className="text-[11px] text-purple-200 mt-0.5">
+                      SOS & Support
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Earnings Calculator Card */}
+              <div className="lg:col-span-5 bg-white rounded-3xl p-6 sm:p-8 text-slate-900 shadow-xl space-y-6">
+                <div>
+                  <span className="text-xs font-bold text-purple-700 uppercase tracking-wider">
+                    Earnings Calculator
+                  </span>
+                  <h3 className="font-outfit text-xl font-bold text-slate-900 mt-1">
+                    Estimate Your Income
+                  </h3>
+                </div>
+
+                <div>
+                  <div className="flex items-center justify-between text-sm font-semibold mb-2">
+                    <span className="text-slate-600">Hours available per week:</span>
+                    <span className="font-outfit font-extrabold text-purple-700 text-lg">
+                      {hoursPerWeek} hrs
+                    </span>
+                  </div>
+                  <input
+                    type="range"
+                    min="5"
+                    max="40"
+                    step="5"
+                    value={hoursPerWeek}
+                    onChange={(e) => setHoursPerWeek(Number(e.target.value))}
+                    className="w-full accent-purple-600 cursor-pointer h-2 bg-purple-100 rounded-lg"
+                  />
+                  <div className="flex justify-between text-[10px] text-slate-400 mt-1">
+                    <span>5 hrs/wk (Part-time)</span>
+                    <span>40 hrs/wk (Full-time)</span>
+                  </div>
+                </div>
+
+                <div className="bg-purple-50 p-4 rounded-2xl border border-purple-100 text-center">
+                  <div className="text-xs text-slate-500">
+                    Estimated Monthly Earnings:
+                  </div>
+                  <div className="font-outfit text-3xl font-extrabold text-purple-700 mt-1">
+                    ₹{estimatedMonthlyEarnings}
+                  </div>
+                  <div className="text-[10px] text-slate-400 mt-0.5">
+                    *Based on average companion tariff of ₹350/hr
+                  </div>
+                </div>
+
+                <button
+                  onClick={() =>
+                    alert(
+                      "Thank you for your interest! Co-Friend companion registration opens weekly. Check back shortly."
+                    )
+                  }
+                  className="w-full bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white font-bold py-3.5 rounded-2xl text-sm transition-all shadow-md shadow-purple-500/25 active:scale-98"
+                >
+                  Apply to Become a Co-Friend
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Testimonials Carousel Section */}
+      <section className="py-16 sm:py-24 bg-white border-t border-purple-100">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center max-w-2xl mx-auto mb-16 space-y-3">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-purple-50 text-purple-700 text-xs font-bold uppercase tracking-wider">
+              <Star className="w-3.5 h-3.5 fill-purple-600" />
+              <span>Real Customer Stories</span>
+            </div>
+            <h2 className="font-outfit text-3xl sm:text-4xl font-extrabold text-slate-900">
+              Loved by 85,000+ Customers
+            </h2>
+            <p className="font-body text-slate-600 text-sm sm:text-base">
+              See how verified Co-Friends bring warmth, confidence, and company to daily life.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {TESTIMONIALS.map((t, idx) => (
+              <div
+                key={idx}
+                className="bg-[#FAFAFD] p-6 rounded-3xl border border-purple-100 flex flex-col justify-between space-y-4"
+              >
+                <div>
+                  <div className="flex items-center gap-1 text-amber-400 mb-3">
+                    {[...Array(t.rating)].map((_, i) => (
+                      <Star key={i} className="w-4 h-4 fill-amber-400" />
+                    ))}
+                  </div>
+                  <p className="font-body text-xs text-slate-600 leading-relaxed italic">
+                    &ldquo;{t.comment}&rdquo;
+                  </p>
+                </div>
+
+                <div className="pt-4 border-t border-purple-100/80">
+                  <div className="font-outfit font-bold text-sm text-slate-900">
+                    {t.name}
+                  </div>
+                  <div className="text-[11px] text-purple-600 font-semibold">
+                    {t.service} • {t.city}
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ Accordion Section */}
+      <section className="py-16 sm:py-24 bg-[#FAFAFD] border-t border-purple-100">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12 space-y-3">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-purple-50 text-purple-700 text-xs font-bold uppercase tracking-wider">
+              <HelpCircle className="w-3.5 h-3.5" />
+              <span>Got Questions?</span>
+            </div>
+            <h2 className="font-outfit text-3xl sm:text-4xl font-extrabold text-slate-900">
+              Frequently Asked Questions
+            </h2>
+          </div>
+
+          <div className="space-y-4">
+            {FAQS.map((faq, idx) => {
+              const isOpen = openFaq === idx;
+              return (
+                <div
+                  key={idx}
+                  className="bg-white rounded-2xl border border-purple-100 overflow-hidden transition-all shadow-xs"
+                >
+                  <button
+                    onClick={() => setOpenFaq(isOpen ? null : idx)}
+                    className="w-full px-6 py-4.5 text-left flex items-center justify-between gap-4 cursor-pointer hover:bg-purple-50/50 transition-colors"
+                  >
+                    <span className="font-outfit font-bold text-sm sm:text-base text-slate-900">
+                      {faq.q}
+                    </span>
+                    <ChevronDown
+                      className={`w-5 h-5 text-purple-600 transition-transform ${
+                        isOpen ? "rotate-180" : ""
+                      }`}
+                    />
+                  </button>
+                  {isOpen && (
+                    <div className="px-6 pb-5 pt-1 font-body text-xs sm:text-sm text-slate-600 leading-relaxed border-t border-purple-50">
+                      {faq.a}
+                    </div>
+                  )}
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* Modal Booking Drawer for Co-Friends */}
+      {activeModalProfile && (
+        <div className="fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-xs flex items-center justify-center p-4">
+          <div className="bg-white rounded-3xl max-w-md w-full p-6 relative shadow-2xl border border-purple-100 animate-in fade-in zoom-in-95 duration-200">
             <button
               onClick={() => {
-                setBookingProfile(null);
-                setBookingConfirmed(false);
+                setActiveModalProfile(null);
+                setModalBookingSuccess(false);
               }}
-              className="absolute top-4 right-4 p-1.5 rounded-full hover:bg-gray-100 text-gray-400 hover:text-gray-600 transition-colors"
+              className="absolute top-4 right-4 p-2 rounded-full hover:bg-slate-100 text-slate-400 hover:text-slate-600 transition-colors"
             >
               <X className="w-5 h-5" />
             </button>
 
-            {bookingConfirmed ? (
+            {modalBookingSuccess ? (
               <div className="text-center py-6 space-y-4">
-                <div className="w-14 h-14 bg-emerald-50 text-emerald-600 rounded-full flex items-center justify-center mx-auto border border-emerald-200">
+                <div className="w-16 h-16 bg-emerald-50 text-emerald-600 rounded-full flex items-center justify-center mx-auto border border-emerald-200">
                   <CheckCircle2 className="w-8 h-8" />
                 </div>
-                <h3 className="text-2xl font-serif font-bold text-[#171A19]">
-                  Request Sent to {bookingProfile.name}!
+                <h3 className="font-outfit text-2xl font-bold text-slate-900">
+                  Request Sent to {activeModalProfile.name}!
                 </h3>
-                <p className="text-xs text-[#555C58] leading-relaxed">
-                  {bookingProfile.name} typically responds in{" "}
-                  <strong>{bookingProfile.responseSpeed}</strong>. An OTP will be
-                  generated for your meetup once approved.
+                <p className="font-body text-xs text-slate-600 leading-relaxed">
+                  {activeModalProfile.name} will review your session request. Your booking voucher and Dual-OTP handshake will be ready upon confirmation.
                 </p>
-                <button
-                  onClick={() => {
-                    setBookingProfile(null);
-                    setBookingConfirmed(false);
-                  }}
-                  className="w-full bg-[#9E331A] text-white py-2.5 rounded-xl text-sm font-semibold hover:bg-[#852A14] transition-colors"
-                >
-                  Done
-                </button>
+                <div className="pt-2 flex flex-col gap-2">
+                  <Link
+                    href="/book/confirmation"
+                    className="w-full bg-gradient-to-r from-purple-600 to-pink-600 text-white py-3 rounded-xl text-xs font-bold hover:from-purple-700 hover:to-pink-700 transition-all text-center"
+                  >
+                    View Booking Dashboard
+                  </Link>
+                  <button
+                    onClick={() => {
+                      setActiveModalProfile(null);
+                      setModalBookingSuccess(false);
+                    }}
+                    className="w-full bg-slate-100 text-slate-700 py-2.5 rounded-xl text-xs font-semibold hover:bg-slate-200 transition-all"
+                  >
+                    Close
+                  </button>
+                </div>
               </div>
             ) : (
               <div className="space-y-4">
                 <div className="flex items-center gap-3">
-                  <div className="relative w-14 h-14 rounded-xl overflow-hidden bg-stone-100 shrink-0">
+                  <div className="relative w-14 h-14 rounded-2xl overflow-hidden bg-slate-100 shrink-0">
                     <Image
-                      src={bookingProfile.avatar}
-                      alt={bookingProfile.name}
+                      src={activeModalProfile.avatar}
+                      alt={activeModalProfile.name}
                       fill
                       className="object-cover"
                     />
                   </div>
                   <div>
                     <span className="text-[10px] font-bold uppercase tracking-wider text-emerald-700">
-                      {bookingProfile.specialityTag} • {bookingProfile.city}
+                      Aadhaar Verified • {activeModalProfile.city}
                     </span>
-                    <h3 className="text-lg font-serif font-bold text-[#171A19]">
-                      {bookingProfile.name}
+                    <h3 className="font-outfit text-lg font-bold text-slate-900">
+                      {activeModalProfile.name}
                     </h3>
-                    <div className="text-xs font-semibold text-[#9E331A]">
-                      ₹{bookingProfile.priceHourly} / hour{" "}
-                      <span className="text-[#7A827E] font-normal">
-                        ({profileRating(bookingProfile.rating)} ⭐)
+                    <div className="text-xs font-bold text-purple-700">
+                      ₹{activeModalProfile.priceHourly} / hr{" "}
+                      <span className="text-slate-400 font-normal">
+                        ({activeModalProfile.minDuration})
                       </span>
                     </div>
                   </div>
                 </div>
 
-                <div className="p-3 bg-[#FAF9F5] rounded-xl border border-[#EDE9E0] text-xs text-[#555C58] space-y-1.5">
-                  <div className="flex items-center gap-1.5 font-semibold text-[#171A19]">
-                    <ShieldCheck className="w-4 h-4 text-emerald-600" />
-                    <span>Platonic Escrow Protection</span>
+                <div className="p-3 bg-purple-50 rounded-2xl border border-purple-100 text-xs text-purple-900 space-y-1">
+                  <div className="flex items-center gap-1.5 font-bold">
+                    <ShieldCheck className="w-4 h-4 text-purple-600" />
+                    <span>Platonic Outing Guarantee</span>
                   </div>
-                  <p>
-                    Your payment remains locked in escrow until the meetup is
-                    concluded with mutual OTP verification.
+                  <p className="text-[11px] text-purple-700">
+                    All outings follow strict platonic guidelines with 100% escrow vault protection.
                   </p>
                 </div>
 
                 <div className="space-y-3 pt-2 text-xs">
                   <div>
-                    <label className="block font-semibold text-[#171A19] mb-1">
-                      Choose Date & Time
+                    <label className="block font-bold text-slate-700 mb-1">
+                      Outing Plan / Preferred Activity
                     </label>
                     <input
-                      type="datetime-local"
-                      defaultValue="2026-09-13T17:00"
-                      className="w-full px-3 py-2 rounded-xl border border-[#DCD7CD] bg-white focus:outline-none focus:border-[#9E331A]"
+                      type="text"
+                      defaultValue={activeModalProfile.category}
+                      className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-white focus:outline-none focus:border-purple-600"
                     />
                   </div>
 
                   <div>
-                    <label className="block font-semibold text-[#171A19] mb-1">
-                      Outing Plan / Public Venue
+                    <label className="block font-bold text-slate-700 mb-1">
+                      Preferred Date & Time
                     </label>
                     <input
-                      type="text"
-                      placeholder="e.g. South City Mall movie or Victoria Memorial walk"
-                      className="w-full px-3 py-2 rounded-xl border border-[#DCD7CD] bg-white focus:outline-none focus:border-[#9E331A]"
+                      type="datetime-local"
+                      defaultValue="2026-09-15T16:00"
+                      className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-white focus:outline-none focus:border-purple-600"
                     />
                   </div>
                 </div>
 
                 <button
-                  onClick={() => setBookingConfirmed(true)}
-                  className="w-full bg-[#9E331A] hover:bg-[#852A14] text-white py-3 rounded-xl font-semibold text-sm transition-all shadow-md active:scale-98 cursor-pointer mt-2"
+                  onClick={() => setModalBookingSuccess(true)}
+                  className="w-full bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white py-3.5 rounded-xl font-bold text-sm transition-all shadow-md shadow-purple-500/25 active:scale-98 cursor-pointer mt-2"
                 >
-                  Send Booking Request
+                  Confirm & Request Companion
                 </button>
               </div>
             )}
           </div>
         </div>
       )}
+
+      {/* Midnight Slate Footer */}
+      <footer className="bg-[#0F0F1A] text-slate-300 pt-16 pb-12 border-t border-purple-900/30">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10">
+            {/* Brand Column */}
+            <div className="lg:col-span-2 space-y-4">
+              <Link href="/" className="flex items-center gap-2">
+                <div className="w-9 h-9 rounded-2xl bg-gradient-to-tr from-purple-600 to-pink-500 flex items-center justify-center text-white font-outfit font-extrabold text-lg">
+                  C
+                </div>
+                <span className="font-outfit text-2xl font-extrabold text-white tracking-tight">
+                  Co-Friend<span className="text-pink-500">.in</span>
+                </span>
+              </Link>
+              <p className="font-body text-xs text-slate-400 leading-relaxed max-w-sm">
+                India&apos;s verified platonic companion marketplace. Book trusted, identity-checked people for movies, coffee, travel, events, fitness, and elder assistance.
+              </p>
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-purple-950/80 border border-purple-800/40 text-purple-300 text-[11px] font-semibold">
+                <ShieldCheck className="w-3.5 h-3.5 text-emerald-400" />
+                <span>100% Strict Platonic & Background Verified</span>
+              </div>
+            </div>
+
+            {/* Quick Links */}
+            <div className="space-y-3">
+              <div className="font-outfit text-sm font-bold uppercase tracking-wider text-white">
+                Platform
+              </div>
+              <ul className="space-y-2 text-xs text-slate-400">
+                <li>
+                  <Link href="/services" className="hover:text-purple-400 transition-colors">
+                    Services Catalog
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/explore" className="hover:text-purple-400 transition-colors">
+                    Explore Co-Friends
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/available-now" className="hover:text-purple-400 transition-colors">
+                    Available Now
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/how-it-works" className="hover:text-purple-400 transition-colors">
+                    How It Works
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/book/confirmation" className="hover:text-purple-400 transition-colors">
+                    My Bookings
+                  </Link>
+                </li>
+              </ul>
+            </div>
+
+            {/* Popular Cities */}
+            <div className="space-y-3">
+              <div className="font-outfit text-sm font-bold uppercase tracking-wider text-white">
+                Cities
+              </div>
+              <ul className="space-y-2 text-xs text-slate-400">
+                <li>
+                  <Link href="/explore" className="hover:text-purple-400 transition-colors">
+                    Mumbai Co-Friends
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/explore" className="hover:text-purple-400 transition-colors">
+                    Bengaluru Co-Friends
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/explore" className="hover:text-purple-400 transition-colors">
+                    Delhi NCR Co-Friends
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/available-now" className="hover:text-purple-400 transition-colors">
+                    Kolkata Cinema Companions
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/explore" className="hover:text-purple-400 transition-colors">
+                    Hyderabad & Pune
+                  </Link>
+                </li>
+              </ul>
+            </div>
+
+            {/* Safety & Legal */}
+            <div className="space-y-3">
+              <div className="font-outfit text-sm font-bold uppercase tracking-wider text-white">
+                Trust & Safety
+              </div>
+              <ul className="space-y-2 text-xs text-slate-400">
+                <li>
+                  <Link href="/how-it-works" className="hover:text-purple-400 transition-colors">
+                    Platonic Policy
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/how-it-works" className="hover:text-purple-400 transition-colors">
+                    Dual-OTP Protection
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/how-it-works" className="hover:text-purple-400 transition-colors">
+                    Escrow Vault Guarantee
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/how-it-works" className="hover:text-purple-400 transition-colors">
+                    Emergency SOS Support
+                  </Link>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div className="pt-8 border-t border-slate-800/80 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
+            <div>
+              © 2025 Co-Friend Lifestyle Services Pvt. Ltd. Life&apos;s Better Together. All rights reserved.
+            </div>
+            <div className="flex items-center gap-4">
+              <span>Privacy Policy</span>
+              <span>•</span>
+              <span>Terms of Service</span>
+              <span>•</span>
+              <span>Platonic Charter</span>
+            </div>
+          </div>
+        </div>
+      </footer>
     </div>
   );
-}
-
-function profileRating(val: number) {
-  return val.toFixed(1);
 }

@@ -42,16 +42,16 @@ export default function AnanyaProfilePage() {
   };
 
   return (
-    <div className="min-h-screen bg-[#FAF9F5] text-[#1E2421] font-sans antialiased flex flex-col selection:bg-[#F2DDD7] selection:text-[#832913]">
+    <div className="min-h-screen bg-[#FAFAFD] text-[#1E2421] font-sans antialiased flex flex-col selection:bg-[#F3E8FF] selection:text-[#7C3AED]">
       {/* Top Navbar */}
-      <header className="sticky top-0 z-40 bg-[#FAF9F5]/90 backdrop-blur-md border-b border-[#EAE8E0]">
+      <header className="sticky top-0 z-40 bg-[#FAFAFD]/90 backdrop-blur-md border-b border-purple-100/80">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-18 flex items-center justify-between">
           <div className="flex items-center gap-2">
             <Link href="/" className="flex items-baseline group">
-              <span className="font-serif text-2xl sm:text-3xl font-bold tracking-tight text-[#171A19]">
+              <span className="font-outfit text-2xl sm:text-3xl font-bold tracking-tight text-[#171A19]">
                 CoFriend
               </span>
-              <span className="font-sans text-xl font-bold text-[#A8381E]">
+              <span className="font-sans text-xl font-bold text-purple-600">
                 .in
               </span>
             </Link>
@@ -75,7 +75,7 @@ export default function AnanyaProfilePage() {
             </Link>
             <Link
               href="/available-now"
-              className="text-[#171A19] font-semibold py-1 border-b-2 border-[#A8381E]"
+              className="text-[#171A19] font-semibold py-1 border-b-2 border-purple-600"
             >
               Available Now
             </Link>
@@ -96,7 +96,7 @@ export default function AnanyaProfilePage() {
           <div className="flex items-center gap-3">
             <Link
               href="/#become-cofriend"
-              className="bg-[#9E331A] hover:bg-[#852A14] text-white px-4.5 py-2.5 rounded-full text-sm font-semibold tracking-wide transition-all shadow-sm hover:shadow active:scale-98 flex items-center gap-2"
+              className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white px-4.5 py-2.5 rounded-full text-sm font-semibold tracking-wide transition-all shadow-sm hover:shadow active:scale-98 flex items-center gap-2"
             >
               <span>Become a CoFriend</span>
             </Link>
@@ -135,7 +135,7 @@ export default function AnanyaProfilePage() {
       {/* Main Profile Grid */}
       <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-4 pb-20 space-y-8">
         {/* Top Profile Hero Card */}
-        <div className="bg-white rounded-3xl p-6 sm:p-8 border border-[#E7E4DC] shadow-xs space-y-6">
+        <div className="bg-white rounded-3xl p-6 sm:p-8 border border-purple-100/80 shadow-xs space-y-6">
           <div className="flex flex-col md:flex-row gap-6 items-start">
             {/* Avatar Photo */}
             <div className="relative w-36 h-44 sm:w-44 sm:h-52 rounded-2xl overflow-hidden bg-stone-200 shrink-0 border border-[#E0DDD5]">
@@ -155,7 +155,7 @@ export default function AnanyaProfilePage() {
             {/* Profile Info Header */}
             <div className="flex-1 space-y-3.5">
               <div className="flex flex-wrap items-center gap-2">
-                <span className="px-2.5 py-0.5 rounded-full bg-[#FAF0E6] text-[#9E331A] text-[11px] font-bold uppercase tracking-wider border border-[#F6D0C7]">
+                <span className="px-2.5 py-0.5 rounded-full bg-[#FAF0E6] text-purple-700 text-[11px] font-bold uppercase tracking-wider border border-[#F6D0C7]">
                   Cultural & Arthouse Companion
                 </span>
                 <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-[#FEF6E9] text-[#B47414] text-[11px] font-bold border border-[#FDE5BE]">
@@ -168,17 +168,17 @@ export default function AnanyaProfilePage() {
               </div>
 
               <div>
-                <h1 className="text-2xl sm:text-3xl lg:text-4xl font-serif font-bold text-[#171A19]">
+                <h1 className="text-2xl sm:text-3xl lg:text-4xl font-outfit font-bold text-[#171A19]">
                   Ananya Sharma
                 </h1>
-                <p className="text-sm sm:text-base font-serif italic text-[#8F6200] mt-0.5">
+                <p className="text-sm sm:text-base font-outfit italic text-purple-700 mt-0.5">
                   Film Studies Researcher & Cultural Historian
                 </p>
               </div>
 
               {/* 3 Info Tiles */}
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-1">
-                <div className="p-2.5 bg-[#FAF9F5] rounded-xl border border-[#EDEAE1]">
+                <div className="p-2.5 bg-[#FAFAFD] rounded-xl border border-[#EDEAE1]">
                   <div className="text-[10px] font-bold uppercase text-[#737A76]">
                     Metro Hub
                   </div>
@@ -186,7 +186,7 @@ export default function AnanyaProfilePage() {
                     Kolkata (South City, Quest, Nandan)
                   </div>
                 </div>
-                <div className="p-2.5 bg-[#FAF9F5] rounded-xl border border-[#EDEAE1]">
+                <div className="p-2.5 bg-[#FAFAFD] rounded-xl border border-[#EDEAE1]">
                   <div className="text-[10px] font-bold uppercase text-[#737A76]">
                     Languages
                   </div>
@@ -194,11 +194,11 @@ export default function AnanyaProfilePage() {
                     English, Bengali, Hindi
                   </div>
                 </div>
-                <div className="p-2.5 bg-[#FAF9F5] rounded-xl border border-[#EDEAE1]">
+                <div className="p-2.5 bg-[#FAFAFD] rounded-xl border border-[#EDEAE1]">
                   <div className="text-[10px] font-bold uppercase text-[#737A76]">
                     Starting Retainer
                   </div>
-                  <div className="text-xs font-bold text-[#9E331A]">
+                  <div className="text-xs font-bold text-purple-700">
                     ₹350 <span className="font-normal text-[#737A76]">/ hour</span>
                   </div>
                 </div>
@@ -207,14 +207,14 @@ export default function AnanyaProfilePage() {
               {/* Guarantee Disclaimer */}
               <div className="p-3 rounded-xl bg-[#FDF7F5] border border-[#F6DED7] text-xs text-[#555C58] flex flex-col sm:flex-row sm:items-center justify-between gap-2">
                 <div className="flex items-center gap-2">
-                  <ShieldCheck className="w-4 h-4 text-[#9E331A] shrink-0" />
+                  <ShieldCheck className="w-4 h-4 text-purple-700 shrink-0" />
                   <span>
                     <strong>CoFriend Platonic Guarantee:</strong> Zero awkwardness. 100% vetted lifestyle escort & cultural partner with instant escrow-backed refund protection.
                   </span>
                 </div>
                 <Link
                   href="/how-it-works"
-                  className="font-semibold text-[#9E331A] hover:underline shrink-0 text-xs"
+                  className="font-semibold text-purple-700 hover:underline shrink-0 text-xs"
                 >
                   Read Code of Conduct &gt;
                 </Link>
@@ -279,17 +279,17 @@ export default function AnanyaProfilePage() {
           {/* Left Column (7 cols) */}
           <div className="lg:col-span-7 space-y-8">
             {/* About Ananya */}
-            <div className="bg-white rounded-3xl p-6 sm:p-7 border border-[#E7E4DC] shadow-xs space-y-4">
+            <div className="bg-white rounded-3xl p-6 sm:p-7 border border-purple-100/80 shadow-xs space-y-4">
               <div className="flex items-center justify-between">
-                <h2 className="text-xl font-serif font-bold text-[#171A19]">
+                <h2 className="text-xl font-outfit font-bold text-[#171A19]">
                   About Ananya
                 </h2>
-                <span className="px-2.5 py-0.5 rounded-full bg-[#FAF9F5] text-[#555C58] text-[11px] font-semibold border border-[#E7E4DC]">
+                <span className="px-2.5 py-0.5 rounded-full bg-[#FAFAFD] text-[#555C58] text-[11px] font-semibold border border-purple-100/80">
                   JU Masters in Film Studies
                 </span>
               </div>
 
-              <blockquote className="text-sm font-serif italic text-[#8F6200] border-l-2 border-[#B47414] pl-3">
+              <blockquote className="text-sm font-outfit italic text-purple-700 border-l-2 border-[#B47414] pl-3">
                 “Cinema is never meant to be experienced in clinical solitude.”
               </blockquote>
 
@@ -327,7 +327,7 @@ export default function AnanyaProfilePage() {
                   ].map((theme) => (
                     <span
                       key={theme}
-                      className="px-2.5 py-1 rounded-lg bg-[#FAF9F5] border border-[#E7E4DC] text-xs font-medium text-[#4D5350]"
+                      className="px-2.5 py-1 rounded-lg bg-[#FAFAFD] border border-purple-100/80 text-xs font-medium text-[#4D5350]"
                     >
                       {theme}
                     </span>
@@ -337,9 +337,9 @@ export default function AnanyaProfilePage() {
             </div>
 
             {/* Curated Companionship Services */}
-            <div className="bg-white rounded-3xl p-6 sm:p-7 border border-[#E7E4DC] shadow-xs space-y-4">
+            <div className="bg-white rounded-3xl p-6 sm:p-7 border border-purple-100/80 shadow-xs space-y-4">
               <div className="flex items-center justify-between">
-                <h3 className="text-xl font-serif font-bold text-[#171A19]">
+                <h3 className="text-xl font-outfit font-bold text-[#171A19]">
                   Curated Companionship Services
                 </h3>
                 <span className="text-[11px] text-[#737A76]">
@@ -353,13 +353,13 @@ export default function AnanyaProfilePage() {
                   onClick={() => setSelectedService("movie")}
                   className={`p-4 rounded-2xl border transition-all cursor-pointer flex items-center justify-between ${
                     selectedService === "movie"
-                      ? "bg-[#FDF7F5] border-[#9E331A] shadow-xs"
-                      : "bg-[#FAF9F5] border-[#E7E4DC] hover:bg-white"
+                      ? "bg-[#FDF7F5] border-purple-600 shadow-xs"
+                      : "bg-[#FAFAFD] border-purple-100/80 hover:bg-white"
                   }`}
                 >
                   <div className="space-y-1">
                     <div className="flex items-center gap-2">
-                      <span className="font-serif font-bold text-sm text-[#171A19]">
+                      <span className="font-outfit font-bold text-sm text-[#171A19]">
                         Movie & IMAX CoFriend
                       </span>
                       <span className="px-2 py-0.5 rounded-full bg-[#FEF6E9] text-[#B47414] text-[10px] font-bold">
@@ -380,11 +380,11 @@ export default function AnanyaProfilePage() {
                     </div>
                   </div>
                   <div className="text-right shrink-0 ml-4">
-                    <div className="text-base font-bold text-[#9E331A]">₹350/hr</div>
+                    <div className="text-base font-bold text-purple-700">₹350/hr</div>
                     <span
                       className={`text-[11px] font-semibold ${
                         selectedService === "movie"
-                          ? "text-[#9E331A]"
+                          ? "text-purple-700"
                           : "text-[#737A76]"
                       }`}
                     >
@@ -398,13 +398,13 @@ export default function AnanyaProfilePage() {
                   onClick={() => setSelectedService("gallery")}
                   className={`p-4 rounded-2xl border transition-all cursor-pointer flex items-center justify-between ${
                     selectedService === "gallery"
-                      ? "bg-[#FDF7F5] border-[#9E331A] shadow-xs"
-                      : "bg-[#FAF9F5] border-[#E7E4DC] hover:bg-white"
+                      ? "bg-[#FDF7F5] border-purple-600 shadow-xs"
+                      : "bg-[#FAFAFD] border-purple-100/80 hover:bg-white"
                   }`}
                 >
                   <div className="space-y-1">
                     <div className="flex items-center gap-2">
-                      <span className="font-serif font-bold text-sm text-[#171A19]">
+                      <span className="font-outfit font-bold text-sm text-[#171A19]">
                         Art Gallery & Heritage Walk
                       </span>
                     </div>
@@ -422,11 +422,11 @@ export default function AnanyaProfilePage() {
                     </div>
                   </div>
                   <div className="text-right shrink-0 ml-4">
-                    <div className="text-base font-bold text-[#9E331A]">₹400/hr</div>
+                    <div className="text-base font-bold text-purple-700">₹400/hr</div>
                     <span
                       className={`text-[11px] font-semibold ${
                         selectedService === "gallery"
-                          ? "text-[#9E331A]"
+                          ? "text-purple-700"
                           : "text-[#737A76]"
                       }`}
                     >
@@ -440,13 +440,13 @@ export default function AnanyaProfilePage() {
                   onClick={() => setSelectedService("cafe")}
                   className={`p-4 rounded-2xl border transition-all cursor-pointer flex items-center justify-between ${
                     selectedService === "cafe"
-                      ? "bg-[#FDF7F5] border-[#9E331A] shadow-xs"
-                      : "bg-[#FAF9F5] border-[#E7E4DC] hover:bg-white"
+                      ? "bg-[#FDF7F5] border-purple-600 shadow-xs"
+                      : "bg-[#FAFAFD] border-purple-100/80 hover:bg-white"
                   }`}
                 >
                   <div className="space-y-1">
                     <div className="flex items-center gap-2">
-                      <span className="font-serif font-bold text-sm text-[#171A19]">
+                      <span className="font-outfit font-bold text-sm text-[#171A19]">
                         Literary Cafe Discussions
                       </span>
                     </div>
@@ -464,11 +464,11 @@ export default function AnanyaProfilePage() {
                     </div>
                   </div>
                   <div className="text-right shrink-0 ml-4">
-                    <div className="text-base font-bold text-[#9E331A]">₹300/hr</div>
+                    <div className="text-base font-bold text-purple-700">₹300/hr</div>
                     <span
                       className={`text-[11px] font-semibold ${
                         selectedService === "cafe"
-                          ? "text-[#9E331A]"
+                          ? "text-purple-700"
                           : "text-[#737A76]"
                       }`}
                     >
@@ -480,13 +480,13 @@ export default function AnanyaProfilePage() {
             </div>
 
             {/* Institutional Trust & Performance Badges */}
-            <div className="bg-white rounded-3xl p-6 sm:p-7 border border-[#E7E4DC] shadow-xs space-y-4">
-              <h3 className="text-lg font-serif font-bold text-[#171A19]">
+            <div className="bg-white rounded-3xl p-6 sm:p-7 border border-purple-100/80 shadow-xs space-y-4">
+              <h3 className="text-lg font-outfit font-bold text-[#171A19]">
                 Institutional Trust & Performance Badges
               </h3>
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
-                <div className="bg-[#FAF9F5] rounded-2xl p-4 text-center border border-[#EDEAE1] space-y-1">
-                  <div className="text-xl font-bold font-serif text-[#171A19]">
+                <div className="bg-[#FAFAFD] rounded-2xl p-4 text-center border border-[#EDEAE1] space-y-1">
+                  <div className="text-xl font-bold font-outfit text-[#171A19]">
                     99.4%
                   </div>
                   <div className="text-[10.5px] font-bold text-[#171A19]">
@@ -497,7 +497,7 @@ export default function AnanyaProfilePage() {
                   </div>
                 </div>
 
-                <div className="bg-[#FAF9F5] rounded-2xl p-4 text-center border border-[#EDEAE1] space-y-1">
+                <div className="bg-[#FAFAFD] rounded-2xl p-4 text-center border border-[#EDEAE1] space-y-1">
                   <div className="w-6 h-6 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center mx-auto">
                     <ShieldCheck className="w-4 h-4" />
                   </div>
@@ -509,8 +509,8 @@ export default function AnanyaProfilePage() {
                   </div>
                 </div>
 
-                <div className="bg-[#FAF9F5] rounded-2xl p-4 text-center border border-[#EDEAE1] space-y-1">
-                  <div className="text-xl font-bold font-serif text-[#171A19]">
+                <div className="bg-[#FAFAFD] rounded-2xl p-4 text-center border border-[#EDEAE1] space-y-1">
+                  <div className="text-xl font-bold font-outfit text-[#171A19]">
                     184 Outings
                   </div>
                   <div className="text-[10.5px] font-bold text-[#171A19]">
@@ -521,7 +521,7 @@ export default function AnanyaProfilePage() {
                   </div>
                 </div>
 
-                <div className="bg-[#FAF9F5] rounded-2xl p-4 text-center border border-[#EDEAE1] space-y-1">
+                <div className="bg-[#FAFAFD] rounded-2xl p-4 text-center border border-[#EDEAE1] space-y-1">
                   <div className="w-6 h-6 rounded-full bg-amber-100 text-amber-800 flex items-center justify-center mx-auto">
                     <Award className="w-4 h-4" />
                   </div>
@@ -536,12 +536,12 @@ export default function AnanyaProfilePage() {
             </div>
 
             {/* Verified Outing Experiences (Reviews) */}
-            <div className="bg-white rounded-3xl p-6 sm:p-7 border border-[#E7E4DC] shadow-xs space-y-4">
+            <div className="bg-white rounded-3xl p-6 sm:p-7 border border-purple-100/80 shadow-xs space-y-4">
               <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
-                <h3 className="text-xl font-serif font-bold text-[#171A19]">
+                <h3 className="text-xl font-outfit font-bold text-[#171A19]">
                   Verified Outing Experiences
                 </h3>
-                <div className="flex items-center gap-1 bg-[#FAF9F5] p-1 rounded-full border border-[#EDEAE1] text-xs">
+                <div className="flex items-center gap-1 bg-[#FAFAFD] p-1 rounded-full border border-[#EDEAE1] text-xs">
                   {["All (184)", "Cinema & IMAX (118)", "Gallery Walks (42)"].map(
                     (tab) => {
                       const tabKey = tab.toLowerCase();
@@ -571,7 +571,7 @@ export default function AnanyaProfilePage() {
 
               <div className="space-y-4 pt-2">
                 {/* Review 1 */}
-                <div className="p-4 rounded-2xl bg-[#FAF9F5] border border-[#EDEAE1] space-y-2.5">
+                <div className="p-4 rounded-2xl bg-[#FAFAFD] border border-[#EDEAE1] space-y-2.5">
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-2.5">
                       <div className="w-8 h-8 rounded-full bg-[#E5DFD4] text-xs font-bold flex items-center justify-center text-[#5A5043]">
@@ -595,7 +595,7 @@ export default function AnanyaProfilePage() {
                       <span className="text-[10px] text-[#737A76]">12 Feb 2025</span>
                     </div>
                   </div>
-                  <div className="text-[11px] font-semibold text-[#9E331A]">
+                  <div className="text-[11px] font-semibold text-purple-700">
                     🎬 Attended KIFF & Satyajit Ray Retrospective at Nandan
                   </div>
                   <p className="text-xs text-[#555C58] leading-relaxed">
@@ -608,7 +608,7 @@ export default function AnanyaProfilePage() {
                 </div>
 
                 {/* Review 2 */}
-                <div className="p-4 rounded-2xl bg-[#FAF9F5] border border-[#EDEAE1] space-y-2.5">
+                <div className="p-4 rounded-2xl bg-[#FAFAFD] border border-[#EDEAE1] space-y-2.5">
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-2.5">
                       <div className="w-8 h-8 rounded-full bg-[#E5DFD4] text-xs font-bold flex items-center justify-center text-[#5A5043]">
@@ -632,7 +632,7 @@ export default function AnanyaProfilePage() {
                       <span className="text-[10px] text-[#737A76]">28 Jan 2025</span>
                     </div>
                   </div>
-                  <div className="text-[11px] font-semibold text-[#9E331A]">
+                  <div className="text-[11px] font-semibold text-purple-700">
                     🍿 South City IMAX Nolan Screening & Sienna Cafe
                   </div>
                   <p className="text-xs text-[#555C58] leading-relaxed">
@@ -645,7 +645,7 @@ export default function AnanyaProfilePage() {
                 </div>
 
                 {/* Review 3 */}
-                <div className="p-4 rounded-2xl bg-[#FAF9F5] border border-[#EDEAE1] space-y-2.5">
+                <div className="p-4 rounded-2xl bg-[#FAFAFD] border border-[#EDEAE1] space-y-2.5">
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-2.5">
                       <div className="w-8 h-8 rounded-full bg-[#E5DFD4] text-xs font-bold flex items-center justify-center text-[#5A5043]">
@@ -669,7 +669,7 @@ export default function AnanyaProfilePage() {
                       <span className="text-[10px] text-[#737A76]">14 Jan 2025</span>
                     </div>
                   </div>
-                  <div className="text-[11px] font-semibold text-[#9E331A]">
+                  <div className="text-[11px] font-semibold text-purple-700">
                     🏛 CIMA Contemporary Art Gallery Tour
                   </div>
                   <p className="text-xs text-[#555C58] leading-relaxed">
@@ -685,18 +685,18 @@ export default function AnanyaProfilePage() {
 
           {/* Right Sticky Booking Widget (5 cols) */}
           <div className="lg:col-span-5 sticky top-24 space-y-4">
-            <div className="bg-white rounded-3xl p-6 border border-[#E7E4DC] shadow-lg space-y-5">
+            <div className="bg-white rounded-3xl p-6 border border-purple-100/80 shadow-lg space-y-5">
               <div className="flex items-start justify-between pb-3 border-b border-[#F0EEE7]">
                 <div>
-                  <span className="text-[10px] font-bold uppercase tracking-wider text-[#9E331A]">
+                  <span className="text-[10px] font-bold uppercase tracking-wider text-purple-700">
                     Instant Concierge Reservation
                   </span>
-                  <h3 className="text-lg font-serif font-bold text-[#171A19]">
+                  <h3 className="text-lg font-outfit font-bold text-[#171A19]">
                     Book Time with Ananya
                   </h3>
                 </div>
                 <div className="text-right">
-                  <div className="text-xl font-serif font-bold text-[#9E331A]">
+                  <div className="text-xl font-outfit font-bold text-purple-700">
                     ₹{hourlyRate}
                   </div>
                   <span className="text-[10.5px] text-[#737A76]">per hour</span>
@@ -704,7 +704,7 @@ export default function AnanyaProfilePage() {
               </div>
 
               {/* Service Pill */}
-              <div className="p-2.5 rounded-xl bg-[#FAF9F5] border border-[#EDEAE1] text-xs flex items-center justify-between">
+              <div className="p-2.5 rounded-xl bg-[#FAFAFD] border border-[#EDEAE1] text-xs flex items-center justify-between">
                 <span className="font-semibold text-[#171A19]">
                   {selectedService === "movie"
                     ? "🎬 Movie & IMAX CoFriend"
@@ -734,8 +734,8 @@ export default function AnanyaProfilePage() {
                         onClick={() => setSelectedDate(d.label)}
                         className={`py-2 px-1 rounded-xl text-[11px] font-semibold text-center transition-all cursor-pointer ${
                           isActive
-                            ? "bg-[#9E331A] text-white shadow-xs"
-                            : "bg-[#FAF9F5] text-[#555C58] hover:bg-[#EAE7DD] border border-[#EDEAE1]"
+                            ? "bg-purple-600 text-white shadow-xs"
+                            : "bg-[#FAFAFD] text-[#555C58] hover:bg-[#EAE7DD] border border-[#EDEAE1]"
                         }`}
                       >
                         {d.label}
@@ -763,7 +763,7 @@ export default function AnanyaProfilePage() {
                         className={`p-2 rounded-xl text-left font-semibold text-[11px] transition-all cursor-pointer ${
                           isActive
                             ? "bg-[#171A19] text-white"
-                            : "bg-[#FAF9F5] text-[#555C58] hover:bg-[#EAE7DD] border border-[#EDEAE1]"
+                            : "bg-[#FAFAFD] text-[#555C58] hover:bg-[#EAE7DD] border border-[#EDEAE1]"
                         }`}
                       >
                         {win}
@@ -783,19 +783,19 @@ export default function AnanyaProfilePage() {
                     Min 2 hrs required
                   </span>
                 </div>
-                <div className="flex items-center justify-between p-2 bg-[#FAF9F5] rounded-xl border border-[#EDEAE1]">
+                <div className="flex items-center justify-between p-2 bg-[#FAFAFD] rounded-xl border border-[#EDEAE1]">
                   <button
                     onClick={() => setDurationHours(Math.max(2, durationHours - 1))}
-                    className="w-8 h-8 rounded-lg bg-white border border-[#E7E4DC] font-bold text-sm hover:bg-gray-100 flex items-center justify-center cursor-pointer"
+                    className="w-8 h-8 rounded-lg bg-white border border-purple-100/80 font-bold text-sm hover:bg-gray-100 flex items-center justify-center cursor-pointer"
                   >
                     -
                   </button>
-                  <span className="font-serif font-bold text-base text-[#171A19]">
+                  <span className="font-outfit font-bold text-base text-[#171A19]">
                     {durationHours} Hours
                   </span>
                   <button
                     onClick={() => setDurationHours(durationHours + 1)}
-                    className="w-8 h-8 rounded-lg bg-white border border-[#E7E4DC] font-bold text-sm hover:bg-gray-100 flex items-center justify-center cursor-pointer"
+                    className="w-8 h-8 rounded-lg bg-white border border-purple-100/80 font-bold text-sm hover:bg-gray-100 flex items-center justify-center cursor-pointer"
                   >
                     +
                   </button>
@@ -810,7 +810,7 @@ export default function AnanyaProfilePage() {
                 <select
                   value={selectedZone}
                   onChange={(e) => setSelectedZone(e.target.value)}
-                  className="w-full p-2.5 bg-[#FAF9F5] rounded-xl border border-[#EDEAE1] text-xs font-semibold text-[#171A19] focus:outline-none focus:border-[#9E331A] cursor-pointer"
+                  className="w-full p-2.5 bg-[#FAFAFD] rounded-xl border border-[#EDEAE1] text-xs font-semibold text-[#171A19] focus:outline-none focus:border-purple-600 cursor-pointer"
                 >
                   <option>South City Mall (Prince Anwar Shah Rd)</option>
                   <option>Quest Mall INOX (Park Circus)</option>
@@ -838,7 +838,7 @@ export default function AnanyaProfilePage() {
                 </div>
                 <div className="flex justify-between font-bold text-[#171A19] pt-2 border-t border-[#EDEAE1] text-sm">
                   <span>Total Estimated Retainer</span>
-                  <span className="text-[#9E331A] text-base">
+                  <span className="text-purple-700 text-base">
                     ₹{estimatedTotal.toLocaleString("en-IN")}
                   </span>
                 </div>
@@ -847,7 +847,7 @@ export default function AnanyaProfilePage() {
               {/* Continue CTA */}
               <button
                 onClick={handleContinue}
-                className="w-full bg-[#9E331A] hover:bg-[#852A14] text-white py-3.5 rounded-xl font-semibold text-sm transition-all shadow-md active:scale-98 cursor-pointer flex items-center justify-center gap-2"
+                className="w-full bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white py-3.5 rounded-xl font-semibold text-sm transition-all shadow-md active:scale-98 cursor-pointer flex items-center justify-center gap-2"
               >
                 <span>Continue to Select Date</span>
                 <ArrowRight className="w-4 h-4" />
@@ -868,7 +868,7 @@ export default function AnanyaProfilePage() {
                   </span>
                 </div>
                 <div className="flex items-center gap-1.5">
-                  <HeartHandshake className="w-3.5 h-3.5 text-[#9E331A] shrink-0" />
+                  <HeartHandshake className="w-3.5 h-3.5 text-purple-700 shrink-0" />
                   <span>
                     Strict Platonic Charter: Public venues only. Zero dating ambiguity.
                   </span>
@@ -882,7 +882,7 @@ export default function AnanyaProfilePage() {
                   onClick={() =>
                     alert("CoFriend concierge custom booking desk is available 24/7.")
                   }
-                  className="font-semibold text-[#9E331A] hover:underline cursor-pointer"
+                  className="font-semibold text-purple-700 hover:underline cursor-pointer"
                 >
                   Ask Concierge
                 </button>
@@ -893,15 +893,15 @@ export default function AnanyaProfilePage() {
       </main>
 
       {/* Footer */}
-      <footer className="bg-[#FAF9F5] border-t border-[#E7E4DC] pt-12 pb-8 text-[#4D5350]">
+      <footer className="bg-[#FAFAFD] border-t border-purple-100/80 pt-12 pb-8 text-[#4D5350]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
             <div className="lg:col-span-2 space-y-4 pr-4">
               <Link href="/" className="flex items-baseline">
-                <span className="font-serif text-2xl font-bold tracking-tight text-[#171A19]">
+                <span className="font-outfit text-2xl font-bold tracking-tight text-[#171A19]">
                   CoFriend
                 </span>
-                <span className="font-sans text-lg font-bold text-[#9E331A]">
+                <span className="font-sans text-lg font-bold text-purple-700">
                   .in
                 </span>
               </Link>
@@ -919,7 +919,7 @@ export default function AnanyaProfilePage() {
                 {["Kolkata", "Mumbai", "Bengaluru", "Delhi NCR", "Hyderabad"].map(
                   (item) => (
                     <li key={item}>
-                      <Link href="/services" className="hover:text-[#9E331A]">
+                      <Link href="/services" className="hover:text-purple-700">
                         {item}
                       </Link>
                     </li>
@@ -934,7 +934,7 @@ export default function AnanyaProfilePage() {
               <ul className="space-y-2 text-xs font-medium">
                 {["Safety & Protocol", "Code of Conduct", "Identity Verification", "Emergency Helpline"].map((item) => (
                   <li key={item}>
-                    <Link href="/how-it-works" className="hover:text-[#9E331A]">
+                    <Link href="/how-it-works" className="hover:text-purple-700">
                       {item}
                     </Link>
                   </li>
@@ -948,7 +948,7 @@ export default function AnanyaProfilePage() {
               <ul className="space-y-2 text-xs font-medium">
                 {["Terms of Service", "Privacy Policy", "Platonic Charter", "Press & Media"].map((item) => (
                   <li key={item}>
-                    <a href="#" className="hover:text-[#9E331A]">
+                    <a href="#" className="hover:text-purple-700">
                       {item}
                     </a>
                   </li>
@@ -956,7 +956,7 @@ export default function AnanyaProfilePage() {
               </ul>
             </div>
           </div>
-          <div className="pt-6 border-t border-[#EAE7DD] flex flex-col sm:flex-row items-center justify-between gap-3 text-[11px] text-[#78817D]">
+          <div className="pt-6 border-t border-purple-100/80 flex flex-col sm:flex-row items-center justify-between gap-3 text-[11px] text-[#78817D]">
             <div>© 2025 CoFriend Lifestyle Services Pvt. Ltd. All rights reserved.</div>
             <div className="flex items-center gap-1.5 font-medium text-[#555E59]">
               <span className="w-1.5 h-1.5 rounded-full bg-[#B47414]" />

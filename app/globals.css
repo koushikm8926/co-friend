@@ -1,26 +1,66 @@
 @import "tailwindcss";
 
 @theme {
-  --font-sans: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
-  --font-serif: var(--font-serif), Georgia, serif;
+  --font-sans: var(--font-sans), "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-outfit: var(--font-outfit), "Outfit", sans-serif;
+  --font-body: var(--font-body), "DM Sans", sans-serif;
   
-  --color-terracotta-50: #FDF4F1;
-  --color-terracotta-100: #FCE8E2;
-  --color-terracotta-500: #B83E20;
-  --color-terracotta-600: #9E331A;
-  --color-terracotta-700: #832913;
+  --color-primary-50: #FAF5FF;
+  --color-primary-100: #F3E8FF;
+  --color-primary-200: #E9D5FF;
+  --color-primary-300: #D8B4FE;
+  --color-primary-400: #C084FC;
+  --color-primary-500: #A855F7;
+  --color-primary-600: #7C3AED;
+  --color-primary-700: #6D28D9;
+  --color-primary-800: #5B21B6;
+  --color-primary-900: #4C1D95;
+
+  --color-accent-pink: #EC4899;
+  --color-accent-rose: #F43F5E;
+  --color-canvas: #FAFAFD;
+  --color-dark-surface: #0F0F1A;
+  --color-dark-card: #181829;
 }
 
 :root {
-  --background: #FAF9F5;
-  --foreground: #1A1C1A;
+  --background: #FAFAFD;
+  --foreground: #0F172A;
 }
 
 body {
-  background: #FAF9F5;
-  color: #1A1C1A;
+  background: #FAFAFD;
+  color: #0F172A;
   font-feature-settings: "cv02", "cv03", "cv04", "cv11";
   -webkit-font-smoothing: antialiased;
+}
+
+.font-outfit {
+  font-family: var(--font-outfit), "Outfit", sans-serif;
+}
+
+.font-body {
+  font-family: var(--font-body), "DM Sans", sans-serif;
+}
+
+.gradient-text {
+  background: linear-gradient(135deg, #7C3AED 0%, #EC4899 50%, #F43F5E 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.gradient-hero-bg {
+  background: radial-gradient(circle at 50% 0%, rgba(124, 58, 237, 0.15) 0%, rgba(236, 72, 153, 0.08) 35%, rgba(250, 250, 253, 0) 70%);
+}
+
+.dots-pattern {
+  background-image: radial-gradient(rgba(124, 58, 237, 0.15) 1.5px, transparent 1.5px);
+  background-size: 24px 24px;
+}
+
+.dots-pattern-light {
+  background-image: radial-gradient(rgba(255, 255, 255, 0.25) 1.5px, transparent 1.5px);
+  background-size: 24px 24px;
 }
 
 /* Custom scrollbar */
@@ -29,12 +69,12 @@ body {
   height: 8px;
 }
 ::-webkit-scrollbar-track {
-  background: #f1ede4;
+  background: #F3E8FF;
 }
 ::-webkit-scrollbar-thumb {
-  background: #d4cdc1;
+  background: #C084FC;
   border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #b5ac9e;
+  background: #7C3AED;
 }

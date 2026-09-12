@@ -37,16 +37,16 @@ export default function BookingConfirmationPage() {
   };
 
   return (
-    <div className="min-h-screen bg-[#FAF9F5] text-[#1E2421] font-sans antialiased flex flex-col selection:bg-[#F2DDD7] selection:text-[#832913]">
+    <div className="min-h-screen bg-[#FAFAFD] text-[#1E2421] font-sans antialiased flex flex-col selection:bg-[#F3E8FF] selection:text-[#7C3AED]">
       {/* Top Navbar */}
-      <header className="sticky top-0 z-40 bg-[#FAF9F5]/90 backdrop-blur-md border-b border-[#EAE8E0]">
+      <header className="sticky top-0 z-40 bg-[#FAFAFD]/90 backdrop-blur-md border-b border-purple-100/80">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-18 flex items-center justify-between">
           <div className="flex items-center gap-2">
             <Link href="/" className="flex items-baseline group">
-              <span className="font-serif text-2xl sm:text-3xl font-bold tracking-tight text-[#171A19]">
+              <span className="font-outfit text-2xl sm:text-3xl font-bold tracking-tight text-[#171A19]">
                 CoFriend
               </span>
-              <span className="font-sans text-xl font-bold text-[#A8381E]">
+              <span className="font-sans text-xl font-bold text-purple-600">
                 .in
               </span>
             </Link>
@@ -82,7 +82,7 @@ export default function BookingConfirmationPage() {
             </Link>
             <Link
               href="/book/confirmation"
-              className="text-[#171A19] font-semibold py-1 border-b-2 border-[#A8381E]"
+              className="text-[#171A19] font-semibold py-1 border-b-2 border-purple-600"
             >
               My Bookings
             </Link>
@@ -91,7 +91,7 @@ export default function BookingConfirmationPage() {
           <div className="flex items-center gap-3">
             <Link
               href="/#become-cofriend"
-              className="bg-[#9E331A] hover:bg-[#852A14] text-white px-4.5 py-2.5 rounded-full text-sm font-semibold tracking-wide transition-all shadow-sm hover:shadow active:scale-98 flex items-center gap-2"
+              className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white px-4.5 py-2.5 rounded-full text-sm font-semibold tracking-wide transition-all shadow-sm hover:shadow active:scale-98 flex items-center gap-2"
             >
               <span>Become a CoFriend</span>
             </Link>
@@ -107,10 +107,10 @@ export default function BookingConfirmationPage() {
         {/* Header Badge & Title */}
         <div className="text-center space-y-3">
           <div className="inline-flex flex-col items-center">
-            <div className="w-14 h-14 bg-[#FAF0E6] text-[#9E331A] rounded-full flex items-center justify-center border-2 border-[#F6D0C7] shadow-sm mb-2">
+            <div className="w-14 h-14 bg-[#FAF0E6] text-purple-700 rounded-full flex items-center justify-center border-2 border-[#F6D0C7] shadow-sm mb-2">
               <Check className="w-7 h-7 stroke-[2.5]" />
             </div>
-            <span className="text-[10.5px] font-bold tracking-widest text-[#9E331A] uppercase">
+            <span className="text-[10.5px] font-bold tracking-widest text-purple-700 uppercase">
               Escrow Protected
             </span>
           </div>
@@ -119,7 +119,7 @@ export default function BookingConfirmationPage() {
             <div className="text-[11px] font-bold uppercase tracking-widest text-[#737A76]">
               Concierge Reservation Confirmed
             </div>
-            <h1 className="text-3xl sm:text-4xl font-serif font-bold text-[#171A19]">
+            <h1 className="text-3xl sm:text-4xl font-outfit font-bold text-[#171A19]">
               Your CoFriend is Booked!
             </h1>
             <p className="text-xs text-[#555C58]">
@@ -129,8 +129,8 @@ export default function BookingConfirmationPage() {
         </div>
 
         {/* Official Verified Schedule Card */}
-        <div className="bg-white rounded-3xl border border-[#E7E4DC] overflow-hidden shadow-sm">
-          <div className="bg-[#FAF9F5] px-5 py-2.5 border-b border-[#EAE7DD] flex items-center justify-between text-xs">
+        <div className="bg-white rounded-3xl border border-purple-100/80 overflow-hidden shadow-sm">
+          <div className="bg-[#FAFAFD] px-5 py-2.5 border-b border-purple-100/80 flex items-center justify-between text-xs">
             <div className="flex items-center gap-1.5 font-bold text-[#171A19]">
               <ShieldCheck className="w-4 h-4 text-emerald-600" />
               <span>OFFICIAL COFRIEND.IN VERIFIED SCHEDULE</span>
@@ -164,17 +164,17 @@ export default function BookingConfirmationPage() {
                 <span className="text-[10px] font-bold uppercase text-[#737A76]">
                   Selected Lifestyle Fellow
                 </span>
-                <h3 className="font-serif font-bold text-lg text-[#171A19]">
+                <h3 className="font-outfit font-bold text-lg text-[#171A19]">
                   Ananya Sharma
                 </h3>
                 <p className="text-xs text-[#555C58] leading-tight">
                   Film Studies alumnus, Satyajit Ray enthusiast &amp; curated art companion • Fluent in English, Bengali, Hindi.
                 </p>
                 <div className="flex gap-1.5 pt-1">
-                  <span className="px-2 py-0.5 rounded bg-[#FAF9F5] border border-[#EDEAE1] text-[10.5px] font-semibold text-[#4D5350]">
+                  <span className="px-2 py-0.5 rounded bg-[#FAFAFD] border border-[#EDEAE1] text-[10.5px] font-semibold text-[#4D5350]">
                     Movie CoFriend Outing
                   </span>
-                  <span className="px-2 py-0.5 rounded bg-[#FAF9F5] border border-[#EDEAE1] text-[10.5px] font-semibold text-[#4D5350]">
+                  <span className="px-2 py-0.5 rounded bg-[#FAFAFD] border border-[#EDEAE1] text-[10.5px] font-semibold text-[#4D5350]">
                     Cinema &amp; Discussion
                   </span>
                 </div>
@@ -185,20 +185,20 @@ export default function BookingConfirmationPage() {
             <div className="md:col-span-7 space-y-4 md:border-l md:border-[#F0EEE7] md:pl-6 text-xs">
               <div className="space-y-1">
                 <div className="text-[10px] font-bold uppercase text-[#737A76] flex items-center gap-1">
-                  <Calendar className="w-3.5 h-3.5 text-[#9E331A]" />
+                  <Calendar className="w-3.5 h-3.5 text-purple-700" />
                   Meeting Schedule
                 </div>
                 <div className="font-bold text-base text-[#171A19]">
                   Sunday, 15 December 2024
                 </div>
-                <div className="text-xs font-semibold text-[#9E331A]">
+                <div className="text-xs font-semibold text-purple-700">
                   03:30 PM – 06:30 PM (3 Hours Duration)
                 </div>
               </div>
 
               <div className="space-y-1 pt-1">
                 <div className="text-[10px] font-bold uppercase text-[#737A76] flex items-center gap-1">
-                  <MapPin className="w-3.5 h-3.5 text-[#9E331A]" />
+                  <MapPin className="w-3.5 h-3.5 text-purple-700" />
                   Designated Public Rendezvous
                 </div>
                 <div className="font-bold text-sm text-[#171A19]">
@@ -207,13 +207,13 @@ export default function BookingConfirmationPage() {
                 <div className="text-[11px] text-[#555C58]">
                   Prince Anwar Shah Rd / Rabindra Sadan, South Kolkata • Concierge monitored public zone
                 </div>
-                <div className="p-2 rounded-lg bg-[#FAF0E6] text-[#9E331A] font-semibold text-[11px] mt-1">
+                <div className="p-2 rounded-lg bg-[#FAF0E6] text-purple-700 font-semibold text-[11px] mt-1">
                   📍 Meet at Main Atrium Fountain Desk
                 </div>
               </div>
 
               {/* Financial Recap Box */}
-              <div className="p-3.5 bg-[#FAF9F5] rounded-2xl border border-[#EDEAE1] space-y-1.5">
+              <div className="p-3.5 bg-[#FAFAFD] rounded-2xl border border-[#EDEAE1] space-y-1.5">
                 <div className="flex justify-between text-[#555C58]">
                   <span>Companionship Fee (3 hrs @ ₹350/hr)</span>
                   <span className="font-semibold text-[#171A19]">₹1,050.00</span>
@@ -234,7 +234,7 @@ export default function BookingConfirmationPage() {
                     </div>
                   </div>
                   <div className="text-right">
-                    <span className="text-xl font-serif text-[#9E331A]">
+                    <span className="text-xl font-outfit text-purple-700">
                       ₹1,239.00
                     </span>
                     <div className="text-[10px] font-bold text-emerald-700">
@@ -246,7 +246,7 @@ export default function BookingConfirmationPage() {
             </div>
           </div>
 
-          <div className="bg-[#FAF9F5] px-6 py-2.5 border-t border-[#EAE7DD] flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-[11px] text-[#737A76]">
+          <div className="bg-[#FAFAFD] px-6 py-2.5 border-t border-purple-100/80 flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-[11px] text-[#737A76]">
             <div className="flex items-center gap-1.5">
               <Lock className="w-3.5 h-3.5 text-emerald-600" />
               <span>Funds are held under trustee custody and only disbursed after you exchange your 4-digit End OTP.</span>
@@ -258,15 +258,15 @@ export default function BookingConfirmationPage() {
         {/* Two Stage Handshake Execution Cards */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
           {/* Stage 01 */}
-          <div className="bg-white rounded-3xl p-5 sm:p-6 border border-[#E7E4DC] shadow-xs space-y-3">
+          <div className="bg-white rounded-3xl p-5 sm:p-6 border border-purple-100/80 shadow-xs space-y-3">
             <div className="flex items-center justify-between">
-              <span className="px-2.5 py-0.5 rounded-full bg-[#FAF0E6] text-[#9E331A] text-[10px] font-bold uppercase">
+              <span className="px-2.5 py-0.5 rounded-full bg-[#FAF0E6] text-purple-700 text-[10px] font-bold uppercase">
                 Stage 01 • Arrival
               </span>
-              <Key className="w-4 h-4 text-[#9E331A]" />
+              <Key className="w-4 h-4 text-purple-700" />
             </div>
 
-            <h4 className="font-serif font-bold text-base text-[#171A19]">
+            <h4 className="font-outfit font-bold text-base text-[#171A19]">
               Start OTP Security Handshake
             </h4>
 
@@ -277,7 +277,7 @@ export default function BookingConfirmationPage() {
               session.
             </p>
 
-            <div className="p-3 bg-[#FAF9F5] rounded-xl border border-[#EDEAE1] flex items-center justify-between">
+            <div className="p-3 bg-[#FAFAFD] rounded-xl border border-[#EDEAE1] flex items-center justify-between">
               <div className="text-[11px] font-semibold text-[#737A76] flex items-center gap-1">
                 <Clock className="w-3.5 h-3.5 text-[#B47414]" />
                 <span>Unlocks in 3h 12m</span>
@@ -286,7 +286,7 @@ export default function BookingConfirmationPage() {
                 {["4", "8", "9", "2"].map((digit, i) => (
                   <span
                     key={i}
-                    className="w-7 h-8 bg-white border border-[#D5DCD0] rounded-lg font-mono font-bold text-sm text-[#9E331A] flex items-center justify-center shadow-xs"
+                    className="w-7 h-8 bg-white border border-[#D5DCD0] rounded-lg font-mono font-bold text-sm text-purple-700 flex items-center justify-center shadow-xs"
                   >
                     {digit}
                   </span>
@@ -296,7 +296,7 @@ export default function BookingConfirmationPage() {
           </div>
 
           {/* Stage 02 */}
-          <div className="bg-white rounded-3xl p-5 sm:p-6 border border-[#E7E4DC] shadow-xs space-y-3">
+          <div className="bg-white rounded-3xl p-5 sm:p-6 border border-purple-100/80 shadow-xs space-y-3">
             <div className="flex items-center justify-between">
               <span className="px-2.5 py-0.5 rounded-full bg-[#EBF7EE] text-[#1E7E34] text-[10px] font-bold uppercase">
                 Stage 02 • Conclusion
@@ -304,7 +304,7 @@ export default function BookingConfirmationPage() {
               <CheckCircle2 className="w-4 h-4 text-emerald-600" />
             </div>
 
-            <h4 className="font-serif font-bold text-base text-[#171A19]">
+            <h4 className="font-outfit font-bold text-base text-[#171A19]">
               Completion &amp; Escrow Release
             </h4>
 
@@ -315,7 +315,7 @@ export default function BookingConfirmationPage() {
               guarantee fair adjustments.
             </p>
 
-            <div className="p-3 bg-[#FAF9F5] rounded-xl border border-[#EDEAE1] flex items-center justify-between text-xs">
+            <div className="p-3 bg-[#FAFAFD] rounded-xl border border-[#EDEAE1] flex items-center justify-between text-xs">
               <span className="font-semibold text-emerald-700 flex items-center gap-1">
                 <ShieldCheck className="w-4 h-4" />
                 Live Escort Monitoring active
@@ -328,13 +328,13 @@ export default function BookingConfirmationPage() {
         </div>
 
         {/* Encrypted In-App Concierge Chat Strip */}
-        <div className="bg-white rounded-3xl p-5 border border-[#E7E4DC] shadow-xs flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+        <div className="bg-white rounded-3xl p-5 border border-purple-100/80 shadow-xs flex flex-col sm:flex-row sm:items-center justify-between gap-4">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-full bg-[#FAF0E6] text-[#9E331A] flex items-center justify-center shrink-0">
+            <div className="w-10 h-10 rounded-full bg-[#FAF0E6] text-purple-700 flex items-center justify-center shrink-0">
               <Lock className="w-5 h-5" />
             </div>
             <div>
-              <h4 className="font-serif font-bold text-sm text-[#171A19]">
+              <h4 className="font-outfit font-bold text-sm text-[#171A19]">
                 Encrypted In-App Concierge Chat Active
               </h4>
               <p className="text-xs text-[#555C58]">
@@ -345,16 +345,16 @@ export default function BookingConfirmationPage() {
 
           <button
             onClick={() => setChatOpen(!chatOpen)}
-            className="px-4 py-2.5 rounded-xl bg-[#FAF9F5] hover:bg-[#FAF0E6] border border-[#E7E4DC] hover:border-[#F6D0C7] text-xs font-semibold text-[#171A19] hover:text-[#9E331A] transition-all flex items-center gap-2 shrink-0 cursor-pointer"
+            className="px-4 py-2.5 rounded-xl bg-[#FAFAFD] hover:bg-[#FAF0E6] border border-purple-100/80 hover:border-[#F6D0C7] text-xs font-semibold text-[#171A19] hover:text-purple-700 transition-all flex items-center gap-2 shrink-0 cursor-pointer"
           >
-            <MessageSquare className="w-4 h-4 text-[#9E331A]" />
+            <MessageSquare className="w-4 h-4 text-purple-700" />
             <span>Message Ananya</span>
           </button>
         </div>
 
         {/* In-App Chat Drawer */}
         {chatOpen && (
-          <div className="bg-white rounded-3xl p-5 border border-[#9E331A]/30 shadow-lg space-y-4 animate-in fade-in slide-in-from-top-2 duration-200">
+          <div className="bg-white rounded-3xl p-5 border border-purple-600/30 shadow-lg space-y-4 animate-in fade-in slide-in-from-top-2 duration-200">
             <div className="flex items-center justify-between pb-2 border-b border-[#F0EEE7]">
               <div className="flex items-center gap-2">
                 <div className="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse" />
@@ -370,14 +370,14 @@ export default function BookingConfirmationPage() {
               </button>
             </div>
 
-            <div className="space-y-2 max-h-48 overflow-y-auto p-2 bg-[#FAF9F5] rounded-xl text-xs">
+            <div className="space-y-2 max-h-48 overflow-y-auto p-2 bg-[#FAFAFD] rounded-xl text-xs">
               {chatMessages.map((msg, i) => (
                 <div
                   key={i}
                   className={`p-2.5 rounded-xl max-w-[85%] ${
                     i % 2 === 0
                       ? "bg-white border border-[#EDEAE1] text-[#171A19] self-start"
-                      : "bg-[#9E331A] text-white ml-auto"
+                      : "bg-purple-600 text-white ml-auto"
                   }`}
                 >
                   {msg}
@@ -392,11 +392,11 @@ export default function BookingConfirmationPage() {
                 onChange={(e) => setChatInput(e.target.value)}
                 onKeyDown={(e) => e.key === "Enter" && handleSendMessage()}
                 placeholder="Type a message to coordinate Sunday meetup..."
-                className="flex-1 px-3.5 py-2 bg-[#FAF9F5] rounded-xl border border-[#DCD7CD] text-xs text-[#171A19] focus:outline-none focus:border-[#9E331A]"
+                className="flex-1 px-3.5 py-2 bg-[#FAFAFD] rounded-xl border border-[#DCD7CD] text-xs text-[#171A19] focus:outline-none focus:border-purple-600"
               />
               <button
                 onClick={handleSendMessage}
-                className="px-4 py-2 bg-[#9E331A] hover:bg-[#852A14] text-white text-xs font-semibold rounded-xl"
+                className="px-4 py-2 bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white text-xs font-semibold rounded-xl"
               >
                 Send
               </button>
@@ -408,7 +408,7 @@ export default function BookingConfirmationPage() {
         <div className="flex flex-col sm:flex-row items-center justify-center gap-3 pt-2">
           <Link
             href="/available-now"
-            className="w-full sm:w-auto px-6 py-3 rounded-full bg-[#9E331A] hover:bg-[#852A14] text-white text-xs sm:text-sm font-semibold text-center shadow-md active:scale-98 transition-all flex items-center justify-center gap-2"
+            className="w-full sm:w-auto px-6 py-3 rounded-full bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white text-xs sm:text-sm font-semibold text-center shadow-md active:scale-98 transition-all flex items-center justify-center gap-2"
           >
             <span>View in My Bookings</span>
             <ArrowRight className="w-4 h-4" />
@@ -416,9 +416,9 @@ export default function BookingConfirmationPage() {
 
           <button
             onClick={() => alert("Downloading official PDF tax receipt & escrow voucher.")}
-            className="w-full sm:w-auto px-6 py-3 rounded-full bg-white hover:bg-[#FAF9F5] text-[#171A19] border border-[#E7E4DC] text-xs sm:text-sm font-semibold text-center shadow-xs active:scale-98 transition-all flex items-center justify-center gap-2 cursor-pointer"
+            className="w-full sm:w-auto px-6 py-3 rounded-full bg-white hover:bg-[#FAFAFD] text-[#171A19] border border-purple-100/80 text-xs sm:text-sm font-semibold text-center shadow-xs active:scale-98 transition-all flex items-center justify-center gap-2 cursor-pointer"
           >
-            <Download className="w-4 h-4 text-[#9E331A]" />
+            <Download className="w-4 h-4 text-purple-700" />
             <span>Download PDF Receipt</span>
           </button>
         </div>
@@ -434,7 +434,7 @@ export default function BookingConfirmationPage() {
       </main>
 
       {/* Footer */}
-      <footer className="bg-[#FAF9F5] border-t border-[#E7E4DC] pt-10 pb-8 text-[#4D5350]">
+      <footer className="bg-[#FAFAFD] border-t border-purple-100/80 pt-10 pb-8 text-[#4D5350]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-3 text-[11px] text-[#78817D]">
           <div>
             © 2025 CoFriend Lifestyle Services Pvt. Ltd. Strict Platonic Policy Guaranteed. All rights reserved.

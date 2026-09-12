@@ -34,16 +34,16 @@ export default function BookSummaryPage() {
   };
 
   return (
-    <div className="min-h-screen bg-[#FAF9F5] text-[#1E2421] font-sans antialiased flex flex-col selection:bg-[#F2DDD7] selection:text-[#832913]">
+    <div className="min-h-screen bg-[#FAFAFD] text-[#1E2421] font-sans antialiased flex flex-col selection:bg-[#F3E8FF] selection:text-[#7C3AED]">
       {/* Top Navbar */}
-      <header className="sticky top-0 z-40 bg-[#FAF9F5]/90 backdrop-blur-md border-b border-[#EAE8E0]">
+      <header className="sticky top-0 z-40 bg-[#FAFAFD]/90 backdrop-blur-md border-b border-purple-100/80">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-18 flex items-center justify-between">
           <div className="flex items-center gap-2">
             <Link href="/" className="flex items-baseline group">
-              <span className="font-serif text-2xl sm:text-3xl font-bold tracking-tight text-[#171A19]">
+              <span className="font-outfit text-2xl sm:text-3xl font-bold tracking-tight text-[#171A19]">
                 CoFriend
               </span>
-              <span className="font-sans text-xl font-bold text-[#A8381E]">
+              <span className="font-sans text-xl font-bold text-purple-600">
                 .in
               </span>
             </Link>
@@ -67,7 +67,7 @@ export default function BookSummaryPage() {
             </Link>
             <Link
               href="/available-now"
-              className="text-[#171A19] font-semibold py-1 border-b-2 border-[#A8381E]"
+              className="text-[#171A19] font-semibold py-1 border-b-2 border-purple-600"
             >
               Available Now
             </Link>
@@ -88,7 +88,7 @@ export default function BookSummaryPage() {
           <div className="flex items-center gap-3">
             <Link
               href="/#become-cofriend"
-              className="bg-[#9E331A] hover:bg-[#852A14] text-white px-4.5 py-2.5 rounded-full text-sm font-semibold tracking-wide transition-all shadow-sm hover:shadow active:scale-98 flex items-center gap-2"
+              className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white px-4.5 py-2.5 rounded-full text-sm font-semibold tracking-wide transition-all shadow-sm hover:shadow active:scale-98 flex items-center gap-2"
             >
               <span>Become a CoFriend</span>
             </Link>
@@ -100,7 +100,7 @@ export default function BookSummaryPage() {
       </header>
 
       {/* Stepper Bar */}
-      <div className="bg-[#FAF9F5] border-b border-[#EAE7DD] py-3">
+      <div className="bg-[#FAFAFD] border-b border-purple-100/80 py-3">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between overflow-x-auto gap-3 py-1 text-xs">
             <div className="flex items-center gap-1.5 text-stone-500 shrink-0">
@@ -143,8 +143,8 @@ export default function BookSummaryPage() {
             </div>
             <div className="w-4 h-px bg-stone-300 shrink-0" />
 
-            <div className="flex items-center gap-1.5 font-bold text-[#9E331A] shrink-0">
-              <span className="w-5 h-5 rounded-full bg-[#9E331A] text-white flex items-center justify-center text-[10px]">
+            <div className="flex items-center gap-1.5 font-bold text-purple-700 shrink-0">
+              <span className="w-5 h-5 rounded-full bg-purple-600 text-white flex items-center justify-center text-[10px]">
                 6
               </span>
               <span>6. Summary &amp; Review</span>
@@ -167,10 +167,10 @@ export default function BookSummaryPage() {
           {/* Left Column (7 cols) */}
           <div className="lg:col-span-7 space-y-6">
             <div className="space-y-1">
-              <div className="text-[10.5px] font-bold uppercase tracking-widest text-[#9E331A]">
+              <div className="text-[10.5px] font-bold uppercase tracking-widest text-purple-700">
                 Step 06 of 7 • Platonic Lifestyle Escrow
               </div>
-              <h1 className="text-2xl sm:text-3xl font-serif font-bold text-[#171A19]">
+              <h1 className="text-2xl sm:text-3xl font-outfit font-bold text-[#171A19]">
                 Review your booking details
               </h1>
               <p className="text-xs text-[#555C58] leading-relaxed">
@@ -180,9 +180,9 @@ export default function BookSummaryPage() {
             </div>
 
             {/* Booking Details Card */}
-            <div className="bg-white rounded-3xl p-6 border border-[#E7E4DC] shadow-xs space-y-5">
+            <div className="bg-white rounded-3xl p-6 border border-purple-100/80 shadow-xs space-y-5">
               {/* Host Strip */}
-              <div className="p-4 bg-[#FAF9F5] rounded-2xl border border-[#EDEAE1] flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+              <div className="p-4 bg-[#FAFAFD] rounded-2xl border border-[#EDEAE1] flex flex-col sm:flex-row sm:items-center justify-between gap-3">
                 <div className="flex items-center gap-3">
                   <div className="relative w-12 h-12 rounded-xl overflow-hidden bg-stone-200 shrink-0">
                     <Image
@@ -194,7 +194,7 @@ export default function BookSummaryPage() {
                   </div>
                   <div>
                     <div className="flex items-center gap-1.5">
-                      <h3 className="font-serif font-bold text-base text-[#171A19]">
+                      <h3 className="font-outfit font-bold text-base text-[#171A19]">
                         Ananya Sharma
                       </h3>
                       <span className="px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-700 text-[10px] font-bold border border-emerald-200">
@@ -209,7 +209,7 @@ export default function BookSummaryPage() {
 
                 <Link
                   href="/profile/ananya-sharma"
-                  className="text-xs font-semibold text-[#9E331A] hover:underline self-end sm:self-auto"
+                  className="text-xs font-semibold text-purple-700 hover:underline self-end sm:self-auto"
                 >
                   View Profile ↗
                 </Link>
@@ -217,17 +217,17 @@ export default function BookSummaryPage() {
 
               {/* Booked Experience */}
               <div className="p-3.5 bg-[#FAF0E6] rounded-2xl border border-[#F6D0C7] text-xs space-y-1">
-                <span className="text-[10px] font-bold uppercase text-[#9E331A]">
+                <span className="text-[10px] font-bold uppercase text-purple-700">
                   Booked Experience
                 </span>
-                <div className="font-serif font-bold text-sm text-[#171A19]">
+                <div className="font-outfit font-bold text-sm text-[#171A19]">
                   Movie CoFriend — South City Mall / Nandan Arthouse Screening
                 </div>
               </div>
 
               {/* Date & Time Blocks */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
-                <div className="p-3.5 bg-[#FAF9F5] rounded-xl border border-[#EDEAE1] flex items-center justify-between">
+                <div className="p-3.5 bg-[#FAFAFD] rounded-xl border border-[#EDEAE1] flex items-center justify-between">
                   <div>
                     <span className="text-[10px] font-bold uppercase text-[#737A76]">
                       Date
@@ -238,13 +238,13 @@ export default function BookSummaryPage() {
                   </div>
                   <Link
                     href="/book/date"
-                    className="p-1.5 rounded-lg hover:bg-white text-[#9E331A]"
+                    className="p-1.5 rounded-lg hover:bg-white text-purple-700"
                   >
                     <Edit2 className="w-3.5 h-3.5" />
                   </Link>
                 </div>
 
-                <div className="p-3.5 bg-[#FAF9F5] rounded-xl border border-[#EDEAE1] flex items-center justify-between">
+                <div className="p-3.5 bg-[#FAFAFD] rounded-xl border border-[#EDEAE1] flex items-center justify-between">
                   <div>
                     <span className="text-[10px] font-bold uppercase text-[#737A76]">
                       Time Window
@@ -255,7 +255,7 @@ export default function BookSummaryPage() {
                   </div>
                   <Link
                     href="/book/time"
-                    className="p-1.5 rounded-lg hover:bg-white text-[#9E331A]"
+                    className="p-1.5 rounded-lg hover:bg-white text-purple-700"
                   >
                     <Edit2 className="w-3.5 h-3.5" />
                   </Link>
@@ -263,7 +263,7 @@ export default function BookSummaryPage() {
               </div>
 
               {/* Rendezvous Point */}
-              <div className="p-3.5 bg-[#FAF9F5] rounded-xl border border-[#EDEAE1] flex items-start justify-between gap-3 text-xs">
+              <div className="p-3.5 bg-[#FAFAFD] rounded-xl border border-[#EDEAE1] flex items-start justify-between gap-3 text-xs">
                 <div className="space-y-0.5">
                   <span className="text-[10px] font-bold uppercase text-[#737A76]">
                     Designated Public Rendezvous Point
@@ -277,14 +277,14 @@ export default function BookSummaryPage() {
                 </div>
                 <button
                   onClick={() => alert("Specify foyer/gate location modal opening.")}
-                  className="text-xs font-semibold text-[#9E331A] hover:underline shrink-0"
+                  className="text-xs font-semibold text-purple-700 hover:underline shrink-0"
                 >
                   Specify Gate/Foyer
                 </button>
               </div>
 
               {/* Session Agenda */}
-              <div className="p-3.5 bg-[#FAF9F5] rounded-xl border border-[#EDEAE1] space-y-1 text-xs">
+              <div className="p-3.5 bg-[#FAFAFD] rounded-xl border border-[#EDEAE1] space-y-1 text-xs">
                 <div className="flex items-center justify-between">
                   <span className="text-[10px] font-bold uppercase text-[#737A76]">
                     Session Agenda &amp; Outing Focus
@@ -300,10 +300,10 @@ export default function BookSummaryPage() {
             </div>
 
             {/* Transparent Escrow & Fee Breakdown */}
-            <div className="bg-white rounded-3xl p-6 border border-[#E7E4DC] shadow-xs space-y-4">
+            <div className="bg-white rounded-3xl p-6 border border-purple-100/80 shadow-xs space-y-4">
               <div className="flex items-center justify-between pb-3 border-b border-[#F0EEE7]">
                 <div>
-                  <h3 className="font-serif font-bold text-base text-[#171A19]">
+                  <h3 className="font-outfit font-bold text-base text-[#171A19]">
                     Transparent Escrow &amp; Fee Breakdown
                   </h3>
                   <p className="text-[11px] text-[#737A76]">
@@ -347,7 +347,7 @@ export default function BookSummaryPage() {
                     </div>
                   </div>
                   <div className="text-right">
-                    <span className="text-xl font-serif text-[#9E331A]">
+                    <span className="text-xl font-outfit text-purple-700">
                       ₹1,239.00
                     </span>
                     <div className="text-[10px] font-normal text-emerald-700">
@@ -359,13 +359,13 @@ export default function BookSummaryPage() {
             </div>
 
             {/* Agreement Checkbox */}
-            <div className="p-4 bg-white rounded-2xl border border-[#E7E4DC] shadow-xs space-y-2 text-xs">
+            <div className="p-4 bg-white rounded-2xl border border-purple-100/80 shadow-xs space-y-2 text-xs">
               <label className="flex items-start gap-2.5 cursor-pointer">
                 <input
                   type="checkbox"
                   checked={agreedToCharter}
                   onChange={(e) => setAgreedToCharter(e.target.checked)}
-                  className="mt-0.5 accent-[#9E331A] rounded"
+                  className="mt-0.5 accent-purple-600 rounded"
                 />
                 <div className="space-y-0.5">
                   <div className="font-bold text-[#171A19]">
@@ -378,10 +378,10 @@ export default function BookSummaryPage() {
               </label>
 
               <div className="pt-2 border-t border-[#F0EEE7] flex gap-4 text-[11px]">
-                <Link href="/how-it-works" className="font-semibold text-[#9E331A] hover:underline">
+                <Link href="/how-it-works" className="font-semibold text-purple-700 hover:underline">
                   📖 Read Platonic Charter
                 </Link>
-                <Link href="/how-it-works" className="font-semibold text-[#9E331A] hover:underline">
+                <Link href="/how-it-works" className="font-semibold text-purple-700 hover:underline">
                   🛡 Escrow Agreement &amp; Refund SLA
                 </Link>
               </div>
@@ -390,7 +390,7 @@ export default function BookSummaryPage() {
 
           {/* Right Column (5 cols): Checkout Gateway Triggers & Maps */}
           <div className="lg:col-span-5 sticky top-24 space-y-4">
-            <div className="bg-white rounded-3xl p-6 border border-[#E7E4DC] shadow-lg space-y-5">
+            <div className="bg-white rounded-3xl p-6 border border-purple-100/80 shadow-lg space-y-5">
               <div className="space-y-1 pb-3 border-b border-[#F0EEE7]">
                 <div className="flex items-center justify-between">
                   <span className="text-[10px] font-bold uppercase tracking-wider text-[#737A76]">
@@ -400,7 +400,7 @@ export default function BookSummaryPage() {
                     INR
                   </span>
                 </div>
-                <div className="text-3xl font-serif font-bold text-[#171A19]">
+                <div className="text-3xl font-outfit font-bold text-[#171A19]">
                   ₹1,239<span className="text-base font-normal text-[#737A76]">.00</span>
                 </div>
                 <div className="text-[11px] text-emerald-700 flex items-center gap-1 font-medium">
@@ -412,7 +412,7 @@ export default function BookSummaryPage() {
               {/* Proceed Button */}
               <button
                 onClick={handleProceed}
-                className="w-full bg-[#9E331A] hover:bg-[#852A14] text-white py-3.5 rounded-xl font-semibold text-sm transition-all shadow-md active:scale-98 cursor-pointer flex items-center justify-center gap-2"
+                className="w-full bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white py-3.5 rounded-xl font-semibold text-sm transition-all shadow-md active:scale-98 cursor-pointer flex items-center justify-center gap-2"
               >
                 <span>Proceed to Secure Payment</span>
                 <ArrowRight className="w-4 h-4" />
@@ -423,7 +423,7 @@ export default function BookSummaryPage() {
               </div>
 
               {/* Logged in User Pill */}
-              <div className="p-2.5 bg-[#FAF9F5] rounded-xl border border-[#EDEAE1] flex items-center justify-between text-xs">
+              <div className="p-2.5 bg-[#FAFAFD] rounded-xl border border-[#EDEAE1] flex items-center justify-between text-xs">
                 <div className="flex items-center gap-2">
                   <div className="w-7 h-7 rounded-full bg-[#E5DFD4] text-[10px] font-bold flex items-center justify-center text-[#5A5043]">
                     SG
@@ -444,7 +444,7 @@ export default function BookSummaryPage() {
                   Safety &amp; Guarantee Seals
                 </div>
 
-                <div className="p-3 bg-[#FAF9F5] rounded-xl border border-[#EDEAE1] flex items-start gap-2.5">
+                <div className="p-3 bg-[#FAFAFD] rounded-xl border border-[#EDEAE1] flex items-start gap-2.5">
                   <Building2 className="w-4 h-4 text-emerald-700 shrink-0 mt-0.5" />
                   <div>
                     <div className="font-bold text-[#171A19]">100% Escrow Protection</div>
@@ -454,7 +454,7 @@ export default function BookSummaryPage() {
                   </div>
                 </div>
 
-                <div className="p-3 bg-[#FAF9F5] rounded-xl border border-[#EDEAE1] flex items-start gap-2.5">
+                <div className="p-3 bg-[#FAFAFD] rounded-xl border border-[#EDEAE1] flex items-start gap-2.5">
                   <Clock className="w-4 h-4 text-amber-700 shrink-0 mt-0.5" />
                   <div>
                     <div className="font-bold text-[#171A19]">4-Hour Free Cancellation</div>
@@ -464,7 +464,7 @@ export default function BookSummaryPage() {
                   </div>
                 </div>
 
-                <div className="p-3 bg-[#FAF9F5] rounded-xl border border-[#EDEAE1] flex items-start gap-2.5">
+                <div className="p-3 bg-[#FAFAFD] rounded-xl border border-[#EDEAE1] flex items-start gap-2.5">
                   <PhoneCall className="w-4 h-4 text-blue-700 shrink-0 mt-0.5" />
                   <div>
                     <div className="font-bold text-[#171A19]">24×7 Emergency Concierge Line</div>
@@ -476,7 +476,7 @@ export default function BookSummaryPage() {
               </div>
 
               {/* Planned Venue Enclave Map Visual */}
-              <div className="bg-[#FAF9F5] rounded-2xl p-3 border border-[#EDEAE1] space-y-2">
+              <div className="bg-[#FAFAFD] rounded-2xl p-3 border border-[#EDEAE1] space-y-2">
                 <div className="flex items-center justify-between text-xs">
                   <span className="font-bold text-[#171A19]">Planned Venue Enclave</span>
                   <span className="text-[10.5px] text-[#737A76]">South Kolkata Zone</span>
@@ -489,7 +489,7 @@ export default function BookSummaryPage() {
                     className="object-cover opacity-60"
                   />
                   <div className="relative bg-white/95 backdrop-blur-xs px-3 py-1 rounded-full shadow-md text-[10.5px] font-bold text-[#171A19] flex items-center gap-1 border border-[#CCD8CD]">
-                    <MapPin className="w-3.5 h-3.5 text-[#9E331A]" />
+                    <MapPin className="w-3.5 h-3.5 text-purple-700" />
                     <span>South City Mall Complex • Quest Mall Option</span>
                   </div>
                 </div>
@@ -500,7 +500,7 @@ export default function BookSummaryPage() {
       </main>
 
       {/* Footer */}
-      <footer className="bg-[#FAF9F5] border-t border-[#E7E4DC] pt-10 pb-8 text-[#4D5350]">
+      <footer className="bg-[#FAFAFD] border-t border-purple-100/80 pt-10 pb-8 text-[#4D5350]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-3 text-[11px] text-[#78817D]">
           <div>
             © 2025 CoFriend Lifestyle Services Pvt. Ltd. Strict Platonic Policy Guaranteed. All rights reserved.

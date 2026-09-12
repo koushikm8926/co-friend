@@ -181,16 +181,16 @@ export default function MovieCoFriendPage() {
   }, [maxRate]);
 
   return (
-    <div className="min-h-screen bg-[#FAF9F5] text-[#1E2421] font-sans antialiased flex flex-col selection:bg-[#F2DDD7] selection:text-[#832913]">
+    <div className="min-h-screen bg-[#FAFAFD] text-[#1E2421] font-sans antialiased flex flex-col selection:bg-[#F3E8FF] selection:text-[#7C3AED]">
       {/* Top Header / Navbar */}
-      <header className="sticky top-0 z-40 bg-[#FAF9F5]/90 backdrop-blur-md border-b border-[#EAE8E0]">
+      <header className="sticky top-0 z-40 bg-[#FAFAFD]/90 backdrop-blur-md border-b border-purple-100/80">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-18 flex items-center justify-between">
           <div className="flex items-center gap-2">
             <Link href="/" className="flex items-baseline group">
-              <span className="font-serif text-2xl sm:text-3xl font-bold tracking-tight text-[#171A19]">
+              <span className="font-outfit text-2xl sm:text-3xl font-bold tracking-tight text-[#171A19]">
                 CoFriend
               </span>
-              <span className="font-sans text-xl font-bold text-[#A8381E]">
+              <span className="font-sans text-xl font-bold text-purple-600">
                 .in
               </span>
             </Link>
@@ -214,7 +214,7 @@ export default function MovieCoFriendPage() {
             </Link>
             <Link
               href="/available-now"
-              className="text-[#171A19] font-semibold py-1 border-b-2 border-[#A8381E]"
+              className="text-[#171A19] font-semibold py-1 border-b-2 border-purple-600"
             >
               Available Now
             </Link>
@@ -235,7 +235,7 @@ export default function MovieCoFriendPage() {
           <div className="flex items-center gap-3">
             <Link
               href="/#become-cofriend"
-              className="bg-[#9E331A] hover:bg-[#852A14] text-white px-4.5 py-2.5 rounded-full text-sm font-semibold tracking-wide transition-all shadow-sm hover:shadow active:scale-98 flex items-center gap-2 cursor-pointer"
+              className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white px-4.5 py-2.5 rounded-full text-sm font-semibold tracking-wide transition-all shadow-sm hover:shadow active:scale-98 flex items-center gap-2 cursor-pointer"
             >
               <span>Become a CoFriend</span>
             </Link>
@@ -247,14 +247,14 @@ export default function MovieCoFriendPage() {
       </header>
 
       {/* Hero Category Banner */}
-      <div className="bg-[#FAF7EE] border-b border-[#EAE5D8] py-6 sm:py-8">
+      <div className="bg-[#FAF5FF] border-b border-purple-100/80 py-6 sm:py-8">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-4">
           <div className="flex items-center gap-2 text-[11px] font-bold tracking-wider uppercase text-[#737A76]">
             <Link href="/services" className="hover:underline text-[#737A76]">
               Concierge Services
             </Link>
             <span>&gt;</span>
-            <span className="text-[#9E331A]">Kolkata Metro</span>
+            <span className="text-purple-700">Kolkata Metro</span>
             <span>&gt;</span>
             <span className="text-[#171A19]">Cinema & Film Companions</span>
           </div>
@@ -266,7 +266,7 @@ export default function MovieCoFriendPage() {
                 <span>Curated Catalog • Cinema</span>
               </div>
 
-              <h1 className="text-3xl sm:text-4xl font-serif font-bold text-[#171A19]">
+              <h1 className="text-3xl sm:text-4xl font-outfit font-bold text-[#171A19]">
                 Movie CoFriend
               </h1>
 
@@ -278,7 +278,7 @@ export default function MovieCoFriendPage() {
               {/* Stats Bar */}
               <div className="flex flex-wrap items-center gap-4 text-xs font-medium text-[#4D5350] pt-1">
                 <span className="flex items-center gap-1">
-                  <span className="text-[#9E331A] font-bold">₹300/hr</span> Avg
+                  <span className="text-purple-700 font-bold">₹300/hr</span> Avg
                 </span>
                 <span>•</span>
                 <span className="flex items-center gap-1">
@@ -308,7 +308,7 @@ export default function MovieCoFriendPage() {
                 Current peak zones: South City Mall, Quest Mall, City Centre 1 &
                 Forum multiplex.
               </p>
-              <div className="text-[10px] text-[#9E331A] font-semibold pt-1 border-t border-[#F0EEE7] flex items-center gap-1">
+              <div className="text-[10px] text-purple-700 font-semibold pt-1 border-t border-[#F0EEE7] flex items-center gap-1">
                 <Lock className="w-3 h-3" />
                 <span>Strict Platonic Code of Conduct Enforced</span>
               </div>
@@ -317,8 +317,8 @@ export default function MovieCoFriendPage() {
 
           {/* Quick Dropdown Bar */}
           <div className="bg-white rounded-2xl p-2.5 sm:p-3 border border-[#E5E2DA] shadow-xs grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2 text-xs">
-            <div className="flex items-center gap-2 px-3 py-1.5 bg-[#FAF9F5] rounded-xl border border-[#EDEAE1]">
-              <MapPin className="w-4 h-4 text-[#9E331A] shrink-0" />
+            <div className="flex items-center gap-2 px-3 py-1.5 bg-[#FAFAFD] rounded-xl border border-[#EDEAE1]">
+              <MapPin className="w-4 h-4 text-purple-700 shrink-0" />
               <div className="overflow-hidden">
                 <div className="text-[9px] font-bold uppercase text-[#737A76]">
                   Location Zone
@@ -329,8 +329,8 @@ export default function MovieCoFriendPage() {
               </div>
             </div>
 
-            <div className="flex items-center gap-2 px-3 py-1.5 bg-[#FAF9F5] rounded-xl border border-[#EDEAE1]">
-              <Calendar className="w-4 h-4 text-[#9E331A] shrink-0" />
+            <div className="flex items-center gap-2 px-3 py-1.5 bg-[#FAFAFD] rounded-xl border border-[#EDEAE1]">
+              <Calendar className="w-4 h-4 text-purple-700 shrink-0" />
               <div className="overflow-hidden">
                 <div className="text-[9px] font-bold uppercase text-[#737A76]">
                   Movie Date
@@ -341,8 +341,8 @@ export default function MovieCoFriendPage() {
               </div>
             </div>
 
-            <div className="flex items-center gap-2 px-3 py-1.5 bg-[#FAF9F5] rounded-xl border border-[#EDEAE1]">
-              <Film className="w-4 h-4 text-[#9E331A] shrink-0" />
+            <div className="flex items-center gap-2 px-3 py-1.5 bg-[#FAFAFD] rounded-xl border border-[#EDEAE1]">
+              <Film className="w-4 h-4 text-purple-700 shrink-0" />
               <div className="overflow-hidden">
                 <div className="text-[9px] font-bold uppercase text-[#737A76]">
                   Preferred Multiplex
@@ -353,8 +353,8 @@ export default function MovieCoFriendPage() {
               </div>
             </div>
 
-            <div className="flex items-center gap-2 px-3 py-1.5 bg-[#FAF9F5] rounded-xl border border-[#EDEAE1]">
-              <Sparkles className="w-4 h-4 text-[#9E331A] shrink-0" />
+            <div className="flex items-center gap-2 px-3 py-1.5 bg-[#FAFAFD] rounded-xl border border-[#EDEAE1]">
+              <Sparkles className="w-4 h-4 text-purple-700 shrink-0" />
               <div className="overflow-hidden">
                 <div className="text-[9px] font-bold uppercase text-[#737A76]">
                   Language & Film
@@ -373,14 +373,14 @@ export default function MovieCoFriendPage() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
           {/* Left Sidebar Filters */}
           <aside className="lg:col-span-3 space-y-5">
-            <div className="bg-white rounded-2xl p-5 border border-[#E7E4DC] shadow-xs space-y-5">
+            <div className="bg-white rounded-2xl p-5 border border-purple-100/80 shadow-xs space-y-5">
               <div className="flex items-center justify-between pb-3 border-b border-[#F0EEE7]">
-                <span className="font-serif font-bold text-base text-[#171A19]">
+                <span className="font-outfit font-bold text-base text-[#171A19]">
                   Filters
                 </span>
                 <button
                   onClick={resetFilters}
-                  className="text-xs font-semibold text-[#9E331A] hover:underline flex items-center gap-1 cursor-pointer"
+                  className="text-xs font-semibold text-purple-700 hover:underline flex items-center gap-1 cursor-pointer"
                 >
                   <RotateCcw className="w-3 h-3" />
                   <span>Reset all</span>
@@ -409,7 +409,7 @@ export default function MovieCoFriendPage() {
                           type="checkbox"
                           checked={isChecked}
                           onChange={() => toggleZone(z)}
-                          className="mt-0.5 accent-[#9E331A] rounded"
+                          className="mt-0.5 accent-purple-600 rounded"
                         />
                         <span
                           className={`${
@@ -443,7 +443,7 @@ export default function MovieCoFriendPage() {
                         className={`w-full text-left px-3 py-2 rounded-xl text-xs font-medium transition-colors flex items-center justify-between cursor-pointer ${
                           isActive
                             ? "bg-[#171A19] text-white font-semibold"
-                            : "bg-[#FAF9F5] text-[#555C58] hover:bg-[#EAE7DD] border border-[#E7E4DC]"
+                            : "bg-[#FAFAFD] text-[#555C58] hover:bg-[#EAE7DD] border border-purple-100/80"
                         }`}
                       >
                         <span>{slot.label}</span>
@@ -458,7 +458,7 @@ export default function MovieCoFriendPage() {
               <div className="space-y-2.5">
                 <div className="flex items-center justify-between text-xs">
                   <label className="font-bold text-[#171A19]">Hourly Rate</label>
-                  <span className="font-bold text-[#9E331A]">
+                  <span className="font-bold text-purple-700">
                     ₹200 - ₹{maxRate}/hr
                   </span>
                 </div>
@@ -469,7 +469,7 @@ export default function MovieCoFriendPage() {
                   step={20}
                   value={maxRate}
                   onChange={(e) => setMaxRate(Number(e.target.value))}
-                  className="w-full accent-[#9E331A] cursor-pointer"
+                  className="w-full accent-purple-600 cursor-pointer"
                 />
                 <div className="flex justify-between text-[10px] text-[#737A76]">
                   <span>₹200/hr</span>
@@ -491,8 +491,8 @@ export default function MovieCoFriendPage() {
                         onClick={() => setSelectedDuration(dur)}
                         className={`py-1.5 rounded-lg text-xs font-semibold text-center transition-all cursor-pointer ${
                           isActive
-                            ? "bg-[#9E331A] text-white"
-                            : "bg-[#FAF9F5] text-[#555C58] hover:bg-[#EAE7DD] border border-[#E7E4DC]"
+                            ? "bg-purple-600 text-white"
+                            : "bg-[#FAFAFD] text-[#555C58] hover:bg-[#EAE7DD] border border-purple-100/80"
                         }`}
                       >
                         {dur}
@@ -517,7 +517,7 @@ export default function MovieCoFriendPage() {
                         className={`px-3 py-1 rounded-full text-xs font-semibold transition-all cursor-pointer ${
                           isActive
                             ? "bg-[#171A19] text-white"
-                            : "bg-[#FAF9F5] text-[#555C58] hover:bg-[#EAE7DD] border border-[#E7E4DC]"
+                            : "bg-[#FAFAFD] text-[#555C58] hover:bg-[#EAE7DD] border border-purple-100/80"
                         }`}
                       >
                         {lang}
@@ -536,12 +536,12 @@ export default function MovieCoFriendPage() {
                   <input
                     type="checkbox"
                     defaultChecked
-                    className="accent-[#9E331A] rounded"
+                    className="accent-purple-600 rounded"
                   />
                   <span>★ 4.8 & above (Top Rated)</span>
                 </label>
                 <label className="flex items-center gap-2 cursor-pointer">
-                  <input type="checkbox" className="accent-[#9E331A] rounded" />
+                  <input type="checkbox" className="accent-purple-600 rounded" />
                   <span>★ 4.5 & above</span>
                 </label>
                 <label className="flex items-center gap-2 cursor-pointer">
@@ -549,7 +549,7 @@ export default function MovieCoFriendPage() {
                     type="checkbox"
                     checked={verifiedOnly}
                     onChange={(e) => setVerifiedOnly(e.target.checked)}
-                    className="accent-[#9E331A] rounded"
+                    className="accent-purple-600 rounded"
                   />
                   <span>Police & Aadhaar Verified Only</span>
                 </label>
@@ -570,7 +570,7 @@ export default function MovieCoFriendPage() {
                 <span className="font-semibold text-[#171A19]">
                   Safety Hotline:
                 </span>
-                <span className="font-bold text-[#9E331A]">1800-COFRIEND</span>
+                <span className="font-bold text-purple-700">1800-COFRIEND</span>
               </div>
             </div>
           </aside>
@@ -579,17 +579,17 @@ export default function MovieCoFriendPage() {
           <section className="lg:col-span-9 space-y-6">
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
               <div className="flex items-center gap-2.5">
-                <h2 className="text-xl sm:text-2xl font-serif font-bold text-[#171A19]">
+                <h2 className="text-xl sm:text-2xl font-outfit font-bold text-[#171A19]">
                   Available Movie CoFriends
                 </h2>
-                <span className="px-2.5 py-0.5 rounded-full bg-[#FCECE8] text-[#9E331A] text-xs font-bold border border-[#F6D0C7]">
+                <span className="px-2.5 py-0.5 rounded-full bg-[#FCECE8] text-purple-700 text-xs font-bold border border-[#F6D0C7]">
                   14 Matching
                 </span>
               </div>
 
               <div className="flex items-center gap-2 text-xs">
                 <span className="text-[#737A76]">Sort by:</span>
-                <select className="bg-white border border-[#E7E4DC] rounded-xl px-2.5 py-1.5 font-semibold text-[#171A19] focus:outline-none cursor-pointer">
+                <select className="bg-white border border-purple-100/80 rounded-xl px-2.5 py-1.5 font-semibold text-[#171A19] focus:outline-none cursor-pointer">
                   <option>Highest Rated (Top Concierge)</option>
                   <option>Fastest Response Time</option>
                   <option>Price: Low to High</option>
@@ -603,7 +603,7 @@ export default function MovieCoFriendPage() {
               {filteredCompanions.map((comp) => (
                 <div
                   key={comp.id}
-                  className="bg-white rounded-2xl border border-[#E7E4DC] overflow-hidden shadow-xs hover:shadow-md transition-all flex flex-col justify-between group"
+                  className="bg-white rounded-2xl border border-purple-100/80 overflow-hidden shadow-xs hover:shadow-md transition-all flex flex-col justify-between group"
                 >
                   {/* Photo Thumbnail */}
                   <div className="relative aspect-[16/10] w-full bg-stone-200 overflow-hidden">
@@ -628,7 +628,7 @@ export default function MovieCoFriendPage() {
                     {/* Bottom Info on Image */}
                     <div className="absolute bottom-2.5 left-2.5 right-2.5 flex items-center justify-between text-white drop-shadow-sm">
                       <div>
-                        <h3 className="text-base font-serif font-bold leading-none">
+                        <h3 className="text-base font-outfit font-bold leading-none">
                           {comp.name}
                         </h3>
                         <span className="text-[10px] text-stone-200">
@@ -683,7 +683,7 @@ export default function MovieCoFriendPage() {
                         {comp.languages.map((lang, idx) => (
                           <span
                             key={idx}
-                            className="px-2 py-0.5 rounded bg-[#FAF9F5] border border-[#E7E4DC] text-[10.5px] font-medium text-[#4D5350]"
+                            className="px-2 py-0.5 rounded bg-[#FAFAFD] border border-purple-100/80 text-[10.5px] font-medium text-[#4D5350]"
                           >
                             {lang}
                           </span>
@@ -691,7 +691,7 @@ export default function MovieCoFriendPage() {
                       </div>
 
                       {/* Match Highlight */}
-                      <div className="p-2 rounded-lg bg-[#FAF9F5] border border-[#EDEAE1] text-[11px] text-[#1E7E34] font-medium flex items-center gap-1.5">
+                      <div className="p-2 rounded-lg bg-[#FAFAFD] border border-[#EDEAE1] text-[11px] text-[#1E7E34] font-medium flex items-center gap-1.5">
                         <Check className="w-3.5 h-3.5 shrink-0" />
                         <span className="truncate">{comp.matchHighlight}</span>
                       </div>
@@ -707,7 +707,7 @@ export default function MovieCoFriendPage() {
                             / hour
                           </span>
                         </div>
-                        <span className="text-[10px] font-bold uppercase tracking-wider text-[#9E331A]">
+                        <span className="text-[10px] font-bold uppercase tracking-wider text-purple-700">
                           {comp.tagType}
                         </span>
                       </div>
@@ -725,7 +725,7 @@ export default function MovieCoFriendPage() {
                               setActiveProfileModal(comp);
                             }
                           }}
-                          className="px-3 py-1.5 rounded-xl bg-[#FAF9F5] hover:bg-[#EAE7DD] border border-[#E7E4DC] text-xs font-semibold text-[#171A19] transition-all cursor-pointer"
+                          className="px-3 py-1.5 rounded-xl bg-[#FAFAFD] hover:bg-[#EAE7DD] border border-purple-100/80 text-xs font-semibold text-[#171A19] transition-all cursor-pointer"
                         >
                           View Profile
                         </Link>
@@ -741,7 +741,7 @@ export default function MovieCoFriendPage() {
                               setActiveProfileModal(comp);
                             }
                           }}
-                          className="px-4 py-1.5 rounded-xl bg-[#9E331A] hover:bg-[#852A14] text-white text-xs font-semibold transition-all shadow-xs active:scale-98 flex items-center gap-1 cursor-pointer"
+                          className="px-4 py-1.5 rounded-xl bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white text-xs font-semibold transition-all shadow-xs active:scale-98 flex items-center gap-1 cursor-pointer"
                         >
                           <span>Book Now</span>
                           <ArrowRight className="w-3 h-3" />
@@ -754,7 +754,7 @@ export default function MovieCoFriendPage() {
             </div>
 
             {/* Pagination / Load More Bar */}
-            <div className="p-4 bg-[#FAF9F5] rounded-2xl border border-[#E7E4DC] flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs">
+            <div className="p-4 bg-[#FAFAFD] rounded-2xl border border-purple-100/80 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs">
               <span className="text-[#737A76]">
                 Showing 4 of 14 verified CoFriends available for movies in Kolkata
               </span>
@@ -762,7 +762,7 @@ export default function MovieCoFriendPage() {
                 onClick={() =>
                   alert("Displaying all 14 verified Kolkata movie companions.")
                 }
-                className="font-semibold text-[#9E331A] hover:underline flex items-center gap-1 cursor-pointer self-start sm:self-auto"
+                className="font-semibold text-purple-700 hover:underline flex items-center gap-1 cursor-pointer self-start sm:self-auto"
               >
                 <span>Load More CoFriends in Kolkata</span>
                 <ChevronDown className="w-4 h-4" />
@@ -770,10 +770,10 @@ export default function MovieCoFriendPage() {
             </div>
 
             {/* Section: CoFriend 4-Tier Platonic Safety Protocol (3 cards) */}
-            <div className="bg-white rounded-3xl p-6 border border-[#E7E4DC] shadow-xs space-y-4">
+            <div className="bg-white rounded-3xl p-6 border border-purple-100/80 shadow-xs space-y-4">
               <div className="flex items-center gap-2">
                 <ShieldCheck className="w-5 h-5 text-emerald-600" />
-                <h3 className="text-base sm:text-lg font-serif font-bold text-[#171A19]">
+                <h3 className="text-base sm:text-lg font-outfit font-bold text-[#171A19]">
                   CoFriend 4-Tier Platonic Safety Protocol
                 </h3>
               </div>
@@ -782,8 +782,8 @@ export default function MovieCoFriendPage() {
               </p>
 
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4 pt-1">
-                <div className="bg-[#FAF9F5] rounded-xl p-3.5 border border-[#EDEAE1] space-y-1.5">
-                  <div className="text-xs font-bold text-[#9E331A] flex items-center gap-1">
+                <div className="bg-[#FAFAFD] rounded-xl p-3.5 border border-[#EDEAE1] space-y-1.5">
+                  <div className="text-xs font-bold text-purple-700 flex items-center gap-1">
                     <span>1. PUBLIC VENUE OTP</span>
                   </div>
                   <p className="text-[11px] text-[#555C58] leading-relaxed">
@@ -791,7 +791,7 @@ export default function MovieCoFriendPage() {
                   </p>
                 </div>
 
-                <div className="bg-[#FAF9F5] rounded-xl p-3.5 border border-[#EDEAE1] space-y-1.5">
+                <div className="bg-[#FAFAFD] rounded-xl p-3.5 border border-[#EDEAE1] space-y-1.5">
                   <div className="text-xs font-bold text-[#1E7E34] flex items-center gap-1">
                     <span>2. ZERO-PHYSICAL CONTACT</span>
                   </div>
@@ -800,7 +800,7 @@ export default function MovieCoFriendPage() {
                   </p>
                 </div>
 
-                <div className="bg-[#FAF9F5] rounded-xl p-3.5 border border-[#EDEAE1] space-y-1.5">
+                <div className="bg-[#FAFAFD] rounded-xl p-3.5 border border-[#EDEAE1] space-y-1.5">
                   <div className="text-xs font-bold text-[#B47414] flex items-center gap-1">
                     <span>3. REAL-TIME CONCIERGE SOS</span>
                   </div>
@@ -815,15 +815,15 @@ export default function MovieCoFriendPage() {
       </main>
 
       {/* Footer */}
-      <footer className="bg-[#FAF9F5] border-t border-[#E7E4DC] pt-12 pb-8 text-[#4D5350]">
+      <footer className="bg-[#FAFAFD] border-t border-purple-100/80 pt-12 pb-8 text-[#4D5350]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
             <div className="lg:col-span-2 space-y-4 pr-4">
               <Link href="/" className="flex items-baseline">
-                <span className="font-serif text-2xl font-bold tracking-tight text-[#171A19]">
+                <span className="font-outfit text-2xl font-bold tracking-tight text-[#171A19]">
                   CoFriend
                 </span>
-                <span className="font-sans text-lg font-bold text-[#9E331A]">
+                <span className="font-sans text-lg font-bold text-purple-700">
                   .in
                 </span>
               </Link>
@@ -834,7 +834,7 @@ export default function MovieCoFriendPage() {
                 walks, wellness retreats, and city discoveries.
               </p>
 
-              <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-[#FAF9F5] border border-[#DDD7CC] text-[11px] font-bold tracking-wider text-[#3D4440] uppercase">
+              <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-[#FAFAFD] border border-[#DDD7CC] text-[11px] font-bold tracking-wider text-[#3D4440] uppercase">
                 <ShieldCheck className="w-3.5 h-3.5 text-emerald-600" />
                 <span>100% Aadhaar & Background Verified Network</span>
               </div>
@@ -850,7 +850,7 @@ export default function MovieCoFriendPage() {
                     <li key={item}>
                       <Link
                         href="/services"
-                        className="hover:text-[#9E331A] transition-colors"
+                        className="hover:text-purple-700 transition-colors"
                       >
                         {item}
                       </Link>
@@ -875,7 +875,7 @@ export default function MovieCoFriendPage() {
                   <li key={item}>
                     <Link
                       href="/how-it-works"
-                      className="hover:text-[#9E331A] transition-colors"
+                      className="hover:text-purple-700 transition-colors"
                     >
                       {item}
                     </Link>
@@ -897,7 +897,7 @@ export default function MovieCoFriendPage() {
                   "Press & Media",
                 ].map((item) => (
                   <li key={item}>
-                    <a href="#" className="hover:text-[#9E331A] transition-colors">
+                    <a href="#" className="hover:text-purple-700 transition-colors">
                       {item}
                     </a>
                   </li>
@@ -906,7 +906,7 @@ export default function MovieCoFriendPage() {
             </div>
           </div>
 
-          <div className="pt-6 border-t border-[#EAE7DD] flex flex-col sm:flex-row items-center justify-between gap-3 text-[11px] text-[#78817D]">
+          <div className="pt-6 border-t border-purple-100/80 flex flex-col sm:flex-row items-center justify-between gap-3 text-[11px] text-[#78817D]">
             <div>
               © 2025 CoFriend Lifestyle Services Pvt. Ltd. Strict Platonic Policy
               Guaranteed. All rights reserved.
@@ -938,7 +938,7 @@ export default function MovieCoFriendPage() {
                 <div className="w-14 h-14 bg-emerald-50 text-emerald-600 rounded-full flex items-center justify-center mx-auto border border-emerald-200">
                   <CheckCircle2 className="w-8 h-8" />
                 </div>
-                <h3 className="text-2xl font-serif font-bold text-[#171A19]">
+                <h3 className="text-2xl font-outfit font-bold text-[#171A19]">
                   Movie Request Sent!
                 </h3>
                 <p className="text-xs text-[#555C58] leading-relaxed">
@@ -950,7 +950,7 @@ export default function MovieCoFriendPage() {
                     setActiveProfileModal(null);
                     setBookingSuccess(false);
                   }}
-                  className="w-full bg-[#9E331A] text-white py-2.5 rounded-xl text-sm font-semibold hover:bg-[#852A14] transition-colors"
+                  className="w-full bg-purple-600 text-white py-2.5 rounded-xl text-sm font-semibold hover:bg-purple-700 transition-colors"
                 >
                   Done
                 </button>
@@ -970,10 +970,10 @@ export default function MovieCoFriendPage() {
                     <span className="text-[10px] font-bold uppercase tracking-wider text-emerald-700">
                       {activeProfileModal.badgeLeft} • {activeProfileModal.locationArea}
                     </span>
-                    <h3 className="text-lg font-serif font-bold text-[#171A19]">
+                    <h3 className="text-lg font-outfit font-bold text-[#171A19]">
                       {activeProfileModal.name}
                     </h3>
-                    <div className="text-xs font-semibold text-[#9E331A]">
+                    <div className="text-xs font-semibold text-purple-700">
                       ₹{activeProfileModal.priceHourly} / hour{" "}
                       <span className="text-[#7A827E] font-normal">
                         ({activeProfileModal.rating.toFixed(2)} ⭐)
@@ -982,7 +982,7 @@ export default function MovieCoFriendPage() {
                   </div>
                 </div>
 
-                <div className="p-3 bg-[#FAF9F5] rounded-xl border border-[#EDE9E0] text-xs text-[#555C58] space-y-1.5">
+                <div className="p-3 bg-[#FAFAFD] rounded-xl border border-purple-100/80 text-xs text-[#555C58] space-y-1.5">
                   <div className="flex items-center gap-1.5 font-semibold text-[#171A19]">
                     <ShieldCheck className="w-4 h-4 text-emerald-600" />
                     <span>Multiplex Public Meeting Guarantee</span>
@@ -1000,7 +1000,7 @@ export default function MovieCoFriendPage() {
                     <input
                       type="text"
                       defaultValue="Interstellar Re-release • South City Mall INOX"
-                      className="w-full px-3 py-2 rounded-xl border border-[#DCD7CD] bg-white focus:outline-none focus:border-[#9E331A]"
+                      className="w-full px-3 py-2 rounded-xl border border-[#DCD7CD] bg-white focus:outline-none focus:border-purple-600"
                     />
                   </div>
 
@@ -1011,14 +1011,14 @@ export default function MovieCoFriendPage() {
                     <input
                       type="datetime-local"
                       defaultValue="2026-09-14T17:30"
-                      className="w-full px-3 py-2 rounded-xl border border-[#DCD7CD] bg-white focus:outline-none focus:border-[#9E331A]"
+                      className="w-full px-3 py-2 rounded-xl border border-[#DCD7CD] bg-white focus:outline-none focus:border-purple-600"
                     />
                   </div>
                 </div>
 
                 <button
                   onClick={() => setBookingSuccess(true)}
-                  className="w-full bg-[#9E331A] hover:bg-[#852A14] text-white py-3 rounded-xl font-semibold text-sm transition-all shadow-md active:scale-98 cursor-pointer mt-2"
+                  className="w-full bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white py-3 rounded-xl font-semibold text-sm transition-all shadow-md active:scale-98 cursor-pointer mt-2"
                 >
                   Confirm & Request Movie CoFriend
                 </button>

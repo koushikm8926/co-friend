@@ -236,16 +236,16 @@ export default function ExploreCoFriendsPage() {
   }, [searchQuery, selectedCity, selectedFee, selectedLanguage]);
 
   return (
-    <div className="min-h-screen bg-[#FAF9F5] text-[#1E2421] font-sans antialiased flex flex-col selection:bg-[#F2DDD7] selection:text-[#832913]">
+    <div className="min-h-screen bg-[#FAFAFD] text-[#1E2421] font-sans antialiased flex flex-col selection:bg-[#F3E8FF] selection:text-[#7C3AED]">
       {/* Top Navbar */}
-      <header className="sticky top-0 z-40 bg-[#FAF9F5]/90 backdrop-blur-md border-b border-[#EAE8E0]">
+      <header className="sticky top-0 z-40 bg-[#FAFAFD]/90 backdrop-blur-md border-b border-purple-100/80">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-18 flex items-center justify-between">
           <div className="flex items-center gap-2">
             <Link href="/" className="flex items-baseline group">
-              <span className="font-serif text-2xl sm:text-3xl font-bold tracking-tight text-[#171A19]">
+              <span className="font-outfit text-2xl sm:text-3xl font-bold tracking-tight text-[#171A19]">
                 CoFriend
               </span>
-              <span className="font-sans text-xl font-bold text-[#A8381E]">
+              <span className="font-sans text-xl font-bold text-purple-600">
                 .in
               </span>
             </Link>
@@ -263,7 +263,7 @@ export default function ExploreCoFriendsPage() {
             </Link>
             <Link
               href="/explore"
-              className="text-[#171A19] font-semibold py-1 border-b-2 border-[#A8381E]"
+              className="text-[#171A19] font-semibold py-1 border-b-2 border-purple-600"
             >
               Explore CoFriends
             </Link>
@@ -290,7 +290,7 @@ export default function ExploreCoFriendsPage() {
           <div className="flex items-center gap-3">
             <Link
               href="/#become-cofriend"
-              className="bg-[#9E331A] hover:bg-[#852A14] text-white px-4.5 py-2.5 rounded-full text-sm font-semibold tracking-wide transition-all shadow-sm hover:shadow active:scale-98 flex items-center gap-2 cursor-pointer"
+              className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white px-4.5 py-2.5 rounded-full text-sm font-semibold tracking-wide transition-all shadow-sm hover:shadow active:scale-98 flex items-center gap-2 cursor-pointer"
             >
               <span>Become a CoFriend</span>
             </Link>
@@ -313,12 +313,12 @@ export default function ExploreCoFriendsPage() {
 
           <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6">
             <div className="space-y-2">
-              <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#FCECE8] border border-[#F6D0C7] text-[#9E331A] text-[11px] font-bold tracking-wider uppercase">
+              <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#FCECE8] border border-[#F6D0C7] text-purple-700 text-[11px] font-bold tracking-wider uppercase">
                 <ShieldCheck className="w-3.5 h-3.5" />
                 <span>Platonic Lifestyle Concierge • India</span>
               </div>
 
-              <h1 className="text-3xl sm:text-4xl lg:text-[44px] leading-tight font-serif tracking-tight text-[#171A19]">
+              <h1 className="text-3xl sm:text-4xl lg:text-[44px] leading-tight font-outfit tracking-tight text-[#171A19]">
                 Meet verified CoFriends for your next experience.
               </h1>
 
@@ -330,9 +330,9 @@ export default function ExploreCoFriendsPage() {
             </div>
 
             {/* 3 Stat Badges Card */}
-            <div className="bg-white rounded-2xl p-4 sm:p-5 border border-[#E7E4DC] shadow-xs shrink-0 grid grid-cols-3 gap-4 sm:gap-6 text-center lg:min-w-[420px]">
+            <div className="bg-white rounded-2xl p-4 sm:p-5 border border-purple-100/80 shadow-xs shrink-0 grid grid-cols-3 gap-4 sm:gap-6 text-center lg:min-w-[420px]">
               <div className="space-y-0.5">
-                <div className="text-xl sm:text-2xl font-serif font-bold text-[#171A19]">
+                <div className="text-xl sm:text-2xl font-outfit font-bold text-[#171A19]">
                   1,200+
                 </div>
                 <div className="text-[10px] sm:text-[11px] font-bold uppercase tracking-wider text-[#737A76]">
@@ -341,7 +341,7 @@ export default function ExploreCoFriendsPage() {
               </div>
 
               <div className="space-y-0.5 border-x border-[#F0EEE7] px-2">
-                <div className="text-xl sm:text-2xl font-serif font-bold text-[#171A19] flex items-center justify-center gap-1">
+                <div className="text-xl sm:text-2xl font-outfit font-bold text-[#171A19] flex items-center justify-center gap-1">
                   <span>4.92</span>
                   <span className="text-xs font-normal text-[#737A76]">/5</span>
                 </div>
@@ -351,7 +351,7 @@ export default function ExploreCoFriendsPage() {
               </div>
 
               <div className="space-y-0.5">
-                <div className="text-xl sm:text-2xl font-serif font-bold text-[#171A19]">
+                <div className="text-xl sm:text-2xl font-outfit font-bold text-[#171A19]">
                   18,400+
                 </div>
                 <div className="text-[10px] sm:text-[11px] font-bold uppercase tracking-wider text-[#737A76]">
@@ -363,7 +363,7 @@ export default function ExploreCoFriendsPage() {
         </div>
 
         {/* Search & Multi-Filter Control Bar */}
-        <div className="bg-white rounded-3xl p-4 sm:p-5 border border-[#E7E4DC] shadow-xs space-y-4">
+        <div className="bg-white rounded-3xl p-4 sm:p-5 border border-purple-100/80 shadow-xs space-y-4">
           {/* Search Inputs Row */}
           <div className="grid grid-cols-1 md:grid-cols-12 gap-3 items-center">
             <div className="md:col-span-6 relative flex items-center">
@@ -373,7 +373,7 @@ export default function ExploreCoFriendsPage() {
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 placeholder="Search by hobby, interest, cinema, food, outdoor, language..."
-                className="w-full pl-10 pr-4 py-2.5 bg-[#FAF9F5] border border-[#E5E2DA] rounded-xl text-xs sm:text-sm text-[#1E2421] placeholder-[#8A918D] focus:outline-none focus:border-[#9E331A]"
+                className="w-full pl-10 pr-4 py-2.5 bg-[#FAFAFD] border border-[#E5E2DA] rounded-xl text-xs sm:text-sm text-[#1E2421] placeholder-[#8A918D] focus:outline-none focus:border-purple-600"
               />
               {searchQuery && (
                 <button
@@ -386,8 +386,8 @@ export default function ExploreCoFriendsPage() {
             </div>
 
             {/* City Dropdown */}
-            <div className="md:col-span-3 flex items-center gap-2 px-3 py-2 bg-[#FAF9F5] rounded-xl border border-[#E5E2DA]">
-              <MapPin className="w-4 h-4 text-[#9E331A] shrink-0" />
+            <div className="md:col-span-3 flex items-center gap-2 px-3 py-2 bg-[#FAFAFD] rounded-xl border border-[#E5E2DA]">
+              <MapPin className="w-4 h-4 text-purple-700 shrink-0" />
               <div className="flex-1 overflow-hidden">
                 <div className="text-[9px] font-bold uppercase text-[#737A76]">
                   City:
@@ -409,8 +409,8 @@ export default function ExploreCoFriendsPage() {
             </div>
 
             {/* Service Dropdown */}
-            <div className="md:col-span-3 flex items-center gap-2 px-3 py-2 bg-[#FAF9F5] rounded-xl border border-[#E5E2DA]">
-              <Sparkles className="w-4 h-4 text-[#9E331A] shrink-0" />
+            <div className="md:col-span-3 flex items-center gap-2 px-3 py-2 bg-[#FAFAFD] rounded-xl border border-[#E5E2DA]">
+              <Sparkles className="w-4 h-4 text-purple-700 shrink-0" />
               <div className="flex-1 overflow-hidden">
                 <div className="text-[9px] font-bold uppercase text-[#737A76]">
                   Service:
@@ -452,7 +452,7 @@ export default function ExploreCoFriendsPage() {
                     className={`px-2.5 py-1 rounded-full text-[11px] font-medium transition-colors cursor-pointer ${
                       isActive
                         ? "bg-[#171A19] text-white"
-                        : "bg-[#FAF9F5] text-[#555C58] hover:bg-[#EAE7DD] border border-[#E7E4DC]"
+                        : "bg-[#FAFAFD] text-[#555C58] hover:bg-[#EAE7DD] border border-purple-100/80"
                     }`}
                   >
                     {item}
@@ -474,8 +474,8 @@ export default function ExploreCoFriendsPage() {
                     onClick={() => setSelectedFee(item)}
                     className={`px-2.5 py-1 rounded-full text-[11px] font-medium transition-colors cursor-pointer ${
                       isActive
-                        ? "bg-[#9E331A] text-white font-semibold"
-                        : "bg-[#FAF9F5] text-[#555C58] hover:bg-[#EAE7DD] border border-[#E7E4DC]"
+                        ? "bg-purple-600 text-white font-semibold"
+                        : "bg-[#FAFAFD] text-[#555C58] hover:bg-[#EAE7DD] border border-purple-100/80"
                     }`}
                   >
                     {item}
@@ -509,8 +509,8 @@ export default function ExploreCoFriendsPage() {
                     onClick={() => setSelectedLanguage(isActive ? "" : lang)}
                     className={`px-2.5 py-0.5 rounded-md text-[11px] font-medium transition-colors cursor-pointer ${
                       isActive
-                        ? "bg-[#FCECE8] text-[#9E331A] font-bold border border-[#F6D0C7]"
-                        : "bg-[#FAF9F5] text-[#555C58] hover:bg-[#EAE7DD] border border-[#E7E4DC]"
+                        ? "bg-[#FCECE8] text-purple-700 font-bold border border-[#F6D0C7]"
+                        : "bg-[#FAFAFD] text-[#555C58] hover:bg-[#EAE7DD] border border-purple-100/80"
                     }`}
                   >
                     {lang}
@@ -545,14 +545,14 @@ export default function ExploreCoFriendsPage() {
         </div>
 
         {/* Middle Banner: Why Urban India Trusts CoFriend.in */}
-        <div className="bg-[#FAF7EE] rounded-3xl p-6 sm:p-8 border border-[#EAE5D8] space-y-6">
+        <div className="bg-[#FAF5FF] rounded-3xl p-6 sm:p-8 border border-purple-100/80 space-y-6">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
             {/* Left Header */}
             <div className="lg:col-span-4 space-y-2">
               <div className="text-[10.5px] font-bold uppercase tracking-widest text-[#B47414]">
                 The CoFriend Platonic Standard
               </div>
-              <h2 className="text-2xl font-serif font-bold text-[#171A19]">
+              <h2 className="text-2xl font-outfit font-bold text-[#171A19]">
                 Why Urban India Trusts CoFriend.in
               </h2>
               <p className="text-xs text-[#555C58] leading-relaxed">
@@ -567,7 +567,7 @@ export default function ExploreCoFriendsPage() {
                 <div className="w-8 h-8 rounded-full bg-[#EBF7EE] text-[#1E7E34] flex items-center justify-center">
                   <ShieldCheck className="w-4 h-4" />
                 </div>
-                <h4 className="text-xs font-serif font-bold text-[#171A19]">
+                <h4 className="text-xs font-outfit font-bold text-[#171A19]">
                   Dual ID Verification
                 </h4>
                 <p className="text-[11px] text-[#555C58] leading-relaxed">
@@ -580,7 +580,7 @@ export default function ExploreCoFriendsPage() {
                 <div className="w-8 h-8 rounded-full bg-[#FEF6E9] text-[#B47414] flex items-center justify-center">
                   <Lock className="w-4 h-4" />
                 </div>
-                <h4 className="text-xs font-serif font-bold text-[#171A19]">
+                <h4 className="text-xs font-outfit font-bold text-[#171A19]">
                   Strictly Platonic
                 </h4>
                 <p className="text-[11px] text-[#555C58] leading-relaxed">
@@ -590,10 +590,10 @@ export default function ExploreCoFriendsPage() {
               </div>
 
               <div className="bg-white rounded-2xl p-4 border border-[#E5E2DA] shadow-xs space-y-2">
-                <div className="w-8 h-8 rounded-full bg-[#FCECE8] text-[#9E331A] flex items-center justify-center">
+                <div className="w-8 h-8 rounded-full bg-[#FCECE8] text-purple-700 flex items-center justify-center">
                   <Headphones className="w-4 h-4" />
                 </div>
-                <h4 className="text-xs font-serif font-bold text-[#171A19]">
+                <h4 className="text-xs font-outfit font-bold text-[#171A19]">
                   Concierge Helpline
                 </h4>
                 <p className="text-[11px] text-[#555C58] leading-relaxed">
@@ -617,7 +617,7 @@ export default function ExploreCoFriendsPage() {
         </div>
 
         {/* Pagination & Jump Bar */}
-        <div className="bg-white rounded-2xl p-4 border border-[#E7E4DC] flex flex-col sm:flex-row items-center justify-between gap-4 text-xs">
+        <div className="bg-white rounded-2xl p-4 border border-purple-100/80 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs">
           <span className="text-[#737A76]">
             Showing 1-8 of 1,248 verified CoFriends
           </span>
@@ -625,7 +625,7 @@ export default function ExploreCoFriendsPage() {
           <div className="flex items-center gap-1.5 font-semibold">
             <button
               onClick={() => setCurrentPage(Math.max(1, currentPage - 1))}
-              className="p-1.5 rounded-lg border border-[#E7E4DC] hover:bg-[#FAF9F5] text-[#555C58] cursor-pointer"
+              className="p-1.5 rounded-lg border border-purple-100/80 hover:bg-[#FAFAFD] text-[#555C58] cursor-pointer"
             >
               <ChevronLeft className="w-4 h-4" />
             </button>
@@ -633,8 +633,8 @@ export default function ExploreCoFriendsPage() {
               onClick={() => setCurrentPage(1)}
               className={`w-8 h-8 rounded-lg ${
                 currentPage === 1
-                  ? "bg-[#9E331A] text-white"
-                  : "border border-[#E7E4DC] text-[#171A19]"
+                  ? "bg-purple-600 text-white"
+                  : "border border-purple-100/80 text-[#171A19]"
               }`}
             >
               1
@@ -643,8 +643,8 @@ export default function ExploreCoFriendsPage() {
               onClick={() => setCurrentPage(2)}
               className={`w-8 h-8 rounded-lg ${
                 currentPage === 2
-                  ? "bg-[#9E331A] text-white"
-                  : "border border-[#E7E4DC] text-[#171A19]"
+                  ? "bg-purple-600 text-white"
+                  : "border border-purple-100/80 text-[#171A19]"
               }`}
             >
               2
@@ -653,8 +653,8 @@ export default function ExploreCoFriendsPage() {
               onClick={() => setCurrentPage(3)}
               className={`w-8 h-8 rounded-lg ${
                 currentPage === 3
-                  ? "bg-[#9E331A] text-white"
-                  : "border border-[#E7E4DC] text-[#171A19]"
+                  ? "bg-purple-600 text-white"
+                  : "border border-purple-100/80 text-[#171A19]"
               }`}
             >
               3
@@ -662,13 +662,13 @@ export default function ExploreCoFriendsPage() {
             <span className="px-1 text-[#737A76]">...</span>
             <button
               onClick={() => setCurrentPage(156)}
-              className="w-8 h-8 rounded-lg border border-[#E7E4DC] text-[#171A19]"
+              className="w-8 h-8 rounded-lg border border-purple-100/80 text-[#171A19]"
             >
               156
             </button>
             <button
               onClick={() => setCurrentPage(currentPage + 1)}
-              className="p-1.5 rounded-lg border border-[#E7E4DC] hover:bg-[#FAF9F5] text-[#555C58] cursor-pointer"
+              className="p-1.5 rounded-lg border border-purple-100/80 hover:bg-[#FAFAFD] text-[#555C58] cursor-pointer"
             >
               <ChevronRight className="w-4 h-4" />
             </button>
@@ -679,22 +679,22 @@ export default function ExploreCoFriendsPage() {
             <input
               type="text"
               defaultValue="1"
-              className="w-10 px-2 py-1 border border-[#E7E4DC] rounded-lg text-center font-semibold text-[#171A19] focus:outline-none"
+              className="w-10 px-2 py-1 border border-purple-100/80 rounded-lg text-center font-semibold text-[#171A19] focus:outline-none"
             />
           </div>
         </div>
       </main>
 
       {/* Footer */}
-      <footer className="bg-[#FAF9F5] border-t border-[#E7E4DC] pt-12 pb-8 text-[#4D5350]">
+      <footer className="bg-[#FAFAFD] border-t border-purple-100/80 pt-12 pb-8 text-[#4D5350]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
             <div className="lg:col-span-2 space-y-4 pr-4">
               <Link href="/" className="flex items-baseline">
-                <span className="font-serif text-2xl font-bold tracking-tight text-[#171A19]">
+                <span className="font-outfit text-2xl font-bold tracking-tight text-[#171A19]">
                   CoFriend
                 </span>
-                <span className="font-sans text-lg font-bold text-[#9E331A]">
+                <span className="font-sans text-lg font-bold text-purple-700">
                   .in
                 </span>
               </Link>
@@ -705,7 +705,7 @@ export default function ExploreCoFriendsPage() {
                 walks, wellness retreats, and city discoveries.
               </p>
 
-              <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-[#FAF9F5] border border-[#DDD7CC] text-[11px] font-bold tracking-wider text-[#3D4440] uppercase">
+              <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-[#FAFAFD] border border-[#DDD7CC] text-[11px] font-bold tracking-wider text-[#3D4440] uppercase">
                 <ShieldCheck className="w-3.5 h-3.5 text-emerald-600" />
                 <span>100% Aadhaar & Background Verified Network</span>
               </div>
@@ -721,7 +721,7 @@ export default function ExploreCoFriendsPage() {
                     <li key={item}>
                       <Link
                         href="/services"
-                        className="hover:text-[#9E331A] transition-colors"
+                        className="hover:text-purple-700 transition-colors"
                       >
                         {item}
                       </Link>
@@ -746,7 +746,7 @@ export default function ExploreCoFriendsPage() {
                   <li key={item}>
                     <Link
                       href="/how-it-works"
-                      className="hover:text-[#9E331A] transition-colors"
+                      className="hover:text-purple-700 transition-colors"
                     >
                       {item}
                     </Link>
@@ -768,7 +768,7 @@ export default function ExploreCoFriendsPage() {
                   "Press & Media",
                 ].map((item) => (
                   <li key={item}>
-                    <a href="#" className="hover:text-[#9E331A] transition-colors">
+                    <a href="#" className="hover:text-purple-700 transition-colors">
                       {item}
                     </a>
                   </li>
@@ -777,7 +777,7 @@ export default function ExploreCoFriendsPage() {
             </div>
           </div>
 
-          <div className="pt-6 border-t border-[#EAE7DD] flex flex-col sm:flex-row items-center justify-between gap-3 text-[11px] text-[#78817D]">
+          <div className="pt-6 border-t border-purple-100/80 flex flex-col sm:flex-row items-center justify-between gap-3 text-[11px] text-[#78817D]">
             <div>
               © 2025 CoFriend Lifestyle Services Pvt. Ltd. Strict Platonic Policy
               Guaranteed. All rights reserved.
@@ -809,7 +809,7 @@ export default function ExploreCoFriendsPage() {
                 <div className="w-14 h-14 bg-emerald-50 text-emerald-600 rounded-full flex items-center justify-center mx-auto border border-emerald-200">
                   <CheckCircle2 className="w-8 h-8" />
                 </div>
-                <h3 className="text-2xl font-serif font-bold text-[#171A19]">
+                <h3 className="text-2xl font-outfit font-bold text-[#171A19]">
                   Request Sent to {selectedProfile.name}!
                 </h3>
                 <p className="text-xs text-[#555C58] leading-relaxed">
@@ -822,7 +822,7 @@ export default function ExploreCoFriendsPage() {
                     setSelectedProfile(null);
                     setBookingSent(false);
                   }}
-                  className="w-full bg-[#9E331A] text-white py-2.5 rounded-xl text-sm font-semibold hover:bg-[#852A14] transition-colors"
+                  className="w-full bg-purple-600 text-white py-2.5 rounded-xl text-sm font-semibold hover:bg-purple-700 transition-colors"
                 >
                   Done
                 </button>
@@ -842,13 +842,13 @@ export default function ExploreCoFriendsPage() {
                     <span className="text-[10px] font-bold uppercase tracking-wider text-emerald-700">
                       Aadhaar Verified • {selectedProfile.location}
                     </span>
-                    <h3 className="text-lg font-serif font-bold text-[#171A19]">
+                    <h3 className="text-lg font-outfit font-bold text-[#171A19]">
                       {selectedProfile.name},{" "}
                       <span className="text-sm font-normal text-[#737A76]">
                         Age {selectedProfile.age}
                       </span>
                     </h3>
-                    <div className="text-xs font-semibold text-[#9E331A]">
+                    <div className="text-xs font-semibold text-purple-700">
                       ₹{selectedProfile.priceHourly} / hour{" "}
                       <span className="text-[#7A827E] font-normal">
                         ({selectedProfile.minDuration})
@@ -857,7 +857,7 @@ export default function ExploreCoFriendsPage() {
                   </div>
                 </div>
 
-                <div className="p-3 bg-[#FAF9F5] rounded-xl border border-[#EDE9E0] text-xs text-[#555C58] space-y-1.5">
+                <div className="p-3 bg-[#FAFAFD] rounded-xl border border-purple-100/80 text-xs text-[#555C58] space-y-1.5">
                   <div className="flex items-center gap-1.5 font-semibold text-[#171A19]">
                     <ShieldCheck className="w-4 h-4 text-emerald-600" />
                     <span>Platonic Outing Assurance</span>
@@ -876,7 +876,7 @@ export default function ExploreCoFriendsPage() {
                     <input
                       type="text"
                       defaultValue={selectedProfile.tags.join(" & ")}
-                      className="w-full px-3 py-2 rounded-xl border border-[#DCD7CD] bg-white focus:outline-none focus:border-[#9E331A]"
+                      className="w-full px-3 py-2 rounded-xl border border-[#DCD7CD] bg-white focus:outline-none focus:border-purple-600"
                     />
                   </div>
 
@@ -887,14 +887,14 @@ export default function ExploreCoFriendsPage() {
                     <input
                       type="datetime-local"
                       defaultValue="2026-09-14T16:00"
-                      className="w-full px-3 py-2 rounded-xl border border-[#DCD7CD] bg-white focus:outline-none focus:border-[#9E331A]"
+                      className="w-full px-3 py-2 rounded-xl border border-[#DCD7CD] bg-white focus:outline-none focus:border-purple-600"
                     />
                   </div>
                 </div>
 
                 <button
                   onClick={() => setBookingSent(true)}
-                  className="w-full bg-[#9E331A] hover:bg-[#852A14] text-white py-3 rounded-xl font-semibold text-sm transition-all shadow-md active:scale-98 cursor-pointer mt-2"
+                  className="w-full bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white py-3 rounded-xl font-semibold text-sm transition-all shadow-md active:scale-98 cursor-pointer mt-2"
                 >
                   Confirm & Request CoFriend
                 </button>
@@ -915,7 +915,7 @@ function ProfileCard({
   onBook: () => void;
 }) {
   return (
-    <div className="bg-white rounded-2xl border border-[#E7E4DC] overflow-hidden shadow-xs hover:shadow-md transition-all flex flex-col justify-between group">
+    <div className="bg-white rounded-2xl border border-purple-100/80 overflow-hidden shadow-xs hover:shadow-md transition-all flex flex-col justify-between group">
       {/* Thumbnail */}
       <div className="relative aspect-[4/4.8] w-full bg-stone-200 overflow-hidden">
         <Image
@@ -961,7 +961,7 @@ function ProfileCard({
           <div>
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-1.5">
-                <h3 className="text-base font-serif font-bold text-[#171A19]">
+                <h3 className="text-base font-outfit font-bold text-[#171A19]">
                   {profile.name}
                 </h3>
                 <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
@@ -978,7 +978,7 @@ function ProfileCard({
             {profile.tags.map((tag, idx) => (
               <span
                 key={idx}
-                className="px-2 py-0.5 rounded bg-[#FAF9F5] border border-[#E7E4DC] text-[10px] font-semibold text-[#4D5350]"
+                className="px-2 py-0.5 rounded bg-[#FAFAFD] border border-purple-100/80 text-[10px] font-semibold text-[#4D5350]"
               >
                 {tag}
               </span>
@@ -1004,14 +1004,14 @@ function ProfileCard({
           {profile.id === "ananya" ? (
             <Link
               href="/profile/ananya-sharma"
-              className="bg-[#9E331A] hover:bg-[#852A14] text-white px-4 py-1.5 rounded-xl text-xs font-semibold transition-all shadow-xs active:scale-98 cursor-pointer text-center"
+              className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white px-4 py-1.5 rounded-xl text-xs font-semibold transition-all shadow-xs active:scale-98 cursor-pointer text-center"
             >
               Book
             </Link>
           ) : (
             <button
               onClick={onBook}
-              className="bg-[#9E331A] hover:bg-[#852A14] text-white px-4 py-1.5 rounded-xl text-xs font-semibold transition-all shadow-xs active:scale-98 cursor-pointer"
+              className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white px-4 py-1.5 rounded-xl text-xs font-semibold transition-all shadow-xs active:scale-98 cursor-pointer"
             >
               Book
             </button>

@@ -75,9 +75,9 @@ export default function HowItWorksPage() {
   };
 
   return (
-    <div className="min-h-screen bg-[#FAF9F5] text-[#1E2421] font-sans antialiased flex flex-col selection:bg-[#F2DDD7] selection:text-[#832913]">
+    <div className="min-h-screen bg-[#FAFAFD] text-[#1E2421] font-sans antialiased flex flex-col selection:bg-[#F3E8FF] selection:text-[#7C3AED]">
       {/* Top Notice Bar */}
-      <div className="bg-[#FFF9E6] border-b border-[#F4E3A8] px-4 py-1.5 text-center text-[11px] sm:text-xs font-semibold text-[#8F6200] tracking-wide flex items-center justify-center gap-2">
+      <div className="bg-[#FAF5FF] border-b border-[#F4E3A8] px-4 py-1.5 text-center text-[11px] sm:text-xs font-semibold text-purple-700 tracking-wide flex items-center justify-center gap-2">
         <span>
           🛡 100% STRICT PLATONIC & IDENTITY VERIFIED NETWORK • ALL COMPANIONS GO
           THROUGH 4-STEP POLICE & AADHAAR BACKGROUND CHECKS
@@ -85,14 +85,14 @@ export default function HowItWorksPage() {
       </div>
 
       {/* Top Navbar */}
-      <header className="sticky top-0 z-40 bg-[#FAF9F5]/90 backdrop-blur-md border-b border-[#EAE8E0]">
+      <header className="sticky top-0 z-40 bg-[#FAFAFD]/90 backdrop-blur-md border-b border-purple-100/80">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-18 flex items-center justify-between">
           <div className="flex items-center gap-2">
             <Link href="/" className="flex items-baseline group">
-              <span className="font-serif text-2xl sm:text-3xl font-bold tracking-tight text-[#171A19]">
+              <span className="font-outfit text-2xl sm:text-3xl font-bold tracking-tight text-[#171A19]">
                 CoFriend
               </span>
-              <span className="font-sans text-xl font-bold text-[#A8381E]">
+              <span className="font-sans text-xl font-bold text-purple-600">
                 .in
               </span>
             </Link>
@@ -122,7 +122,7 @@ export default function HowItWorksPage() {
             </Link>
             <Link
               href="/how-it-works"
-              className="text-[#171A19] font-semibold py-1 border-b-2 border-[#A8381E]"
+              className="text-[#171A19] font-semibold py-1 border-b-2 border-purple-600"
             >
               How it Works
             </Link>
@@ -137,7 +137,7 @@ export default function HowItWorksPage() {
           <div className="flex items-center gap-3">
             <Link
               href="/#become-cofriend"
-              className="bg-[#9E331A] hover:bg-[#852A14] text-white px-4.5 py-2.5 rounded-full text-sm font-semibold tracking-wide transition-all shadow-sm hover:shadow active:scale-98 flex items-center gap-2 cursor-pointer"
+              className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white px-4.5 py-2.5 rounded-full text-sm font-semibold tracking-wide transition-all shadow-sm hover:shadow active:scale-98 flex items-center gap-2 cursor-pointer"
             >
               <span>Become a CoFriend</span>
             </Link>
@@ -150,12 +150,12 @@ export default function HowItWorksPage() {
 
       {/* Hero Header */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 pb-8 space-y-4 text-center sm:text-left">
-        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#FCECE8] border border-[#F6D0C7] text-[#9E331A] text-[11px] font-bold tracking-wider uppercase">
+        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#FCECE8] border border-[#F6D0C7] text-purple-700 text-[11px] font-bold tracking-wider uppercase">
           <ShieldCheck className="w-3.5 h-3.5" />
           <span>Platonic Companionship Concierge</span>
         </div>
 
-        <h1 className="text-3xl sm:text-4xl lg:text-[46px] leading-tight font-serif tracking-tight text-[#171A19]">
+        <h1 className="text-3xl sm:text-4xl lg:text-[46px] leading-tight font-outfit tracking-tight text-[#171A19]">
           A better way to find company for your plans.
         </h1>
 
@@ -166,7 +166,7 @@ export default function HowItWorksPage() {
         </p>
 
         {/* Verification Banner */}
-        <div className="p-3.5 bg-white rounded-2xl border border-[#E7E4DC] shadow-xs flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-[#555C58]">
+        <div className="p-3.5 bg-white rounded-2xl border border-purple-100/80 shadow-xs flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-[#555C58]">
           <div className="flex items-center gap-2">
             <ShieldCheck className="w-5 h-5 text-emerald-600 shrink-0" />
             <span>
@@ -177,7 +177,7 @@ export default function HowItWorksPage() {
           </div>
           <Link
             href="/services"
-            className="text-[#9E331A] font-semibold hover:underline shrink-0 flex items-center gap-1"
+            className="text-purple-700 font-semibold hover:underline shrink-0 flex items-center gap-1"
           >
             <span>Learn More</span>
             <ArrowRight className="w-3.5 h-3.5" />
@@ -188,12 +188,12 @@ export default function HowItWorksPage() {
       {/* Main Flow: The 5-Step Concierge Flow */}
       <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-16">
         <section className="space-y-10">
-          <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 border-b border-[#EAE7DD] pb-4">
+          <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 border-b border-purple-100/80 pb-4">
             <div>
               <div className="text-[11px] font-bold uppercase tracking-widest text-[#737A76]">
                 Step-by-Step Walkthrough
               </div>
-              <h2 className="text-2xl sm:text-3xl font-serif font-bold text-[#171A19]">
+              <h2 className="text-2xl sm:text-3xl font-outfit font-bold text-[#171A19]">
                 The 5-Step Concierge Flow
               </h2>
             </div>
@@ -206,17 +206,17 @@ export default function HowItWorksPage() {
           {/* 5 Vertical Flow Rows */}
           <div className="space-y-8">
             {/* Step 1 */}
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center bg-white rounded-3xl p-6 border border-[#E7E4DC] shadow-xs">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center bg-white rounded-3xl p-6 border border-purple-100/80 shadow-xs">
               <div className="lg:col-span-6 space-y-3">
                 <div className="flex items-center gap-3">
-                  <span className="w-8 h-8 rounded-full bg-[#9E331A] text-white flex items-center justify-center font-serif font-bold text-sm">
+                  <span className="w-8 h-8 rounded-full bg-purple-600 text-white flex items-center justify-center font-outfit font-bold text-sm">
                     1
                   </span>
-                  <span className="text-xs font-bold uppercase tracking-wider text-[#9E331A]">
+                  <span className="text-xs font-bold uppercase tracking-wider text-purple-700">
                     Step 01
                   </span>
                 </div>
-                <h3 className="text-xl font-serif font-bold text-[#171A19]">
+                <h3 className="text-xl font-outfit font-bold text-[#171A19]">
                   Choose a Service
                 </h3>
                 <p className="text-xs sm:text-sm text-[#555C58] leading-relaxed">
@@ -233,7 +233,7 @@ export default function HowItWorksPage() {
                         className={`px-3 py-1 rounded-full text-xs font-semibold transition-all ${
                           activeTabCategory === cat
                             ? "bg-[#171A19] text-white"
-                            : "bg-[#FAF9F5] text-[#555C58] border border-[#E7E4DC]"
+                            : "bg-[#FAFAFD] text-[#555C58] border border-purple-100/80"
                         }`}
                       >
                         {cat}
@@ -244,9 +244,9 @@ export default function HowItWorksPage() {
               </div>
 
               {/* Visual Mockup for Step 1 */}
-              <div className="lg:col-span-6 bg-[#FAF9F5] rounded-2xl p-4 border border-[#EDEAE1] grid grid-cols-2 gap-3">
+              <div className="lg:col-span-6 bg-[#FAFAFD] rounded-2xl p-4 border border-[#EDEAE1] grid grid-cols-2 gap-3">
                 <div className="p-3 bg-white rounded-xl border border-[#E5E2DA] shadow-xs space-y-1">
-                  <Film className="w-5 h-5 text-[#9E331A]" />
+                  <Film className="w-5 h-5 text-purple-700" />
                   <div className="text-xs font-bold text-[#171A19]">Movie CoFriend</div>
                   <div className="text-[10px] text-[#737A76]">Multiplex & Arthouse</div>
                 </div>
@@ -269,17 +269,17 @@ export default function HowItWorksPage() {
             </div>
 
             {/* Step 2 */}
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center bg-white rounded-3xl p-6 border border-[#E7E4DC] shadow-xs">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center bg-white rounded-3xl p-6 border border-purple-100/80 shadow-xs">
               <div className="lg:col-span-6 space-y-3">
                 <div className="flex items-center gap-3">
-                  <span className="w-8 h-8 rounded-full bg-[#9E331A] text-white flex items-center justify-center font-serif font-bold text-sm">
+                  <span className="w-8 h-8 rounded-full bg-purple-600 text-white flex items-center justify-center font-outfit font-bold text-sm">
                     2
                   </span>
-                  <span className="text-xs font-bold uppercase tracking-wider text-[#9E331A]">
+                  <span className="text-xs font-bold uppercase tracking-wider text-purple-700">
                     Step 02
                   </span>
                 </div>
-                <h3 className="text-xl font-serif font-bold text-[#171A19]">
+                <h3 className="text-xl font-outfit font-bold text-[#171A19]">
                   Find a Verified CoFriend
                 </h3>
                 <p className="text-xs sm:text-sm text-[#555C58] leading-relaxed">
@@ -294,7 +294,7 @@ export default function HowItWorksPage() {
               </div>
 
               {/* Visual Mockup for Step 2 */}
-              <div className="lg:col-span-6 bg-[#FAF9F5] rounded-2xl p-4 border border-[#EDEAE1]">
+              <div className="lg:col-span-6 bg-[#FAFAFD] rounded-2xl p-4 border border-[#EDEAE1]">
                 <div className="bg-white rounded-xl p-3.5 border border-[#E5E2DA] shadow-xs flex items-center justify-between">
                   <div className="flex items-center gap-3">
                     <div className="relative w-12 h-12 rounded-xl overflow-hidden bg-stone-200 shrink-0">
@@ -318,7 +318,7 @@ export default function HowItWorksPage() {
                     </div>
                   </div>
                   <div className="text-right">
-                    <div className="text-sm font-bold text-[#9E331A]">₹350/hr</div>
+                    <div className="text-sm font-bold text-purple-700">₹350/hr</div>
                     <span className="text-[10px] text-emerald-600 font-medium">
                       Available Today
                     </span>
@@ -328,17 +328,17 @@ export default function HowItWorksPage() {
             </div>
 
             {/* Step 3 */}
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center bg-white rounded-3xl p-6 border border-[#E7E4DC] shadow-xs">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center bg-white rounded-3xl p-6 border border-purple-100/80 shadow-xs">
               <div className="lg:col-span-6 space-y-3">
                 <div className="flex items-center gap-3">
-                  <span className="w-8 h-8 rounded-full bg-[#9E331A] text-white flex items-center justify-center font-serif font-bold text-sm">
+                  <span className="w-8 h-8 rounded-full bg-purple-600 text-white flex items-center justify-center font-outfit font-bold text-sm">
                     3
                   </span>
-                  <span className="text-xs font-bold uppercase tracking-wider text-[#9E331A]">
+                  <span className="text-xs font-bold uppercase tracking-wider text-purple-700">
                     Step 03
                   </span>
                 </div>
-                <h3 className="text-xl font-serif font-bold text-[#171A19]">
+                <h3 className="text-xl font-outfit font-bold text-[#171A19]">
                   Select Date, Time & Duration
                 </h3>
                 <p className="text-xs sm:text-sm text-[#555C58] leading-relaxed">
@@ -346,16 +346,16 @@ export default function HowItWorksPage() {
                   pricing calculates exactly what you pay before checkout with no surge
                   pricing.
                 </p>
-                <div className="p-2.5 rounded-xl bg-[#FAF9F5] border border-[#EDEAE1] text-xs text-[#555C58]">
+                <div className="p-2.5 rounded-xl bg-[#FAFAFD] border border-[#EDEAE1] text-xs text-[#555C58]">
                   <strong>Kolkata South City Mall INOX</strong> • Sat, 14 Dec • 4:00 PM (3 hrs)
                 </div>
               </div>
 
               {/* Visual Mockup for Step 3: Estimator */}
-              <div className="lg:col-span-6 bg-[#FAF9F5] rounded-2xl p-4 border border-[#EDEAE1] space-y-2 text-xs">
+              <div className="lg:col-span-6 bg-[#FAFAFD] rounded-2xl p-4 border border-[#EDEAE1] space-y-2 text-xs">
                 <div className="flex justify-between font-semibold text-[#171A19] pb-2 border-b border-[#E5E2DA]">
                   <span>Outing Booking Breakdown</span>
-                  <span className="text-[#9E331A]">3 Hours Outing</span>
+                  <span className="text-purple-700">3 Hours Outing</span>
                 </div>
                 <div className="flex justify-between text-[#555C58]">
                   <span>Companion Base Rate (₹350 × 3 hrs)</span>
@@ -367,23 +367,23 @@ export default function HowItWorksPage() {
                 </div>
                 <div className="flex justify-between font-bold text-[#171A19] pt-2 border-t border-[#E5E2DA] text-sm">
                   <span>Total Payable</span>
-                  <span className="text-[#9E331A]">₹1,250.00</span>
+                  <span className="text-purple-700">₹1,250.00</span>
                 </div>
               </div>
             </div>
 
             {/* Step 4 */}
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center bg-white rounded-3xl p-6 border border-[#E7E4DC] shadow-xs">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center bg-white rounded-3xl p-6 border border-purple-100/80 shadow-xs">
               <div className="lg:col-span-6 space-y-3">
                 <div className="flex items-center gap-3">
-                  <span className="w-8 h-8 rounded-full bg-[#9E331A] text-white flex items-center justify-center font-serif font-bold text-sm">
+                  <span className="w-8 h-8 rounded-full bg-purple-600 text-white flex items-center justify-center font-outfit font-bold text-sm">
                     4
                   </span>
-                  <span className="text-xs font-bold uppercase tracking-wider text-[#9E331A]">
+                  <span className="text-xs font-bold uppercase tracking-wider text-purple-700">
                     Step 04
                   </span>
                 </div>
-                <h3 className="text-xl font-serif font-bold text-[#171A19]">
+                <h3 className="text-xl font-outfit font-bold text-[#171A19]">
                   Book & Pay with Escrow Protection
                 </h3>
                 <p className="text-xs sm:text-sm text-[#555C58] leading-relaxed">
@@ -398,7 +398,7 @@ export default function HowItWorksPage() {
               </div>
 
               {/* Visual Mockup for Step 4 */}
-              <div className="lg:col-span-6 bg-[#FAF9F5] rounded-2xl p-4 border border-[#EDEAE1] flex items-center gap-4">
+              <div className="lg:col-span-6 bg-[#FAFAFD] rounded-2xl p-4 border border-[#EDEAE1] flex items-center gap-4">
                 <div className="w-12 h-12 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center shrink-0">
                   <CreditCard className="w-6 h-6" />
                 </div>
@@ -415,17 +415,17 @@ export default function HowItWorksPage() {
             </div>
 
             {/* Step 5 */}
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center bg-white rounded-3xl p-6 border border-[#E7E4DC] shadow-xs">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center bg-white rounded-3xl p-6 border border-purple-100/80 shadow-xs">
               <div className="lg:col-span-6 space-y-3">
                 <div className="flex items-center gap-3">
-                  <span className="w-8 h-8 rounded-full bg-[#9E331A] text-white flex items-center justify-center font-serif font-bold text-sm">
+                  <span className="w-8 h-8 rounded-full bg-purple-600 text-white flex items-center justify-center font-outfit font-bold text-sm">
                     5
                   </span>
-                  <span className="text-xs font-bold uppercase tracking-wider text-[#9E331A]">
+                  <span className="text-xs font-bold uppercase tracking-wider text-purple-700">
                     Step 05
                   </span>
                 </div>
-                <h3 className="text-xl font-serif font-bold text-[#171A19]">
+                <h3 className="text-xl font-outfit font-bold text-[#171A19]">
                   Meet, Complete with Dual OTP & Review
                 </h3>
                 <p className="text-xs sm:text-sm text-[#555C58] leading-relaxed">
@@ -435,8 +435,8 @@ export default function HowItWorksPage() {
                 </p>
                 <div className="flex items-center gap-3 pt-1">
                   <div className="p-2 rounded-xl bg-[#FCECE8] border border-[#F6D0C7] text-center min-w-[100px]">
-                    <div className="text-[9px] font-bold text-[#9E331A]">GUEST OTP</div>
-                    <div className="text-lg font-mono font-bold text-[#9E331A]">4892</div>
+                    <div className="text-[9px] font-bold text-purple-700">GUEST OTP</div>
+                    <div className="text-lg font-mono font-bold text-purple-700">4892</div>
                   </div>
                   <div className="p-2 rounded-xl bg-[#EBF7EE] border border-[#CEEAD6] text-center min-w-[100px]">
                     <div className="text-[9px] font-bold text-[#1E7E34]">HOST OTP</div>
@@ -446,7 +446,7 @@ export default function HowItWorksPage() {
               </div>
 
               {/* Visual Mockup for Step 5 */}
-              <div className="lg:col-span-6 bg-[#FAF9F5] rounded-2xl p-4 border border-[#EDEAE1] space-y-2">
+              <div className="lg:col-span-6 bg-[#FAFAFD] rounded-2xl p-4 border border-[#EDEAE1] space-y-2">
                 <div className="flex items-center justify-between text-xs font-semibold text-[#171A19]">
                   <span>Outing Completed Successfully</span>
                   <span className="text-emerald-700">Verified</span>
@@ -466,11 +466,11 @@ export default function HowItWorksPage() {
         </section>
 
         {/* Editorial Quote Card */}
-        <section className="bg-[#FAF7EE] rounded-3xl p-8 border border-[#EAE5D8] text-center max-w-3xl mx-auto space-y-3">
+        <section className="bg-[#FAF5FF] rounded-3xl p-8 border border-purple-100/80 text-center max-w-3xl mx-auto space-y-3">
           <div className="text-amber-700 text-xs font-bold tracking-widest uppercase">
             Platonic Charter Policy
           </div>
-          <blockquote className="text-lg sm:text-xl font-serif italic text-[#171A19] leading-relaxed">
+          <blockquote className="text-lg sm:text-xl font-outfit italic text-[#171A19] leading-relaxed">
             “True companionship isn&apos;t transactional or intrusive. It is
             courteous, reliable presence for the moments in life you&apos;d rather
             share.”
@@ -486,17 +486,17 @@ export default function HowItWorksPage() {
             <div className="text-[11px] font-bold uppercase tracking-widest text-[#737A76]">
               Trust Architecture
             </div>
-            <h2 className="text-2xl sm:text-3xl font-serif font-bold text-[#171A19]">
+            <h2 className="text-2xl sm:text-3xl font-outfit font-bold text-[#171A19]">
               Built from the ground up for absolute comfort & safety.
             </h2>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-            <div className="bg-white rounded-2xl p-5 border border-[#E7E4DC] shadow-xs space-y-2.5">
+            <div className="bg-white rounded-2xl p-5 border border-purple-100/80 shadow-xs space-y-2.5">
               <div className="w-10 h-10 rounded-full bg-[#EBF7EE] text-[#1E7E34] flex items-center justify-center">
                 <ShieldCheck className="w-5 h-5" />
               </div>
-              <h3 className="text-base font-serif font-bold text-[#171A19]">
+              <h3 className="text-base font-outfit font-bold text-[#171A19]">
                 100% ID & Police Background Check
               </h3>
               <p className="text-xs text-[#555C58] leading-relaxed">
@@ -505,11 +505,11 @@ export default function HowItWorksPage() {
               </p>
             </div>
 
-            <div className="bg-white rounded-2xl p-5 border border-[#E7E4DC] shadow-xs space-y-2.5">
+            <div className="bg-white rounded-2xl p-5 border border-purple-100/80 shadow-xs space-y-2.5">
               <div className="w-10 h-10 rounded-full bg-[#FEF6E9] text-[#B47414] flex items-center justify-center">
                 <PhoneCall className="w-5 h-5" />
               </div>
-              <h3 className="text-base font-serif font-bold text-[#171A19]">
+              <h3 className="text-base font-outfit font-bold text-[#171A19]">
                 Real-time Safety Concierge
               </h3>
               <p className="text-xs text-[#555C58] leading-relaxed">
@@ -518,11 +518,11 @@ export default function HowItWorksPage() {
               </p>
             </div>
 
-            <div className="bg-white rounded-2xl p-5 border border-[#E7E4DC] shadow-xs space-y-2.5">
+            <div className="bg-white rounded-2xl p-5 border border-purple-100/80 shadow-xs space-y-2.5">
               <div className="w-10 h-10 rounded-full bg-[#EFF2EB] text-[#171A19] flex items-center justify-center">
                 <MapPin className="w-5 h-5" />
               </div>
-              <h3 className="text-base font-serif font-bold text-[#171A19]">
+              <h3 className="text-base font-outfit font-bold text-[#171A19]">
                 Public Locations First
               </h3>
               <p className="text-xs text-[#555C58] leading-relaxed">
@@ -531,11 +531,11 @@ export default function HowItWorksPage() {
               </p>
             </div>
 
-            <div className="bg-white rounded-2xl p-5 border border-[#E7E4DC] shadow-xs space-y-2.5">
-              <div className="w-10 h-10 rounded-full bg-[#FCECE8] text-[#9E331A] flex items-center justify-center">
+            <div className="bg-white rounded-2xl p-5 border border-purple-100/80 shadow-xs space-y-2.5">
+              <div className="w-10 h-10 rounded-full bg-[#FCECE8] text-purple-700 flex items-center justify-center">
                 <HeartHandshake className="w-5 h-5" />
               </div>
-              <h3 className="text-base font-serif font-bold text-[#171A19]">
+              <h3 className="text-base font-outfit font-bold text-[#171A19]">
                 Zero-Pressure Guarantee
               </h3>
               <p className="text-xs text-[#555C58] leading-relaxed">
@@ -547,15 +547,15 @@ export default function HowItWorksPage() {
         </section>
 
         {/* Masked Privacy Section */}
-        <section className="bg-white rounded-3xl p-6 sm:p-8 md:p-10 border border-[#E7E4DC] shadow-xs">
+        <section className="bg-white rounded-3xl p-6 sm:p-8 md:p-10 border border-purple-100/80 shadow-xs">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
             <div className="lg:col-span-7 space-y-4">
               <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#F5F3EB] text-[#4D5350] text-xs font-semibold">
-                <EyeOff className="w-3.5 h-3.5 text-[#9E331A]" />
+                <EyeOff className="w-3.5 h-3.5 text-purple-700" />
                 <span>Privacy by Design</span>
               </div>
 
-              <h2 className="text-2xl sm:text-3xl font-serif font-bold text-[#171A19] leading-snug">
+              <h2 className="text-2xl sm:text-3xl font-outfit font-bold text-[#171A19] leading-snug">
                 Your phone number and private records stay shielded. Always.
               </h2>
 
@@ -585,7 +585,7 @@ export default function HowItWorksPage() {
               </div>
             </div>
 
-            <div className="lg:col-span-5 relative aspect-[4/3] rounded-2xl overflow-hidden bg-stone-200 border border-[#E7E4DC]">
+            <div className="lg:col-span-5 relative aspect-[4/3] rounded-2xl overflow-hidden bg-stone-200 border border-purple-100/80">
               <Image
                 src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=800&q=80"
                 alt="Friends chatting safely"
@@ -602,7 +602,7 @@ export default function HowItWorksPage() {
             <div className="text-[11px] font-bold uppercase tracking-widest text-[#737A76]">
               Common Questions
             </div>
-            <h2 className="text-2xl sm:text-3xl font-serif font-bold text-[#171A19]">
+            <h2 className="text-2xl sm:text-3xl font-outfit font-bold text-[#171A19]">
               Frequently Asked Questions
             </h2>
             <p className="text-xs sm:text-sm text-[#555C58]">
@@ -616,17 +616,17 @@ export default function HowItWorksPage() {
               return (
                 <div
                   key={index}
-                  className="bg-white rounded-2xl border border-[#E7E4DC] overflow-hidden shadow-xs transition-colors"
+                  className="bg-white rounded-2xl border border-purple-100/80 overflow-hidden shadow-xs transition-colors"
                 >
                   <button
                     onClick={() => toggleFaq(index)}
-                    className="w-full text-left p-4 sm:p-5 flex items-center justify-between gap-4 cursor-pointer hover:bg-[#FAF9F5] transition-colors"
+                    className="w-full text-left p-4 sm:p-5 flex items-center justify-between gap-4 cursor-pointer hover:bg-[#FAFAFD] transition-colors"
                   >
-                    <span className="font-serif font-bold text-sm sm:text-base text-[#171A19]">
+                    <span className="font-outfit font-bold text-sm sm:text-base text-[#171A19]">
                       {faq.question}
                     </span>
                     {isOpen ? (
-                      <ChevronUp className="w-4 h-4 text-[#9E331A] shrink-0" />
+                      <ChevronUp className="w-4 h-4 text-purple-700 shrink-0" />
                     ) : (
                       <ChevronDown className="w-4 h-4 text-[#737A76] shrink-0" />
                     )}
@@ -644,12 +644,12 @@ export default function HowItWorksPage() {
         </section>
 
         {/* CTA Banner */}
-        <section className="bg-[#9E331A] rounded-3xl p-8 sm:p-10 text-white text-center space-y-5 shadow-lg">
+        <section className="bg-purple-600 rounded-3xl p-8 sm:p-10 text-white text-center space-y-5 shadow-lg">
           <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/15 text-white text-[11px] font-bold uppercase tracking-wider">
             <span>Verified Social Companionship Across India</span>
           </div>
 
-          <h2 className="text-3xl sm:text-4xl font-serif font-bold leading-tight max-w-xl mx-auto">
+          <h2 className="text-3xl sm:text-4xl font-outfit font-bold leading-tight max-w-xl mx-auto">
             Ready to plan your next outing?
           </h2>
 
@@ -661,7 +661,7 @@ export default function HowItWorksPage() {
           <div className="flex flex-wrap items-center justify-center gap-3 pt-2">
             <Link
               href="/available-now"
-              className="bg-white text-[#9E331A] hover:bg-stone-100 px-6 py-3 rounded-full text-xs sm:text-sm font-semibold transition-all shadow-md active:scale-98"
+              className="bg-white text-purple-700 hover:bg-stone-100 px-6 py-3 rounded-full text-xs sm:text-sm font-semibold transition-all shadow-md active:scale-98"
             >
               Book a CoFriend in 45 Mins
             </Link>
@@ -676,15 +676,15 @@ export default function HowItWorksPage() {
       </main>
 
       {/* Footer */}
-      <footer className="bg-[#FAF9F5] border-t border-[#E7E4DC] pt-12 pb-8 text-[#4D5350]">
+      <footer className="bg-[#FAFAFD] border-t border-purple-100/80 pt-12 pb-8 text-[#4D5350]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
             <div className="lg:col-span-2 space-y-4 pr-4">
               <Link href="/" className="flex items-baseline">
-                <span className="font-serif text-2xl font-bold tracking-tight text-[#171A19]">
+                <span className="font-outfit text-2xl font-bold tracking-tight text-[#171A19]">
                   CoFriend
                 </span>
-                <span className="font-sans text-lg font-bold text-[#9E331A]">
+                <span className="font-sans text-lg font-bold text-purple-700">
                   .in
                 </span>
               </Link>
@@ -695,7 +695,7 @@ export default function HowItWorksPage() {
                 walks, wellness retreats, and city discoveries.
               </p>
 
-              <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-[#FAF9F5] border border-[#DDD7CC] text-[11px] font-bold tracking-wider text-[#3D4440] uppercase">
+              <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-[#FAFAFD] border border-[#DDD7CC] text-[11px] font-bold tracking-wider text-[#3D4440] uppercase">
                 <ShieldCheck className="w-3.5 h-3.5 text-emerald-600" />
                 <span>100% Aadhaar & Background Verified Network</span>
               </div>
@@ -711,7 +711,7 @@ export default function HowItWorksPage() {
                     <li key={item}>
                       <Link
                         href="/services"
-                        className="hover:text-[#9E331A] transition-colors"
+                        className="hover:text-purple-700 transition-colors"
                       >
                         {item}
                       </Link>
@@ -736,7 +736,7 @@ export default function HowItWorksPage() {
                   <li key={item}>
                     <Link
                       href="/how-it-works"
-                      className="hover:text-[#9E331A] transition-colors"
+                      className="hover:text-purple-700 transition-colors"
                     >
                       {item}
                     </Link>
@@ -758,7 +758,7 @@ export default function HowItWorksPage() {
                   "Press & Media",
                 ].map((item) => (
                   <li key={item}>
-                    <a href="#" className="hover:text-[#9E331A] transition-colors">
+                    <a href="#" className="hover:text-purple-700 transition-colors">
                       {item}
                     </a>
                   </li>
@@ -767,7 +767,7 @@ export default function HowItWorksPage() {
             </div>
           </div>
 
-          <div className="pt-6 border-t border-[#EAE7DD] flex flex-col sm:flex-row items-center justify-between gap-3 text-[11px] text-[#78817D]">
+          <div className="pt-6 border-t border-purple-100/80 flex flex-col sm:flex-row items-center justify-between gap-3 text-[11px] text-[#78817D]">
             <div>
               © 2025 CoFriend Lifestyle Services Pvt. Ltd. Strict Platonic Policy
               Guaranteed. All rights reserved.

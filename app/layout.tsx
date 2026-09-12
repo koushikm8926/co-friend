@@ -1,6 +1,12 @@
-import type { Metadata } from "next";
-import { Plus_Jakarta_Sans, Playfair_Display } from "next/font/google";
+import type { Metadata, Viewport } from "next";
+import { Outfit, Plus_Jakarta_Sans, DM_Sans } from "next/font/google";
 import "./globals.css";
+
+const outfit = Outfit({
+  variable: "--font-outfit",
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700", "800", "900"],
+});
 
 const plusJakartaSans = Plus_Jakarta_Sans({
   variable: "--font-sans",
@@ -8,17 +14,20 @@ const plusJakartaSans = Plus_Jakarta_Sans({
   weight: ["300", "400", "500", "600", "700", "800"],
 });
 
-const playfair = Playfair_Display({
-  variable: "--font-serif",
+const dmSans = DM_Sans({
+  variable: "--font-body",
   subsets: ["latin"],
   weight: ["400", "500", "600", "700", "800"],
-  style: ["normal", "italic"],
 });
 
+export const viewport: Viewport = {
+  themeColor: "#7C3AED",
+};
+
 export const metadata: Metadata = {
-  title: "CoFriend.in | Verified Lifestyle Companion Services",
+  title: "Co-Friend — Life's Better Together | Book Verified Companions in India",
   description:
-    "Curated catalog of 100% platonic & identity-verified lifestyle companion services across Indian metro hubs.",
+    "Co-Friend — India's verified companion marketplace. Book trusted people for movies, coffee, travel, events, elder care, fitness and more. Life's Better Together.",
 };
 
 export default function RootLayout({
@@ -29,11 +38,12 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${plusJakartaSans.variable} ${playfair.variable} h-full antialiased`}
+      className={`${outfit.variable} ${plusJakartaSans.variable} ${dmSans.variable} h-full antialiased`}
     >
-      <body className="min-h-full font-sans bg-[#FAF9F5] text-[#1F2421]">
+      <body className="min-h-full font-sans bg-[#FAFAFD] text-[#0F172A] selection:bg-[#F3E8FF] selection:text-[#7C3AED]">
         {children}
       </body>
     </html>
   );
 }
+

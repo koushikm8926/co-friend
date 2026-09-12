@@ -335,22 +335,22 @@ export default function ServicesPage() {
   const activeCuration = METRO_CITIES[selectedMetro] || METRO_CITIES["Kolkata"];
 
   return (
-    <div className="min-h-screen bg-[#FAF9F5] text-[#1E2421] font-sans antialiased flex flex-col selection:bg-[#F2DDD7] selection:text-[#832913]">
+    <div className="min-h-screen bg-[#FAFAFD] text-[#1E2421] font-sans antialiased flex flex-col selection:bg-[#F3E8FF] selection:text-[#7C3AED]">
       {/* Top Notice Bar */}
-      <div className="bg-[#FFF9E6] border-b border-[#F4E3A8] px-4 py-1.5 text-center text-[11px] sm:text-xs font-semibold text-[#8F6200] tracking-wide flex items-center justify-center gap-2">
+      <div className="bg-[#FAF5FF] border-b border-[#F4E3A8] px-4 py-1.5 text-center text-[11px] sm:text-xs font-semibold text-purple-700 tracking-wide flex items-center justify-center gap-2">
         <span>🛡 100% STRICT PLATONIC & IDENTITY VERIFIED NETWORK • ALL COMPANIONS GO THROUGH 4-STEP POLICE & AADHAAR BACKGROUND CHECKS</span>
       </div>
 
       {/* Top Navbar */}
-      <header className="sticky top-0 z-40 bg-[#FAF9F5]/90 backdrop-blur-md border-b border-[#EAE8E0]">
+      <header className="sticky top-0 z-40 bg-[#FAFAFD]/90 backdrop-blur-md border-b border-purple-100/80">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-18 flex items-center justify-between">
           {/* Brand Logo */}
           <div className="flex items-center gap-2">
             <Link href="/" className="flex items-baseline group">
-              <span className="font-serif text-2xl sm:text-3xl font-bold tracking-tight text-[#171A19]">
+              <span className="font-outfit text-2xl sm:text-3xl font-bold tracking-tight text-[#171A19]">
                 CoFriend
               </span>
-              <span className="font-sans text-xl font-bold text-[#A8381E]">
+              <span className="font-sans text-xl font-bold text-purple-600">
                 .in
               </span>
             </Link>
@@ -366,7 +366,7 @@ export default function ServicesPage() {
             </Link>
             <Link
               href="/services"
-              className="text-[#171A19] font-semibold py-1 border-b-2 border-[#A8381E]"
+              className="text-[#171A19] font-semibold py-1 border-b-2 border-purple-600"
             >
               Services
             </Link>
@@ -398,7 +398,7 @@ export default function ServicesPage() {
 
           {/* Right Action */}
           <div className="flex items-center gap-3">
-            <Link href="/#become-cofriend" className="bg-[#9E331A] hover:bg-[#852A14] text-white px-4.5 py-2.5 rounded-full text-sm font-semibold tracking-wide transition-all shadow-sm hover:shadow active:scale-98 flex items-center gap-2">
+            <Link href="/#become-cofriend" className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white px-4.5 py-2.5 rounded-full text-sm font-semibold tracking-wide transition-all shadow-sm hover:shadow active:scale-98 flex items-center gap-2">
               <span>Become a CoFriend</span>
             </Link>
             <div className="w-9 h-9 rounded-full bg-[#E5DFD4] border border-[#D5CDBC] flex items-center justify-center text-xs font-semibold text-[#5A5043] cursor-pointer hover:bg-[#DDD6C9] transition-colors">
@@ -418,15 +418,15 @@ export default function ServicesPage() {
             <span className="text-[#1E2421] font-semibold">Services</span>
           </div>
 
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#FCECE8] border border-[#F6D0C7] text-[#9E331A] text-[11px] font-bold tracking-wider uppercase">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#9E331A] animate-pulse"></span>
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#FCECE8] border border-[#F6D0C7] text-purple-700 text-[11px] font-bold tracking-wider uppercase">
+            <span className="w-1.5 h-1.5 rounded-full bg-purple-600 animate-pulse"></span>
             <span>Curated Catalog • 100% Platonic & Identity Verified</span>
           </div>
 
           <div className="space-y-2">
-            <h1 className="text-3xl sm:text-4xl lg:text-[44px] leading-tight font-serif tracking-tight text-[#171A19]">
+            <h1 className="text-3xl sm:text-4xl lg:text-[44px] leading-tight font-outfit tracking-tight text-[#171A19]">
               Find the right{" "}
-              <span className="font-serif italic text-[#9E331A] font-normal">
+              <span className="font-outfit italic text-purple-700 font-normal">
                 CoFriend
               </span>{" "}
               for your plans
@@ -440,7 +440,7 @@ export default function ServicesPage() {
         </div>
 
         {/* Search & Location Bar */}
-        <div className="bg-white rounded-2xl shadow-xs border border-[#E7E4DC] p-2.5 sm:p-3 space-y-3">
+        <div className="bg-white rounded-2xl shadow-xs border border-purple-100/80 p-2.5 sm:p-3 space-y-3">
           <div className="flex flex-col md:flex-row items-stretch md:items-center gap-2">
             {/* Search Input */}
             <div className="relative flex-1 flex items-center">
@@ -469,10 +469,10 @@ export default function ServicesPage() {
               <button
                 type="button"
                 onClick={() => setIsLocationOpen(!isLocationOpen)}
-                className="w-full flex items-center justify-between px-3 py-2 text-left hover:bg-[#FAF9F5] rounded-xl transition-colors"
+                className="w-full flex items-center justify-between px-3 py-2 text-left hover:bg-[#FAFAFD] rounded-xl transition-colors"
               >
                 <div className="flex items-center gap-2 overflow-hidden">
-                  <MapPin className="w-4 h-4 text-[#9E331A] shrink-0" />
+                  <MapPin className="w-4 h-4 text-purple-700 shrink-0" />
                   <div>
                     <div className="text-[10px] font-bold uppercase tracking-wider text-[#8A918D]">
                       Location
@@ -487,7 +487,7 @@ export default function ServicesPage() {
 
               {/* Location Menu Dropdown */}
               {isLocationOpen && (
-                <div className="absolute top-full mt-2 left-0 w-full bg-white rounded-xl shadow-lg border border-[#E7E4DC] py-1.5 z-50 animate-in fade-in zoom-in-95 duration-100">
+                <div className="absolute top-full mt-2 left-0 w-full bg-white rounded-xl shadow-lg border border-purple-100/80 py-1.5 z-50 animate-in fade-in zoom-in-95 duration-100">
                   {[
                     "All Metro Hubs (India)",
                     "Kolkata",
@@ -504,13 +504,13 @@ export default function ServicesPage() {
                       }}
                       className={`w-full text-left px-3.5 py-2 text-xs font-medium transition-colors flex items-center justify-between ${
                         selectedLocation === city
-                          ? "bg-[#FDF4F1] text-[#9E331A] font-semibold"
-                          : "text-[#3D4440] hover:bg-[#FAF9F5]"
+                          ? "bg-purple-50 text-purple-700 font-semibold"
+                          : "text-[#3D4440] hover:bg-[#FAFAFD]"
                       }`}
                     >
                       <span>{city}</span>
                       {selectedLocation === city && (
-                        <CheckCircle2 className="w-3.5 h-3.5 text-[#9E331A]" />
+                        <CheckCircle2 className="w-3.5 h-3.5 text-purple-700" />
                       )}
                     </button>
                   ))}
@@ -524,7 +524,7 @@ export default function ServicesPage() {
                 const el = document.getElementById("catalog-section");
                 el?.scrollIntoView({ behavior: "smooth" });
               }}
-              className="bg-[#9E331A] hover:bg-[#852A14] text-white px-5 py-2.5 rounded-xl text-xs sm:text-sm font-semibold flex items-center justify-center gap-2 transition-all shadow-xs cursor-pointer active:scale-98"
+              className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white px-5 py-2.5 rounded-xl text-xs sm:text-sm font-semibold flex items-center justify-center gap-2 transition-all shadow-xs cursor-pointer active:scale-98"
             >
               <SlidersHorizontal className="w-4 h-4" />
               <span>Find Companions</span>
@@ -563,7 +563,7 @@ export default function ServicesPage() {
         <section id="catalog-section" className="space-y-6 pt-2">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
             <div className="flex items-center gap-3">
-              <h2 className="text-xl sm:text-2xl font-serif font-bold text-[#171A19]">
+              <h2 className="text-xl sm:text-2xl font-outfit font-bold text-[#171A19]">
                 Available Companion Formats
               </h2>
               <span className="px-2.5 py-0.5 rounded-full bg-[#EBF7EE] text-[#1E7E34] text-xs font-semibold border border-[#CEEAD6]">
@@ -594,7 +594,7 @@ export default function ServicesPage() {
                   setSelectedCategory("all");
                   setSelectedLocation("All Metro Hubs (India)");
                 }}
-                className="mt-2 text-xs font-semibold text-[#9E331A] hover:underline"
+                className="mt-2 text-xs font-semibold text-purple-700 hover:underline"
               >
                 Reset all filters
               </button>
@@ -604,7 +604,7 @@ export default function ServicesPage() {
               {filteredCompanions.map((card) => (
                 <div
                   key={card.id}
-                  className="bg-white rounded-2xl border border-[#E7E4DC] overflow-hidden shadow-xs hover:shadow-md transition-all duration-200 flex flex-col group"
+                  className="bg-white rounded-2xl border border-purple-100/80 overflow-hidden shadow-xs hover:shadow-md transition-all duration-200 flex flex-col group"
                 >
                   {/* Card Thumbnail with Badges */}
                   <div className="relative aspect-[16/10] w-full bg-stone-200 overflow-hidden">
@@ -644,7 +644,7 @@ export default function ServicesPage() {
                   <div className="p-4 flex-1 flex flex-col justify-between space-y-3">
                     <div className="space-y-1.5">
                       <div className="flex items-start justify-between gap-2">
-                        <h3 className="text-base font-serif font-bold text-[#171A19] group-hover:text-[#9E331A] transition-colors leading-snug">
+                        <h3 className="text-base font-outfit font-bold text-[#171A19] group-hover:text-purple-700 transition-colors leading-snug">
                           {card.title}
                         </h3>
                         <div className="flex items-center gap-1 shrink-0 text-xs font-semibold text-[#1E2421]">
@@ -667,7 +667,7 @@ export default function ServicesPage() {
                         <div className="text-[10px] text-[#7A827E] uppercase tracking-wider">
                           Starting at
                         </div>
-                        <div className="text-base font-bold text-[#9E331A]">
+                        <div className="text-base font-bold text-purple-700">
                           ₹{card.priceHourly}
                           <span className="text-xs font-normal text-[#555C58]">
                             {" "}
@@ -678,7 +678,7 @@ export default function ServicesPage() {
 
                       <button
                         onClick={() => setBookingModalCompanion(card)}
-                        className="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg bg-[#FAF9F5] hover:bg-[#F2DDD7] text-[#1E2421] hover:text-[#9E331A] text-xs font-semibold border border-[#E7E4DC] hover:border-[#E5B5A8] transition-all cursor-pointer"
+                        className="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg bg-[#FAFAFD] hover:bg-[#F2DDD7] text-[#1E2421] hover:text-purple-700 text-xs font-semibold border border-purple-100/80 hover:border-[#E5B5A8] transition-all cursor-pointer"
                       >
                         <span>Book</span>
                         <ArrowRight className="w-3 h-3" />
@@ -698,7 +698,7 @@ export default function ServicesPage() {
               <div className="text-[11px] font-bold uppercase tracking-widest text-[#667269]">
                 Local Curations
               </div>
-              <h2 className="text-2xl sm:text-3xl font-serif font-bold text-[#171A19]">
+              <h2 className="text-2xl sm:text-3xl font-outfit font-bold text-[#171A19]">
                 Popular Near You
               </h2>
               <p className="text-xs sm:text-sm text-[#5C665F]">
@@ -717,7 +717,7 @@ export default function ServicesPage() {
                     onClick={() => setSelectedMetro(city)}
                     className={`px-3.5 py-1.5 rounded-full text-xs font-semibold transition-all cursor-pointer ${
                       isActive
-                        ? "bg-[#9E331A] text-white shadow-xs"
+                        ? "bg-purple-600 text-white shadow-xs"
                         : "text-[#4A544D] hover:text-[#171A19] hover:bg-white/60"
                     }`}
                   >
@@ -737,7 +737,7 @@ export default function ServicesPage() {
                   {activeCuration.badge}
                 </span>
 
-                <h3 className="text-xl sm:text-2xl font-serif font-bold text-[#171A19] leading-snug">
+                <h3 className="text-xl sm:text-2xl font-outfit font-bold text-[#171A19] leading-snug">
                   {activeCuration.title}
                 </h3>
 
@@ -747,13 +747,13 @@ export default function ServicesPage() {
 
                 {/* Tags */}
                 <div className="flex flex-wrap items-center gap-2 pt-1">
-                  <span className="px-2.5 py-1 rounded-md bg-[#FAF9F5] text-[#3E4541] text-xs font-medium border border-[#E7E4DC]">
+                  <span className="px-2.5 py-1 rounded-md bg-[#FAFAFD] text-[#3E4541] text-xs font-medium border border-purple-100/80">
                     {activeCuration.verifiedCount} Verified Companions
                   </span>
-                  <span className="px-2.5 py-1 rounded-md bg-[#FAF9F5] text-[#3E4541] text-xs font-medium border border-[#E7E4DC]">
+                  <span className="px-2.5 py-1 rounded-md bg-[#FAFAFD] text-[#3E4541] text-xs font-medium border border-purple-100/80">
                     {activeCuration.languages}
                   </span>
-                  <span className="px-2.5 py-1 rounded-md bg-[#FAF9F5] text-[#3E4541] text-xs font-medium border border-[#E7E4DC]">
+                  <span className="px-2.5 py-1 rounded-md bg-[#FAFAFD] text-[#3E4541] text-xs font-medium border border-purple-100/80">
                     Average ₹{activeCuration.avgRate}/hr
                   </span>
                 </div>
@@ -766,7 +766,7 @@ export default function ServicesPage() {
                     const el = document.getElementById("catalog-section");
                     el?.scrollIntoView({ behavior: "smooth" });
                   }}
-                  className="bg-[#9E331A] hover:bg-[#852A14] text-white px-4 py-2 rounded-xl text-xs font-semibold flex items-center justify-center gap-1.5 transition-all shadow-xs cursor-pointer active:scale-98"
+                  className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white px-4 py-2 rounded-xl text-xs font-semibold flex items-center justify-center gap-1.5 transition-all shadow-xs cursor-pointer active:scale-98"
                 >
                   <span>Find {activeCuration.city} Companions</span>
                   <ArrowUpRight className="w-3.5 h-3.5" />
@@ -824,8 +824,8 @@ export default function ServicesPage() {
                     className="absolute transform -translate-x-1/2 -translate-y-1/2 group cursor-pointer"
                     style={{ left: `${pin.x}%`, top: `${pin.y}%` }}
                   >
-                    <div className="flex items-center gap-1 bg-white/95 backdrop-blur-xs px-2 py-0.5 rounded-full shadow-md border border-[#CCD8CD] hover:border-[#9E331A] transition-all">
-                      <div className="w-2 h-2 rounded-full bg-[#9E331A] animate-ping opacity-75" />
+                    <div className="flex items-center gap-1 bg-white/95 backdrop-blur-xs px-2 py-0.5 rounded-full shadow-md border border-[#CCD8CD] hover:border-purple-600 transition-all">
+                      <div className="w-2 h-2 rounded-full bg-purple-600 animate-ping opacity-75" />
                       <span className="text-[9.5px] font-bold text-[#1E2421] whitespace-nowrap">
                         {pin.label}
                       </span>
@@ -842,7 +842,7 @@ export default function ServicesPage() {
                 <div className="text-[10px] font-bold uppercase tracking-wider text-[#8A918D]">
                   Top Neighborhoods
                 </div>
-                <h4 className="text-base font-serif font-bold text-[#171A19]">
+                <h4 className="text-base font-outfit font-bold text-[#171A19]">
                   {activeCuration.topNeighborhoods}
                 </h4>
                 <p className="text-xs text-[#555C58] leading-relaxed">
@@ -863,7 +863,7 @@ export default function ServicesPage() {
                       `Displaying interactive verified map zones for ${activeCuration.city}.`
                     )
                   }
-                  className="font-semibold text-[#9E331A] hover:underline cursor-pointer"
+                  className="font-semibold text-purple-700 hover:underline cursor-pointer"
                 >
                   View Area Map
                 </button>
@@ -873,7 +873,7 @@ export default function ServicesPage() {
         </section>
 
         {/* Section: Institutional Verification Standard */}
-        <section className="bg-white rounded-3xl border border-[#E7E4DC] p-6 sm:p-8 shadow-xs">
+        <section className="bg-white rounded-3xl border border-purple-100/80 p-6 sm:p-8 shadow-xs">
           <div className="flex flex-col lg:flex-row items-stretch lg:items-center justify-between gap-8">
             <div className="lg:max-w-xl space-y-3">
               <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#EBF7EE] text-[#1E7E34] text-xs font-semibold border border-[#CEEAD6]">
@@ -881,7 +881,7 @@ export default function ServicesPage() {
                 <span>Institutional Verification Standard</span>
               </span>
 
-              <h2 className="text-2xl sm:text-3xl font-serif font-bold text-[#171A19] leading-snug">
+              <h2 className="text-2xl sm:text-3xl font-outfit font-bold text-[#171A19] leading-snug">
                 Every companion is personally interviewed and safety-cleared
               </h2>
 
@@ -894,7 +894,7 @@ export default function ServicesPage() {
 
             <div className="grid grid-cols-3 gap-3 sm:gap-4 shrink-0 lg:min-w-[440px]">
               <div className="bg-[#EFF2EB] rounded-2xl p-4 sm:p-5 text-center border border-[#DEE3D7]">
-                <div className="text-xl sm:text-2xl font-bold font-serif text-[#171A19]">
+                <div className="text-xl sm:text-2xl font-bold font-outfit text-[#171A19]">
                   10,000+
                 </div>
                 <div className="text-[11px] sm:text-xs text-[#555C58] mt-1 font-medium leading-tight">
@@ -903,7 +903,7 @@ export default function ServicesPage() {
               </div>
 
               <div className="bg-[#EFF2EB] rounded-2xl p-4 sm:p-5 text-center border border-[#DEE3D7]">
-                <div className="text-xl sm:text-2xl font-bold font-serif text-[#171A19]">
+                <div className="text-xl sm:text-2xl font-bold font-outfit text-[#171A19]">
                   4.92 / 5
                 </div>
                 <div className="text-[11px] sm:text-xs text-[#555C58] mt-1 font-medium leading-tight">
@@ -912,7 +912,7 @@ export default function ServicesPage() {
               </div>
 
               <div className="bg-[#EFF2EB] rounded-2xl p-4 sm:p-5 text-center border border-[#DEE3D7]">
-                <div className="text-xl sm:text-2xl font-bold font-serif text-[#171A19]">
+                <div className="text-xl sm:text-2xl font-bold font-outfit text-[#171A19]">
                   100%
                 </div>
                 <div className="text-[11px] sm:text-xs text-[#555C58] mt-1 font-medium leading-tight">
@@ -925,15 +925,15 @@ export default function ServicesPage() {
       </main>
 
       {/* Footer */}
-      <footer className="bg-[#FAF9F5] border-t border-[#E7E4DC] pt-12 pb-8 text-[#4D5350]">
+      <footer className="bg-[#FAFAFD] border-t border-purple-100/80 pt-12 pb-8 text-[#4D5350]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
             <div className="lg:col-span-2 space-y-4 pr-4">
               <Link href="/" className="flex items-baseline">
-                <span className="font-serif text-2xl font-bold tracking-tight text-[#171A19]">
+                <span className="font-outfit text-2xl font-bold tracking-tight text-[#171A19]">
                   CoFriend
                 </span>
-                <span className="font-sans text-lg font-bold text-[#9E331A]">
+                <span className="font-sans text-lg font-bold text-purple-700">
                   .in
                 </span>
               </Link>
@@ -944,7 +944,7 @@ export default function ServicesPage() {
                 walks, wellness retreats, and city discoveries.
               </p>
 
-              <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-[#FAF9F5] border border-[#DDD7CC] text-[11px] font-bold tracking-wider text-[#3D4440] uppercase">
+              <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-[#FAFAFD] border border-[#DDD7CC] text-[11px] font-bold tracking-wider text-[#3D4440] uppercase">
                 <ShieldCheck className="w-3.5 h-3.5 text-emerald-600" />
                 <span>100% Aadhaar & Background Verified Network</span>
               </div>
@@ -965,7 +965,7 @@ export default function ServicesPage() {
                           const el = document.getElementById("catalog-section");
                           el?.scrollIntoView({ behavior: "smooth" });
                         }}
-                        className="hover:text-[#9E331A] transition-colors text-left cursor-pointer"
+                        className="hover:text-purple-700 transition-colors text-left cursor-pointer"
                       >
                         {item}
                       </button>
@@ -988,7 +988,7 @@ export default function ServicesPage() {
                   "Emergency Helpline",
                 ].map((item) => (
                   <li key={item}>
-                    <a href="#" className="hover:text-[#9E331A] transition-colors">
+                    <a href="#" className="hover:text-purple-700 transition-colors">
                       {item}
                     </a>
                   </li>
@@ -1009,7 +1009,7 @@ export default function ServicesPage() {
                   "Press & Media",
                 ].map((item) => (
                   <li key={item}>
-                    <a href="#" className="hover:text-[#9E331A] transition-colors">
+                    <a href="#" className="hover:text-purple-700 transition-colors">
                       {item}
                     </a>
                   </li>
@@ -1018,7 +1018,7 @@ export default function ServicesPage() {
             </div>
           </div>
 
-          <div className="pt-6 border-t border-[#EAE7DD] flex flex-col sm:flex-row items-center justify-between gap-3 text-[11px] text-[#78817D]">
+          <div className="pt-6 border-t border-purple-100/80 flex flex-col sm:flex-row items-center justify-between gap-3 text-[11px] text-[#78817D]">
             <div>
               © 2025 CoFriend Lifestyle Services Pvt. Ltd. Strict Platonic Policy
               Guaranteed. All rights reserved.
@@ -1050,7 +1050,7 @@ export default function ServicesPage() {
                 <div className="w-14 h-14 bg-emerald-50 text-emerald-600 rounded-full flex items-center justify-center mx-auto border border-emerald-200">
                   <CheckCircle2 className="w-8 h-8" />
                 </div>
-                <h3 className="text-2xl font-serif font-bold text-[#171A19]">
+                <h3 className="text-2xl font-outfit font-bold text-[#171A19]">
                   Booking Request Sent!
                 </h3>
                 <p className="text-xs text-[#555C58] leading-relaxed">
@@ -1065,7 +1065,7 @@ export default function ServicesPage() {
                     setBookingModalCompanion(null);
                     setBookingSuccess(false);
                   }}
-                  className="w-full bg-[#9E331A] text-white py-2.5 rounded-xl text-sm font-semibold hover:bg-[#852A14] transition-colors"
+                  className="w-full bg-purple-600 text-white py-2.5 rounded-xl text-sm font-semibold hover:bg-purple-700 transition-colors"
                 >
                   Done
                 </button>
@@ -1082,13 +1082,13 @@ export default function ServicesPage() {
                     />
                   </div>
                   <div>
-                    <span className="text-[10px] font-bold uppercase tracking-wider text-[#9E331A]">
+                    <span className="text-[10px] font-bold uppercase tracking-wider text-purple-700">
                       {bookingModalCompanion.categoryTag}
                     </span>
-                    <h3 className="text-lg font-serif font-bold text-[#171A19]">
+                    <h3 className="text-lg font-outfit font-bold text-[#171A19]">
                       {bookingModalCompanion.title}
                     </h3>
-                    <div className="text-xs font-semibold text-[#9E331A]">
+                    <div className="text-xs font-semibold text-purple-700">
                       ₹{bookingModalCompanion.priceHourly} / hour{" "}
                       <span className="text-[#7A827E] font-normal">
                         ({bookingModalCompanion.minDuration})
@@ -1097,7 +1097,7 @@ export default function ServicesPage() {
                   </div>
                 </div>
 
-                <div className="p-3 bg-[#FAF9F5] rounded-xl border border-[#EDE9E0] text-xs text-[#555C58] space-y-1.5">
+                <div className="p-3 bg-[#FAFAFD] rounded-xl border border-purple-100/80 text-xs text-[#555C58] space-y-1.5">
                   <div className="flex items-center gap-1.5 font-semibold text-[#171A19]">
                     <ShieldCheck className="w-4 h-4 text-emerald-600" />
                     <span>Platonic & Verified Safety Protocol</span>
@@ -1116,7 +1116,7 @@ export default function ServicesPage() {
                     <input
                       type="datetime-local"
                       defaultValue="2026-09-13T16:00"
-                      className="w-full px-3 py-2 rounded-xl border border-[#DCD7CD] bg-white focus:outline-none focus:border-[#9E331A]"
+                      className="w-full px-3 py-2 rounded-xl border border-[#DCD7CD] bg-white focus:outline-none focus:border-purple-600"
                     />
                   </div>
 
@@ -1127,14 +1127,14 @@ export default function ServicesPage() {
                     <input
                       type="text"
                       placeholder="e.g. Nandan Cinema indie screening or rooftop dinner"
-                      className="w-full px-3 py-2 rounded-xl border border-[#DCD7CD] bg-white focus:outline-none focus:border-[#9E331A]"
+                      className="w-full px-3 py-2 rounded-xl border border-[#DCD7CD] bg-white focus:outline-none focus:border-purple-600"
                     />
                   </div>
                 </div>
 
                 <button
                   onClick={() => setBookingSuccess(true)}
-                  className="w-full bg-[#9E331A] hover:bg-[#852A14] text-white py-3 rounded-xl font-semibold text-sm transition-all shadow-md active:scale-98 cursor-pointer mt-2"
+                  className="w-full bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white py-3 rounded-xl font-semibold text-sm transition-all shadow-md active:scale-98 cursor-pointer mt-2"
                 >
                   Confirm & Request Companion
                 </button>
