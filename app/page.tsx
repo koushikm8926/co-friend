@@ -3,6 +3,7 @@
 import React, { useState, useMemo } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { motion, AnimatePresence } from "framer-motion";
 import {
   Search,
   MapPin,
@@ -327,6 +328,18 @@ const CITIES = [
   "Goa",
 ];
 
+const MARQUEE_ITEMS = [
+  "🎬 Movie Premieres & Cinema Outings",
+  "☕ Specialty Cafés & Deep Talks",
+  "🛍️ Shopping & Style Curations",
+  "✈️ Safe City Heritage Trails",
+  "👵 Elder Assistance & Clinic Support",
+  "🏃 Morning Jogging & Gym Buddy",
+  "🎨 Art Galleries & Museum Visits",
+  "🎭 Theatre & Stand-up Nights",
+  "🐶 Dog Walking & Sunny Strolls",
+];
+
 const TESTIMONIALS = [
   {
     name: "Kavya Reddy",
@@ -420,29 +433,43 @@ export default function HomePage() {
   }, [selectedCity, selectedCategory, searchQuery]);
 
   return (
-    <div className="min-h-screen bg-[#FAFAFD] text-[#0F172A] font-sans antialiased flex flex-col selection:bg-[#F3E8FF] selection:text-[#7C3AED]">
+    <div className="min-h-screen bg-[#FAFAFD] text-[#0F172A] font-sans antialiased flex flex-col selection:bg-[#F3E8FF] selection:text-[#7C3AED] overflow-x-hidden">
       {/* Top Banner */}
-      <div className="bg-gradient-to-r from-purple-700 via-purple-600 to-pink-600 text-white px-4 py-2 text-center text-xs sm:text-[13px] font-medium tracking-wide flex items-center justify-center gap-2 shadow-sm">
+      <motion.div
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+        className="bg-gradient-to-r from-purple-700 via-purple-600 to-pink-600 text-white px-4 py-2 text-center text-xs sm:text-[13px] font-medium tracking-wide flex items-center justify-center gap-2 shadow-sm"
+      >
         <Sparkles className="w-4 h-4 text-pink-200 animate-pulse shrink-0" />
         <span>
           <strong>India&apos;s #1 Verified Companionship Marketplace</strong> • 100% Strict Platonic & Aadhaar Vetted Network
         </span>
-      </div>
+      </motion.div>
 
       {/* Main Header / Navbar */}
-      <header className="sticky top-0 z-40 bg-[#FAFAFD]/90 backdrop-blur-md border-b border-purple-100/80 shadow-xs">
+      <motion.header
+        initial={{ opacity: 0, y: -10 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, delay: 0.1 }}
+        className="sticky top-0 z-40 bg-[#FAFAFD]/90 backdrop-blur-md border-b border-purple-100/80 shadow-xs"
+      >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
           {/* Brand Logo */}
           <Link href="/" className="flex items-center gap-2 group">
-            <div className="w-10 h-10 rounded-2xl bg-gradient-to-tr from-purple-600 to-pink-500 flex items-center justify-center text-white font-outfit font-extrabold text-xl shadow-md shadow-purple-500/30 group-hover:scale-105 transition-transform">
+            <motion.div
+              whileHover={{ rotate: 5, scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="w-10 h-10 rounded-2xl bg-gradient-to-tr from-purple-600 to-pink-500 flex items-center justify-center text-white font-outfit font-extrabold text-xl shadow-md shadow-purple-500/30 transition-transform"
+            >
               C
-            </div>
+            </motion.div>
             <div className="flex flex-col">
               <div className="flex items-baseline">
-                <span className="font-outfit text-2xl font-extrabold tracking-tight text-slate-900">
+                <span className="font-outfit text-2xl font-extrabold tracking-tight text-slate-900 group-hover:text-purple-700 transition-colors">
                   Co-Friend
                 </span>
-                <span className="w-2 h-2 rounded-full bg-pink-500 ml-1"></span>
+                <span className="w-2 h-2 rounded-full bg-pink-500 ml-1 animate-ping"></span>
               </div>
               <span className="text-[10px] font-medium text-purple-600 tracking-wider uppercase -mt-1">
                 Life&apos;s Better Together
@@ -454,7 +481,7 @@ export default function HomePage() {
           <nav className="hidden lg:flex items-center gap-8 text-[14.5px] font-semibold text-slate-600">
             <Link
               href="/"
-              className="text-purple-700 font-bold border-b-2 border-purple-600 py-1"
+              className="text-purple-700 font-bold border-b-2 border-purple-600 py-1 transition-all"
             >
               Home
             </Link>
@@ -495,38 +522,48 @@ export default function HomePage() {
           <div className="flex items-center gap-3">
             <Link
               href="/#partner"
-              className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white px-5 py-2.5 rounded-full text-sm font-bold tracking-wide transition-all shadow-md shadow-purple-500/25 active:scale-98 flex items-center gap-2"
+              className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white px-5 py-2.5 rounded-full text-sm font-bold tracking-wide transition-all shadow-md shadow-purple-500/25 btn-glow active:scale-98 flex items-center gap-2"
             >
               <span>Become a Co-Friend</span>
-              <ArrowRight className="w-4 h-4" />
+              <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
             </Link>
           </div>
         </div>
-      </header>
+      </motion.header>
 
       {/* Hero Section */}
       <section className="relative overflow-hidden pt-12 pb-20 md:pt-20 md:pb-28 gradient-hero-bg">
         <div className="dots-pattern absolute inset-0 opacity-40 pointer-events-none" />
         
-        {/* Ambient Glows */}
-        <div className="absolute top-10 left-10 w-[450px] h-[450px] bg-purple-400/20 rounded-full blur-3xl -z-10" />
-        <div className="absolute bottom-10 right-10 w-[450px] h-[450px] bg-pink-400/20 rounded-full blur-3xl -z-10" />
-        <div className="absolute top-1/2 left-1/3 w-[350px] h-[350px] bg-blue-400/15 rounded-full blur-3xl -z-10" />
+        {/* Animated Fluid Blobs in Background */}
+        <div className="absolute top-10 left-10 w-[450px] h-[450px] bg-purple-400/20 rounded-full blur-3xl -z-10 animate-blob" />
+        <div className="absolute bottom-10 right-10 w-[450px] h-[450px] bg-pink-400/20 rounded-full blur-3xl -z-10 animate-blob-delayed" />
+        <div className="absolute top-1/2 left-1/3 w-[350px] h-[350px] bg-blue-400/15 rounded-full blur-3xl -z-10 animate-pulse" />
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-[1.05fr_0.95fr] gap-12 lg:gap-8 items-center">
-            {/* Left Column: Copy & Search */}
+            {/* Left Column: Copy & Search with Staggered Framer Motion */}
             <div className="space-y-6 text-left">
               {/* Pill Badge */}
-              <div className="inline-flex items-center gap-2 rounded-full border border-purple-200 bg-white/80 px-4 py-2 shadow-xs backdrop-blur-md">
+              <motion.div
+                initial={{ opacity: 0, y: 15 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6 }}
+                className="inline-flex items-center gap-2 rounded-full border border-purple-200 bg-white/80 px-4 py-2 shadow-xs backdrop-blur-md hover:border-purple-300 transition-colors"
+              >
                 <Sparkles className="w-4 h-4 text-purple-600 animate-pulse" />
                 <span className="font-outfit text-xs font-bold uppercase tracking-[0.16em] text-purple-700">
                   India&apos;s most loved companion marketplace
                 </span>
-              </div>
+              </motion.div>
 
-              {/* Big Headline in Outfit with SVG Underline */}
-              <h1 className="font-outfit text-5xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight text-slate-900 leading-[0.98]">
+              {/* Big Headline in Outfit with Animated SVG Underline */}
+              <motion.h1
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.7, delay: 0.15 }}
+                className="font-outfit text-5xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight text-slate-900 leading-[0.98]"
+              >
                 Life&apos;s Better <br />
                 <span className="relative inline-block mt-2">
                   <span className="gradient-text">Together.</span>
@@ -536,7 +573,10 @@ export default function HomePage() {
                     fill="none"
                     aria-hidden="true"
                   >
-                    <path
+                    <motion.path
+                      initial={{ pathLength: 0 }}
+                      animate={{ pathLength: 1 }}
+                      transition={{ duration: 0.9, delay: 0.6, ease: "easeOut" }}
                       d="M4 10 C 60 2, 160 2, 216 8"
                       stroke="#F43F5E"
                       strokeWidth="5"
@@ -544,19 +584,29 @@ export default function HomePage() {
                     />
                   </svg>
                 </span>
-              </h1>
+              </motion.h1>
 
               {/* Subtitle */}
-              <p className="font-body text-base sm:text-lg text-slate-600 leading-relaxed max-w-xl">
+              <motion.p
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.7, delay: 0.3 }}
+                className="font-body text-base sm:text-lg text-slate-600 leading-relaxed max-w-xl"
+              >
                 Find trusted, verified people for movies, coffee, shopping, travel, events, elder care, fitness and more. Book by the hour, meet safely in public, and turn any plan into a memory worth keeping.
-              </p>
+              </motion.p>
 
-              {/* 3-Item Search Box */}
-              <div className="mt-8 rounded-[1.6rem] border border-purple-100 bg-white/95 p-3 shadow-[0_24px_60px_-20px_rgba(124,58,237,0.3)] backdrop-blur-md">
+              {/* 3-Item Interactive Search Box */}
+              <motion.div
+                initial={{ opacity: 0, y: 25 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.75, delay: 0.45 }}
+                className="mt-8 rounded-[1.6rem] border border-purple-100 bg-white/95 p-3 shadow-[0_24px_60px_-20px_rgba(124,58,237,0.3)] backdrop-blur-md hover:shadow-[0_28px_70px_-15px_rgba(124,58,237,0.38)] transition-all"
+              >
                 <div className="grid items-center gap-2 md:grid-cols-[1.2fr_1fr_auto]">
                   {/* Service Select */}
-                  <label className="group relative flex items-center gap-3 rounded-2xl px-4 py-3 transition-colors hover:bg-purple-50/70 cursor-pointer">
-                    <Film className="w-5 h-5 shrink-0 text-purple-500" />
+                  <label className="group relative flex items-center gap-3 rounded-2xl px-4 py-3 transition-colors hover:bg-purple-50/80 cursor-pointer">
+                    <Film className="w-5 h-5 shrink-0 text-purple-500 group-hover:scale-110 transition-transform" />
                     <span className="w-full">
                       <span className="block text-[0.65rem] font-bold uppercase tracking-[0.14em] text-slate-400">
                         What are you looking for?
@@ -577,8 +627,8 @@ export default function HomePage() {
                   </label>
 
                   {/* City Select */}
-                  <label className="group relative flex items-center gap-3 rounded-2xl px-4 py-3 transition-colors hover:bg-purple-50/70 cursor-pointer border-t md:border-t-0 md:border-l border-slate-100">
-                    <MapPin className="w-5 h-5 shrink-0 text-pink-500" />
+                  <label className="group relative flex items-center gap-3 rounded-2xl px-4 py-3 transition-colors hover:bg-purple-50/80 cursor-pointer border-t md:border-t-0 md:border-l border-slate-100">
+                    <MapPin className="w-5 h-5 shrink-0 text-pink-500 group-hover:scale-110 transition-transform" />
                     <span className="w-full">
                       <span className="block text-[0.65rem] font-bold uppercase tracking-[0.14em] text-slate-400">
                         Which city?
@@ -600,16 +650,21 @@ export default function HomePage() {
                   {/* CTA Button */}
                   <Link
                     href="/explore"
-                    className="group relative flex items-center justify-center gap-2 rounded-2xl bg-gradient-to-r from-purple-600 via-violet-600 to-pink-500 px-7 py-4 text-sm font-bold text-white shadow-lg shadow-purple-500/30 transition-all hover:scale-[1.02] hover:shadow-xl hover:shadow-purple-500/40 active:scale-98"
+                    className="group relative flex items-center justify-center gap-2 rounded-2xl bg-gradient-to-r from-purple-600 via-violet-600 to-pink-500 px-7 py-4 text-sm font-bold text-white shadow-lg shadow-purple-500/30 transition-all hover:scale-[1.03] hover:shadow-xl hover:shadow-purple-500/40 active:scale-98"
                   >
                     <span>Find a Co-Friend</span>
                     <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
                   </Link>
                 </div>
-              </div>
+              </motion.div>
 
-              {/* Popular Chips */}
-              <div className="flex flex-wrap items-center gap-2 text-xs text-slate-500 pt-2">
+              {/* Popular Chips with Hover Bounce */}
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.6, delay: 0.6 }}
+                className="flex flex-wrap items-center gap-2 text-xs text-slate-500 pt-2"
+              >
                 <span className="font-semibold text-slate-700">Popular:</span>
                 {[
                   "Movie Companion",
@@ -621,51 +676,41 @@ export default function HomePage() {
                 ].map((item) => (
                   <button
                     key={item}
-                    onClick={() => {
-                      setSelectedCategory(item);
-                    }}
-                    className="rounded-full border border-purple-100 bg-white/80 px-3 py-1 text-slate-700 backdrop-blur-xs transition-colors hover:border-purple-300 hover:bg-purple-50 hover:text-purple-700 cursor-pointer"
+                    onClick={() => setSelectedCategory(item)}
+                    className="rounded-full border border-purple-100 bg-white/80 px-3 py-1 text-slate-700 backdrop-blur-xs transition-all hover:border-purple-300 hover:bg-purple-50 hover:text-purple-700 hover:scale-105 active:scale-95 cursor-pointer"
                   >
                     {item}
                   </button>
                 ))}
-              </div>
+              </motion.div>
 
-              {/* Social Proof Avatar Row */}
-              <div className="flex items-center gap-4 pt-4 border-t border-purple-100/70">
+              {/* Social Proof Avatar Row with Floating Animation */}
+              <motion.div
+                initial={{ opacity: 0, y: 15 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.75 }}
+                className="flex items-center gap-4 pt-4 border-t border-purple-100/70"
+              >
                 <div className="flex -space-x-2.5 shrink-0">
-                  <div className="relative w-9 h-9 rounded-full overflow-hidden ring-2 ring-white shadow-xs">
-                    <Image
-                      src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=120&q=80"
-                      alt="user"
-                      fill
-                      className="object-cover"
-                    />
-                  </div>
-                  <div className="relative w-9 h-9 rounded-full overflow-hidden ring-2 ring-white shadow-xs">
-                    <Image
-                      src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=120&q=80"
-                      alt="user"
-                      fill
-                      className="object-cover"
-                    />
-                  </div>
-                  <div className="relative w-9 h-9 rounded-full overflow-hidden ring-2 ring-white shadow-xs">
-                    <Image
-                      src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=120&q=80"
-                      alt="user"
-                      fill
-                      className="object-cover"
-                    />
-                  </div>
-                  <div className="relative w-9 h-9 rounded-full overflow-hidden ring-2 ring-white shadow-xs">
-                    <Image
-                      src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=120&q=80"
-                      alt="user"
-                      fill
-                      className="object-cover"
-                    />
-                  </div>
+                  {[
+                    "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=120&q=80",
+                    "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=120&q=80",
+                    "https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=120&q=80",
+                    "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=120&q=80",
+                  ].map((src, idx) => (
+                    <motion.div
+                      key={idx}
+                      whileHover={{ y: -4, scale: 1.15, zIndex: 10 }}
+                      className="relative w-9 h-9 rounded-full overflow-hidden ring-2 ring-white shadow-xs transition-transform"
+                    >
+                      <Image
+                        src={src}
+                        alt="user"
+                        fill
+                        className="object-cover"
+                      />
+                    </motion.div>
+                  ))}
                 </div>
                 <div>
                   <div className="flex items-center gap-1.5 text-xs font-bold text-slate-800">
@@ -680,24 +725,25 @@ export default function HomePage() {
                     15,000+ happy customers booked a Co-Friend this year
                   </div>
                 </div>
-              </div>
+              </motion.div>
             </div>
 
-            {/* Right Column: Hero Visual Card Composition */}
-            <div className="relative mx-auto max-w-lg lg:max-w-none w-full">
-              {/* Ambient Blob Backdrops */}
-              <div className="absolute -top-10 -left-10 h-72 w-72 rounded-full bg-purple-400/30 blur-3xl -z-10" />
-              <div className="absolute -bottom-10 -right-10 h-72 w-72 rounded-full bg-pink-400/30 blur-3xl -z-10" />
-
+            {/* Right Column: Hero Visual Card Composition with Floating Animation */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.85, delay: 0.3 }}
+              className="relative mx-auto max-w-lg lg:max-w-none w-full"
+            >
               {/* Main Framed Photo */}
-              <div className="relative overflow-hidden rounded-[2.5rem] border-4 border-white/90 bg-gradient-to-br from-purple-100 to-pink-100 shadow-[0_30px_90px_-20px_rgba(124,58,237,0.35)]">
-                <div className="relative aspect-[4/3] sm:aspect-[1.15/1] w-full">
+              <div className="relative overflow-hidden rounded-[2.5rem] border-4 border-white/90 bg-gradient-to-br from-purple-100 to-pink-100 shadow-[0_30px_90px_-20px_rgba(124,58,237,0.35)] group">
+                <div className="relative aspect-[4/3] sm:aspect-[1.15/1] w-full overflow-hidden">
                   <Image
                     src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=1200&q=80"
                     alt="Friends enjoying a day out together"
                     fill
                     priority
-                    className="object-cover"
+                    className="object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-slate-950/60 via-transparent to-transparent" />
 
@@ -721,9 +767,9 @@ export default function HomePage() {
               </div>
 
               {/* Floating Top-Left Instant Match Card */}
-              <div className="absolute -top-6 -left-4 sm:-left-6 flex items-center gap-3 rounded-2xl border border-white/80 bg-white/95 px-4 py-3 shadow-xl shadow-purple-500/15 backdrop-blur-md">
+              <div className="animate-float absolute -top-6 -left-4 sm:-left-6 flex items-center gap-3 rounded-2xl border border-white/80 bg-white/95 px-4 py-3 shadow-xl shadow-purple-500/15 backdrop-blur-md hover:scale-105 transition-transform">
                 <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-purple-50 text-purple-600">
-                  <Zap className="w-5 h-5 fill-purple-600 text-purple-600" />
+                  <Zap className="w-5 h-5 fill-purple-600 text-purple-600 animate-pulse" />
                 </div>
                 <div>
                   <div className="text-[11px] font-bold uppercase tracking-wider text-purple-700">
@@ -736,7 +782,7 @@ export default function HomePage() {
               </div>
 
               {/* Floating Bottom-Right 15,000+ Verified Card */}
-              <div className="absolute -bottom-6 -right-3 sm:-right-6 flex items-center gap-3.5 rounded-2xl border border-white/80 bg-white/95 px-4.5 py-3.5 shadow-2xl shadow-purple-500/20 backdrop-blur-md">
+              <div className="animate-float-slow absolute -bottom-6 -right-3 sm:-right-6 flex items-center gap-3.5 rounded-2xl border border-white/80 bg-white/95 px-4.5 py-3.5 shadow-2xl shadow-purple-500/20 backdrop-blur-md hover:scale-105 transition-transform">
                 <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-gradient-to-br from-emerald-400 to-teal-500 text-white shadow-md shadow-emerald-500/20">
                   <CheckCircle2 className="w-6 h-6" />
                 </div>
@@ -751,59 +797,83 @@ export default function HomePage() {
               </div>
 
               {/* Floating Escrow Pill */}
-              <div className="hidden sm:flex absolute top-1/2 -right-6 -translate-y-1/2 items-center gap-2 rounded-full border border-white/80 bg-white/95 px-4 py-2 shadow-lg shadow-purple-500/15 backdrop-blur-md">
+              <div className="animate-float-reverse hidden sm:flex absolute top-1/2 -right-6 -translate-y-1/2 items-center gap-2 rounded-full border border-white/80 bg-white/95 px-4 py-2 shadow-lg shadow-purple-500/15 backdrop-blur-md">
                 <span className="flex h-2.5 w-2.5 rounded-full bg-emerald-500 animate-pulse" />
                 <span className="text-xs font-bold text-slate-800">
                   100% Platonic & Escrow Protected
                 </span>
               </div>
-            </div>
+            </motion.div>
           </div>
         </div>
       </section>
 
-      {/* Live Stats Bar */}
+      {/* Infinite Scrolling Marquee Banner */}
+      <div className="py-4 bg-gradient-to-r from-purple-700 via-violet-700 to-pink-600 text-white overflow-hidden shadow-inner">
+        <div className="animate-marquee flex items-center gap-8 whitespace-nowrap text-xs sm:text-sm font-bold tracking-wide">
+          {[...MARQUEE_ITEMS, ...MARQUEE_ITEMS, ...MARQUEE_ITEMS].map((item, idx) => (
+            <span key={idx} className="flex items-center gap-6">
+              <span>{item}</span>
+              <span className="w-1.5 h-1.5 rounded-full bg-pink-300"></span>
+            </span>
+          ))}
+        </div>
+      </div>
+
+      {/* Live Stats Bar with Hover Counters */}
       <section className="bg-white border-y border-purple-100 py-8 shadow-xs relative z-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center divide-y md:divide-y-0 md:divide-x divide-purple-100">
-            <div className="p-3">
+            <motion.div
+              whileHover={{ scale: 1.05 }}
+              className="p-3 cursor-default transition-transform"
+            >
               <div className="font-outfit text-3xl sm:text-4xl font-extrabold text-purple-700">
                 15,000+
               </div>
               <div className="text-xs sm:text-sm font-semibold text-slate-500 mt-1">
                 Verified Co-Friends
               </div>
-            </div>
-            <div className="p-3">
+            </motion.div>
+            <motion.div
+              whileHover={{ scale: 1.05 }}
+              className="p-3 cursor-default transition-transform"
+            >
               <div className="font-outfit text-3xl sm:text-4xl font-extrabold text-pink-600">
                 85,000+
               </div>
               <div className="text-xs sm:text-sm font-semibold text-slate-500 mt-1">
                 Completed Outings
               </div>
-            </div>
-            <div className="p-3">
+            </motion.div>
+            <motion.div
+              whileHover={{ scale: 1.05 }}
+              className="p-3 cursor-default transition-transform"
+            >
               <div className="font-outfit text-3xl sm:text-4xl font-extrabold text-purple-700">
                 24+
               </div>
               <div className="text-xs sm:text-sm font-semibold text-slate-500 mt-1">
                 Cities Across India
               </div>
-            </div>
-            <div className="p-3">
+            </motion.div>
+            <motion.div
+              whileHover={{ scale: 1.05 }}
+              className="p-3 cursor-default transition-transform"
+            >
               <div className="font-outfit text-3xl sm:text-4xl font-extrabold text-amber-500 flex items-center justify-center gap-1">
                 <span>4.95</span>
-                <Star className="w-6 h-6 fill-amber-400 text-amber-400" />
+                <Star className="w-6 h-6 fill-amber-400 text-amber-400 animate-pulse" />
               </div>
               <div className="text-xs sm:text-sm font-semibold text-slate-500 mt-1">
                 Average Companion Rating
               </div>
-            </div>
+            </motion.div>
           </div>
         </div>
       </section>
 
-      {/* Services & Categories Section */}
+      {/* Services & Categories Section with Interactive Animated Cards */}
       <section id="services" className="py-16 sm:py-24 bg-[#FAFAFD]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4">
@@ -821,7 +891,7 @@ export default function HomePage() {
             </div>
             <Link
               href="/services"
-              className="inline-flex items-center gap-2 font-bold text-sm text-purple-700 hover:text-purple-800 transition-colors"
+              className="inline-flex items-center gap-2 font-bold text-sm text-purple-700 hover:text-purple-800 transition-all hover:translate-x-1"
             >
               <span>View All 11 Services</span>
               <ArrowRight className="w-4 h-4" />
@@ -829,19 +899,24 @@ export default function HomePage() {
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-            {SERVICES_DATA.slice(0, 8).map((srv) => {
+            {SERVICES_DATA.slice(0, 8).map((srv, idx) => {
               const Icon = srv.icon;
               return (
-                <div
+                <motion.div
                   key={srv.id}
-                  className="bg-white rounded-3xl overflow-hidden border border-purple-100/80 shadow-md hover:shadow-xl hover:shadow-purple-500/10 transition-all duration-300 group flex flex-col justify-between"
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: idx * 0.08 }}
+                  whileHover={{ y: -6 }}
+                  className="bg-white rounded-3xl overflow-hidden border border-purple-100/80 shadow-md hover:shadow-xl hover:shadow-purple-500/15 transition-all duration-300 group flex flex-col justify-between"
                 >
                   <div className="relative h-48 w-full overflow-hidden bg-slate-100">
                     <Image
                       src={srv.image}
                       alt={srv.title}
                       fill
-                      className="object-cover group-hover:scale-105 transition-transform duration-500"
+                      className="object-cover group-hover:scale-110 transition-transform duration-700 ease-out"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-slate-900/70 via-transparent to-transparent" />
                     <div className="absolute top-3 left-3">
@@ -851,10 +926,10 @@ export default function HomePage() {
                     </div>
                     <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between text-white">
                       <div className="flex items-center gap-1.5 text-xs font-medium">
-                        <Icon className="w-4 h-4 text-pink-400" />
+                        <Icon className="w-4 h-4 text-pink-400 group-hover:rotate-12 transition-transform" />
                         <span>{srv.category}</span>
                       </div>
-                      <span className="font-outfit text-sm font-extrabold bg-purple-600/90 px-2.5 py-1 rounded-full backdrop-blur-xs">
+                      <span className="font-outfit text-sm font-extrabold bg-purple-600/90 px-2.5 py-1 rounded-full backdrop-blur-xs shadow-xs">
                         {srv.price}
                       </span>
                     </div>
@@ -876,13 +951,13 @@ export default function HomePage() {
                           ? "/available-now"
                           : `/explore?category=${srv.id}`
                       }
-                      className="w-full bg-purple-50 hover:bg-purple-100 text-purple-700 font-bold text-xs py-2.5 rounded-xl transition-all flex items-center justify-center gap-1.5"
+                      className="w-full bg-purple-50 hover:bg-gradient-to-r hover:from-purple-600 hover:to-pink-600 hover:text-white text-purple-700 font-bold text-xs py-2.5 rounded-xl transition-all flex items-center justify-center gap-1.5 shadow-xs"
                     >
                       <span>Find {srv.title}</span>
-                      <ArrowRight className="w-3.5 h-3.5" />
+                      <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" />
                     </Link>
                   </div>
-                </div>
+                </motion.div>
               );
             })}
           </div>
@@ -912,10 +987,10 @@ export default function HomePage() {
                 <button
                   key={city}
                   onClick={() => setSelectedCity(city)}
-                  className={`px-4 py-2 rounded-full text-xs font-bold whitespace-nowrap transition-all ${
+                  className={`px-4 py-2 rounded-full text-xs font-bold whitespace-nowrap transition-all cursor-pointer ${
                     selectedCity === city
-                      ? "bg-purple-600 text-white shadow-sm"
-                      : "bg-purple-50 text-slate-600 hover:bg-purple-100"
+                      ? "bg-purple-600 text-white shadow-sm scale-105"
+                      : "bg-purple-50 text-slate-600 hover:bg-purple-100 hover:text-purple-700"
                   }`}
                 >
                   {city}
@@ -925,15 +1000,20 @@ export default function HomePage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {filteredProfiles.map((p) => (
-              <div
+            {filteredProfiles.map((p, idx) => (
+              <motion.div
                 key={p.id}
-                className="bg-[#FAFAFD] rounded-3xl p-5 border border-purple-100/90 shadow-sm hover:shadow-xl hover:shadow-purple-500/10 transition-all duration-300 flex flex-col justify-between"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: idx * 0.08 }}
+                whileHover={{ y: -6 }}
+                className="bg-[#FAFAFD] rounded-3xl p-5 border border-purple-100/90 shadow-sm hover:shadow-xl hover:shadow-purple-500/12 transition-all duration-300 flex flex-col justify-between group"
               >
                 <div>
                   {/* Top Bar */}
                   <div className="flex items-start gap-4">
-                    <div className="relative w-16 h-16 rounded-2xl overflow-hidden bg-slate-200 shrink-0 border-2 border-white shadow-xs">
+                    <div className="relative w-16 h-16 rounded-2xl overflow-hidden bg-slate-200 shrink-0 border-2 border-white shadow-xs group-hover:scale-105 transition-transform">
                       <Image
                         src={p.avatar}
                         alt={p.name}
@@ -955,7 +1035,7 @@ export default function HomePage() {
                           </span>
                         </div>
                       </div>
-                      <h3 className="font-outfit text-base font-bold text-slate-900 truncate mt-1">
+                      <h3 className="font-outfit text-base font-bold text-slate-900 truncate mt-1 group-hover:text-purple-700 transition-colors">
                         {p.name},{" "}
                         <span className="text-xs font-normal text-slate-500">
                           {p.age} yrs
@@ -980,7 +1060,7 @@ export default function HomePage() {
                     {p.tags.map((tag) => (
                       <span
                         key={tag}
-                        className="text-[10px] font-medium bg-white text-slate-600 px-2 py-0.5 rounded-md border border-slate-200"
+                        className="text-[10px] font-medium bg-white text-slate-600 px-2 py-0.5 rounded-md border border-slate-200 hover:border-purple-300 transition-colors"
                       >
                         {tag}
                       </span>
@@ -1006,7 +1086,7 @@ export default function HomePage() {
                   {p.id === "ananya" ? (
                     <Link
                       href="/profile/ananya-sharma"
-                      className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white px-4 py-2 rounded-xl text-xs font-bold transition-all shadow-sm active:scale-98"
+                      className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white px-4 py-2 rounded-xl text-xs font-bold transition-all shadow-sm active:scale-98 btn-glow"
                     >
                       Book Ananya
                     </Link>
@@ -1016,20 +1096,20 @@ export default function HomePage() {
                         setActiveModalProfile(p);
                         setModalBookingSuccess(false);
                       }}
-                      className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white px-4 py-2 rounded-xl text-xs font-bold transition-all shadow-sm active:scale-98"
+                      className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white px-4 py-2 rounded-xl text-xs font-bold transition-all shadow-sm active:scale-98 btn-glow cursor-pointer"
                     >
                       Book Now
                     </button>
                   )}
                 </div>
-              </div>
+              </motion.div>
             ))}
           </div>
 
           <div className="mt-12 text-center">
             <Link
               href="/explore"
-              className="inline-flex items-center gap-2 bg-purple-50 hover:bg-purple-100 text-purple-700 font-bold px-6 py-3 rounded-full text-sm transition-all"
+              className="inline-flex items-center gap-2 bg-purple-50 hover:bg-purple-100 text-purple-700 font-bold px-6 py-3 rounded-full text-sm transition-all hover:scale-105"
             >
               <span>Explore All Verified Co-Friends</span>
               <ArrowRight className="w-4 h-4" />
@@ -1038,7 +1118,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 4-Step How It Works Section */}
+      {/* 4-Step How It Works Section with Glowing Animated Step Cards */}
       <section id="how-it-works" className="py-16 sm:py-24 bg-[#FAFAFD]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-2xl mx-auto mb-16 space-y-3">
@@ -1055,53 +1135,58 @@ export default function HomePage() {
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            <div className="bg-white p-6 rounded-3xl border border-purple-100 relative shadow-sm">
-              <div className="w-12 h-12 rounded-2xl bg-gradient-to-tr from-purple-600 to-violet-500 text-white font-outfit font-extrabold text-xl flex items-center justify-center mb-5 shadow-md shadow-purple-500/20">
-                01
-              </div>
-              <h3 className="font-outfit text-lg font-bold text-slate-900 mb-2">
-                Choose Activity & Companion
-              </h3>
-              <p className="font-body text-xs text-slate-500 leading-relaxed">
-                Filter by activity format, city, spoken languages, and verified reviews to find your match.
-              </p>
-            </div>
-
-            <div className="bg-white p-6 rounded-3xl border border-purple-100 relative shadow-sm">
-              <div className="w-12 h-12 rounded-2xl bg-gradient-to-tr from-violet-600 to-pink-500 text-white font-outfit font-extrabold text-xl flex items-center justify-center mb-5 shadow-md shadow-pink-500/20">
-                02
-              </div>
-              <h3 className="font-outfit text-lg font-bold text-slate-900 mb-2">
-                Set Public Venue & Time
-              </h3>
-              <p className="font-body text-xs text-slate-500 leading-relaxed">
-                Select your preferred multiplex, café, museum or mall for a safe public outing.
-              </p>
-            </div>
-
-            <div className="bg-white p-6 rounded-3xl border border-purple-100 relative shadow-sm">
-              <div className="w-12 h-12 rounded-2xl bg-gradient-to-tr from-pink-600 to-rose-500 text-white font-outfit font-extrabold text-xl flex items-center justify-center mb-5 shadow-md shadow-rose-500/20">
-                03
-              </div>
-              <h3 className="font-outfit text-lg font-bold text-slate-900 mb-2">
-                Escrow Deposit & Start OTP
-              </h3>
-              <p className="font-body text-xs text-slate-500 leading-relaxed">
-                Funds remain locked in escrow. Share your 4-digit guest OTP when meeting at the venue.
-              </p>
-            </div>
-
-            <div className="bg-white p-6 rounded-3xl border border-purple-100 relative shadow-sm">
-              <div className="w-12 h-12 rounded-2xl bg-gradient-to-tr from-rose-500 to-amber-500 text-white font-outfit font-extrabold text-xl flex items-center justify-center mb-5 shadow-md shadow-amber-500/20">
-                04
-              </div>
-              <h3 className="font-outfit text-lg font-bold text-slate-900 mb-2">
-                Enjoy Outing & End OTP Release
-              </h3>
-              <p className="font-body text-xs text-slate-500 leading-relaxed">
-                Have a great time! Upon safe conclusion, your companion gives their End OTP to release the payout.
-              </p>
-            </div>
+            {[
+              {
+                num: "01",
+                grad: "from-purple-600 to-violet-500",
+                shadow: "shadow-purple-500/20",
+                title: "Choose Activity & Companion",
+                desc: "Filter by activity format, city, spoken languages, and verified reviews to find your match.",
+              },
+              {
+                num: "02",
+                grad: "from-violet-600 to-pink-500",
+                shadow: "shadow-pink-500/20",
+                title: "Set Public Venue & Time",
+                desc: "Select your preferred multiplex, café, museum or mall for a safe public outing.",
+              },
+              {
+                num: "03",
+                grad: "from-pink-600 to-rose-500",
+                shadow: "shadow-rose-500/20",
+                title: "Escrow Deposit & Start OTP",
+                desc: "Funds remain locked in escrow. Share your 4-digit guest OTP when meeting at the venue.",
+              },
+              {
+                num: "04",
+                grad: "from-rose-500 to-amber-500",
+                shadow: "shadow-amber-500/20",
+                title: "Enjoy Outing & End OTP",
+                desc: "Have a great time! Upon safe conclusion, your companion gives their End OTP to release the payout.",
+              },
+            ].map((step, idx) => (
+              <motion.div
+                key={idx}
+                initial={{ opacity: 0, y: 25 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: idx * 0.1 }}
+                whileHover={{ y: -8 }}
+                className="bg-white p-6 rounded-3xl border border-purple-100 relative shadow-sm hover:shadow-xl hover:shadow-purple-500/10 transition-all duration-300 group"
+              >
+                <div
+                  className={`w-12 h-12 rounded-2xl bg-gradient-to-tr ${step.grad} text-white font-outfit font-extrabold text-xl flex items-center justify-center mb-5 shadow-md ${step.shadow} group-hover:scale-110 transition-transform`}
+                >
+                  {step.num}
+                </div>
+                <h3 className="font-outfit text-lg font-bold text-slate-900 mb-2 group-hover:text-purple-700 transition-colors">
+                  {step.title}
+                </h3>
+                <p className="font-body text-xs text-slate-500 leading-relaxed">
+                  {step.desc}
+                </p>
+              </motion.div>
+            ))}
           </div>
         </div>
       </section>
@@ -1123,7 +1208,10 @@ export default function HomePage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="p-6 rounded-3xl bg-[#FAFAFD] border border-purple-100 space-y-3">
+            <motion.div
+              whileHover={{ y: -6, scale: 1.02 }}
+              className="p-6 rounded-3xl bg-[#FAFAFD] border border-purple-100 space-y-3 shadow-xs hover:shadow-lg transition-all"
+            >
               <div className="w-12 h-12 rounded-2xl bg-purple-100 text-purple-700 flex items-center justify-center">
                 <ShieldCheck className="w-6 h-6" />
               </div>
@@ -1133,9 +1221,12 @@ export default function HomePage() {
               <p className="font-body text-xs text-slate-600 leading-relaxed">
                 Strict zero-tolerance policy against romantic or inappropriate solicitations. All outings take place in certified public spaces.
               </p>
-            </div>
+            </motion.div>
 
-            <div className="p-6 rounded-3xl bg-[#FAFAFD] border border-purple-100 space-y-3">
+            <motion.div
+              whileHover={{ y: -6, scale: 1.02 }}
+              className="p-6 rounded-3xl bg-[#FAFAFD] border border-purple-100 space-y-3 shadow-xs hover:shadow-lg transition-all"
+            >
               <div className="w-12 h-12 rounded-2xl bg-pink-100 text-pink-600 flex items-center justify-center">
                 <Lock className="w-6 h-6" />
               </div>
@@ -1145,9 +1236,12 @@ export default function HomePage() {
               <p className="font-body text-xs text-slate-600 leading-relaxed">
                 Your payment is held safely in escrow and is only released after you confirm the session with the dual-OTP handshake.
               </p>
-            </div>
+            </motion.div>
 
-            <div className="p-6 rounded-3xl bg-[#FAFAFD] border border-purple-100 space-y-3">
+            <motion.div
+              whileHover={{ y: -6, scale: 1.02 }}
+              className="p-6 rounded-3xl bg-[#FAFAFD] border border-purple-100 space-y-3 shadow-xs hover:shadow-lg transition-all"
+            >
               <div className="w-12 h-12 rounded-2xl bg-emerald-100 text-emerald-700 flex items-center justify-center">
                 <CheckCircle2 className="w-6 h-6" />
               </div>
@@ -1157,15 +1251,21 @@ export default function HomePage() {
               <p className="font-body text-xs text-slate-600 leading-relaxed">
                 Companions undergo government identity checks, video interviews, and criminal background verification before listing.
               </p>
-            </div>
+            </motion.div>
           </div>
         </div>
       </section>
 
-      {/* Become a Co-Friend / Earnings Section */}
+      {/* Become a Co-Friend / Earnings Section with Interactive Glow Slider */}
       <section id="partner" className="py-16 sm:py-24 bg-[#FAFAFD]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-purple-700 via-violet-600 to-pink-500 shadow-2xl shadow-purple-500/30 text-white p-8 sm:p-12 lg:p-16">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.98 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7 }}
+            className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-purple-700 via-violet-600 to-pink-500 shadow-2xl shadow-purple-500/30 text-white p-8 sm:p-12 lg:p-16"
+          >
             <div className="dots-pattern-light absolute inset-0 opacity-20 pointer-events-none" />
 
             <div className="relative grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
@@ -1210,7 +1310,10 @@ export default function HomePage() {
               </div>
 
               {/* Earnings Calculator Card */}
-              <div className="lg:col-span-5 bg-white rounded-3xl p-6 sm:p-8 text-slate-900 shadow-xl space-y-6">
+              <motion.div
+                whileHover={{ scale: 1.02 }}
+                className="lg:col-span-5 bg-white rounded-3xl p-6 sm:p-8 text-slate-900 shadow-2xl space-y-6 transition-transform"
+              >
                 <div>
                   <span className="text-xs font-bold text-purple-700 uppercase tracking-wider">
                     Earnings Calculator
@@ -1242,7 +1345,7 @@ export default function HomePage() {
                   </div>
                 </div>
 
-                <div className="bg-purple-50 p-4 rounded-2xl border border-purple-100 text-center">
+                <div className="bg-purple-50 p-4 rounded-2xl border border-purple-100 text-center animate-pulse-glow">
                   <div className="text-xs text-slate-500">
                     Estimated Monthly Earnings:
                   </div>
@@ -1260,13 +1363,13 @@ export default function HomePage() {
                       "Thank you for your interest! Co-Friend companion registration opens weekly. Check back shortly."
                     )
                   }
-                  className="w-full bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white font-bold py-3.5 rounded-2xl text-sm transition-all shadow-md shadow-purple-500/25 active:scale-98"
+                  className="w-full bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white font-bold py-3.5 rounded-2xl text-sm transition-all shadow-md shadow-purple-500/25 active:scale-98 btn-glow cursor-pointer"
                 >
                   Apply to Become a Co-Friend
                 </button>
-              </div>
+              </motion.div>
             </div>
-          </div>
+          </motion.div>
         </div>
       </section>
 
@@ -1288,9 +1391,14 @@ export default function HomePage() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {TESTIMONIALS.map((t, idx) => (
-              <div
+              <motion.div
                 key={idx}
-                className="bg-[#FAFAFD] p-6 rounded-3xl border border-purple-100 flex flex-col justify-between space-y-4"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: idx * 0.1 }}
+                whileHover={{ y: -6 }}
+                className="bg-[#FAFAFD] p-6 rounded-3xl border border-purple-100 flex flex-col justify-between space-y-4 shadow-xs hover:shadow-lg transition-all"
               >
                 <div>
                   <div className="flex items-center gap-1 text-amber-400 mb-3">
@@ -1311,13 +1419,13 @@ export default function HomePage() {
                     {t.service} • {t.city}
                   </div>
                 </div>
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* FAQ Accordion Section */}
+      {/* FAQ Accordion Section with Animated Reveal */}
       <section className="py-16 sm:py-24 bg-[#FAFAFD] border-t border-purple-100">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12 space-y-3">
@@ -1346,16 +1454,24 @@ export default function HomePage() {
                       {faq.q}
                     </span>
                     <ChevronDown
-                      className={`w-5 h-5 text-purple-600 transition-transform ${
+                      className={`w-5 h-5 text-purple-600 transition-transform duration-300 ${
                         isOpen ? "rotate-180" : ""
                       }`}
                     />
                   </button>
-                  {isOpen && (
-                    <div className="px-6 pb-5 pt-1 font-body text-xs sm:text-sm text-slate-600 leading-relaxed border-t border-purple-50">
-                      {faq.a}
-                    </div>
-                  )}
+                  <AnimatePresence>
+                    {isOpen && (
+                      <motion.div
+                        initial={{ opacity: 0, height: 0 }}
+                        animate={{ opacity: 1, height: "auto" }}
+                        exit={{ opacity: 0, height: 0 }}
+                        transition={{ duration: 0.3 }}
+                        className="px-6 pb-5 pt-1 font-body text-xs sm:text-sm text-slate-600 leading-relaxed border-t border-purple-50"
+                      >
+                        {faq.a}
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
                 </div>
               );
             })}
@@ -1364,129 +1480,142 @@ export default function HomePage() {
       </section>
 
       {/* Modal Booking Drawer for Co-Friends */}
-      {activeModalProfile && (
-        <div className="fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-xs flex items-center justify-center p-4">
-          <div className="bg-white rounded-3xl max-w-md w-full p-6 relative shadow-2xl border border-purple-100 animate-in fade-in zoom-in-95 duration-200">
-            <button
-              onClick={() => {
-                setActiveModalProfile(null);
-                setModalBookingSuccess(false);
-              }}
-              className="absolute top-4 right-4 p-2 rounded-full hover:bg-slate-100 text-slate-400 hover:text-slate-600 transition-colors"
+      <AnimatePresence>
+        {activeModalProfile && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-xs flex items-center justify-center p-4"
+          >
+            <motion.div
+              initial={{ scale: 0.92, opacity: 0, y: 20 }}
+              animate={{ scale: 1, opacity: 1, y: 0 }}
+              exit={{ scale: 0.92, opacity: 0, y: 20 }}
+              transition={{ duration: 0.25 }}
+              className="bg-white rounded-3xl max-w-md w-full p-6 relative shadow-2xl border border-purple-100"
             >
-              <X className="w-5 h-5" />
-            </button>
+              <button
+                onClick={() => {
+                  setActiveModalProfile(null);
+                  setModalBookingSuccess(false);
+                }}
+                className="absolute top-4 right-4 p-2 rounded-full hover:bg-slate-100 text-slate-400 hover:text-slate-600 transition-colors cursor-pointer"
+              >
+                <X className="w-5 h-5" />
+              </button>
 
-            {modalBookingSuccess ? (
-              <div className="text-center py-6 space-y-4">
-                <div className="w-16 h-16 bg-emerald-50 text-emerald-600 rounded-full flex items-center justify-center mx-auto border border-emerald-200">
-                  <CheckCircle2 className="w-8 h-8" />
-                </div>
-                <h3 className="font-outfit text-2xl font-bold text-slate-900">
-                  Request Sent to {activeModalProfile.name}!
-                </h3>
-                <p className="font-body text-xs text-slate-600 leading-relaxed">
-                  {activeModalProfile.name} will review your session request. Your booking voucher and Dual-OTP handshake will be ready upon confirmation.
-                </p>
-                <div className="pt-2 flex flex-col gap-2">
-                  <Link
-                    href="/book/confirmation"
-                    className="w-full bg-gradient-to-r from-purple-600 to-pink-600 text-white py-3 rounded-xl text-xs font-bold hover:from-purple-700 hover:to-pink-700 transition-all text-center"
-                  >
-                    View Booking Dashboard
-                  </Link>
-                  <button
-                    onClick={() => {
-                      setActiveModalProfile(null);
-                      setModalBookingSuccess(false);
-                    }}
-                    className="w-full bg-slate-100 text-slate-700 py-2.5 rounded-xl text-xs font-semibold hover:bg-slate-200 transition-all"
-                  >
-                    Close
-                  </button>
-                </div>
-              </div>
-            ) : (
-              <div className="space-y-4">
-                <div className="flex items-center gap-3">
-                  <div className="relative w-14 h-14 rounded-2xl overflow-hidden bg-slate-100 shrink-0">
-                    <Image
-                      src={activeModalProfile.avatar}
-                      alt={activeModalProfile.name}
-                      fill
-                      className="object-cover"
-                    />
+              {modalBookingSuccess ? (
+                <div className="text-center py-6 space-y-4">
+                  <div className="w-16 h-16 bg-emerald-50 text-emerald-600 rounded-full flex items-center justify-center mx-auto border border-emerald-200">
+                    <CheckCircle2 className="w-8 h-8" />
                   </div>
-                  <div>
-                    <span className="text-[10px] font-bold uppercase tracking-wider text-emerald-700">
-                      Aadhaar Verified • {activeModalProfile.city}
-                    </span>
-                    <h3 className="font-outfit text-lg font-bold text-slate-900">
-                      {activeModalProfile.name}
-                    </h3>
-                    <div className="text-xs font-bold text-purple-700">
-                      ₹{activeModalProfile.priceHourly} / hr{" "}
-                      <span className="text-slate-400 font-normal">
-                        ({activeModalProfile.minDuration})
+                  <h3 className="font-outfit text-2xl font-bold text-slate-900">
+                    Request Sent to {activeModalProfile.name}!
+                  </h3>
+                  <p className="font-body text-xs text-slate-600 leading-relaxed">
+                    {activeModalProfile.name} will review your session request. Your booking voucher and Dual-OTP handshake will be ready upon confirmation.
+                  </p>
+                  <div className="pt-2 flex flex-col gap-2">
+                    <Link
+                      href="/book/confirmation"
+                      className="w-full bg-gradient-to-r from-purple-600 to-pink-600 text-white py-3 rounded-xl text-xs font-bold hover:from-purple-700 hover:to-pink-700 transition-all text-center btn-glow"
+                    >
+                      View Booking Dashboard
+                    </Link>
+                    <button
+                      onClick={() => {
+                        setActiveModalProfile(null);
+                        setModalBookingSuccess(false);
+                      }}
+                      className="w-full bg-slate-100 text-slate-700 py-2.5 rounded-xl text-xs font-semibold hover:bg-slate-200 transition-all cursor-pointer"
+                    >
+                      Close
+                    </button>
+                  </div>
+                </div>
+              ) : (
+                <div className="space-y-4">
+                  <div className="flex items-center gap-3">
+                    <div className="relative w-14 h-14 rounded-2xl overflow-hidden bg-slate-100 shrink-0">
+                      <Image
+                        src={activeModalProfile.avatar}
+                        alt={activeModalProfile.name}
+                        fill
+                        className="object-cover"
+                      />
+                    </div>
+                    <div>
+                      <span className="text-[10px] font-bold uppercase tracking-wider text-emerald-700">
+                        Aadhaar Verified • {activeModalProfile.city}
                       </span>
+                      <h3 className="font-outfit text-lg font-bold text-slate-900">
+                        {activeModalProfile.name}
+                      </h3>
+                      <div className="text-xs font-bold text-purple-700">
+                        ₹{activeModalProfile.priceHourly} / hr{" "}
+                        <span className="text-slate-400 font-normal">
+                          ({activeModalProfile.minDuration})
+                        </span>
+                      </div>
                     </div>
                   </div>
-                </div>
 
-                <div className="p-3 bg-purple-50 rounded-2xl border border-purple-100 text-xs text-purple-900 space-y-1">
-                  <div className="flex items-center gap-1.5 font-bold">
-                    <ShieldCheck className="w-4 h-4 text-purple-600" />
-                    <span>Platonic Outing Guarantee</span>
-                  </div>
-                  <p className="text-[11px] text-purple-700">
-                    All outings follow strict platonic guidelines with 100% escrow vault protection.
-                  </p>
-                </div>
-
-                <div className="space-y-3 pt-2 text-xs">
-                  <div>
-                    <label className="block font-bold text-slate-700 mb-1">
-                      Outing Plan / Preferred Activity
-                    </label>
-                    <input
-                      type="text"
-                      defaultValue={activeModalProfile.category}
-                      className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-white focus:outline-none focus:border-purple-600"
-                    />
+                  <div className="p-3 bg-purple-50 rounded-2xl border border-purple-100 text-xs text-purple-900 space-y-1">
+                    <div className="flex items-center gap-1.5 font-bold">
+                      <ShieldCheck className="w-4 h-4 text-purple-600" />
+                      <span>Platonic Outing Guarantee</span>
+                    </div>
+                    <p className="text-[11px] text-purple-700">
+                      All outings follow strict platonic guidelines with 100% escrow vault protection.
+                    </p>
                   </div>
 
-                  <div>
-                    <label className="block font-bold text-slate-700 mb-1">
-                      Preferred Date & Time
-                    </label>
-                    <input
-                      type="datetime-local"
-                      defaultValue="2026-09-15T16:00"
-                      className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-white focus:outline-none focus:border-purple-600"
-                    />
+                  <div className="space-y-3 pt-2 text-xs">
+                    <div>
+                      <label className="block font-bold text-slate-700 mb-1">
+                        Outing Plan / Preferred Activity
+                      </label>
+                      <input
+                        type="text"
+                        defaultValue={activeModalProfile.category}
+                        className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-white focus:outline-none focus:border-purple-600"
+                      />
+                    </div>
+
+                    <div>
+                      <label className="block font-bold text-slate-700 mb-1">
+                        Preferred Date & Time
+                      </label>
+                      <input
+                        type="datetime-local"
+                        defaultValue="2026-09-15T16:00"
+                        className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-white focus:outline-none focus:border-purple-600"
+                      />
+                    </div>
                   </div>
+
+                  <button
+                    onClick={() => setModalBookingSuccess(true)}
+                    className="w-full bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white py-3.5 rounded-xl font-bold text-sm transition-all shadow-md shadow-purple-500/25 active:scale-98 cursor-pointer mt-2 btn-glow"
+                  >
+                    Confirm & Request Companion
+                  </button>
                 </div>
+              )}
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
-                <button
-                  onClick={() => setModalBookingSuccess(true)}
-                  className="w-full bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white py-3.5 rounded-xl font-bold text-sm transition-all shadow-md shadow-purple-500/25 active:scale-98 cursor-pointer mt-2"
-                >
-                  Confirm & Request Companion
-                </button>
-              </div>
-            )}
-          </div>
-        </div>
-      )}
-
-      {/* Midnight Slate Footer */}
-      <footer className="bg-[#0F0F1A] text-slate-300 pt-16 pb-12 border-t border-purple-900/30">
+      {/* Midnight Slate Footer with Ambient Glows */}
+      <footer className="bg-[#0F0F1A] text-slate-300 pt-16 pb-12 border-t border-purple-900/30 relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10">
             {/* Brand Column */}
             <div className="lg:col-span-2 space-y-4">
-              <Link href="/" className="flex items-center gap-2">
-                <div className="w-9 h-9 rounded-2xl bg-gradient-to-tr from-purple-600 to-pink-500 flex items-center justify-center text-white font-outfit font-extrabold text-lg">
+              <Link href="/" className="flex items-center gap-2 group">
+                <div className="w-9 h-9 rounded-2xl bg-gradient-to-tr from-purple-600 to-pink-500 flex items-center justify-center text-white font-outfit font-extrabold text-lg group-hover:scale-105 transition-transform">
                   C
                 </div>
                 <span className="font-outfit text-2xl font-extrabold text-white tracking-tight">
