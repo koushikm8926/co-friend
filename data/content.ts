@@ -63,6 +63,9 @@ export interface CoFriendItem {
   price: number;
   tagline: string;
   image: string;
+  phone?: string;
+  email?: string;
+  applicationId?: string;
 }
 
 export const COFRIENDS: CoFriendItem[] = [

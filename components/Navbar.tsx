@@ -1,8 +1,9 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, Users, ArrowRight, Sparkles } from "lucide-react";
+import { Menu, X, Users, ArrowRight, Sparkles, Sliders } from "lucide-react";
 import { NAV_LINKS } from "@/data/content";
 
 export default function Navbar({
@@ -64,6 +65,13 @@ export default function Navbar({
               {l.label}
             </button>
           ))}
+          <Link
+            href="/admin"
+            className="font-accent inline-flex items-center gap-1 rounded-full px-3.5 py-1.5 text-[0.75rem] font-bold text-purple-700 bg-purple-50/80 border border-purple-200/80 hover:bg-purple-100 transition-colors ml-1"
+          >
+            <Sliders size={12} />
+            Admin
+          </Link>
         </nav>
 
         <div className="hidden items-center gap-3 lg:flex">
@@ -116,6 +124,13 @@ export default function Navbar({
                   {l.label}
                 </button>
               ))}
+              <Link
+                href="/admin"
+                className="font-accent flex items-center gap-2 w-full rounded-xl px-4 py-3 text-left text-sm font-bold text-purple-700 bg-purple-50/60"
+              >
+                <Sliders size={15} />
+                Admin Portal
+              </Link>
               <div className="flex gap-3 pt-3">
                 <button
                   data-testid="nav-mobile-partner-btn"

@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import {
   Users,
   Mail,
@@ -10,6 +11,7 @@ import {
   ShieldCheck,
   Lock,
   BadgeCheck,
+  Sliders,
 } from "lucide-react";
 import { toast } from "sonner";
 
@@ -81,8 +83,7 @@ const COLS = (
       { label: "About Us", action: () => onNavigate("about") },
       { label: "How It Works", action: () => onNavigate("how-it-works") },
       { label: "Become a Partner", action: onPartner },
-      { label: "Careers", action: () => toast.info("Careers page opens in the full app — demo homepage.") },
-      { label: "Press Kit", action: () => toast.info("Press kit opens in the full app — demo homepage.") },
+      { label: "Admin Portal", action: () => { window.location.href = "/admin"; } },
     ],
   },
   {
@@ -91,16 +92,16 @@ const COLS = (
       { label: "Help Center", action: () => onNavigate("faq") },
       { label: "Safety Standards", action: () => onNavigate("about") },
       { label: "FAQs", action: () => onNavigate("faq") },
-      { label: "Contact Us", action: () => toast.info("Write to hello@cofriend.in — demo homepage.") },
+      { label: "KYC Verification", action: onPartner },
     ],
   },
   {
     title: "Legal",
     links: [
-      { label: "Privacy Policy", action: () => toast.info("Legal pages open in the full app — demo homepage.") },
-      { label: "Terms of Service", action: () => toast.info("Legal pages open in the full app — demo homepage.") },
-      { label: "Refund Policy", action: () => toast.info("Legal pages open in the full app — demo homepage.") },
-      { label: "Community Guidelines", action: () => toast.info("Legal pages open in the full app — demo homepage.") },
+      { label: "Privacy Policy", action: () => toast.info("Privacy policy is active.") },
+      { label: "Terms of Service", action: () => toast.info("Terms of service are active.") },
+      { label: "Refund Policy", action: () => toast.info("100% refund policy active for cancellations up to 4 hrs before.") },
+      { label: "Community Guidelines", action: () => toast.info("Strict zero-tolerance code of conduct.") },
     ],
   },
 ];
@@ -199,7 +200,7 @@ export default function Footer({
                   key={i}
                   data-testid={`footer-social-${i}`}
                   onClick={() =>
-                    toast.info("Social profiles open in the full app — demo homepage.")
+                    toast.info("Social link active.")
                   }
                   className="grid h-10 w-10 place-items-center rounded-full border border-white/10 bg-white/5 text-slate-300 transition-all duration-300 hover:-translate-y-1 hover:border-purple-500 hover:bg-purple-600 hover:text-white cursor-pointer"
                   aria-label="Social link"
@@ -233,7 +234,15 @@ export default function Footer({
         </div>
 
         <div className="flex flex-col items-center justify-between gap-5 border-t border-white/10 pt-8 md:flex-row">
-          <p className="text-xs">© 2026 Co-Friend Technologies Pvt. Ltd. Made with care in India.</p>
+          <div className="flex items-center gap-4 text-xs">
+            <p>© 2026 Co-Friend Technologies Pvt. Ltd. Made with care in India.</p>
+            <Link
+              href="/admin"
+              className="inline-flex items-center gap-1 text-purple-400 hover:text-pink-400 font-bold ml-2"
+            >
+              <Sliders size={12} /> Admin Portal
+            </Link>
+          </div>
           <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-xs font-semibold">
             <span className="flex items-center gap-1.5">
               <ShieldCheck size={14} className="text-emerald-400" /> ID Verified

@@ -6,16 +6,16 @@ import {
   MapPin,
   Star,
   ArrowRight,
-  CheckCircle2,
   ShieldCheck,
   CalendarCheck,
-  Sparkles,
   PartyPopper,
   X,
 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { toast } from "sonner";
-import { COFRIENDS, CITIES, SERVICES, type CoFriendItem } from "@/data/content";
+import { type CoFriendItem } from "@/data/content";
+import { useCompanionStore } from "@/lib/companionStore";
+export { PartnerApplyModal as PartnerModal } from "./PartnerApplyModal";
 
 function DialogWrapper({
   open,
@@ -86,11 +86,13 @@ export function SearchModal({
   preset: { service?: string; location?: string } | null;
   onViewProfile: (profile: CoFriendItem) => void;
 }) {
+  const { companions } = useCompanionStore();
+
   const list = useMemo(() => {
-    if (!preset?.service) return COFRIENDS.slice(0, 4);
-    const matches = COFRIENDS.filter((p) => p.services.includes(preset.service!));
-    return (matches.length ? matches : COFRIENDS).slice(0, 4);
-  }, [preset]);
+    if (!preset?.service) return companions.slice(0, 6);
+    const matches = companions.filter((p) => p.services.includes(preset.service!));
+    return (matches.length ? matches : companions).slice(0, 6);
+  }, [preset, companions]);
 
   return (
     <DialogWrapper
@@ -171,6 +173,13 @@ export function ProfileModal({
   const [booked, setBooked] = useState(false);
   const [hours, setHours] = useState(2);
   const [date, setDate] = useState("");
+  const { companions } = useCompanionStore();
+
+  // Pick freshest price/data if companion changed in store
+  const activeProfile = useMemo(() => {
+    if (!profile) return null;
+    return companions.find((c) => c.id === profile.id) || profile;
+  }, [profile, companions]);
 
   useEffect(() => {
     if (open) {
@@ -180,7 +189,7 @@ export function ProfileModal({
     }
   }, [open, profile]);
 
-  if (!profile) return null;
+  if (!activeProfile) return null;
 
   return (
     <DialogWrapper
@@ -198,7 +207,7 @@ export function ProfileModal({
             Booking request sent!
           </h3>
           <p className="mt-3 max-w-sm text-sm leading-relaxed text-slate-600">
-            {profile.name} has been notified and usually confirms within 15 minutes. Your booking ID is{" "}
+            {activeProfile.name} has been notified and usually confirms within 15 minutes. Your booking ID is{" "}
             <span className="font-extrabold text-purple-700">
               CF-{Math.floor(10000 + Math.random() * 89999)}
             </span>
@@ -216,28 +225,28 @@ export function ProfileModal({
         <>
           <div className="relative h-60 overflow-hidden">
             <img
-              src={profile.image}
-              alt={profile.name}
+              src={activeProfile.image}
+              alt={activeProfile.name}
               className="h-full w-full object-cover"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent" />
             <div className="absolute bottom-5 left-6 right-6 flex items-end justify-between">
               <div>
                 <h2 className="font-display flex items-center gap-2 text-2xl font-extrabold text-white">
-                  {profile.name}
+                  {activeProfile.name}
                   <BadgeCheck size={20} className="text-emerald-400" />
                 </h2>
                 <p className="flex items-center gap-1.5 text-sm font-semibold text-white/80 mt-1">
-                  <MapPin size={14} /> {profile.city} · {profile.availability}
+                  <MapPin size={14} /> {activeProfile.city} · {activeProfile.availability}
                 </p>
               </div>
               <div className="rounded-2xl bg-white/95 px-4 py-2.5 text-center shadow-xl">
                 <p className="flex items-center gap-1 text-lg font-extrabold text-slate-900">
                   <Star size={16} className="fill-amber-400 text-amber-400" />
-                  {profile.rating.toFixed(1)}
+                  {activeProfile.rating.toFixed(1)}
                 </p>
                 <p className="text-[0.62rem] font-bold text-slate-500">
-                  {profile.reviews} reviews
+                  {activeProfile.reviews} reviews
                 </p>
               </div>
             </div>
@@ -245,11 +254,11 @@ export function ProfileModal({
 
           <div className="p-6 md:p-7">
             <p className="text-sm leading-relaxed text-slate-600">
-              {profile.tagline}. Verified with Aadhaar, video selfie and background check.
+              {activeProfile.tagline}. Verified with Aadhaar, video selfie and background check.
               Responds within 10 minutes on average.
             </p>
             <div className="mt-4 flex flex-wrap gap-2">
-              {profile.services.map((s) => (
+              {activeProfile.services.map((s) => (
                 <span
                   key={s}
                   className="font-accent rounded-full bg-purple-50 px-3.5 py-1.5 text-[0.7rem] font-bold text-purple-700 ring-1 ring-purple-100"
@@ -295,7 +304,7 @@ export function ProfileModal({
               <p className="text-sm text-slate-500">
                 Total{" "}
                 <span className="font-display text-2xl font-extrabold text-slate-900">
-                  ₹{(profile.price * hours).toLocaleString("en-IN")}
+                  ₹{(activeProfile.price * hours).toLocaleString("en-IN")}
                 </span>
                 <span className="block text-[0.65rem] font-semibold text-emerald-600">
                   Free cancellation till 4 hrs before
@@ -309,170 +318,13 @@ export function ProfileModal({
                     return;
                   }
                   setBooked(true);
-                  toast.success(`Booking request sent to ${profile.name}`);
+                  toast.success(`Booking request sent to ${activeProfile.name}`);
                 }}
                 className="btn-brand font-accent flex items-center gap-2 rounded-full px-7 py-3.5 text-sm font-bold text-white cursor-pointer"
               >
                 <CalendarCheck size={16} /> Book Now
               </button>
             </div>
-          </div>
-        </>
-      )}
-    </DialogWrapper>
-  );
-}
-
-export function PartnerModal({
-  open,
-  onOpenChange,
-}: {
-  open: boolean;
-  onOpenChange: (open: boolean) => void;
-}) {
-  const [submitted, setSubmitted] = useState(false);
-  const [name, setName] = useState("");
-  const [phone, setPhone] = useState("");
-  const [city, setCity] = useState(CITIES[0]);
-  const [picked, setPicked] = useState<Set<string>>(
-    new Set(["Coffee & Conversations"])
-  );
-
-  useEffect(() => {
-    if (open) {
-      setSubmitted(false);
-    }
-  }, [open]);
-
-  const toggleService = (t: string) =>
-    setPicked((prev) => {
-      const next = new Set(prev);
-      next.has(t) ? next.delete(t) : next.add(t);
-      return next;
-    });
-
-  const submit = () => {
-    if (name.trim().length < 2 || phone.trim().length < 10) {
-      toast.error("Please add your name and a valid 10-digit phone number");
-      return;
-    }
-    setSubmitted(true);
-    toast.success("Application received — welcome to the circle!");
-  };
-
-  return (
-    <DialogWrapper
-      open={open}
-      onClose={() => onOpenChange(false)}
-      testId="partner-modal"
-      maxWidth="max-w-xl"
-    >
-      {submitted ? (
-        <div className="flex flex-col items-center px-8 py-14 text-center">
-          <span className="grid h-16 w-16 place-items-center rounded-full bg-gradient-to-br from-purple-600 to-pink-500 text-white shadow-xl">
-            <CheckCircle2 size={30} />
-          </span>
-          <h3 className="font-display mt-6 text-2xl font-extrabold text-slate-900">
-            Application received!
-          </h3>
-          <p className="mt-3 max-w-sm text-sm leading-relaxed text-slate-600">
-            Thanks {name.split(" ")[0]}! Our partner team will call you on {phone} within 48 hours to
-            schedule your verification. Keep your Aadhaar or PAN handy.
-          </p>
-          <button
-            data-testid="partner-done-btn"
-            onClick={() => onOpenChange(false)}
-            className="btn-brand font-accent mt-7 rounded-full px-8 py-3 text-sm font-bold text-white cursor-pointer"
-          >
-            Done
-          </button>
-        </div>
-      ) : (
-        <>
-          <div className="bg-gradient-to-r from-purple-600 via-violet-600 to-pink-500 px-7 py-6 text-white">
-            <h2 className="font-display flex items-center gap-2 text-xl font-extrabold text-white">
-              <Sparkles size={19} /> Become a Partner
-            </h2>
-            <p className="text-sm text-white/80 mt-1">
-              Earn up to ₹45,000/month doing what you love. Free to apply.
-            </p>
-          </div>
-          <div className="max-h-[60vh] space-y-4 overflow-y-auto p-6 md:p-7">
-            <div className="grid gap-4 sm:grid-cols-2">
-              <label className="block">
-                <span className="font-accent text-[0.65rem] font-bold uppercase tracking-[0.14em] text-slate-500">
-                  Full name
-                </span>
-                <input
-                  data-testid="partner-name-input"
-                  value={name}
-                  onChange={(e) => setName(e.target.value)}
-                  placeholder="Aarav Kapoor"
-                  className="mt-1.5 h-11 w-full rounded-xl border border-purple-200 bg-white px-3.5 text-sm font-semibold text-slate-800 outline-none focus:border-purple-500"
-                />
-              </label>
-              <label className="block">
-                <span className="font-accent text-[0.65rem] font-bold uppercase tracking-[0.14em] text-slate-500">
-                  Phone
-                </span>
-                <input
-                  data-testid="partner-phone-input"
-                  value={phone}
-                  onChange={(e) => setPhone(e.target.value)}
-                  placeholder="98765 43210"
-                  className="mt-1.5 h-11 w-full rounded-xl border border-purple-200 bg-white px-3.5 text-sm font-semibold text-slate-800 outline-none focus:border-purple-500"
-                />
-              </label>
-            </div>
-            <label className="block">
-              <span className="font-accent text-[0.65rem] font-bold uppercase tracking-[0.14em] text-slate-500">
-                Your city
-              </span>
-              <select
-                data-testid="partner-city-select"
-                value={city}
-                onChange={(e) => setCity(e.target.value)}
-                className="mt-1.5 h-11 w-full rounded-xl border border-purple-200 bg-white px-3.5 text-sm font-semibold text-slate-800 outline-none focus:border-purple-500 cursor-pointer"
-              >
-                {CITIES.map((c) => (
-                  <option key={c} value={c}>
-                    {c}
-                  </option>
-                ))}
-              </select>
-            </label>
-            <div>
-              <span className="font-accent text-[0.65rem] font-bold uppercase tracking-[0.14em] text-slate-500">
-                Services you&apos;d love to offer
-              </span>
-              <div className="mt-2.5 flex flex-wrap gap-2">
-                {SERVICES.map((s) => (
-                  <button
-                    key={s.id}
-                    data-testid={`partner-service-${s.id}`}
-                    onClick={() => toggleService(s.title)}
-                    className={`font-accent rounded-full px-4 py-2 text-[0.7rem] font-bold transition-all duration-200 cursor-pointer ${
-                      picked.has(s.title)
-                        ? "btn-brand text-white"
-                        : "border border-purple-200 bg-white text-slate-600 hover:border-purple-400"
-                    }`}
-                  >
-                    {s.title}
-                  </button>
-                ))}
-              </div>
-            </div>
-            <button
-              data-testid="partner-submit-btn"
-              onClick={submit}
-              className="btn-brand font-accent flex w-full items-center justify-center gap-2 rounded-full py-4 text-sm font-bold text-white cursor-pointer"
-            >
-              Submit Application <ArrowRight size={15} />
-            </button>
-            <p className="flex items-center justify-center gap-2 pb-1 text-[0.68rem] font-semibold text-slate-500">
-              <ShieldCheck size={13} className="text-emerald-500" />
-              Verification includes Aadhaar check, video selfie &amp; background screening
-            </p>
           </div>
         </>
       )}
