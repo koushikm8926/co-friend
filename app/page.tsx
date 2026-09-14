@@ -43,6 +43,7 @@ import {
   ChevronLeft,
   ChevronRight,
   TrendingUp,
+  LayoutGrid,
 } from "lucide-react";
 
 interface ServiceItem {
@@ -329,15 +330,14 @@ const CITIES = [
 ];
 
 const MARQUEE_ITEMS = [
-  "🎬 Movie Premieres & Cinema Outings",
-  "☕ Specialty Cafés & Deep Talks",
-  "🛍️ Shopping & Style Curations",
-  "✈️ Safe City Heritage Trails",
-  "👵 Elder Assistance & Clinic Support",
-  "🏃 Morning Jogging & Gym Buddy",
-  "🎨 Art Galleries & Museum Visits",
-  "🎭 Theatre & Stand-up Nights",
-  "🐶 Dog Walking & Sunny Strolls",
+  { text: "INSTANT REFUNDS", gradient: true },
+  { text: "VERIFIED PROFILES", gradient: false },
+  { text: "REAL REVIEWS", gradient: true },
+  { text: "SECURE BOOKING", gradient: false },
+  { text: "100% PLATONIC", gradient: true },
+  { text: "BACKGROUND CHECKED", gradient: false },
+  { text: "ZERO HIDDEN FEES", gradient: true },
+  { text: "24/7 SUPPORT", gradient: false },
 ];
 
 const TESTIMONIALS = [
@@ -434,87 +434,55 @@ export default function HomePage() {
 
   return (
     <div className="min-h-screen bg-[#FAFAFD] text-[#0F172A] font-sans antialiased flex flex-col selection:bg-[#F3E8FF] selection:text-[#7C3AED] overflow-x-hidden">
-      {/* Top Banner */}
-      <motion.div
-        initial={{ opacity: 0, y: -20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5 }}
-        className="bg-gradient-to-r from-purple-700 via-purple-600 to-pink-600 text-white px-4 py-2 text-center text-xs sm:text-[13px] font-medium tracking-wide flex items-center justify-center gap-2 shadow-sm"
-      >
-        <Sparkles className="w-4 h-4 text-pink-200 animate-pulse shrink-0" />
-        <span>
-          <strong>India&apos;s #1 Verified Companionship Marketplace</strong> • 100% Strict Platonic & Aadhaar Vetted Network
-        </span>
-      </motion.div>
-
       {/* Main Header / Navbar */}
       <motion.header
         initial={{ opacity: 0, y: -10 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6, delay: 0.1 }}
-        className="sticky top-0 z-40 bg-[#FAFAFD]/90 backdrop-blur-md border-b border-purple-100/80 shadow-xs"
+        transition={{ duration: 0.5 }}
+        className="sticky top-0 z-40 bg-[#FAFAFD]/90 backdrop-blur-md transition-all"
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
           {/* Brand Logo */}
-          <Link href="/" className="flex items-center gap-2 group">
-            <motion.div
-              whileHover={{ rotate: 5, scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="w-10 h-10 rounded-2xl bg-gradient-to-tr from-purple-600 to-pink-500 flex items-center justify-center text-white font-outfit font-extrabold text-xl shadow-md shadow-purple-500/30 transition-transform"
-            >
-              C
-            </motion.div>
-            <div className="flex flex-col">
-              <div className="flex items-baseline">
-                <span className="font-outfit text-2xl font-extrabold tracking-tight text-slate-900 group-hover:text-purple-700 transition-colors">
-                  Co-Friend
-                </span>
-                <span className="w-2 h-2 rounded-full bg-pink-500 ml-1 animate-ping"></span>
-              </div>
-              <span className="text-[10px] font-medium text-purple-600 tracking-wider uppercase -mt-1">
-                Life&apos;s Better Together
-              </span>
+          <Link href="/" className="flex items-center gap-2.5 group">
+            <div className="w-10 h-10 rounded-2xl bg-gradient-to-tr from-purple-600 via-purple-600 to-pink-500 flex items-center justify-center text-white shadow-md shadow-purple-500/25 transition-transform group-hover:scale-105">
+              <Users className="w-5 h-5 text-white" />
             </div>
+            <span className="font-outfit text-2xl font-black tracking-tight text-slate-900">
+              Co<span className="text-pink-500">-Friend</span>
+            </span>
           </Link>
 
-          {/* Desktop Navigation Links */}
-          <nav className="hidden lg:flex items-center gap-8 text-[14.5px] font-semibold text-slate-600">
+          {/* Navigation Links */}
+          <nav className="hidden md:flex items-center gap-8 text-[14.5px] font-semibold text-slate-600">
             <Link
               href="/"
-              className="text-purple-700 font-bold border-b-2 border-purple-600 py-1 transition-all"
+              className="text-slate-700 hover:text-purple-600 transition-colors"
             >
               Home
             </Link>
             <Link
               href="/services"
-              className="transition-colors hover:text-purple-700 py-1"
+              className="text-slate-700 hover:text-purple-600 transition-colors"
             >
               Services
             </Link>
             <Link
               href="/explore"
-              className="transition-colors hover:text-purple-700 py-1"
+              className="text-slate-700 hover:text-purple-600 transition-colors"
             >
               Explore People
             </Link>
             <Link
-              href="/available-now"
-              className="transition-colors hover:text-purple-700 py-1 flex items-center gap-1.5"
-            >
-              <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-              <span>Available Now</span>
-            </Link>
-            <Link
               href="/how-it-works"
-              className="transition-colors hover:text-purple-700 py-1"
+              className="text-slate-700 hover:text-purple-600 transition-colors"
             >
               How It Works
             </Link>
             <Link
-              href="/book/confirmation"
-              className="transition-colors hover:text-purple-700 py-1"
+              href="/#about"
+              className="text-slate-700 hover:text-purple-600 transition-colors"
             >
-              My Bookings
+              About Us
             </Link>
           </nav>
 
@@ -522,64 +490,71 @@ export default function HomePage() {
           <div className="flex items-center gap-3">
             <Link
               href="/#partner"
-              className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white px-5 py-2.5 rounded-full text-sm font-bold tracking-wide transition-all shadow-md shadow-purple-500/25 btn-glow active:scale-98 flex items-center gap-2"
+              className="hidden sm:inline-flex items-center gap-1.5 rounded-full border border-purple-200/90 bg-white/80 px-4.5 py-2 text-sm font-bold text-purple-700 hover:bg-purple-50/70 hover:border-purple-300 shadow-xs transition-all"
             >
-              <span>Become a Co-Friend</span>
-              <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+              <Sparkles className="w-4 h-4 text-purple-600" />
+              <span>Become a Partner</span>
+            </Link>
+            <Link
+              href="/explore"
+              className="inline-flex items-center gap-1.5 rounded-full bg-gradient-to-r from-purple-600 via-purple-600 to-pink-500 px-5 py-2 text-sm font-bold text-white shadow-md shadow-purple-500/25 hover:opacity-95 hover:scale-[1.02] active:scale-[0.98] transition-all"
+            >
+              <span>Find a Co-Friend</span>
+              <ArrowRight className="w-4 h-4" />
             </Link>
           </div>
         </div>
       </motion.header>
 
       {/* Hero Section */}
-      <section className="relative overflow-hidden pt-12 pb-20 md:pt-20 md:pb-28 gradient-hero-bg">
-        <div className="dots-pattern absolute inset-0 opacity-40 pointer-events-none" />
-        
-        {/* Animated Fluid Blobs in Background */}
-        <div className="absolute top-10 left-10 w-[450px] h-[450px] bg-purple-400/20 rounded-full blur-3xl -z-10 animate-blob" />
-        <div className="absolute bottom-10 right-10 w-[450px] h-[450px] bg-pink-400/20 rounded-full blur-3xl -z-10 animate-blob-delayed" />
-        <div className="absolute top-1/2 left-1/3 w-[350px] h-[350px] bg-blue-400/15 rounded-full blur-3xl -z-10 animate-pulse" />
+      <section className="relative overflow-hidden pt-10 pb-16 md:pt-16 md:pb-24 bg-radial from-purple-100/40 via-purple-50/20 to-[#FAFAFD]">
+        {/* Soft Background Accents */}
+        <div className="absolute top-0 left-0 w-[500px] h-[500px] bg-purple-300/20 rounded-full blur-3xl -z-10 pointer-events-none" />
+        <div className="absolute top-10 right-0 w-[500px] h-[500px] bg-pink-300/15 rounded-full blur-3xl -z-10 pointer-events-none" />
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="grid grid-cols-1 lg:grid-cols-[1.05fr_0.95fr] gap-12 lg:gap-8 items-center">
-            {/* Left Column: Copy & Search with Staggered Framer Motion */}
-            <div className="space-y-6 text-left">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-8 items-center">
+            {/* Left Column: Copy, Search, Trust & Social Proof */}
+            <div className="lg:col-span-6 space-y-6 text-left">
               {/* Pill Badge */}
               <motion.div
-                initial={{ opacity: 0, y: 15 }}
+                initial={{ opacity: 0, y: 12 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6 }}
-                className="inline-flex items-center gap-2 rounded-full border border-purple-200 bg-white/80 px-4 py-2 shadow-xs backdrop-blur-md hover:border-purple-300 transition-colors"
+                transition={{ duration: 0.5 }}
+                className="inline-flex items-center gap-2 rounded-full border border-purple-200/90 bg-white/80 px-4 py-1.5 shadow-xs backdrop-blur-md"
               >
-                <Sparkles className="w-4 h-4 text-purple-600 animate-pulse" />
-                <span className="font-outfit text-xs font-bold uppercase tracking-[0.16em] text-purple-700">
+                <Sparkles className="w-3.5 h-3.5 text-purple-600 animate-pulse" />
+                <span className="font-outfit text-[11px] sm:text-xs font-bold uppercase tracking-[0.14em] text-purple-700">
                   India&apos;s most loved companion marketplace
                 </span>
               </motion.div>
 
-              {/* Big Headline in Outfit with Animated SVG Underline */}
+              {/* Big Headline */}
               <motion.h1
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 16 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.7, delay: 0.15 }}
-                className="font-outfit text-5xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight text-slate-900 leading-[0.98]"
+                transition={{ duration: 0.6, delay: 0.1 }}
+                className="font-outfit text-5xl sm:text-6xl lg:text-[70px] font-black tracking-tight text-[#0F172A] leading-[1.04]"
               >
                 Life&apos;s Better <br />
-                <span className="relative inline-block mt-2">
-                  <span className="gradient-text">Together.</span>
+                <span className="relative inline-block mt-1">
+                  <span className="bg-gradient-to-r from-[#7C3AED] via-[#9333EA] to-[#F43F5E] bg-clip-text text-transparent">
+                    Together.
+                  </span>
+                  {/* Pink / Rose Underline Stroke */}
                   <svg
-                    viewBox="0 0 220 14"
-                    className="absolute -bottom-2 left-0 w-full"
+                    viewBox="0 0 240 18"
+                    className="absolute -bottom-2.5 left-0 w-full"
                     fill="none"
                     aria-hidden="true"
                   >
                     <motion.path
                       initial={{ pathLength: 0 }}
                       animate={{ pathLength: 1 }}
-                      transition={{ duration: 0.9, delay: 0.6, ease: "easeOut" }}
-                      d="M4 10 C 60 2, 160 2, 216 8"
+                      transition={{ duration: 0.8, delay: 0.5, ease: "easeOut" }}
+                      d="M4 12 C 70 4, 170 4, 236 10"
                       stroke="#F43F5E"
-                      strokeWidth="5"
+                      strokeWidth="6"
                       strokeLinecap="round"
                     />
                   </svg>
@@ -588,234 +563,203 @@ export default function HomePage() {
 
               {/* Subtitle */}
               <motion.p
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 16 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.7, delay: 0.3 }}
-                className="font-body text-base sm:text-lg text-slate-600 leading-relaxed max-w-xl"
+                transition={{ duration: 0.6, delay: 0.2 }}
+                className="text-slate-600 text-sm sm:text-[15.5px] leading-relaxed max-w-xl font-normal"
               >
                 Find trusted, verified people for movies, coffee, shopping, travel, events, elder care, fitness and more. Book by the hour, meet safely in public, and turn any plan into a memory worth keeping.
               </motion.p>
 
-              {/* 3-Item Interactive Search Box */}
+              {/* Floating Search Bar Card */}
               <motion.div
-                initial={{ opacity: 0, y: 25 }}
+                initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.75, delay: 0.45 }}
-                className="mt-8 rounded-[1.6rem] border border-purple-100 bg-white/95 p-3 shadow-[0_24px_60px_-20px_rgba(124,58,237,0.3)] backdrop-blur-md hover:shadow-[0_28px_70px_-15px_rgba(124,58,237,0.38)] transition-all"
+                transition={{ duration: 0.65, delay: 0.3 }}
+                className="rounded-2xl md:rounded-[1.6rem] border border-purple-100 bg-white p-2.5 sm:p-3 shadow-[0_20px_45px_-12px_rgba(124,58,237,0.18)]"
               >
-                <div className="grid items-center gap-2 md:grid-cols-[1.2fr_1fr_auto]">
-                  {/* Service Select */}
-                  <label className="group relative flex items-center gap-3 rounded-2xl px-4 py-3 transition-colors hover:bg-purple-50/80 cursor-pointer">
-                    <Film className="w-5 h-5 shrink-0 text-purple-500 group-hover:scale-110 transition-transform" />
-                    <span className="w-full">
-                      <span className="block text-[0.65rem] font-bold uppercase tracking-[0.14em] text-slate-400">
+                <div className="flex flex-col md:flex-row items-stretch md:items-center gap-2">
+                  {/* Service Input / Select */}
+                  <div className="flex-1 flex items-center gap-3 px-3 py-1.5 cursor-pointer relative group">
+                    <Search className="w-5 h-5 shrink-0 text-purple-600" />
+                    <div className="flex-1 min-w-0">
+                      <label className="block text-[9.5px] font-bold uppercase tracking-wider text-slate-400">
                         What are you looking for?
-                      </span>
-                      <select
-                        value={selectedCategory}
-                        onChange={(e) => setSelectedCategory(e.target.value)}
-                        className="w-full cursor-pointer appearance-none bg-transparent text-sm font-semibold text-slate-800 outline-none"
-                      >
-                        <option value="All">Anything fun or helpful</option>
-                        {SERVICES_DATA.map((s) => (
-                          <option key={s.id} value={s.title}>
-                            {s.title}
-                          </option>
-                        ))}
-                      </select>
-                    </span>
-                  </label>
+                      </label>
+                      <div className="relative flex items-center justify-between">
+                        <select
+                          value={selectedCategory}
+                          onChange={(e) => setSelectedCategory(e.target.value)}
+                          className="w-full cursor-pointer appearance-none bg-transparent text-sm font-bold text-slate-800 pr-5 truncate focus:outline-none"
+                        >
+                          <option value="All">Anything fun or helpf...</option>
+                          {SERVICES_DATA.map((s) => (
+                            <option key={s.id} value={s.title}>
+                              {s.title}
+                            </option>
+                          ))}
+                        </select>
+                        <ChevronDown className="w-3.5 h-3.5 text-slate-400 absolute right-0 pointer-events-none" />
+                      </div>
+                    </div>
+                  </div>
 
-                  {/* City Select */}
-                  <label className="group relative flex items-center gap-3 rounded-2xl px-4 py-3 transition-colors hover:bg-purple-50/80 cursor-pointer border-t md:border-t-0 md:border-l border-slate-100">
-                    <MapPin className="w-5 h-5 shrink-0 text-pink-500 group-hover:scale-110 transition-transform" />
-                    <span className="w-full">
-                      <span className="block text-[0.65rem] font-bold uppercase tracking-[0.14em] text-slate-400">
-                        Which city?
-                      </span>
-                      <select
-                        value={selectedCity}
-                        onChange={(e) => setSelectedCity(e.target.value)}
-                        className="w-full cursor-pointer appearance-none bg-transparent text-sm font-semibold text-slate-800 outline-none"
-                      >
-                        {CITIES.map((c) => (
-                          <option key={c} value={c}>
-                            {c === "All Cities" ? "Any city across India" : c}
-                          </option>
-                        ))}
-                      </select>
-                    </span>
-                  </label>
+                  <div className="hidden md:block w-px h-9 bg-slate-100" />
+
+                  {/* Location Input / Select */}
+                  <div className="flex-1 flex items-center gap-3 px-3 py-1.5 cursor-pointer relative group border-t md:border-t-0 border-slate-100">
+                    <MapPin className="w-5 h-5 shrink-0 text-pink-500" />
+                    <div className="flex-1 min-w-0">
+                      <label className="block text-[9.5px] font-bold uppercase tracking-wider text-slate-400">
+                        Location
+                      </label>
+                      <div className="relative flex items-center justify-between">
+                        <select
+                          value={selectedCity}
+                          onChange={(e) => setSelectedCity(e.target.value)}
+                          className="w-full cursor-pointer appearance-none bg-transparent text-sm font-bold text-slate-800 pr-5 truncate focus:outline-none"
+                        >
+                          <option value="All Cities">Anywhere in In...</option>
+                          {CITIES.filter((c) => c !== "All Cities").map((c) => (
+                            <option key={c} value={c}>
+                              {c}
+                            </option>
+                          ))}
+                        </select>
+                        <ChevronDown className="w-3.5 h-3.5 text-slate-400 absolute right-0 pointer-events-none" />
+                      </div>
+                    </div>
+                  </div>
 
                   {/* CTA Button */}
                   <Link
                     href="/explore"
-                    className="group relative flex items-center justify-center gap-2 rounded-2xl bg-gradient-to-r from-purple-600 via-violet-600 to-pink-500 px-7 py-4 text-sm font-bold text-white shadow-lg shadow-purple-500/30 transition-all hover:scale-[1.03] hover:shadow-xl hover:shadow-purple-500/40 active:scale-98"
+                    className="shrink-0 flex items-center justify-center rounded-xl md:rounded-2xl bg-gradient-to-r from-purple-600 via-purple-600 to-pink-500 px-6 py-3.5 text-sm font-bold text-white shadow-md shadow-purple-500/25 transition-all hover:opacity-95 hover:scale-[1.02] active:scale-[0.98]"
                   >
-                    <span>Find a Co-Friend</span>
-                    <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+                    Find a Co-Friend
                   </Link>
                 </div>
               </motion.div>
 
-              {/* Popular Chips with Hover Bounce */}
+              {/* Trust Indicators Row */}
               <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
-                transition={{ duration: 0.6, delay: 0.6 }}
-                className="flex flex-wrap items-center gap-2 text-xs text-slate-500 pt-2"
+                transition={{ duration: 0.6, delay: 0.45 }}
+                className="flex flex-wrap items-center gap-4 sm:gap-6 text-xs font-semibold text-slate-700 pt-1"
               >
-                <span className="font-semibold text-slate-700">Popular:</span>
-                {[
-                  "Movie Companion",
-                  "Coffee & Conversations",
-                  "Shopping Companion",
-                  "City Tour Guide",
-                  "Elder Care",
-                  "Fitness Partner",
-                ].map((item) => (
-                  <button
-                    key={item}
-                    onClick={() => setSelectedCategory(item)}
-                    className="rounded-full border border-purple-100 bg-white/80 px-3 py-1 text-slate-700 backdrop-blur-xs transition-all hover:border-purple-300 hover:bg-purple-50 hover:text-purple-700 hover:scale-105 active:scale-95 cursor-pointer"
-                  >
-                    {item}
-                  </button>
-                ))}
-              </motion.div>
-
-              {/* Social Proof Avatar Row with Floating Animation */}
-              <motion.div
-                initial={{ opacity: 0, y: 15 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.75 }}
-                className="flex items-center gap-4 pt-4 border-t border-purple-100/70"
-              >
-                <div className="flex -space-x-2.5 shrink-0">
-                  {[
-                    "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=120&q=80",
-                    "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=120&q=80",
-                    "https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=120&q=80",
-                    "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=120&q=80",
-                  ].map((src, idx) => (
-                    <motion.div
-                      key={idx}
-                      whileHover={{ y: -4, scale: 1.15, zIndex: 10 }}
-                      className="relative w-9 h-9 rounded-full overflow-hidden ring-2 ring-white shadow-xs transition-transform"
-                    >
-                      <Image
-                        src={src}
-                        alt="user"
-                        fill
-                        className="object-cover"
-                      />
-                    </motion.div>
-                  ))}
+                <div className="flex items-center gap-1.5">
+                  <ShieldCheck className="w-4 h-4 text-purple-600" />
+                  <span>Verified Profiles</span>
                 </div>
-                <div>
-                  <div className="flex items-center gap-1.5 text-xs font-bold text-slate-800">
-                    <div className="flex text-amber-400">
-                      {[...Array(5)].map((_, i) => (
-                        <Star key={i} className="w-3.5 h-3.5 fill-amber-400" />
-                      ))}
-                    </div>
-                    <span className="text-slate-900 font-extrabold ml-1">4.95 / 5.0</span>
-                  </div>
-                  <div className="text-[11.5px] text-slate-500 font-medium">
-                    15,000+ happy customers booked a Co-Friend this year
-                  </div>
+                <div className="flex items-center gap-1.5">
+                  <Star className="w-4 h-4 text-purple-600" />
+                  <span>Real Reviews</span>
+                </div>
+                <div className="flex items-center gap-1.5">
+                  <Lock className="w-4 h-4 text-purple-600" />
+                  <span>Secure Booking</span>
+                </div>
+                <div className="flex items-center gap-1.5">
+                  <LayoutGrid className="w-4 h-4 text-purple-600" />
+                  <span>11 Services</span>
                 </div>
               </motion.div>
             </div>
 
-            {/* Right Column: Hero Visual Card Composition with Floating Animation */}
+            {/* Right Column: Hero Visual Card Composition */}
             <motion.div
-              initial={{ opacity: 0, scale: 0.95 }}
+              initial={{ opacity: 0, scale: 0.96 }}
               animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.85, delay: 0.3 }}
-              className="relative mx-auto max-w-lg lg:max-w-none w-full"
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="lg:col-span-6 relative mx-auto w-full max-w-[480px] lg:max-w-none pt-4 pb-6"
             >
-              {/* Main Framed Photo */}
-              <div className="relative overflow-hidden rounded-[2.5rem] border-4 border-white/90 bg-gradient-to-br from-purple-100 to-pink-100 shadow-[0_30px_90px_-20px_rgba(124,58,237,0.35)] group">
-                <div className="relative aspect-[4/3] sm:aspect-[1.15/1] w-full overflow-hidden">
+              {/* Main Purple Backdrop & Selfie Visual */}
+              <div className="relative w-full aspect-[4/4.5] sm:aspect-[4/4.3] rounded-[2.6rem] sm:rounded-[3rem] bg-gradient-to-b from-[#7C3AED] via-[#7534E4] to-[#6322C6] shadow-[0_25px_60px_-15px_rgba(124,58,237,0.4)] overflow-hidden">
+                {/* Photo Layer */}
+                <Image
+                  src="https://images.unsplash.com/photo-1659356870699-2c6b511baec9?auto=format&fit=crop&w=1200&q=80"
+                  alt="Co-Friends smiling together"
+                  fill
+                  priority
+                  className="object-cover object-center scale-[1.02] hover:scale-105 transition-transform duration-700"
+                />
+              </div>
+
+              {/* Floating Card 1: Top-Left 4.95 Rating Badge */}
+              <div className="absolute -top-3 -left-3 sm:-top-5 sm:-left-5 z-20 bg-white rounded-2xl p-3 sm:p-3.5 shadow-[0_12px_30px_-6px_rgba(0,0,0,0.15)] border border-slate-50 min-w-[130px]">
+                <div className="flex gap-0.5 text-amber-400 mb-1">
+                  {[...Array(5)].map((_, i) => (
+                    <Star key={i} className="w-3.5 h-3.5 fill-amber-400 text-amber-400" />
+                  ))}
+                </div>
+                <div className="text-2xl font-black text-slate-900 leading-none">
+                  4.95
+                </div>
+                <div className="text-[10px] sm:text-[11px] text-slate-500 font-semibold mt-1">
+                  1.2L+ verified reviews
+                </div>
+              </div>
+
+              {/* Floating Card 2: Top-Right Polaroid (Girl with coffee) */}
+              <div className="absolute -top-2 -right-3 sm:-top-4 sm:-right-4 z-20 bg-white p-2 rounded-2xl shadow-[0_16px_35px_-8px_rgba(0,0,0,0.22)] rotate-[6deg] hover:rotate-0 transition-transform duration-300 w-28 sm:w-36">
+                <div className="relative aspect-[3.4/4] rounded-xl overflow-hidden">
                   <Image
-                    src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=1200&q=80"
-                    alt="Friends enjoying a day out together"
+                    src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=500&q=80"
+                    alt="Outing friend"
                     fill
-                    priority
-                    className="object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
+                    className="object-cover"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950/60 via-transparent to-transparent" />
-
-                  {/* Photo Caption Overlay */}
-                  <div className="absolute bottom-4 left-5 right-5 text-white">
-                    <div className="flex items-center justify-between">
-                      <div>
-                        <div className="text-xs font-bold uppercase tracking-wider text-pink-300">
-                          Featured Outing
-                        </div>
-                        <div className="font-outfit text-base font-bold">
-                          Coffee & Weekend Conversations
-                        </div>
-                      </div>
-                      <span className="font-outfit text-xs font-extrabold bg-white/20 px-3 py-1 rounded-full backdrop-blur-md">
-                        ₹299 / hr
-                      </span>
-                    </div>
-                  </div>
                 </div>
               </div>
 
-              {/* Floating Top-Left Instant Match Card */}
-              <div className="animate-float absolute -top-6 -left-4 sm:-left-6 flex items-center gap-3 rounded-2xl border border-white/80 bg-white/95 px-4 py-3 shadow-xl shadow-purple-500/15 backdrop-blur-md hover:scale-105 transition-transform">
-                <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-purple-50 text-purple-600">
-                  <Zap className="w-5 h-5 fill-purple-600 text-purple-600 animate-pulse" />
-                </div>
-                <div>
-                  <div className="text-[11px] font-bold uppercase tracking-wider text-purple-700">
-                    Instant Match
-                  </div>
-                  <div className="text-xs font-bold text-slate-800">
-                    Response in &lt; 10 mins
-                  </div>
+              {/* Floating Card 3: Bottom-Left Polaroid (Friends viewpoint) */}
+              <div className="absolute -bottom-3 -left-3 sm:-bottom-5 sm:-left-6 z-20 bg-white p-2 rounded-2xl shadow-[0_16px_35px_-8px_rgba(0,0,0,0.22)] -rotate-[4deg] hover:rotate-0 transition-transform duration-300 w-36 sm:w-44">
+                <div className="relative aspect-[4/3] rounded-xl overflow-hidden">
+                  <Image
+                    src="https://images.unsplash.com/photo-1539635278303-d4002c07eae3?auto=format&fit=crop&w=500&q=80"
+                    alt="Friends sunset view"
+                    fill
+                    className="object-cover"
+                  />
                 </div>
               </div>
 
-              {/* Floating Bottom-Right 15,000+ Verified Card */}
-              <div className="animate-float-slow absolute -bottom-6 -right-3 sm:-right-6 flex items-center gap-3.5 rounded-2xl border border-white/80 bg-white/95 px-4.5 py-3.5 shadow-2xl shadow-purple-500/20 backdrop-blur-md hover:scale-105 transition-transform">
-                <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-gradient-to-br from-emerald-400 to-teal-500 text-white shadow-md shadow-emerald-500/20">
-                  <CheckCircle2 className="w-6 h-6" />
+              {/* Floating Card 4: Bottom-Right 15,000+ Co-Friends Verified Card */}
+              <div className="absolute -bottom-3 -right-2 sm:-bottom-5 sm:-right-3 z-20 bg-white/95 backdrop-blur-md rounded-2xl p-2.5 sm:p-3 px-3.5 sm:px-4 shadow-[0_16px_35px_-8px_rgba(0,0,0,0.18)] border border-white/80 flex items-center gap-3">
+                <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-[#10B981] flex items-center justify-center text-white shrink-0 shadow-sm">
+                  <CheckCircle2 className="w-5 h-5" />
                 </div>
                 <div>
-                  <p className="font-outfit text-sm font-extrabold text-slate-900">
+                  <div className="text-xs sm:text-sm font-extrabold text-slate-900 leading-tight">
                     15,000+ Co-Friends
-                  </p>
-                  <p className="text-[11px] font-semibold text-slate-500">
-                    Aadhaar & Police Verified
-                  </p>
+                  </div>
+                  <div className="text-[10px] sm:text-[11px] text-slate-500 font-semibold">
+                    Aadhaar &amp; background verified
+                  </div>
                 </div>
-              </div>
-
-              {/* Floating Escrow Pill */}
-              <div className="animate-float-reverse hidden sm:flex absolute top-1/2 -right-6 -translate-y-1/2 items-center gap-2 rounded-full border border-white/80 bg-white/95 px-4 py-2 shadow-lg shadow-purple-500/15 backdrop-blur-md">
-                <span className="flex h-2.5 w-2.5 rounded-full bg-emerald-500 animate-pulse" />
-                <span className="text-xs font-bold text-slate-800">
-                  100% Platonic & Escrow Protected
-                </span>
               </div>
             </motion.div>
           </div>
         </div>
       </section>
 
-      {/* Infinite Scrolling Marquee Banner */}
-      <div className="py-4 bg-gradient-to-r from-purple-700 via-violet-700 to-pink-600 text-white overflow-hidden shadow-inner">
-        <div className="animate-marquee flex items-center gap-8 whitespace-nowrap text-xs sm:text-sm font-bold tracking-wide">
-          {[...MARQUEE_ITEMS, ...MARQUEE_ITEMS, ...MARQUEE_ITEMS].map((item, idx) => (
-            <span key={idx} className="flex items-center gap-6">
-              <span>{item}</span>
-              <span className="w-1.5 h-1.5 rounded-full bg-pink-300"></span>
-            </span>
+      {/* Infinite Side Scrolling Marquee Banner */}
+      <div className="py-5 bg-white border-y border-purple-100/80 overflow-hidden relative shadow-xs">
+        <div className="animate-marquee flex items-center gap-10 whitespace-nowrap">
+          {[...MARQUEE_ITEMS, ...MARQUEE_ITEMS, ...MARQUEE_ITEMS, ...MARQUEE_ITEMS].map((item, idx) => (
+            <div key={idx} className="flex items-center gap-10 shrink-0">
+              <span
+                className={`font-outfit text-base sm:text-lg md:text-xl font-black uppercase tracking-wider ${
+                  item.gradient
+                    ? "bg-gradient-to-r from-purple-600 via-purple-500 to-pink-500 bg-clip-text text-transparent"
+                    : "text-[#0F172A]"
+                }`}
+              >
+                {item.text}
+              </span>
+              <span className="text-pink-500 text-lg sm:text-xl select-none font-black">✦</span>
+            </div>
           ))}
         </div>
       </div>

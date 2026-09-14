@@ -185,18 +185,26 @@ body {
   transform: translateY(0px) scale(0.98);
 }
 
-/* Custom scrollbar */
+/* Custom vertical scrollbar matching purple-to-pink gradient pill */
 ::-webkit-scrollbar {
   width: 8px;
   height: 8px;
 }
+
 ::-webkit-scrollbar-track {
-  background: #F3E8FF;
+  background: transparent;
 }
+
 ::-webkit-scrollbar-thumb {
-  background: #C084FC;
-  border-radius: 4px;
+  background: linear-gradient(180deg, #7C3AED 0%, #9333EA 30%, #EC4899 75%, #F43F5E 100%);
+  border-radius: 9999px;
 }
+
 ::-webkit-scrollbar-thumb:hover {
-  background: #7C3AED;
+  background: linear-gradient(180deg, #6D28D9 0%, #7E22CE 30%, #DB2777 75%, #E11D48 100%);
+}
+
+html {
+  scrollbar-color: #8B5CF6 transparent;
+  scrollbar-width: thin;
 }
