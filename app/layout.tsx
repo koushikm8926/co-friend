@@ -3,19 +3,19 @@ import { Outfit, Plus_Jakarta_Sans, DM_Sans } from "next/font/google";
 import "./globals.css";
 
 const outfit = Outfit({
-  variable: "--font-outfit",
+  variable: "--font-display",
   subsets: ["latin"],
   weight: ["400", "500", "600", "700", "800", "900"],
 });
 
 const plusJakartaSans = Plus_Jakarta_Sans({
-  variable: "--font-sans",
+  variable: "--font-accent",
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700", "800"],
+  weight: ["400", "500", "600", "700", "800"],
 });
 
 const dmSans = DM_Sans({
-  variable: "--font-body",
+  variable: "--font-sans",
   subsets: ["latin"],
   weight: ["400", "500", "600", "700", "800"],
 });
@@ -40,10 +40,9 @@ export default function RootLayout({
       lang="en"
       className={`${outfit.variable} ${plusJakartaSans.variable} ${dmSans.variable} h-full antialiased`}
     >
-      <body className="min-h-full font-sans bg-[#FAFAFD] text-[#0F172A] selection:bg-[#F3E8FF] selection:text-[#7C3AED]">
+      <body className="min-h-full font-sans bg-[#FAFAFD] text-[#0F172A] selection:bg-[#7c3aed] selection:text-white">
         {children}
       </body>
     </html>
   );
 }
-
