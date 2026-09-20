@@ -1,7 +1,7 @@
 "use client";
 
-import { useCallback, useState } from "react";
-import { Toaster } from "sonner";
+import { useCallback, useEffect, useState } from "react";
+import { Toaster, toast } from "sonner";
 import TopBar from "@/components/TopBar";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
@@ -25,6 +25,20 @@ export default function HomePage() {
     title: "Coming Soon!",
     feature: "This feature",
   });
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const params = new URLSearchParams(window.location.search);
+      if (params.get("coming_soon")) {
+        toast.info("Coming Soon! Other screens are not available yet. Only the home screen is active.", {
+          duration: 5000,
+        });
+        const url = new URL(window.location.href);
+        url.searchParams.delete("coming_soon");
+        window.history.replaceState({}, "", url.pathname);
+      }
+    }
+  }, []);
 
   const scrollToId = useCallback((id: string) => {
     const el = document.getElementById(id);
