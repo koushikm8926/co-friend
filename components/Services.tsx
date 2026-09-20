@@ -12,17 +12,17 @@ const SERVICES_LIST: ServiceCard[] = [
   {
     id: "movies",
     name: "Movies",
-    image: "https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?auto=format&fit=crop&w=600&q=80",
+    image: "/images/service-movies.jpg",
   },
   {
     id: "coffee",
     name: "Coffee",
-    image: "https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=600&q=80",
+    image: "/images/service-coffee.jpg",
   },
   {
     id: "shopping",
     name: "Shopping",
-    image: "https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=600&q=80",
+    image: "/images/service-shopping.jpg",
   },
   {
     id: "travel",
