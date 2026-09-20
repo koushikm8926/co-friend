@@ -128,7 +128,7 @@ export default function Footer({
               </li>
               <li>
                 <button
-                  onClick={() => onNavigate("services")}
+                  onClick={() => onOpenComingSoon("Services screen")}
                   className="hover:text-white transition-colors"
                 >
                   Services
@@ -136,7 +136,7 @@ export default function Footer({
               </li>
               <li>
                 <button
-                  onClick={() => onNavigate("cofriends")}
+                  onClick={() => onOpenComingSoon("CoFriends directory")}
                   className="hover:text-white transition-colors"
                 >
                   CoFriends
@@ -144,7 +144,7 @@ export default function Footer({
               </li>
               <li>
                 <button
-                  onClick={() => onNavigate("about")}
+                  onClick={() => onOpenComingSoon("About Us page")}
                   className="hover:text-white transition-colors"
                 >
                   About
@@ -152,7 +152,7 @@ export default function Footer({
               </li>
               <li>
                 <button
-                  onClick={() => onNavigate("how-it-works")}
+                  onClick={() => onOpenComingSoon("Safety & Verification page")}
                   className="hover:text-white transition-colors"
                 >
                   Safety
@@ -160,7 +160,7 @@ export default function Footer({
               </li>
               <li>
                 <button
-                  onClick={() => onNavigate("faq")}
+                  onClick={() => onOpenComingSoon("FAQs page")}
                   className="hover:text-white transition-colors"
                 >
                   FAQs

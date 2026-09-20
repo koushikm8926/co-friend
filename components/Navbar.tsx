@@ -102,40 +102,36 @@ export default function Navbar({
         <nav className="hidden lg:flex items-center gap-7">
           <button
             onClick={() => handleNav("home")}
-            className={`text-sm font-medium transition-colors cursor-pointer ${
-              activeTab === "home"
-                ? "text-[#D91A60] font-bold"
-                : "text-slate-700 hover:text-[#D91A60]"
-            }`}
+            className="text-sm font-bold text-[#D91A60] transition-colors cursor-pointer"
           >
             Home
           </button>
           <button
-            onClick={() => handleNav("services")}
+            onClick={() => onOpenComingSoon("Services screen")}
             className="text-sm font-medium text-slate-700 hover:text-[#D91A60] transition-colors cursor-pointer"
           >
             Services
           </button>
           <button
-            onClick={() => handleNav("cofriends")}
+            onClick={() => onOpenComingSoon("CoFriends directory")}
             className="text-sm font-medium text-slate-700 hover:text-[#D91A60] transition-colors cursor-pointer"
           >
             CoFriends
           </button>
           <button
-            onClick={() => handleNav("about")}
+            onClick={() => onOpenComingSoon("About Us page")}
             className="text-sm font-medium text-slate-700 hover:text-[#D91A60] transition-colors cursor-pointer"
           >
             About
           </button>
           <button
-            onClick={() => handleNav("how-it-works")}
+            onClick={() => onOpenComingSoon("Safety & Verification page")}
             className="text-sm font-medium text-slate-700 hover:text-[#D91A60] transition-colors cursor-pointer"
           >
             Safety
           </button>
           <button
-            onClick={() => handleNav("faq")}
+            onClick={() => onOpenComingSoon("FAQs page")}
             className="text-sm font-medium text-slate-700 hover:text-[#D91A60] transition-colors cursor-pointer"
           >
             FAQs
@@ -193,32 +189,47 @@ export default function Navbar({
             Home
           </button>
           <button
-            onClick={() => handleNav("services")}
-            className="block w-full text-left py-2 text-sm font-medium text-slate-700"
+            onClick={() => {
+              setOpen(false);
+              onOpenComingSoon("Services screen");
+            }}
+            className="block w-full text-left py-2 text-sm font-medium text-slate-700 hover:text-[#D91A60]"
           >
             Services
           </button>
           <button
-            onClick={() => handleNav("cofriends")}
-            className="block w-full text-left py-2 text-sm font-medium text-slate-700"
+            onClick={() => {
+              setOpen(false);
+              onOpenComingSoon("CoFriends directory");
+            }}
+            className="block w-full text-left py-2 text-sm font-medium text-slate-700 hover:text-[#D91A60]"
           >
             CoFriends
           </button>
           <button
-            onClick={() => handleNav("about")}
-            className="block w-full text-left py-2 text-sm font-medium text-slate-700"
+            onClick={() => {
+              setOpen(false);
+              onOpenComingSoon("About Us page");
+            }}
+            className="block w-full text-left py-2 text-sm font-medium text-slate-700 hover:text-[#D91A60]"
           >
             About
           </button>
           <button
-            onClick={() => handleNav("how-it-works")}
-            className="block w-full text-left py-2 text-sm font-medium text-slate-700"
+            onClick={() => {
+              setOpen(false);
+              onOpenComingSoon("Safety & Verification page");
+            }}
+            className="block w-full text-left py-2 text-sm font-medium text-slate-700 hover:text-[#D91A60]"
           >
             Safety
           </button>
           <button
-            onClick={() => handleNav("faq")}
-            className="block w-full text-left py-2 text-sm font-medium text-slate-700"
+            onClick={() => {
+              setOpen(false);
+              onOpenComingSoon("FAQs page");
+            }}
+            className="block w-full text-left py-2 text-sm font-medium text-slate-700 hover:text-[#D91A60]"
           >
             FAQs
           </button>
