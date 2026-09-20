@@ -28,15 +28,22 @@ export default function Hero({
         {/* ── Outer container – clips the rounded card ─────────── */}
         <div className="relative w-full rounded-2xl sm:rounded-3xl overflow-hidden bg-white shadow-sm border border-slate-100">
 
-          {/* ── BACKGROUND: full-width hero-banner behind everything ─ */}
-          {/*   hero-banner has white left half, friends photo right half */}
-          {/*   We overlay the text on top of the white region             */}
+          {/* ── BACKGROUND: photo stretched full-width ────────────── */}
           <img
-            src="/images/hero-banner.png"
+            src="/images/hero-bg-clean@2x.png"
             alt=""
             aria-hidden="true"
-            className="absolute inset-0 w-full h-full object-cover object-left-top select-none pointer-events-none"
+            className="absolute inset-0 w-full h-full object-cover object-right select-none pointer-events-none"
             draggable={false}
+          />
+
+          {/* White → transparent gradient so left-side text stays legible */}
+          <div
+            className="absolute inset-0 pointer-events-none"
+            style={{
+              background:
+                "linear-gradient(to right, #ffffff 0%, #ffffff 28%, rgba(255,255,255,0.82) 44%, rgba(255,255,255,0.35) 60%, transparent 78%)",
+            }}
           />
 
           {/* ── CONTENT GRID ─────────────────────────────────────── */}
@@ -151,7 +158,7 @@ export default function Hero({
           </div>
 
           {/* ── SERVICES DOCK – pinned to bottom-right of the card ── */}
-          <div className="absolute bottom-5 sm:bottom-6 right-4 sm:right-6 lg:right-8 z-20 pointer-events-auto">
+          <div className="absolute bottom-5 sm:bottom-6 right-3 sm:right-5 lg:right-6 z-20 pointer-events-auto">
             <div
               className="flex items-center divide-x divide-slate-200/70 px-1.5 py-2.5 rounded-2xl"
               style={{
