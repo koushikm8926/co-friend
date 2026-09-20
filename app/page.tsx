@@ -1,110 +1,116 @@
 "use client";
 
-import { useCallback, useEffect, useRef, useState } from "react";
-import Lenis from "lenis";
+import { useCallback, useState } from "react";
 import { Toaster } from "sonner";
+import TopBar from "@/components/TopBar";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
-import Marquee from "@/components/Marquee";
 import Services from "@/components/Services";
-import CoFriends from "@/components/CoFriends";
-import Stats from "@/components/Stats";
 import HowItWorks from "@/components/HowItWorks";
+import CoFriends from "@/components/CoFriends";
 import BecomePartner from "@/components/BecomePartner";
 import Testimonials from "@/components/Testimonials";
-import WhyChoose from "@/components/WhyChoose";
-import Faq from "@/components/FAQ";
+import FAQ from "@/components/FAQ";
+import BottomCTA from "@/components/BottomCTA";
 import Footer from "@/components/Footer";
-import { SearchModal, ProfileModal, PartnerModal } from "@/components/Modals";
-import { type CoFriendItem } from "@/data/content";
+import { ComingSoonModal } from "@/components/ComingSoon";
 
 export default function HomePage() {
-  const lenisRef = useRef<Lenis | null>(null);
-  const [modal, setModal] = useState<{
-    type: "search" | "profile" | "partner" | null;
-    payload: any;
-  }>({ type: null, payload: null });
-
-  useEffect(() => {
-    const lenis = new Lenis({ duration: 1.15, smoothWheel: true });
-    lenisRef.current = lenis;
-    let rafId: number;
-    const raf = (time: number) => {
-      lenis.raf(time);
-      rafId = requestAnimationFrame(raf);
-    };
-    rafId = requestAnimationFrame(raf);
-    return () => {
-      cancelAnimationFrame(rafId);
-      lenis.destroy();
-    };
-  }, []);
+  const [comingSoonModal, setComingSoonModal] = useState<{
+    open: boolean;
+    title: string;
+    feature: string;
+  }>({
+    open: false,
+    title: "Coming Soon!",
+    feature: "This feature",
+  });
 
   const scrollToId = useCallback((id: string) => {
     const el = document.getElementById(id);
     if (!el) return;
-    if (lenisRef.current) {
-      lenisRef.current.scrollTo(el, { offset: -84, duration: 1.4 });
-    } else {
-      el.scrollIntoView({ behavior: "smooth" });
-    }
+    el.scrollIntoView({ behavior: "smooth" });
   }, []);
 
-  const openModal = useCallback(
-    (type: "search" | "profile" | "partner", payload: any = null) =>
-      setModal({ type, payload }),
-    []
-  );
-  const closeModal = useCallback(
-    () => setModal({ type: null, payload: null }),
-    []
-  );
+  const openComingSoon = useCallback((feature: string, title = "Coming Soon!") => {
+    setComingSoonModal({
+      open: true,
+      title,
+      feature,
+    });
+  }, []);
+
+  const closeComingSoon = useCallback(() => {
+    setComingSoonModal((prev) => ({ ...prev, open: false }));
+  }, []);
 
   return (
-    <div
-      className="min-h-screen overflow-x-clip bg-[#FAFAFD] text-slate-900 antialiased"
-      data-testid="cofriend-app"
-    >
-      <div className="grain" aria-hidden />
+    <div className="min-h-screen bg-white text-slate-900 antialiased selection:bg-[#D91A60] selection:text-white">
+      {/* Top Blue Announcement Bar */}
+      <TopBar />
+
+      {/* Main Navigation */}
       <Navbar
         onNavigate={scrollToId}
-        onFind={() => openModal("search")}
-        onPartner={() => openModal("partner")}
+        onOpenComingSoon={(feature) => openComingSoon(feature)}
       />
-      <main>
-        <Hero
-          onSearch={(preset) => openModal("search", preset)}
-          onExplore={() => scrollToId("services")}
-        />
-        <Marquee />
-        <Services
-          onSelect={(service) => openModal("search", { service, location: "" })}
-        />
-        <CoFriends onView={(p) => openModal("profile", p)} />
-        <Stats />
-        <HowItWorks />
-        <BecomePartner onPartner={() => openModal("partner")} />
-        <Testimonials />
-        <WhyChoose />
-        <Faq />
-      </main>
-      <Footer onNavigate={scrollToId} onPartner={() => openModal("partner")} />
 
-      <SearchModal
-        open={modal.type === "search"}
-        preset={modal.type === "search" ? modal.payload : null}
-        onOpenChange={(o) => !o && closeModal()}
-        onViewProfile={(p) => openModal("profile", p)}
+      {/* Page Content */}
+      <main>
+        {/* 1. Hero Section */}
+        <Hero
+          onFind={() => scrollToId("cofriends")}
+          onBecome={() => openComingSoon("Partner Registration & Profile Creation")}
+        />
+
+        {/* 2. Explore Our Services */}
+        <Services
+          onSelectService={(service) => openComingSoon(`${service} Service Booking`)}
+          onViewAll={() => openComingSoon("All Services Catalog")}
+        />
+
+        {/* 3. Simple Steps - How It Works */}
+        <HowItWorks />
+
+        {/* 4. Featured CoFriends */}
+        <CoFriends
+          onSelectCoFriend={(name) => openComingSoon(`Booking session with ${name}`)}
+          onViewAll={() => openComingSoon("Complete CoFriends Directory")}
+        />
+
+        {/* 5. Become a CoFriend Banner */}
+        <BecomePartner
+          onBecome={() => openComingSoon("CoFriend Partner Registration")}
+        />
+
+        {/* 6. Customer Reviews / Testimonials */}
+        <Testimonials />
+
+        {/* 7. FAQ Section */}
+        <FAQ
+          onViewAll={() => openComingSoon("Extended Knowledge Base & FAQs")}
+        />
+
+        {/* 8. Bottom CTA Banner */}
+        <BottomCTA
+          onFind={() => scrollToId("cofriends")}
+        />
+      </main>
+
+      {/* Footer */}
+      <Footer
+        onNavigate={scrollToId}
+        onOpenComingSoon={(feature) => openComingSoon(feature)}
       />
-      <ProfileModal
-        open={modal.type === "profile"}
-        profile={modal.type === "profile" ? (modal.payload as CoFriendItem) : null}
-        onOpenChange={(o) => !o && closeModal()}
+
+      {/* Reusable Coming Soon Modal */}
+      <ComingSoonModal
+        open={comingSoonModal.open}
+        onClose={closeComingSoon}
+        title={comingSoonModal.title}
+        feature={comingSoonModal.feature}
       />
-      <PartnerModal
-        open={modal.type === "partner"}
-        onOpenChange={(o) => !o && closeModal()}
-      />
+
       <Toaster position="top-center" richColors />
     </div>
   );

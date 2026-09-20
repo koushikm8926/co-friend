@@ -1,133 +1,134 @@
 "use client";
 
-import {
-  Film,
-  Coffee,
-  ShoppingBag,
-  Plane,
-  Ticket,
-  Gamepad2,
-  MapPin,
-  HeartPulse,
-  HandHeart,
-  Dumbbell,
-  Briefcase,
-  ArrowUpRight,
-  Wand2,
-} from "lucide-react";
-import { Reveal, SectionHead } from "./Reveal";
-import { SERVICES } from "@/data/content";
+import { ArrowRight, MoreHorizontal } from "lucide-react";
 
-const ICONS: Record<string, React.ComponentType<{ size?: number; className?: string }>> = {
-  movies: Film,
-  coffee: Coffee,
-  shopping: ShoppingBag,
-  travel: Plane,
-  events: Ticket,
-  gaming: Gamepad2,
-  tours: MapPin,
-  medical: HeartPulse,
-  elder: HandHeart,
-  fitness: Dumbbell,
-  networking: Briefcase,
-};
+interface ServiceCard {
+  id: string;
+  name: string;
+  image: string;
+}
 
-const WIDE = new Set([0, 7, 10]);
+const SERVICES_LIST: ServiceCard[] = [
+  {
+    id: "movies",
+    name: "Movies",
+    image: "https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?auto=format&fit=crop&w=600&q=80",
+  },
+  {
+    id: "coffee",
+    name: "Coffee",
+    image: "https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=600&q=80",
+  },
+  {
+    id: "shopping",
+    name: "Shopping",
+    image: "https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=600&q=80",
+  },
+  {
+    id: "travel",
+    name: "Travel",
+    image: "https://images.unsplash.com/photo-1488646953014-85cb44e25828?auto=format&fit=crop&w=600&q=80",
+  },
+  {
+    id: "fitness",
+    name: "Fitness",
+    image: "https://images.unsplash.com/photo-1517838277536-f5f99be501cd?auto=format&fit=crop&w=600&q=80",
+  },
+  {
+    id: "events",
+    name: "Events",
+    image: "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&w=600&q=80",
+  },
+  {
+    id: "study-buddy",
+    name: "Study Buddy",
+    image: "https://images.unsplash.com/photo-1434030216411-0b793f4b4173?auto=format&fit=crop&w=600&q=80",
+  },
+  {
+    id: "cooking",
+    name: "Cooking",
+    image: "https://images.unsplash.com/photo-1556910103-1c02745aae4d?auto=format&fit=crop&w=600&q=80",
+  },
+  {
+    id: "trekking",
+    name: "Trekking",
+    image: "https://images.unsplash.com/photo-1551632811-561732d1e306?auto=format&fit=crop&w=600&q=80",
+  },
+];
 
 export default function Services({
-  onSelect,
+  onSelectService,
+  onViewAll,
 }: {
-  onSelect: (serviceTitle: string) => void;
+  onSelectService: (name: string) => void;
+  onViewAll: () => void;
 }) {
   return (
-    <section id="services" data-testid="popular-services-section" className="relative py-20 md:py-28">
-      <div className="glow-blob absolute -right-40 top-40 h-96 w-96 rounded-full bg-violet-400/15" />
-      <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-wrap items-end justify-between gap-8">
-          <SectionHead
-            chapter="01"
-            eyebrow="Popular Services"
-            title={
-              <>
-                Whatever the plan, <span className="text-gradient">there&apos;s a Co-Friend for it.</span>
-              </>
-            }
-            sub="Eleven categories of companionship and assistance — each Co-Friend verified, reviewed and ready to book by the hour."
-          />
-          <Reveal delay={0.15}>
-            <div className="rounded-2xl border border-purple-100 bg-white px-5 py-4 shadow-sm">
-              <p className="font-display text-3xl font-extrabold text-gradient">11</p>
-              <p className="font-accent text-xs font-bold uppercase tracking-[0.16em] text-slate-500">
-                Categories live
-              </p>
-            </div>
-          </Reveal>
+    <section id="services" className="py-12 sm:py-16 bg-white">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        
+        {/* Section Header */}
+        <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 pb-8">
+          <div>
+            <span className="text-[0.68rem] sm:text-xs font-bold uppercase tracking-[0.2em] text-slate-400">
+              EXPLORE OUR SERVICES
+            </span>
+            <h2 className="font-display text-3xl sm:text-4xl font-extrabold text-slate-900 mt-1.5 tracking-tight">
+              Something for <span className="text-[#D91A60]">Every Mood</span>
+            </h2>
+          </div>
+
+          <div className="flex flex-col sm:flex-row sm:items-center gap-3">
+            <p className="text-xs sm:text-sm text-slate-500 max-w-sm">
+              From coffee chats to weekend getaways — find a CoFriend for the experiences you love.
+            </p>
+            <button
+              onClick={onViewAll}
+              className="inline-flex items-center gap-1.5 rounded-full border border-purple-200 px-4 py-2 text-xs font-bold text-purple-700 hover:border-purple-300 hover:bg-purple-50 transition-all self-start sm:self-auto cursor-pointer"
+            >
+              <span>View All Services</span>
+              <ArrowRight size={13} />
+            </button>
+          </div>
         </div>
 
-        <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-          {SERVICES.map((s, i) => {
-            const Icon = ICONS[s.id] || Film;
-            return (
-              <Reveal key={s.id} delay={(i % 4) * 0.07} className={WIDE.has(i) ? "lg:col-span-2" : ""}>
-                <button
-                  data-testid={`service-card-${s.id}`}
-                  onClick={() => onSelect(s.title)}
-                  className="card-lift group relative block h-full w-full overflow-hidden rounded-3xl text-left shadow-[0_14px_40px_-16px_rgba(15,23,42,0.25)] cursor-pointer"
-                >
-                  <img
-                    src={s.image}
-                    alt={s.title}
-                    loading="lazy"
-                    className="h-56 w-full object-cover transition-transform duration-700 ease-out group-hover:scale-110"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-900/25 to-transparent" />
-                  <span className="font-accent absolute left-4 top-4 rounded-full border border-white/30 bg-white/15 px-3 py-1 text-[0.65rem] font-bold uppercase tracking-[0.14em] text-white backdrop-blur-md">
-                    {s.tag}
-                  </span>
-                  <span className="font-accent absolute right-4 top-4 rounded-full bg-white px-3 py-1 text-[0.68rem] font-extrabold text-purple-700 shadow-lg">
-                    From {s.price}
-                  </span>
-                  <div className="absolute inset-x-0 bottom-0 flex items-end justify-between gap-3 p-5">
-                    <div>
-                      <span className="mb-3 grid h-10 w-10 place-items-center rounded-xl bg-gradient-to-br from-purple-500 to-pink-500 text-white shadow-lg">
-                        <Icon size={19} />
-                      </span>
-                      <h3 className="font-display text-lg font-bold leading-tight text-white">
-                        {s.title}
-                      </h3>
-                      <p className="mt-0.5 text-xs font-medium text-white/70">{s.blurb}</p>
-                    </div>
-                    <span className="grid h-10 w-10 shrink-0 translate-y-2 place-items-center rounded-full bg-white text-purple-700 opacity-0 shadow-lg transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100">
-                      <ArrowUpRight size={18} />
-                    </span>
-                  </div>
-                </button>
-              </Reveal>
-            );
-          })}
-
-          <Reveal delay={0.1} className="lg:col-span-2">
+        {/* 10 Services Grid (5 columns on desktop) */}
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3 sm:gap-4 pt-2">
+          {SERVICES_LIST.map((s) => (
             <button
-              data-testid="service-card-custom"
-              onClick={() => onSelect("")}
-              className="card-lift group relative flex h-full min-h-[14rem] w-full flex-col justify-between overflow-hidden rounded-3xl bg-gradient-to-br from-purple-600 via-violet-600 to-pink-500 p-6 text-left text-white shadow-[0_20px_50px_-16px_rgba(124,58,237,0.6)] cursor-pointer"
+              key={s.id}
+              onClick={() => onSelectService(s.name)}
+              className="group relative block aspect-[4/3] w-full overflow-hidden rounded-2xl bg-slate-100 text-left shadow-sm hover:shadow-md transition-all duration-300 cursor-pointer"
             >
-              <div className="dots-pattern absolute inset-0 opacity-40" />
-              <span className="relative grid h-11 w-11 place-items-center rounded-2xl bg-white/20 backdrop-blur">
-                <Wand2 size={20} />
-              </span>
-              <div className="relative">
-                <h3 className="font-display text-xl font-extrabold">Something else in mind?</h3>
-                <p className="mt-1 text-sm text-white/80">
-                  Tell us the plan — we&apos;ll match you with the right person.
-                </p>
-                <span className="font-accent mt-4 inline-flex items-center gap-2 rounded-full bg-white px-5 py-2.5 text-xs font-extrabold text-purple-700 transition-transform duration-300 group-hover:scale-105">
-                  Request a match <ArrowUpRight size={14} />
+              <img
+                src={s.image}
+                alt={s.name}
+                loading="lazy"
+                className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/20 to-transparent" />
+              <div className="absolute bottom-3 left-3 right-3">
+                <span className="font-display text-sm sm:text-base font-bold text-white tracking-wide">
+                  {s.name}
                 </span>
               </div>
             </button>
-          </Reveal>
+          ))}
+
+          {/* 10th Card: More Services */}
+          <button
+            onClick={onViewAll}
+            className="group flex flex-col items-center justify-center aspect-[4/3] w-full rounded-2xl bg-[#F8F9FD] border border-slate-200/70 p-4 text-center hover:bg-pink-50/50 hover:border-pink-200 transition-all duration-300 shadow-sm cursor-pointer"
+          >
+            <span className="grid h-10 w-10 place-items-center rounded-full bg-slate-200/60 text-slate-600 group-hover:bg-[#D91A60] group-hover:text-white transition-colors duration-300 mb-2">
+              <MoreHorizontal size={20} />
+            </span>
+            <span className="font-display text-xs sm:text-sm font-bold text-slate-800 group-hover:text-[#D91A60] transition-colors">
+              More Services
+            </span>
+          </button>
         </div>
+
       </div>
     </section>
   );

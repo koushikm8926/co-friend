@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Outfit, Plus_Jakarta_Sans, DM_Sans } from "next/font/google";
+import { Outfit, Plus_Jakarta_Sans, DM_Sans, Caveat } from "next/font/google";
 import "./globals.css";
 
 const outfit = Outfit({
@@ -20,14 +20,20 @@ const dmSans = DM_Sans({
   weight: ["400", "500", "600", "700", "800"],
 });
 
+const caveat = Caveat({
+  variable: "--font-script",
+  subsets: ["latin"],
+  weight: ["400", "600", "700"],
+});
+
 export const viewport: Viewport = {
-  themeColor: "#7C3AED",
+  themeColor: "#D91A60",
 };
 
 export const metadata: Metadata = {
-  title: "Co-Friend — Life's Better Together | Book Verified Companions in India",
+  title: "CoFriend — Social & Lifestyle Companions | Find a CoFriend. Share the Moment.",
   description:
-    "Co-Friend — India's verified companion marketplace. Book trusted people for movies, coffee, travel, events, elder care, fitness and more. Life's Better Together.",
+    "India's Most Trusted Social & Lifestyle Rental Support Services Marketplace. Find verified CoFriends for coffee, movies, shopping, travel, fitness and everyday experiences.",
 };
 
 export default function RootLayout({
@@ -38,9 +44,9 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${outfit.variable} ${plusJakartaSans.variable} ${dmSans.variable} h-full antialiased`}
+      className={`${outfit.variable} ${plusJakartaSans.variable} ${dmSans.variable} ${caveat.variable} h-full antialiased`}
     >
-      <body className="min-h-full font-sans bg-[#FAFAFD] text-[#0F172A] selection:bg-[#7c3aed] selection:text-white">
+      <body className="min-h-full font-sans bg-[#FFFFFF] text-[#0F172A] selection:bg-[#D91A60] selection:text-white">
         {children}
       </body>
     </html>

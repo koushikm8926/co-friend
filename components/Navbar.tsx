@@ -1,162 +1,250 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import Link from "next/link";
-import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, Users, ArrowRight, Sparkles, Sliders } from "lucide-react";
-import { NAV_LINKS } from "@/data/content";
+import { ChevronDown, MapPin, Menu, X } from "lucide-react";
+import { CoFriendLogo } from "./ComingSoon";
+
+const CITIES = [
+  "Hyderabad",
+  "Mumbai",
+  "Bengaluru",
+  "Delhi NCR",
+  "Pune",
+  "Chennai",
+  "Kolkata",
+  "Goa",
+  "Jaipur",
+];
 
 export default function Navbar({
   onNavigate,
-  onFind,
-  onPartner,
+  onOpenComingSoon,
 }: {
   onNavigate: (id: string) => void;
-  onFind: () => void;
-  onPartner: () => void;
+  onOpenComingSoon: (feature: string) => void;
 }) {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const [city, setCity] = useState("Hyderabad");
+  const [cityMenuOpen, setCityMenuOpen] = useState(false);
+  const [activeTab, setActiveTab] = useState("home");
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 24);
+    const onScroll = () => setScrolled(window.scrollY > 20);
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  const go = (id: string) => {
+  const handleNav = (id: string) => {
+    setActiveTab(id);
     setOpen(false);
     onNavigate(id);
   };
 
   return (
     <header
-      data-testid="nav-header"
-      className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
+      className={`sticky top-0 z-40 w-full transition-all duration-300 bg-white ${
         scrolled
-          ? "border-b border-purple-100/70 bg-white/85 shadow-[0_8px_30px_-12px_rgba(124,58,237,0.25)] backdrop-blur-xl"
-          : "bg-transparent"
+          ? "border-b border-slate-100 shadow-[0_4px_20px_-8px_rgba(0,0,0,0.06)]"
+          : "border-b border-slate-100"
       }`}
     >
-      <div className="mx-auto flex h-[76px] max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
-        <button
-          onClick={() => go("home")}
-          data-testid="nav-logo"
-          className="flex items-center gap-2.5 cursor-pointer"
-          aria-label="Co-Friend home"
-        >
-          <span className="grid h-10 w-10 place-items-center rounded-2xl bg-gradient-to-br from-purple-600 via-violet-600 to-pink-500 text-white shadow-lg shadow-purple-500/30">
-            <Users size={20} strokeWidth={2.4} />
-          </span>
-          <span className="font-display text-[1.35rem] font-extrabold tracking-tight text-slate-900">
-            Co<span className="text-gradient">-Friend</span>
-          </span>
-        </button>
-
-        <nav className="hidden items-center gap-1 lg:flex" aria-label="Primary">
-          {NAV_LINKS.map((l) => (
-            <button
-              key={l.id}
-              data-testid={`nav-link-${l.id}`}
-              onClick={() => go(l.id)}
-              className="font-accent rounded-full px-4 py-2 text-[0.83rem] font-semibold text-slate-600 transition-colors duration-200 hover:bg-purple-50 hover:text-purple-700 cursor-pointer"
-            >
-              {l.label}
-            </button>
-          ))}
-          <Link
-            href="/admin"
-            className="font-accent inline-flex items-center gap-1 rounded-full px-3.5 py-1.5 text-[0.75rem] font-bold text-purple-700 bg-purple-50/80 border border-purple-200/80 hover:bg-purple-100 transition-colors ml-1"
-          >
-            <Sliders size={12} />
-            Admin
-          </Link>
-        </nav>
-
-        <div className="hidden items-center gap-3 lg:flex">
+      <div className="mx-auto flex h-[74px] max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
+        {/* Left: Logo & City Dropdown */}
+        <div className="flex items-center gap-5">
           <button
-            data-testid="nav-become-partner-btn"
-            onClick={onPartner}
-            className="font-accent flex items-center gap-1.5 rounded-full border border-purple-200 bg-white/80 px-5 py-2.5 text-[0.83rem] font-bold text-purple-700 transition-all duration-200 hover:-translate-y-0.5 hover:border-purple-400 hover:shadow-lg hover:shadow-purple-200 cursor-pointer"
+            onClick={() => handleNav("home")}
+            className="flex items-center text-left cursor-pointer"
           >
-            <Sparkles size={15} />
-            Become a Partner
+            <CoFriendLogo />
+          </button>
+
+          {/* City Selector */}
+          <div className="relative hidden sm:block">
+            <button
+              onClick={() => setCityMenuOpen(!cityMenuOpen)}
+              className="flex items-center gap-1.5 rounded-full border border-slate-200 bg-slate-50/80 px-3.5 py-1.5 text-xs font-semibold text-slate-700 hover:bg-slate-100 transition-colors cursor-pointer"
+            >
+              <MapPin size={13} className="text-[#D91A60]" />
+              <span>{city}</span>
+              <ChevronDown size={13} className="text-slate-400" />
+            </button>
+
+            {cityMenuOpen && (
+              <div className="absolute left-0 top-full mt-2 w-44 rounded-2xl border border-slate-100 bg-white p-2 shadow-xl z-50">
+                <div className="text-[0.68rem] font-bold uppercase tracking-wider text-slate-400 px-3 py-1">
+                  Select Location
+                </div>
+                {CITIES.map((c) => (
+                  <button
+                    key={c}
+                    onClick={() => {
+                      setCity(c);
+                      setCityMenuOpen(false);
+                    }}
+                    className={`flex w-full items-center justify-between rounded-xl px-3 py-2 text-xs font-medium text-left transition-colors ${
+                      city === c
+                        ? "bg-pink-50 text-[#D91A60] font-bold"
+                        : "text-slate-700 hover:bg-slate-50"
+                    }`}
+                  >
+                    <span>{c}</span>
+                    {city === c && <span className="h-1.5 w-1.5 rounded-full bg-[#D91A60]" />}
+                  </button>
+                ))}
+              </div>
+            )}
+          </div>
+        </div>
+
+        {/* Center: Navigation Links */}
+        <nav className="hidden lg:flex items-center gap-7">
+          <button
+            onClick={() => handleNav("home")}
+            className={`text-sm font-medium transition-colors cursor-pointer ${
+              activeTab === "home"
+                ? "text-[#D91A60] font-bold"
+                : "text-slate-700 hover:text-[#D91A60]"
+            }`}
+          >
+            Home
           </button>
           <button
-            data-testid="nav-find-cofriend-btn"
-            onClick={onFind}
-            className="btn-brand font-accent flex items-center gap-1.5 rounded-full px-5 py-2.5 text-[0.83rem] font-bold text-white cursor-pointer"
+            onClick={() => handleNav("services")}
+            className="text-sm font-medium text-slate-700 hover:text-[#D91A60] transition-colors cursor-pointer"
           >
-            Find a Co-Friend
-            <ArrowRight size={15} />
+            Services
+          </button>
+          <button
+            onClick={() => handleNav("cofriends")}
+            className="text-sm font-medium text-slate-700 hover:text-[#D91A60] transition-colors cursor-pointer"
+          >
+            CoFriends
+          </button>
+          <button
+            onClick={() => handleNav("about")}
+            className="text-sm font-medium text-slate-700 hover:text-[#D91A60] transition-colors cursor-pointer"
+          >
+            About
+          </button>
+          <button
+            onClick={() => handleNav("how-it-works")}
+            className="text-sm font-medium text-slate-700 hover:text-[#D91A60] transition-colors cursor-pointer"
+          >
+            Safety
+          </button>
+          <button
+            onClick={() => handleNav("faq")}
+            className="text-sm font-medium text-slate-700 hover:text-[#D91A60] transition-colors cursor-pointer"
+          >
+            FAQs
+          </button>
+        </nav>
+
+        {/* Right: Login & Sign Up buttons */}
+        <div className="hidden sm:flex items-center gap-3">
+          <button
+            onClick={() => onOpenComingSoon("User Login & Account Access")}
+            className="rounded-full border border-purple-200 px-5 py-2 text-xs font-bold text-purple-700 hover:border-purple-300 hover:bg-purple-50 transition-all cursor-pointer"
+          >
+            Login
+          </button>
+          <button
+            onClick={() => onOpenComingSoon("New User Registration")}
+            className="rounded-full bg-[#D91A60] hover:bg-[#c21453] px-5 py-2 text-xs font-bold text-white shadow-md shadow-pink-500/20 transition-all cursor-pointer"
+          >
+            Sign Up
           </button>
         </div>
 
+        {/* Mobile menu toggle */}
         <button
-          data-testid="nav-mobile-menu-btn"
-          onClick={() => setOpen((v) => !v)}
-          className="grid h-11 w-11 place-items-center rounded-2xl border border-purple-100 bg-white/80 text-slate-800 lg:hidden cursor-pointer"
+          onClick={() => setOpen(!open)}
+          className="grid h-10 w-10 place-items-center rounded-xl border border-slate-200 text-slate-700 lg:hidden cursor-pointer"
           aria-label="Toggle menu"
         >
           {open ? <X size={20} /> : <Menu size={20} />}
         </button>
       </div>
 
-      <AnimatePresence>
-        {open && (
-          <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: "auto" }}
-            exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
-            className="overflow-hidden border-b border-purple-100 bg-white/95 backdrop-blur-xl lg:hidden"
-            data-testid="nav-mobile-panel"
-          >
-            <div className="space-y-1 px-5 pb-6 pt-2">
-              {NAV_LINKS.map((l) => (
-                <button
-                  key={l.id}
-                  data-testid={`nav-mobile-link-${l.id}`}
-                  onClick={() => go(l.id)}
-                  className="font-accent block w-full rounded-xl px-4 py-3 text-left text-sm font-semibold text-slate-700 hover:bg-purple-50 cursor-pointer"
-                >
-                  {l.label}
-                </button>
+      {/* Mobile Drawer */}
+      {open && (
+        <div className="border-t border-slate-100 bg-white px-5 py-6 space-y-3 lg:hidden shadow-xl">
+          <div className="flex items-center gap-2 pb-2 mb-2 border-b border-slate-100">
+            <MapPin size={15} className="text-[#D91A60]" />
+            <select
+              value={city}
+              onChange={(e) => setCity(e.target.value)}
+              className="bg-transparent text-sm font-semibold text-slate-800 outline-none w-full"
+            >
+              {CITIES.map((c) => (
+                <option key={c} value={c}>
+                  {c}
+                </option>
               ))}
-              <Link
-                href="/admin"
-                className="font-accent flex items-center gap-2 w-full rounded-xl px-4 py-3 text-left text-sm font-bold text-purple-700 bg-purple-50/60"
-              >
-                <Sliders size={15} />
-                Admin Portal
-              </Link>
-              <div className="flex gap-3 pt-3">
-                <button
-                  data-testid="nav-mobile-partner-btn"
-                  onClick={() => {
-                    setOpen(false);
-                    onPartner();
-                  }}
-                  className="font-accent flex-1 rounded-full border border-purple-200 px-4 py-3 text-sm font-bold text-purple-700 cursor-pointer"
-                >
-                  Become a Partner
-                </button>
-                <button
-                  data-testid="nav-mobile-find-btn"
-                  onClick={() => {
-                    setOpen(false);
-                    onFind();
-                  }}
-                  className="btn-brand font-accent flex-1 rounded-full px-4 py-3 text-sm font-bold text-white cursor-pointer"
-                >
-                  Find a Co-Friend
-                </button>
-              </div>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+            </select>
+          </div>
+
+          <button
+            onClick={() => handleNav("home")}
+            className="block w-full text-left py-2 text-sm font-semibold text-[#D91A60]"
+          >
+            Home
+          </button>
+          <button
+            onClick={() => handleNav("services")}
+            className="block w-full text-left py-2 text-sm font-medium text-slate-700"
+          >
+            Services
+          </button>
+          <button
+            onClick={() => handleNav("cofriends")}
+            className="block w-full text-left py-2 text-sm font-medium text-slate-700"
+          >
+            CoFriends
+          </button>
+          <button
+            onClick={() => handleNav("about")}
+            className="block w-full text-left py-2 text-sm font-medium text-slate-700"
+          >
+            About
+          </button>
+          <button
+            onClick={() => handleNav("how-it-works")}
+            className="block w-full text-left py-2 text-sm font-medium text-slate-700"
+          >
+            Safety
+          </button>
+          <button
+            onClick={() => handleNav("faq")}
+            className="block w-full text-left py-2 text-sm font-medium text-slate-700"
+          >
+            FAQs
+          </button>
+
+          <div className="flex gap-3 pt-4 border-t border-slate-100">
+            <button
+              onClick={() => {
+                setOpen(false);
+                onOpenComingSoon("User Login");
+              }}
+              className="flex-1 rounded-full border border-purple-200 py-2.5 text-xs font-bold text-purple-700 text-center"
+            >
+              Login
+            </button>
+            <button
+              onClick={() => {
+                setOpen(false);
+                onOpenComingSoon("Sign Up");
+              }}
+              className="flex-1 rounded-full bg-[#D91A60] py-2.5 text-xs font-bold text-white text-center shadow-sm"
+            >
+              Sign Up
+            </button>
+          </div>
+        </div>
+      )}
     </header>
   );
 }

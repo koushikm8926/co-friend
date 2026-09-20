@@ -1,96 +1,146 @@
 "use client";
 
 import { useState } from "react";
-import { MessageCircleQuestion, Headset, ChevronDown } from "lucide-react";
-import { toast } from "sonner";
-import { Reveal, SectionHead } from "./Reveal";
-import { FAQS } from "@/data/content";
+import { Plus, Minus, ArrowRight } from "lucide-react";
 
-export default function Faq() {
-  const [openIndex, setOpenIndex] = useState<number | null>(0);
+interface FAQItem {
+  q: string;
+  a: string;
+}
 
-  const toggle = (i: number) => {
-    setOpenIndex((curr) => (curr === i ? null : i));
+const FAQ_COL_1: FAQItem[] = [
+  {
+    q: "What is CoFriend?",
+    a: "CoFriend is India's most trusted social and lifestyle rental support services marketplace. We connect verified individuals to accompany you for coffee, movies, shopping, city tours, fitness, study sessions, and events.",
+  },
+  {
+    q: "Are CoFriends verified?",
+    a: "Yes, 100%. Every CoFriend completes mandatory government identity verification (Aadhaar / PAN), photo verification, phone and email validation, and background screening before being listed.",
+  },
+  {
+    q: "How does booking work?",
+    a: "Simply browse verified CoFriends by city and category, choose your preferred companion, pick a date and time, and confirm your booking securely. All meetups take place in public venues.",
+  },
+];
+
+const FAQ_COL_2: FAQItem[] = [
+  {
+    q: "Is CoFriend a dating platform?",
+    a: "No, absolutely not. CoFriend is strictly a platonic companionship and lifestyle assistance platform for activities like movies, travel, fitness, and events. Romantic or inappropriate requests are strictly prohibited and result in an immediate permanent ban.",
+  },
+  {
+    q: "How are payments handled?",
+    a: "All payments are processed securely through RBI-compliant escrow payment gateways. Your payment is held safely until your scheduled session completes.",
+  },
+  {
+    q: "Can I become a CoFriend?",
+    a: "Yes! If you are friendly, dependable, and enjoy meeting new people or showing them around your city, you can apply to become a verified CoFriend and earn flexible hourly income.",
+  },
+];
+
+export default function FAQ({
+  onViewAll,
+}: {
+  onViewAll: () => void;
+}) {
+  const [openId, setOpenId] = useState<string | null>(null);
+
+  const toggle = (id: string) => {
+    setOpenId((curr) => (curr === id ? null : id));
   };
 
   return (
-    <section id="faq" data-testid="faq-accordion-section" className="relative py-20 md:py-28">
-      <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="grid gap-14 lg:grid-cols-[0.85fr_1.15fr]">
+    <section id="faq" className="py-14 sm:py-20 bg-[#FFFFFF]">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        
+        {/* Section Header */}
+        <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 pb-10">
           <div>
-            <SectionHead
-              chapter="08"
-              eyebrow="FAQ"
-              title={
-                <>
-                  Questions? <span className="text-gradient">Honest answers.</span>
-                </>
-              }
-              sub="Everything people usually ask before their first booking — safety, verification, pricing and how Co-Friend really works."
-            />
-            <Reveal delay={0.2} className="mt-10">
-              <div className="rounded-[1.75rem] border border-purple-100 bg-gradient-to-br from-purple-50 to-pink-50 p-7">
-                <span className="grid h-12 w-12 place-items-center rounded-2xl bg-gradient-to-br from-purple-600 to-pink-500 text-white shadow-lg">
-                  <Headset size={22} />
-                </span>
-                <h3 className="font-display mt-5 text-lg font-extrabold text-slate-900">
-                  Still have questions?
-                </h3>
-                <p className="mt-2 text-sm leading-relaxed text-slate-600">
-                  Our human support team replies in under 5 minutes, 24/7, in English and 8 Indian languages.
-                </p>
-                <button
-                  data-testid="faq-support-btn"
-                  onClick={() =>
-                    toast.info("Live chat opens in the full app — this is the demo homepage.")
-                  }
-                  className="btn-brand font-accent mt-5 rounded-full px-6 py-3 text-xs font-bold text-white cursor-pointer"
-                >
-                  Chat with Support
-                </button>
-              </div>
-            </Reveal>
+            <span className="text-[0.68rem] sm:text-xs font-bold uppercase tracking-[0.2em] text-slate-400">
+              QUICK ANSWERS
+            </span>
+            <h2 className="font-display text-3xl sm:text-4xl font-extrabold text-slate-900 mt-1 tracking-tight">
+              Frequently Asked Questions
+            </h2>
           </div>
 
-          <Reveal delay={0.1}>
-            <div className="space-y-4" data-testid="faq-accordion">
-              {FAQS.map((f, i) => {
-                const isOpen = openIndex === i;
-                return (
-                  <div
-                    key={i}
-                    data-testid={`faq-item-${i}`}
-                    className={`rounded-2xl border border-purple-100 bg-white px-6 shadow-sm transition-all duration-300 ${
-                      isOpen ? "shadow-[0_18px_40px_-20px_rgba(124,58,237,0.35)]" : ""
-                    }`}
-                  >
-                    <button
-                      data-testid={`faq-trigger-${i}`}
-                      onClick={() => toggle(i)}
-                      className="font-display flex w-full items-center justify-between py-5 text-left text-[0.95rem] font-bold text-slate-900 hover:text-purple-700 transition-colors cursor-pointer"
-                    >
-                      <span className="flex items-center gap-3">
-                        <MessageCircleQuestion size={18} className="shrink-0 text-pink-500" />
-                        {f.q}
-                      </span>
-                      <ChevronDown
-                        size={18}
-                        className={`shrink-0 text-purple-600 transition-transform duration-300 ${
-                          isOpen ? "rotate-180" : ""
-                        }`}
-                      />
-                    </button>
-                    {isOpen && (
-                      <div className="pb-5 pl-8 text-sm leading-relaxed text-slate-600 border-t border-purple-50 pt-3">
-                        {f.a}
-                      </div>
-                    )}
-                  </div>
-                );
-              })}
-            </div>
-          </Reveal>
+          <div className="flex flex-col sm:flex-row sm:items-center gap-3">
+            <span className="text-xs sm:text-sm text-slate-500">
+              Have more questions? Check our complete FAQ page.
+            </span>
+            <button
+              onClick={onViewAll}
+              className="inline-flex items-center gap-1.5 rounded-full border border-purple-200 px-4 py-2 text-xs font-bold text-purple-700 hover:border-purple-300 hover:bg-purple-50 transition-all self-start sm:self-auto cursor-pointer"
+            >
+              <span>View All FAQs</span>
+              <ArrowRight size={13} />
+            </button>
+          </div>
         </div>
+
+        {/* 2-Column Accordion Layout */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          
+          {/* Column 1 */}
+          <div className="space-y-3">
+            {FAQ_COL_1.map((item, i) => {
+              const id = `col1-${i}`;
+              const isOpen = openId === id;
+              return (
+                <div
+                  key={id}
+                  className="rounded-2xl border border-slate-200/80 bg-white transition-all overflow-hidden"
+                >
+                  <button
+                    onClick={() => toggle(id)}
+                    className="flex w-full items-center justify-between p-4 sm:p-5 text-left text-xs sm:text-sm font-bold text-slate-900 hover:text-[#D91A60] transition-colors cursor-pointer"
+                  >
+                    <span>{item.q}</span>
+                    <span className="grid h-6 w-6 place-items-center rounded-full bg-slate-100 text-slate-600 shrink-0 ml-2">
+                      {isOpen ? <Minus size={13} /> : <Plus size={13} />}
+                    </span>
+                  </button>
+                  {isOpen && (
+                    <div className="px-5 pb-5 text-xs sm:text-sm text-slate-500 leading-relaxed border-t border-slate-50 pt-3">
+                      {item.a}
+                    </div>
+                  )}
+                </div>
+              );
+            })}
+          </div>
+
+          {/* Column 2 */}
+          <div className="space-y-3">
+            {FAQ_COL_2.map((item, i) => {
+              const id = `col2-${i}`;
+              const isOpen = openId === id;
+              return (
+                <div
+                  key={id}
+                  className="rounded-2xl border border-slate-200/80 bg-white transition-all overflow-hidden"
+                >
+                  <button
+                    onClick={() => toggle(id)}
+                    className="flex w-full items-center justify-between p-4 sm:p-5 text-left text-xs sm:text-sm font-bold text-slate-900 hover:text-[#D91A60] transition-colors cursor-pointer"
+                  >
+                    <span>{item.q}</span>
+                    <span className="grid h-6 w-6 place-items-center rounded-full bg-slate-100 text-slate-600 shrink-0 ml-2">
+                      {isOpen ? <Minus size={13} /> : <Plus size={13} />}
+                    </span>
+                  </button>
+                  {isOpen && (
+                    <div className="px-5 pb-5 text-xs sm:text-sm text-slate-500 leading-relaxed border-t border-slate-50 pt-3">
+                      {item.a}
+                    </div>
+                  )}
+                </div>
+              );
+            })}
+          </div>
+
+        </div>
+
       </div>
     </section>
   );

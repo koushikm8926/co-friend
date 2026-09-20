@@ -1,33 +1,84 @@
 "use client";
 
 import { useState } from "react";
-import { Heart, MapPin, Star, BadgeCheck, ArrowRight } from "lucide-react";
+import { ArrowRight, Heart, Star, BadgeCheck } from "lucide-react";
 import { toast } from "sonner";
-import { Reveal, SectionHead } from "./Reveal";
-import { type CoFriendItem } from "@/data/content";
-import { useCompanionStore } from "@/lib/companionStore";
 
-const FILTERS = [
-  "All",
-  "Coffee & Conversations",
-  "Travel Companion",
-  "Fitness Buddy",
-  "Elder Assistance",
+interface CoFriendCard {
+  id: string;
+  name: string;
+  avatar: string;
+  tags: string[];
+  rating: number;
+  reviews: number;
+  price: number;
+}
+
+const FEATURED_COFRIENDS: CoFriendCard[] = [
+  {
+    id: "aarav",
+    name: "Aarav",
+    avatar: "/images/avatar-aarav.png",
+    tags: ["Movies", "Coffee"],
+    rating: 4.8,
+    reviews: 120,
+    price: 499,
+  },
+  {
+    id: "diya",
+    name: "Diya",
+    avatar: "/images/avatar-diya.png",
+    tags: ["Shopping", "Events"],
+    rating: 4.9,
+    reviews: 96,
+    price: 599,
+  },
+  {
+    id: "rohan",
+    name: "Rohan",
+    avatar: "/images/avatar-rohan.png",
+    tags: ["Fitness", "Travel"],
+    rating: 4.7,
+    reviews: 76,
+    price: 549,
+  },
+  {
+    id: "meera",
+    name: "Meera",
+    avatar: "/images/avatar-meera.png",
+    tags: ["Study Buddy", "Cooking"],
+    rating: 4.8,
+    reviews: 102,
+    price: 499,
+  },
+  {
+    id: "kabir",
+    name: "Kabir",
+    avatar: "/images/avatar-kabir1.png",
+    tags: ["Travel", "Trekking"],
+    rating: 4.9,
+    reviews: 88,
+    price: 449,
+  },
+  {
+    id: "kabir2",
+    name: "Kabir",
+    avatar: "/images/avatar-kabir2.png",
+    tags: ["Coffee", "Events"],
+    rating: 4.8,
+    reviews: 95,
+    price: 549,
+  },
 ];
 
 export default function CoFriends({
-  onView,
+  onSelectCoFriend,
+  onViewAll,
 }: {
-  onView: (profile: CoFriendItem) => void;
+  onSelectCoFriend: (name: string) => void;
+  onViewAll: () => void;
 }) {
-  const [filter, setFilter] = useState("All");
   const [favs, setFavs] = useState<Set<string>>(new Set());
-  const { companions } = useCompanionStore();
-
-  const list =
-    filter === "All"
-      ? companions
-      : companions.filter((p) => p.services.includes(filter));
 
   const toggleFav = (e: React.MouseEvent, id: string, name: string) => {
     e.stopPropagation();
@@ -37,146 +88,113 @@ export default function CoFriends({
         next.delete(id);
       } else {
         next.add(id);
-        toast.success(`${name} added to your favourites`);
+        toast.success(`Saved ${name} to favourites!`);
       }
       return next;
     });
   };
 
   return (
-    <section id="explore" data-testid="featured-cofriends-section" className="relative py-20 md:py-28">
-      <div className="glow-blob absolute -left-40 top-1/3 h-[26rem] w-[26rem] rounded-full bg-pink-400/15" />
-      <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <SectionHead
-          chapter="02"
-          eyebrow="Explore People"
-          title={
-            <>
-              Meet some of India&apos;s <span className="text-gradient">top-rated Co-Friends.</span>
-            </>
-          }
-          sub="Real people, real reviews. Every profile is government-ID verified and rated only by customers who completed a booking."
-        />
-
-        <Reveal delay={0.15} className="mt-10">
-          <div className="flex flex-wrap gap-2.5" data-testid="cofriend-filters">
-            {FILTERS.map((f) => (
-              <button
-                key={f}
-                data-testid={`filter-${f === "All" ? "all" : f.toLowerCase().replace(/[^a-z]+/g, "-")}`}
-                onClick={() => setFilter(f)}
-                className={`font-accent rounded-full px-5 py-2.5 text-xs font-bold transition-all duration-300 cursor-pointer ${
-                  filter === f
-                    ? "btn-brand text-white"
-                    : "border border-purple-200 bg-white text-slate-600 hover:border-purple-400 hover:text-purple-700"
-                }`}
-              >
-                {f}
-              </button>
-            ))}
+    <section id="cofriends" className="py-14 sm:py-20 bg-white">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        
+        {/* Section Header */}
+        <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 pb-10">
+          <div>
+            <span className="text-[0.68rem] sm:text-xs font-bold uppercase tracking-[0.2em] text-slate-400">
+              FEATURED COFRIENDS
+            </span>
+            <h2 className="font-display text-3xl sm:text-4xl font-extrabold text-slate-900 mt-1 tracking-tight">
+              Meet Our <span className="text-[#D91A60]">CoFriends</span>
+            </h2>
+            <p className="mt-1.5 text-xs sm:text-sm text-slate-500 max-w-md">
+              Talented, friendly and verified CoFriends ready to share amazing experiences with you.
+            </p>
           </div>
-        </Reveal>
 
-        <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {list.map((p, i) => (
-            <Reveal key={p.id} delay={(i % 3) * 0.09}>
-              <article
-                data-testid={`profile-card-${p.id}`}
-                className="card-lift group overflow-hidden rounded-[1.75rem] border border-purple-100 bg-white shadow-[0_16px_45px_-20px_rgba(124,58,237,0.25)] hover:border-purple-300 hover:shadow-[0_30px_60px_-20px_rgba(124,58,237,0.4)] flex flex-col justify-between"
-              >
-                <div>
-                  <div className="relative h-64 overflow-hidden">
-                    <img
-                      src={p.image}
-                      alt={`${p.name}, verified Co-Friend in ${p.city}`}
-                      loading="lazy"
-                      className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-110"
+          <button
+            onClick={onViewAll}
+            className="inline-flex items-center gap-1.5 rounded-full border border-purple-200 px-4 py-2 text-xs font-bold text-purple-700 hover:border-purple-300 hover:bg-purple-50 transition-all self-start md:self-auto cursor-pointer"
+          >
+            <span>View All CoFriends</span>
+            <ArrowRight size={13} />
+          </button>
+        </div>
+
+        {/* 6 CoFriends Cards Row / Grid */}
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 sm:gap-4">
+          {FEATURED_COFRIENDS.map((cf) => (
+            <div
+              key={cf.id}
+              onClick={() => onSelectCoFriend(cf.name)}
+              className="group relative flex flex-col justify-between rounded-2xl border border-slate-100 bg-white p-2.5 sm:p-3 shadow-sm hover:shadow-md hover:border-pink-200 transition-all duration-300 cursor-pointer"
+            >
+              <div>
+                {/* Avatar container */}
+                <div className="relative aspect-square w-full overflow-hidden rounded-xl bg-gradient-to-b from-pink-50/50 to-purple-50/50">
+                  <img
+                    src={cf.avatar}
+                    alt={cf.name}
+                    loading="lazy"
+                    className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
+                  />
+
+                  {/* Favorite Heart Button */}
+                  <button
+                    onClick={(e) => toggleFav(e, cf.id, cf.name)}
+                    className="absolute top-1.5 right-1.5 grid h-7 w-7 place-items-center rounded-full bg-white/80 text-slate-500 hover:text-pink-500 backdrop-blur-sm shadow-xs transition-transform active:scale-90"
+                    aria-label="Favorite"
+                  >
+                    <Heart
+                      size={13}
+                      className={favs.has(cf.id) ? "fill-[#D91A60] text-[#D91A60]" : ""}
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-slate-950/60 via-transparent to-transparent" />
-                    <button
-                      data-testid={`favourite-btn-${p.id}`}
-                      onClick={(e) => toggleFav(e, p.id, p.name)}
-                      aria-label={`Favourite ${p.name}`}
-                      className={`absolute right-4 top-4 grid h-10 w-10 place-items-center rounded-full backdrop-blur-md transition-all duration-300 active:scale-90 cursor-pointer ${
-                        favs.has(p.id)
-                          ? "bg-pink-500 text-white shadow-lg shadow-pink-500/40"
-                          : "bg-white/80 text-slate-700 hover:bg-white"
-                      }`}
-                    >
-                      <Heart size={17} className={favs.has(p.id) ? "fill-white" : ""} />
-                    </button>
-                    <div className="absolute bottom-4 left-4 flex items-center gap-2">
-                      {p.verified && (
-                        <span className="font-accent flex items-center gap-1.5 rounded-full bg-white/90 px-3 py-1.5 text-[0.65rem] font-extrabold uppercase tracking-wider text-emerald-600 backdrop-blur">
-                          <BadgeCheck size={13} /> Verified
-                        </span>
-                      )}
-                      <span className="font-accent flex items-center gap-1.5 rounded-full bg-white/90 px-3 py-1.5 text-[0.65rem] font-extrabold text-slate-700 backdrop-blur">
-                        <span className="dot-live h-1.5 w-1.5 rounded-full bg-emerald-500" />
-                        {p.availability}
-                      </span>
-                    </div>
-                  </div>
+                  </button>
 
-                  <div className="p-5">
-                    <div className="flex items-start justify-between gap-3">
-                      <div>
-                        <h3 className="font-display text-lg font-extrabold text-slate-900">
-                          {p.name}
-                        </h3>
-                        <p className="mt-0.5 flex items-center gap-1 text-xs font-semibold text-slate-500">
-                          <MapPin size={12} className="text-pink-500" /> {p.city}
-                        </p>
-                      </div>
-                      <div className="rounded-2xl bg-gradient-to-br from-amber-50 to-orange-50 px-3 py-2 text-center ring-1 ring-amber-200/70">
-                        <p className="flex items-center justify-center gap-1 text-base font-extrabold text-slate-900">
-                          <Star size={15} className="fill-amber-400 text-amber-400" />
-                          {p.rating.toFixed(1)}
-                        </p>
-                        <p className="text-[0.62rem] font-bold text-slate-500">
-                          {p.reviews} reviews
-                        </p>
-                      </div>
-                    </div>
-
-                    <p className="mt-3 text-[0.83rem] leading-relaxed text-slate-600 line-clamp-2">
-                      {p.tagline}
-                    </p>
-
-                    <div className="mt-4 flex flex-wrap gap-1.5">
-                      {p.services.map((s) => (
-                        <span
-                          key={s}
-                          className="font-accent rounded-full bg-purple-50 px-3 py-1 text-[0.65rem] font-bold text-purple-700 ring-1 ring-purple-100"
-                        >
-                          {s}
-                        </span>
-                      ))}
-                    </div>
+                  {/* Verified badge */}
+                  <div className="absolute bottom-1.5 left-1.5 flex items-center gap-1 rounded-full bg-emerald-500/90 text-white px-1.5 py-0.5 text-[0.6rem] font-bold backdrop-blur-xs">
+                    <BadgeCheck size={10} />
+                    <span>Verified</span>
                   </div>
                 </div>
 
-                <div className="p-5 pt-0">
-                  <div className="flex items-center justify-between border-t border-purple-50 pt-4">
-                    <p className="text-sm text-slate-500">
-                      <span className="font-display text-xl font-extrabold text-slate-900">
-                        ₹{p.price}
-                      </span>
-                      /hr onwards
-                    </p>
-                    <button
-                      data-testid={`view-profile-btn-${p.id}`}
-                      onClick={() => onView(p)}
-                      className="btn-brand font-accent flex items-center gap-1.5 rounded-full px-5 py-2.5 text-xs font-bold text-white cursor-pointer"
-                    >
-                      View Profile <ArrowRight size={14} />
-                    </button>
-                  </div>
+                {/* Name */}
+                <h3 className="font-display mt-2.5 text-sm sm:text-base font-extrabold text-slate-900">
+                  {cf.name}
+                </h3>
+
+                {/* Tags */}
+                <div className="mt-1 flex flex-wrap gap-1 text-[0.65rem] text-slate-500">
+                  {cf.tags.map((tag) => (
+                    <span key={tag} className="flex items-center gap-0.5">
+                      <span className="text-pink-500">•</span>
+                      <span>{tag}</span>
+                    </span>
+                  ))}
                 </div>
-              </article>
-            </Reveal>
+
+                {/* Rating */}
+                <div className="mt-2 flex items-center gap-1 text-xs">
+                  <Star size={11} className="fill-amber-400 text-amber-400" />
+                  <span className="font-bold text-slate-800">{cf.rating}</span>
+                  <span className="text-[0.68rem] text-slate-400">({cf.reviews})</span>
+                </div>
+              </div>
+
+              {/* Price & Action Button */}
+              <div className="mt-3 flex items-center justify-between pt-2 border-t border-slate-50">
+                <span className="font-display text-xs sm:text-sm font-extrabold text-slate-900">
+                  ₹{cf.price}/hr
+                </span>
+
+                <span className="grid h-6 w-6 place-items-center rounded-full bg-purple-600 text-white text-xs group-hover:bg-[#D91A60] transition-colors shadow-xs">
+                  ➔
+                </span>
+              </div>
+            </div>
           ))}
         </div>
+
       </div>
     </section>
   );
