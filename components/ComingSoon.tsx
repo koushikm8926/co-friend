@@ -7,42 +7,20 @@ import { Sparkles, ArrowLeft, Send, CheckCircle2, X, Bell } from "lucide-react";
 import { toast } from "sonner";
 
 // CoFriend dual heart logo icon
-export function CoFriendLogo({ className = "h-8 w-auto", dark = false }: { className?: string; dark?: boolean }) {
+export function CoFriendLogo({ className = "h-9 w-auto", dark = false }: { className?: string; dark?: boolean }) {
   return (
-    <div className="flex items-center gap-2">
-      <svg
-        viewBox="0 0 48 48"
-        fill="none"
-        className="h-9 w-9 shrink-0"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        {/* Heart 1 */}
-        <path
-          d="M16 11C11.5817 11 8 14.5817 8 19C8 26.5 19 35 24 38C29 35 40 26.5 40 19C40 14.5817 36.4183 11 32 11C28.5 11 25.5 13.2 24 16.5C22.5 13.2 19.5 11 16 11Z"
-          fill="url(#cofriend-heart-grad)"
-        />
-        {/* Inner glow / highlight heart */}
-        <path
-          d="M17 14C13.6863 14 11 16.6863 11 20C11 25.5 19.5 32.5 24 35C28.5 32.5 37 25.5 37 20C37 16.6863 34.3137 14 31 14C28.3 14 26 15.8 24.8 18.3C24.4 19 23.6 19 23.2 18.3C22 15.8 19.7 14 17 14Z"
-          fill="#FFFFFF"
-          fillOpacity="0.25"
-        />
-        <circle cx="15" cy="8" r="3" fill="#D91A60" />
-        <circle cx="33" cy="8" r="3" fill="#E11D48" />
-        <defs>
-          <linearGradient id="cofriend-heart-grad" x1="8" y1="11" x2="40" y2="38" gradientUnits="userSpaceOnUse">
-            <stop stopColor="#E11D48" />
-            <stop offset="0.5" stopColor="#D91A60" />
-            <stop offset="1" stopColor="#9333EA" />
-          </linearGradient>
-        </defs>
-      </svg>
+    <div className="flex items-center gap-2.5">
+      <img
+        src="/images/cofriend-logo.png"
+        alt="CoFriend"
+        className="h-9 w-9 sm:h-10 sm:w-10 rounded-xl object-contain shadow-xs shrink-0 select-none"
+      />
       <div className="flex flex-col">
-        <span className={`font-display text-[1.4rem] font-black tracking-tight leading-none ${dark ? "text-white" : "text-slate-900"}`}>
-          Co<span className="text-[#D91A60]">friend</span>
+        <span className={`font-display text-[1.4rem] sm:text-[1.5rem] font-black tracking-tight leading-none ${dark ? "text-white" : "text-slate-900"}`}>
+          <span className="text-[#D91A60]">Co</span>{dark ? "friend" : "friend"}
         </span>
-        <span className="text-[0.62rem] font-semibold uppercase tracking-[0.14em] text-slate-400 mt-0.5">
-          Social & Lifestyle Companions
+        <span className="text-[0.62rem] font-semibold uppercase tracking-[0.14em] text-slate-400 mt-0.5 whitespace-nowrap">
+          Social &amp; Lifestyle Companions
         </span>
       </div>
     </div>
