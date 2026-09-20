@@ -75,6 +75,7 @@ export default function HomePage() {
         <Hero
           onFind={() => scrollToId("cofriends")}
           onBecome={() => openComingSoon("Partner Registration & Profile Creation")}
+          onOpenComingSoon={(feature) => openComingSoon(feature)}
         />
 
         {/* 2. Explore Our Services */}

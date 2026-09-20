@@ -34,14 +34,15 @@ export default function TopBar() {
         </div>
 
         {/* Center tag */}
-        <div className="text-center font-medium text-blue-50 text-[0.72rem] sm:text-[0.78rem] truncate">
-          India&apos;s Most Trusted Social &amp; Lifestyle Rental Support Services Marketplace
+        <div className="text-center font-medium text-blue-50 text-[0.72rem] sm:text-[0.78rem] truncate flex items-center gap-2">
+          <span className="text-blue-300/60 hidden lg:inline">|</span>
+          <span>India&apos;s Most Trusted Social &amp; Lifestyle Rental Support Services Marketplace</span>
         </div>
 
         {/* Right tag */}
         <div className="hidden lg:flex items-center gap-1.5 text-blue-100 shrink-0 font-medium">
           <Users size={14} className="text-blue-200" />
-          <span>Real People. Real Connections.</span>
+          <span>Book a Friend for Coffee, Movies, Shopping &amp; More &rsaquo;</span>
         </div>
       </div>
     </div>
