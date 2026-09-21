@@ -35,9 +35,13 @@ const STEPS = [
   },
 ];
 
-export default function HowItWorks() {
+export default function HowItWorks({
+  className = "py-20 sm:py-28 border-t border-slate-100",
+}: {
+  className?: string;
+}) {
   return (
-    <section id="how-it-works" className="py-20 sm:py-28 bg-white border-t border-slate-100 relative overflow-hidden">
+    <section id="how-it-works" className={`bg-white relative overflow-hidden ${className}`}>
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
 
         {/* Section Header */}

@@ -43,9 +43,13 @@ const VALUES = [
   },
 ];
 
-export default function OurValues() {
+export default function OurValues({
+  className = "pt-6 sm:pt-8 pb-14 sm:pb-18",
+}: {
+  className?: string;
+}) {
   return (
-    <section className="py-20 sm:py-24 bg-white relative overflow-hidden">
+    <section className={`bg-white relative overflow-hidden ${className}`}>
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         
         {/* Header row: Left Title, Right Subtitle */}

@@ -564,7 +564,7 @@ export default function AboutPage() {
       <WorldOfExperiences />
 
       {/* ── 5. WHY COFRIEND? (EXACT DESIGN MATCH) ──────────── */}
-      <section className="py-20 sm:py-28 bg-white relative overflow-hidden">
+      <section className="pt-6 sm:pt-8 pb-6 sm:pb-8 bg-white relative overflow-hidden">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <Reveal className="mb-12 sm:mb-16">
             <p className="text-xs sm:text-[13px] font-bold uppercase tracking-[0.25em] text-[#64748B] mb-3">
@@ -603,7 +603,7 @@ export default function AboutPage() {
       </section>
 
       {/* ── 5. HOW IT WORKS (EXACT DESIGN MATCH) ──────────── */}
-      <HowItWorks />
+      <HowItWorks className="pt-6 sm:pt-8 pb-10 sm:pb-14 border-t-0" />
 
       {/* ── 6. OUR VALUES (PEOPLE FIRST. ALWAYS.) ─────────── */}
       <OurValues />

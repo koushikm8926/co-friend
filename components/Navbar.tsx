@@ -133,38 +133,20 @@ export default function Navbar({
           )}
 
           {/* Services */}
-          {isHome ? (
-            <button
-              onClick={() => handleNavClick("services")}
-              className="text-sm font-medium text-slate-700 hover:text-[#D91A60] transition-colors cursor-pointer"
-            >
-              Services
-            </button>
-          ) : (
-            <Link
-              href="/#services"
-              className="text-sm font-medium text-slate-700 hover:text-[#D91A60] transition-colors cursor-pointer"
-            >
-              Services
-            </Link>
-          )}
+          <button
+            onClick={() => onOpenComingSoon("Services booking & exploration")}
+            className="text-sm font-medium text-slate-700 hover:text-[#D91A60] transition-colors cursor-pointer"
+          >
+            Services
+          </button>
 
           {/* CoFriends */}
-          {isHome ? (
-            <button
-              onClick={() => handleNavClick("cofriends")}
-              className="text-sm font-medium text-slate-700 hover:text-[#D91A60] transition-colors cursor-pointer"
-            >
-              CoFriends
-            </button>
-          ) : (
-            <Link
-              href="/#cofriends"
-              className="text-sm font-medium text-slate-700 hover:text-[#D91A60] transition-colors cursor-pointer"
-            >
-              CoFriends
-            </Link>
-          )}
+          <button
+            onClick={() => onOpenComingSoon("CoFriends discovery & profiles")}
+            className="text-sm font-medium text-slate-700 hover:text-[#D91A60] transition-colors cursor-pointer"
+          >
+            CoFriends
+          </button>
 
           {/* About */}
           <Link
@@ -260,40 +242,26 @@ export default function Navbar({
           )}
 
           {/* Services Mobile */}
-          {isHome ? (
-            <button
-              onClick={() => handleNavClick("services")}
-              className="block w-full text-left py-2 text-sm font-medium text-slate-700 hover:text-[#D91A60]"
-            >
-              Services
-            </button>
-          ) : (
-            <Link
-              href="/#services"
-              onClick={() => setOpen(false)}
-              className="block w-full text-left py-2 text-sm font-medium text-slate-700 hover:text-[#D91A60]"
-            >
-              Services
-            </Link>
-          )}
+          <button
+            onClick={() => {
+              setOpen(false);
+              onOpenComingSoon("Services booking & exploration");
+            }}
+            className="block w-full text-left py-2 text-sm font-medium text-slate-700 hover:text-[#D91A60]"
+          >
+            Services
+          </button>
 
           {/* CoFriends Mobile */}
-          {isHome ? (
-            <button
-              onClick={() => handleNavClick("cofriends")}
-              className="block w-full text-left py-2 text-sm font-medium text-slate-700 hover:text-[#D91A60]"
-            >
-              CoFriends
-            </button>
-          ) : (
-            <Link
-              href="/#cofriends"
-              onClick={() => setOpen(false)}
-              className="block w-full text-left py-2 text-sm font-medium text-slate-700 hover:text-[#D91A60]"
-            >
-              CoFriends
-            </Link>
-          )}
+          <button
+            onClick={() => {
+              setOpen(false);
+              onOpenComingSoon("CoFriends discovery & profiles");
+            }}
+            className="block w-full text-left py-2 text-sm font-medium text-slate-700 hover:text-[#D91A60]"
+          >
+            CoFriends
+          </button>
 
           {/* About Mobile */}
           <Link
