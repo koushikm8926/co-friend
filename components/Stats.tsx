@@ -58,7 +58,7 @@ export default function Stats() {
           <p className="font-accent text-xs font-extrabold uppercase tracking-[0.3em] text-pink-400">
             03 · By the numbers
           </p>
-          <h2 className="font-display mt-4 text-3xl font-extrabold text-white sm:text-4xl">
+          <h2 className="font-display mt-4 text-4xl font-extrabold text-white sm:text-5xl">
             Trusted at a scale that speaks for itself
           </h2>
         </Reveal>
@@ -78,7 +78,7 @@ export default function Stats() {
                   <p className="font-display mt-4 text-3xl font-extrabold tracking-tight text-white md:text-4xl">
                     <Counter value={s.value} suffix={s.suffix} decimals={s.decimals} />
                   </p>
-                  <p className="font-accent mt-2 text-[0.7rem] font-bold uppercase tracking-[0.18em] text-slate-400">
+                  <p className="font-accent mt-2 text-[0.8rem] font-bold uppercase tracking-[0.18em] text-slate-400">
                     {s.label}
                   </p>
                 </div>

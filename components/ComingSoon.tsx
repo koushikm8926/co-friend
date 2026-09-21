@@ -6,21 +6,30 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Sparkles, ArrowLeft, Send, CheckCircle2, X, Bell } from "lucide-react";
 import { toast } from "sonner";
 
-// CoFriend full horizontal brand logo
+// CoFriend brand logo — light mode uses full PNG, dark mode uses icon + styled text (no white-bg card)
 export function CoFriendLogo({ className = "", dark = false }: { className?: string; dark?: boolean }) {
   if (dark) {
-    // In dark contexts (footer), wrap logo in a subtle semi-transparent light pill so colors remain correct
     return (
-      <div className={`inline-flex items-center rounded-xl bg-white/10 px-3 py-1.5 backdrop-blur-sm ${className}`}>
+      <div className={`flex items-center gap-2.5 ${className}`}>
         <img
-          src="/images/cofriend-logo-full.png"
-          alt="CoFriend – Rental friend & Services"
-          className="h-9 sm:h-10 w-auto object-contain select-none shrink-0"
+          src="/images/cofriend-logo.png"
+          alt=""
+          aria-hidden="true"
+          className="h-10 w-10 rounded-xl object-contain select-none shrink-0"
           draggable={false}
         />
+        <div className="flex flex-col leading-none">
+          <span className="font-display text-[1.35rem] font-black tracking-tight text-white">
+            <span className="text-[#D91A60]">Co</span>friend
+          </span>
+          <span className="text-[0.6rem] font-semibold uppercase tracking-[0.14em] text-slate-400 mt-0.5 whitespace-nowrap">
+            Rental friend &amp; Services
+          </span>
+        </div>
       </div>
     );
   }
+  // Light mode (navbar): full horizontal logo PNG
   return (
     <img
       src="/images/cofriend-logo-full.png"

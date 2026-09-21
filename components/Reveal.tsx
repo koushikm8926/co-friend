@@ -67,7 +67,7 @@ export function SectionHead({
       </Reveal>
       <Reveal delay={0.08}>
         <h2
-          className={`font-display mt-5 text-3xl font-extrabold leading-[1.08] tracking-tight sm:text-4xl lg:text-[2.75rem] ${
+          className={`font-display mt-5 text-4xl font-extrabold leading-[1.08] tracking-tight sm:text-5xl lg:text-[3.25rem] ${
             dark ? "text-white" : "text-slate-900"
           }`}
         >
@@ -77,7 +77,7 @@ export function SectionHead({
       {sub && (
         <Reveal delay={0.16}>
           <p
-            className={`mt-5 text-base leading-relaxed md:text-lg ${
+            className={`mt-5 text-lg leading-relaxed md:text-xl ${
               dark ? "text-white/70" : "text-slate-600"
             }`}
           >
