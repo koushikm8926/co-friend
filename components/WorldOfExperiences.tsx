@@ -41,11 +41,11 @@ const EXPERIENCES = [
 
 export default function WorldOfExperiences() {
   return (
-    <section className="pt-14 sm:pt-16 pb-6 sm:pb-8 bg-white relative overflow-hidden">
+    <section className="pt-8 sm:pt-10 pb-5 sm:pb-6 bg-white relative overflow-hidden">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
 
         {/* Header row: Left Title, Right Subtitle */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-10 sm:mb-12">
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-6 sm:mb-8">
           <Reveal>
             <p className="text-xs sm:text-[13px] font-bold uppercase tracking-[0.25em] text-[#64748B] mb-2 sm:mb-3">
               A WORLD OF EXPERIENCES

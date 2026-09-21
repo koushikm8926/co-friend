@@ -73,7 +73,7 @@ export default function HomePage() {
       <main>
         {/* 1. Hero Section */}
         <Hero
-          onFind={() => scrollToId("cofriends")}
+          onFind={() => openComingSoon("Find a CoFriend")}
           onBecome={() => openComingSoon("Partner Registration & Profile Creation")}
           onOpenComingSoon={(feature) => openComingSoon(feature)}
         />
@@ -85,10 +85,11 @@ export default function HomePage() {
         />
 
         {/* 3. Simple Steps - How It Works */}
-        <HowItWorks />
+        <HowItWorks className="pt-10 sm:pt-14 pb-5 sm:pb-6 border-t border-slate-100" />
 
         {/* 4. Featured CoFriends */}
         <CoFriends
+          className="pt-5 sm:pt-6 pb-12 sm:pb-16"
           onSelectCoFriend={(name) => openComingSoon(`Booking session with ${name}`)}
           onViewAll={() => openComingSoon("Complete CoFriends Directory")}
         />
@@ -108,7 +109,7 @@ export default function HomePage() {
 
         {/* 8. Bottom CTA Banner */}
         <BottomCTA
-          onFind={() => scrollToId("cofriends")}
+          onFind={() => openComingSoon("Find a CoFriend")}
         />
       </main>
 

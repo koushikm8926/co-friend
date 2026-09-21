@@ -53,16 +53,22 @@ function AccordionItem({ item, id, isOpen, onToggle }: { item: FAQItem; id: stri
   );
 }
 
-export default function FAQ({ onViewAll }: { onViewAll: () => void }) {
+export default function FAQ({
+  onViewAll,
+  className = "pt-6 sm:pt-8 pb-10 sm:pb-14",
+}: {
+  onViewAll: () => void;
+  className?: string;
+}) {
   const [openId, setOpenId] = useState<string | null>(null);
   const toggle = (id: string) => setOpenId((curr) => (curr === id ? null : id));
 
   return (
-    <section id="faq" className="py-16 sm:py-24 bg-[#FFFFFF]">
+    <section id="faq" className={`bg-[#FFFFFF] ${className}`}>
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
 
         {/* Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 pb-12">
+        <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 pb-6 sm:pb-8">
           <Reveal>
             <div>
               <span className="text-xs sm:text-[13px] font-bold uppercase tracking-[0.22em] text-slate-400">

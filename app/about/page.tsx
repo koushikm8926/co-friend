@@ -10,6 +10,7 @@ import HowItWorks from "@/components/HowItWorks";
 import OurValues from "@/components/OurValues";
 import DualCTA from "@/components/DualCTA";
 import ExperienceBanner from "@/components/ExperienceBanner";
+import TrustVerification from "@/components/TrustVerification";
 import WorldOfExperiences from "@/components/WorldOfExperiences";
 import { ComingSoonModal } from "@/components/ComingSoon";
 import { Users, Compass, Heart, ShieldCheck, Calendar, LayoutGrid, FileText, Star } from "lucide-react";
@@ -174,7 +175,9 @@ export default function AboutPage() {
 
             {/* CTAs */}
             <motion.div variants={fadeUp} className="flex flex-wrap gap-3 mb-6 sm:mb-7">
-              <Link href="/#cofriends">
+              <button
+                onClick={() => openComingSoon("Find a CoFriend")}
+              >
                 <motion.span
                   whileHover={{ scale: 1.05, boxShadow: "0 12px 36px -6px rgba(217,26,96,0.5)" }}
                   whileTap={{ scale: 0.96 }}
@@ -184,7 +187,7 @@ export default function AboutPage() {
                   <svg viewBox="0 0 20 20" fill="none" className="w-4 h-4"><circle cx="9" cy="9" r="6" stroke="currentColor" strokeWidth="2" /><path d="M15 15l3 3" stroke="currentColor" strokeWidth="2" strokeLinecap="round" /></svg>
                   Find a CoFriend &nbsp;→
                 </motion.span>
-              </Link>
+              </button>
               <button
                 onClick={() => openComingSoon("Partner Registration & Profile Creation")}
               >
@@ -226,7 +229,7 @@ export default function AboutPage() {
       </section>
 
       {/* ── 2. OUR STORY SECTION (EXACT DESIGN MATCH) ──────── */}
-      <section className="py-20 sm:py-28 bg-white relative overflow-hidden">
+      <section className="py-10 sm:py-14 bg-white relative overflow-hidden">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-14 items-center">
 
@@ -471,7 +474,7 @@ export default function AboutPage() {
       </section>
 
       {/* ── 3. OUR PURPOSE SECTION (EXACT DESIGN MATCH) ────── */}
-      <section className="py-20 sm:py-24 relative overflow-hidden bg-gradient-to-r from-[#FFF5F8] via-[#FAF5FF] to-[#FFF5F8] border-y border-pink-100/60">
+      <section className="py-10 sm:py-14 relative overflow-hidden bg-gradient-to-r from-[#FFF5F8] via-[#FAF5FF] to-[#FFF5F8] border-y border-pink-100/60">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
 
@@ -560,14 +563,17 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* ── 4. A WORLD OF EXPERIENCES (8 CATEGORY CARDS) ───── */}
+      {/* ── 4. HOW WE VERIFY COFRIENDS (TRUST VERIFICATION FLOW) ── */}
+      <TrustVerification />
+
+      {/* ── 5. A WORLD OF EXPERIENCES (8 CATEGORY CARDS) ───── */}
       <WorldOfExperiences />
 
       {/* ── 5. WHY COFRIEND? (EXACT DESIGN MATCH) ──────────── */}
-      <section className="pt-6 sm:pt-8 pb-6 sm:pb-8 bg-white relative overflow-hidden">
+      <section className="pt-4 sm:pt-6 pb-6 sm:pb-8 bg-white relative overflow-hidden">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <Reveal className="mb-12 sm:mb-16">
-            <p className="text-xs sm:text-[13px] font-bold uppercase tracking-[0.25em] text-[#64748B] mb-3">
+          <Reveal className="mb-6 sm:mb-8">
+            <p className="text-xs sm:text-[13px] font-bold uppercase tracking-[0.25em] text-[#64748B] mb-2 sm:mb-2.5">
               WHY COFRIEND?
             </p>
             <h2 className="font-display font-extrabold text-3xl sm:text-4xl lg:text-[44px] text-[#0F172A] leading-[1.15] tracking-tight">
@@ -603,28 +609,20 @@ export default function AboutPage() {
       </section>
 
       {/* ── 5. HOW IT WORKS (EXACT DESIGN MATCH) ──────────── */}
-      <HowItWorks className="pt-6 sm:pt-8 pb-10 sm:pb-14 border-t-0" />
+      <HowItWorks className="pt-4 sm:pt-6 pb-6 sm:pb-8 border-t-0" />
 
       {/* ── 6. OUR VALUES (PEOPLE FIRST. ALWAYS.) ─────────── */}
       <OurValues />
 
       {/* ── 7. DUAL CTA CARDS (LOOKING FOR COMPANY / BECOME A COFRIEND) ── */}
       <DualCTA
-        onFind={() => {
-          if (typeof window !== "undefined") {
-            window.location.href = "/#cofriends";
-          }
-        }}
+        onFind={() => openComingSoon("Find a CoFriend")}
         onBecome={() => openComingSoon("CoFriend Partner Registration")}
       />
 
       {/* ── 8. EXPERIENCE BANNER (EVERY GREAT EXPERIENCE STARTS WITH...) ── */}
       <ExperienceBanner
-        onFind={() => {
-          if (typeof window !== "undefined") {
-            window.location.href = "/#cofriends";
-          }
-        }}
+        onFind={() => openComingSoon("Find a CoFriend")}
       />
 
       {/* Footer (Same on every screen) */}

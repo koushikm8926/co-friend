@@ -13,17 +13,21 @@ const REVIEWS: Testimonial[] = [
   { id: "3", comment: "As someone new to the city, CoFriend helped me explore and meet like-minded people. Great experience and very well managed!", name: "Sneha M.", city: "Pune", avatar: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=200&q=80" },
 ];
 
-export default function Testimonials() {
+export default function Testimonials({
+  className = "pt-8 sm:pt-10 pb-6 sm:pb-8",
+}: {
+  className?: string;
+}) {
   const [index, setIndex] = useState(0);
   const prev = () => setIndex((i) => (i === 0 ? REVIEWS.length - 1 : i - 1));
   const next = () => setIndex((i) => (i === REVIEWS.length - 1 ? 0 : i + 1));
 
   return (
-    <section id="about" className="py-16 sm:py-24 bg-white">
+    <section id="about" className={`bg-white ${className}`}>
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
 
         {/* Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 pb-12">
+        <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 pb-6 sm:pb-8">
           <Reveal>
             <div>
               <span className="text-xs sm:text-[13px] font-bold uppercase tracking-[0.22em] text-slate-400">

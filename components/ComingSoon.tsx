@@ -179,9 +179,10 @@ export function ComingSoonModal({
           >
             <button
               onClick={onClose}
+              aria-label="Close modal"
               className="absolute right-4 top-4 grid h-8 w-8 place-items-center rounded-full text-slate-400 hover:bg-slate-100 hover:text-slate-600 transition-colors cursor-pointer"
             >
-              <X size={18} />
+              <X className="h-4.5 w-4.5" />
             </button>
 
             <div className="mx-auto grid h-14 w-14 place-items-center rounded-2xl bg-gradient-to-br from-pink-50 to-purple-50 border border-pink-100 text-[#D91A60] shadow-sm mb-4">

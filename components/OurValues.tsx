@@ -44,7 +44,7 @@ const VALUES = [
 ];
 
 export default function OurValues({
-  className = "pt-6 sm:pt-8 pb-14 sm:pb-18",
+  className = "pt-4 sm:pt-6 pb-6 sm:pb-8",
 }: {
   className?: string;
 }) {
@@ -53,7 +53,7 @@ export default function OurValues({
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         
         {/* Header row: Left Title, Right Subtitle */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-12 sm:mb-16">
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-6 sm:mb-8">
           <Reveal>
             <p className="text-xs sm:text-[13px] font-bold uppercase tracking-[0.25em] text-[#64748B] mb-3">
               OUR VALUES

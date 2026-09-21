@@ -11,7 +11,7 @@ export default function ExperienceBanner({
   onFind?: () => void;
 }) {
   return (
-    <section className="relative w-full overflow-hidden py-14 sm:py-18 lg:py-20">
+    <section className="relative w-full overflow-hidden py-10 sm:py-12 lg:py-14">
       {/* Background panoramic mountain sunset image */}
       <img
         src="/images/about/sunset-banner.jpg"

@@ -74,9 +74,11 @@ const FEATURED_COFRIENDS: CoFriendCard[] = [
 export default function CoFriends({
   onSelectCoFriend,
   onViewAll,
+  className = "pt-6 sm:pt-8 pb-14 sm:pb-20",
 }: {
   onSelectCoFriend: (name: string) => void;
   onViewAll: () => void;
+  className?: string;
 }) {
   const [favs, setFavs] = useState<Set<string>>(new Set());
 
@@ -95,7 +97,7 @@ export default function CoFriends({
   };
 
   return (
-    <section id="cofriends" className="py-14 sm:py-20 bg-white">
+    <section id="cofriends" className={`bg-white ${className}`}>
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}

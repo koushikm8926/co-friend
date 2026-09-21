@@ -36,7 +36,7 @@ const STEPS = [
 ];
 
 export default function HowItWorks({
-  className = "py-20 sm:py-28 border-t border-slate-100",
+  className = "pt-12 sm:pt-16 pb-6 sm:pb-8 border-t border-slate-100",
 }: {
   className?: string;
 }) {
@@ -45,7 +45,7 @@ export default function HowItWorks({
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
 
         {/* Section Header */}
-        <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 pb-14 sm:pb-18">
+        <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 pb-8 sm:pb-10">
           <Reveal>
             <div>
               <p className="text-xs sm:text-[13px] font-bold uppercase tracking-[0.25em] text-[#64748B] mb-2.5">

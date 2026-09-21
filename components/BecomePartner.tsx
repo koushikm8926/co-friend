@@ -18,7 +18,7 @@ export default function BecomePartner({ onBecome }: { onBecome: () => void }) {
         <div className="relative grid grid-cols-1 lg:grid-cols-[1fr_1.6fr_1.3fr] items-stretch gap-6 min-h-[200px] sm:min-h-[220px] lg:min-h-[240px]">
 
           {/* Left Calligraphy */}
-          <Reveal className="hidden lg:flex items-center justify-center select-none py-10">
+          <Reveal className="hidden lg:flex items-center justify-center select-none py-6">
             <img
               src="/images/callig-turn-your-time.png"
               alt="Turn Your Free Time Into Meaningful"
@@ -27,7 +27,7 @@ export default function BecomePartner({ onBecome }: { onBecome: () => void }) {
           </Reveal>
 
           {/* Center Content */}
-          <div className="flex flex-col items-center justify-center text-center px-2 lg:px-4 py-10 lg:py-12">
+          <div className="flex flex-col items-center justify-center text-center px-2 lg:px-4 py-8 lg:py-10">
             <Reveal>
               <h2 className="font-display text-4xl sm:text-5xl lg:text-[3rem] font-extrabold text-white tracking-tight leading-tight">
                 Become a CoFriend
