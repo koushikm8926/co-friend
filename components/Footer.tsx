@@ -1,5 +1,7 @@
 "use client";
 
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { CoFriendLogo } from "./ComingSoon";
 import { toast } from "sonner";
 
@@ -53,9 +55,12 @@ export default function Footer({
   onNavigate,
   onOpenComingSoon,
 }: {
-  onNavigate: (id: string) => void;
+  onNavigate?: (id: string) => void;
   onOpenComingSoon: (feature: string) => void;
 }) {
+  const pathname = usePathname();
+  const isHome = pathname === "/";
+
   return (
     <footer className="bg-[#080E1E] text-slate-400 pt-14 pb-8 border-t border-slate-800">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -65,9 +70,9 @@ export default function Footer({
           
           {/* Column 1: Brand & Tagline & Socials */}
           <div className="col-span-2 md:col-span-3 lg:col-span-1 pr-4">
-            <div className="cursor-pointer" onClick={() => onNavigate("home")}>
+            <Link href="/" className="inline-block cursor-pointer">
               <CoFriendLogo dark />
-            </div>
+            </Link>
             
             <p className="mt-4 text-xs leading-relaxed text-slate-400">
               Real people. Real connections. CoFriend brings people together for meaningful experiences, one moment at a time.
@@ -76,35 +81,35 @@ export default function Footer({
             <div className="mt-5 flex items-center gap-3 text-slate-400">
               <button
                 onClick={() => toast.info("Instagram: @cofriend.india")}
-                className="hover:text-pink-400 transition-colors p-1"
+                className="hover:text-pink-400 transition-colors p-1 cursor-pointer"
                 aria-label="Instagram"
               >
                 <InstagramIcon size={16} />
               </button>
               <button
                 onClick={() => toast.info("Facebook: @cofriend.official")}
-                className="hover:text-blue-400 transition-colors p-1"
+                className="hover:text-blue-400 transition-colors p-1 cursor-pointer"
                 aria-label="Facebook"
               >
                 <FacebookIcon size={16} />
               </button>
               <button
                 onClick={() => toast.info("X: @cofriend_in")}
-                className="hover:text-white transition-colors p-1"
+                className="hover:text-white transition-colors p-1 cursor-pointer"
                 aria-label="X (Twitter)"
               >
                 <XIcon size={16} />
               </button>
               <button
                 onClick={() => toast.info("YouTube: @cofriend")}
-                className="hover:text-red-400 transition-colors p-1"
+                className="hover:text-red-400 transition-colors p-1 cursor-pointer"
                 aria-label="YouTube"
               >
                 <YoutubeIcon size={16} />
               </button>
               <button
                 onClick={() => toast.info("LinkedIn: @cofriend")}
-                className="hover:text-sky-400 transition-colors p-1"
+                className="hover:text-sky-400 transition-colors p-1 cursor-pointer"
                 aria-label="LinkedIn"
               >
                 <LinkedinIcon size={16} />
@@ -119,41 +124,56 @@ export default function Footer({
             </h4>
             <ul className="space-y-2 text-xs">
               <li>
-                <button
-                  onClick={() => onNavigate("home")}
-                  className="hover:text-white transition-colors"
-                >
-                  Home
-                </button>
+                {isHome ? (
+                  <button
+                    onClick={() => onNavigate?.("home")}
+                    className="hover:text-white transition-colors cursor-pointer"
+                  >
+                    Home
+                  </button>
+                ) : (
+                  <Link href="/" className="hover:text-white transition-colors">
+                    Home
+                  </Link>
+                )}
               </li>
               <li>
-                <button
-                  onClick={() => onOpenComingSoon("Services screen")}
-                  className="hover:text-white transition-colors"
-                >
-                  Services
-                </button>
+                {isHome ? (
+                  <button
+                    onClick={() => onNavigate?.("services")}
+                    className="hover:text-white transition-colors cursor-pointer"
+                  >
+                    Services
+                  </button>
+                ) : (
+                  <Link href="/#services" className="hover:text-white transition-colors">
+                    Services
+                  </Link>
+                )}
               </li>
               <li>
-                <button
-                  onClick={() => onOpenComingSoon("CoFriends directory")}
-                  className="hover:text-white transition-colors"
-                >
-                  CoFriends
-                </button>
+                {isHome ? (
+                  <button
+                    onClick={() => onNavigate?.("cofriends")}
+                    className="hover:text-white transition-colors cursor-pointer"
+                  >
+                    CoFriends
+                  </button>
+                ) : (
+                  <Link href="/#cofriends" className="hover:text-white transition-colors">
+                    CoFriends
+                  </Link>
+                )}
               </li>
               <li>
-                <button
-                  onClick={() => onOpenComingSoon("About Us page")}
-                  className="hover:text-white transition-colors"
-                >
+                <Link href="/about" className="hover:text-white transition-colors">
                   About
-                </button>
+                </Link>
               </li>
               <li>
                 <button
                   onClick={() => onOpenComingSoon("Safety & Verification page")}
-                  className="hover:text-white transition-colors"
+                  className="hover:text-white transition-colors cursor-pointer"
                 >
                   Safety
                 </button>
@@ -161,7 +181,7 @@ export default function Footer({
               <li>
                 <button
                   onClick={() => onOpenComingSoon("FAQs page")}
-                  className="hover:text-white transition-colors"
+                  className="hover:text-white transition-colors cursor-pointer"
                 >
                   FAQs
                 </button>
@@ -189,7 +209,7 @@ export default function Footer({
                 <li key={service}>
                   <button
                     onClick={() => onOpenComingSoon(`${service} Service Booking`)}
-                    className="hover:text-white transition-colors"
+                    className="hover:text-white transition-colors cursor-pointer"
                   >
                     {service}
                   </button>
@@ -207,7 +227,7 @@ export default function Footer({
               <li>
                 <button
                   onClick={() => onOpenComingSoon("Help Center")}
-                  className="hover:text-white transition-colors"
+                  className="hover:text-white transition-colors cursor-pointer"
                 >
                   Help Center
                 </button>
@@ -215,15 +235,15 @@ export default function Footer({
               <li>
                 <button
                   onClick={() => onOpenComingSoon("Contact Support")}
-                  className="hover:text-white transition-colors"
+                  className="hover:text-white transition-colors cursor-pointer"
                 >
                   Contact Us
                 </button>
               </li>
               <li>
                 <button
-                  onClick={() => onNavigate("how-it-works")}
-                  className="hover:text-white transition-colors"
+                  onClick={() => onOpenComingSoon("Trust & Safety page")}
+                  className="hover:text-white transition-colors cursor-pointer"
                 >
                   Trust &amp; Safety
                 </button>
@@ -231,7 +251,7 @@ export default function Footer({
               <li>
                 <button
                   onClick={() => onOpenComingSoon("Community Guidelines")}
-                  className="hover:text-white transition-colors"
+                  className="hover:text-white transition-colors cursor-pointer"
                 >
                   Community Guidelines
                 </button>
@@ -248,7 +268,7 @@ export default function Footer({
               <li>
                 <button
                   onClick={() => onOpenComingSoon("Terms & Conditions")}
-                  className="hover:text-white transition-colors"
+                  className="hover:text-white transition-colors cursor-pointer"
                 >
                   Terms &amp; Conditions
                 </button>
@@ -256,7 +276,7 @@ export default function Footer({
               <li>
                 <button
                   onClick={() => onOpenComingSoon("Privacy Policy")}
-                  className="hover:text-white transition-colors"
+                  className="hover:text-white transition-colors cursor-pointer"
                 >
                   Privacy Policy
                 </button>
@@ -264,7 +284,7 @@ export default function Footer({
               <li>
                 <button
                   onClick={() => onOpenComingSoon("Cancellation & Refund Policy")}
-                  className="hover:text-white transition-colors"
+                  className="hover:text-white transition-colors cursor-pointer"
                 >
                   Cancellation &amp; Refund Policy
                 </button>
