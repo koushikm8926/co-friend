@@ -7,6 +7,7 @@ export function middleware(request: NextRequest) {
   // Allow home page, static next assets, images, favicon
   if (
     pathname === "/" ||
+    pathname === "/about" ||
     pathname.startsWith("/_next") ||
     pathname.startsWith("/images") ||
     pathname.startsWith("/api") ||

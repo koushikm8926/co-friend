@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Link from "next/link";
 import { ChevronDown, MapPin, Menu, X } from "lucide-react";
 import { CoFriendLogo } from "./ComingSoon";
 
@@ -118,12 +119,12 @@ export default function Navbar({
           >
             CoFriends
           </button>
-          <button
-            onClick={() => onOpenComingSoon("About Us page")}
+          <Link
+            href="/about"
             className="text-sm font-medium text-slate-700 hover:text-[#D91A60] transition-colors cursor-pointer"
           >
             About
-          </button>
+          </Link>
           <button
             onClick={() => onOpenComingSoon("Safety & Verification page")}
             className="text-sm font-medium text-slate-700 hover:text-[#D91A60] transition-colors cursor-pointer"
@@ -206,15 +207,13 @@ export default function Navbar({
           >
             CoFriends
           </button>
-          <button
-            onClick={() => {
-              setOpen(false);
-              onOpenComingSoon("About Us page");
-            }}
+          <Link
+            href="/about"
+            onClick={() => setOpen(false)}
             className="block w-full text-left py-2 text-sm font-medium text-slate-700 hover:text-[#D91A60]"
           >
             About
-          </button>
+          </Link>
           <button
             onClick={() => {
               setOpen(false);
