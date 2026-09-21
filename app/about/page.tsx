@@ -1,8 +1,11 @@
 "use client";
 
+import { useState, useCallback } from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { CoFriendLogo } from "@/components/ComingSoon";
+import TopBar from "@/components/TopBar";
+import Navbar from "@/components/Navbar";
+import { ComingSoonModal } from "@/components/ComingSoon";
 import { Users, Compass, Heart, ShieldCheck, Star, Lock, IndianRupee, LayoutGrid, Headphones, ArrowRight } from "lucide-react";
 import { Reveal } from "@/components/Reveal";
 
@@ -25,32 +28,39 @@ const VALUES = [
 ];
 
 export default function AboutPage() {
+  const [comingSoonModal, setComingSoonModal] = useState<{
+    open: boolean;
+    title: string;
+    feature: string;
+  }>({
+    open: false,
+    title: "Coming Soon!",
+    feature: "This feature",
+  });
+
+  const openComingSoon = useCallback((feature: string, title = "Coming Soon!") => {
+    setComingSoonModal({
+      open: true,
+      title,
+      feature,
+    });
+  }, []);
+
+  const closeComingSoon = useCallback(() => {
+    setComingSoonModal((prev) => ({ ...prev, open: false }));
+  }, []);
+
   return (
     <div className="min-h-screen bg-white text-slate-900 antialiased overflow-x-hidden">
 
-      {/* ── SIMPLE NAV ─────────────────────────────────────── */}
-      <header className="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-slate-100 shadow-xs">
-        <div className="mx-auto flex h-[68px] max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
-          <Link href="/">
-            <CoFriendLogo />
-          </Link>
-          <div className="flex items-center gap-3">
-            <Link
-              href="/"
-              className="inline-flex items-center gap-2 rounded-full border border-slate-200 px-5 py-2 text-sm font-semibold text-slate-700 hover:border-[#D91A60] hover:text-[#D91A60] transition-all"
-            >
-              ← Back to Home
-            </Link>
-            <Link
-              href="/#cofriends"
-              className="hidden sm:inline-flex items-center gap-2 rounded-full px-5 py-2 text-sm font-semibold text-white transition-all shadow-sm"
-              style={{ background: "linear-gradient(92deg,#8B5CF6 0%,#D91A60 100%)" }}
-            >
-              Find a CoFriend
-            </Link>
-          </div>
-        </div>
-      </header>
+      {/* ── TOP HEADER (EXACTLY IDENTICAL ON EVERY SCREEN) ── */}
+      {/* Top Blue Announcement Bar */}
+      <TopBar />
+
+      {/* Main Navigation */}
+      <Navbar
+        onOpenComingSoon={(feature) => openComingSoon(feature)}
+      />
 
       {/* ── 1. HERO SECTION ─────────────────────────────────── */}
       <section className="relative w-full bg-white overflow-hidden">
@@ -131,7 +141,9 @@ export default function AboutPage() {
                   Find a CoFriend &nbsp;→
                 </motion.span>
               </Link>
-              <Link href="/">
+              <button
+                onClick={() => openComingSoon("Partner Registration & Profile Creation")}
+              >
                 <motion.span
                   whileHover={{ scale: 1.05, backgroundColor: "#7C3AED", color: "#fff" }}
                   whileTap={{ scale: 0.96 }}
@@ -140,7 +152,7 @@ export default function AboutPage() {
                   <svg viewBox="0 0 20 20" fill="none" className="w-4 h-4"><circle cx="10" cy="7" r="3.5" stroke="currentColor" strokeWidth="1.8" /><path d="M4 17c0-3.31 2.69-6 6-6s6 2.69 6 6" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" /></svg>
                   Become a CoFriend &nbsp;→
                 </motion.span>
-              </Link>
+              </button>
             </motion.div>
 
             {/* Tagline */}
@@ -531,6 +543,14 @@ export default function AboutPage() {
         <span className="mx-3 text-slate-700">·</span>
         <Link href="/" className="hover:text-[#D91A60] transition-colors">Back to Home</Link>
       </div>
+
+      {/* Coming Soon Modal */}
+      <ComingSoonModal
+        open={comingSoonModal.open}
+        onClose={closeComingSoon}
+        title={comingSoonModal.title}
+        feature={comingSoonModal.feature}
+      />
     </div>
   );
 }

@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { ChevronDown, MapPin, Menu, X } from "lucide-react";
 import { CoFriendLogo } from "./ComingSoon";
 
@@ -21,14 +22,14 @@ export default function Navbar({
   onNavigate,
   onOpenComingSoon,
 }: {
-  onNavigate: (id: string) => void;
+  onNavigate?: (id: string) => void;
   onOpenComingSoon: (feature: string) => void;
 }) {
+  const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
   const [city, setCity] = useState("Hyderabad");
   const [cityMenuOpen, setCityMenuOpen] = useState(false);
-  const [activeTab, setActiveTab] = useState("home");
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
@@ -37,10 +38,14 @@ export default function Navbar({
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  const handleNav = (id: string) => {
-    setActiveTab(id);
+  const isHome = pathname === "/";
+  const isAbout = pathname === "/about";
+
+  const handleNavClick = (id: string) => {
     setOpen(false);
-    onNavigate(id);
+    if (isHome && onNavigate) {
+      onNavigate(id);
+    }
   };
 
   return (
@@ -54,12 +59,17 @@ export default function Navbar({
       <div className="mx-auto flex h-[74px] max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
         {/* Left: Logo & City Dropdown */}
         <div className="flex items-center gap-5">
-          <button
-            onClick={() => handleNav("home")}
+          <Link
+            href="/"
+            onClick={() => {
+              if (isHome && onNavigate) {
+                onNavigate("home");
+              }
+            }}
             className="flex items-center text-left cursor-pointer"
           >
             <CoFriendLogo />
-          </button>
+          </Link>
 
           {/* City Selector */}
           <div className="relative hidden sm:block">
@@ -101,36 +111,80 @@ export default function Navbar({
 
         {/* Center: Navigation Links */}
         <nav className="hidden lg:flex items-center gap-7">
-          <button
-            onClick={() => handleNav("home")}
-            className="text-sm font-bold text-[#D91A60] transition-colors cursor-pointer"
-          >
-            Home
-          </button>
-          <button
-            onClick={() => onOpenComingSoon("Services screen")}
-            className="text-sm font-medium text-slate-700 hover:text-[#D91A60] transition-colors cursor-pointer"
-          >
-            Services
-          </button>
-          <button
-            onClick={() => onOpenComingSoon("CoFriends directory")}
-            className="text-sm font-medium text-slate-700 hover:text-[#D91A60] transition-colors cursor-pointer"
-          >
-            CoFriends
-          </button>
+          {/* Home */}
+          {isHome ? (
+            <button
+              onClick={() => handleNavClick("home")}
+              className={`text-sm transition-colors cursor-pointer ${
+                isHome ? "font-bold text-[#D91A60]" : "font-medium text-slate-700 hover:text-[#D91A60]"
+              }`}
+            >
+              Home
+            </button>
+          ) : (
+            <Link
+              href="/"
+              className={`text-sm transition-colors cursor-pointer ${
+                isHome ? "font-bold text-[#D91A60]" : "font-medium text-slate-700 hover:text-[#D91A60]"
+              }`}
+            >
+              Home
+            </Link>
+          )}
+
+          {/* Services */}
+          {isHome ? (
+            <button
+              onClick={() => handleNavClick("services")}
+              className="text-sm font-medium text-slate-700 hover:text-[#D91A60] transition-colors cursor-pointer"
+            >
+              Services
+            </button>
+          ) : (
+            <Link
+              href="/#services"
+              className="text-sm font-medium text-slate-700 hover:text-[#D91A60] transition-colors cursor-pointer"
+            >
+              Services
+            </Link>
+          )}
+
+          {/* CoFriends */}
+          {isHome ? (
+            <button
+              onClick={() => handleNavClick("cofriends")}
+              className="text-sm font-medium text-slate-700 hover:text-[#D91A60] transition-colors cursor-pointer"
+            >
+              CoFriends
+            </button>
+          ) : (
+            <Link
+              href="/#cofriends"
+              className="text-sm font-medium text-slate-700 hover:text-[#D91A60] transition-colors cursor-pointer"
+            >
+              CoFriends
+            </Link>
+          )}
+
+          {/* About */}
           <Link
             href="/about"
-            className="text-sm font-medium text-slate-700 hover:text-[#D91A60] transition-colors cursor-pointer"
+            className={`text-sm transition-colors cursor-pointer ${
+              isAbout ? "font-bold text-[#D91A60]" : "font-medium text-slate-700 hover:text-[#D91A60]"
+            }`}
           >
             About
           </Link>
+
+          {/* Safety */}
           <button
             onClick={() => onOpenComingSoon("Safety & Verification page")}
             className="text-sm font-medium text-slate-700 hover:text-[#D91A60] transition-colors cursor-pointer"
           >
             Safety
           </button>
+
+          {/* FAQs */}
           <button
             onClick={() => onOpenComingSoon("FAQs page")}
             className="text-sm font-medium text-slate-700 hover:text-[#D91A60] transition-colors cursor-pointer"
@@ -183,37 +237,76 @@ export default function Navbar({
             </select>
           </div>
 
-          <button
-            onClick={() => handleNav("home")}
-            className="block w-full text-left py-2 text-sm font-semibold text-[#D91A60]"
-          >
-            Home
-          </button>
-          <button
-            onClick={() => {
-              setOpen(false);
-              onOpenComingSoon("Services screen");
-            }}
-            className="block w-full text-left py-2 text-sm font-medium text-slate-700 hover:text-[#D91A60]"
-          >
-            Services
-          </button>
-          <button
-            onClick={() => {
-              setOpen(false);
-              onOpenComingSoon("CoFriends directory");
-            }}
-            className="block w-full text-left py-2 text-sm font-medium text-slate-700 hover:text-[#D91A60]"
-          >
-            CoFriends
-          </button>
+          {/* Home Mobile */}
+          {isHome ? (
+            <button
+              onClick={() => handleNavClick("home")}
+              className={`block w-full text-left py-2 text-sm ${
+                isHome ? "font-bold text-[#D91A60]" : "font-medium text-slate-700 hover:text-[#D91A60]"
+              }`}
+            >
+              Home
+            </button>
+          ) : (
+            <Link
+              href="/"
+              onClick={() => setOpen(false)}
+              className={`block w-full text-left py-2 text-sm ${
+                isHome ? "font-bold text-[#D91A60]" : "font-medium text-slate-700 hover:text-[#D91A60]"
+              }`}
+            >
+              Home
+            </Link>
+          )}
+
+          {/* Services Mobile */}
+          {isHome ? (
+            <button
+              onClick={() => handleNavClick("services")}
+              className="block w-full text-left py-2 text-sm font-medium text-slate-700 hover:text-[#D91A60]"
+            >
+              Services
+            </button>
+          ) : (
+            <Link
+              href="/#services"
+              onClick={() => setOpen(false)}
+              className="block w-full text-left py-2 text-sm font-medium text-slate-700 hover:text-[#D91A60]"
+            >
+              Services
+            </Link>
+          )}
+
+          {/* CoFriends Mobile */}
+          {isHome ? (
+            <button
+              onClick={() => handleNavClick("cofriends")}
+              className="block w-full text-left py-2 text-sm font-medium text-slate-700 hover:text-[#D91A60]"
+            >
+              CoFriends
+            </button>
+          ) : (
+            <Link
+              href="/#cofriends"
+              onClick={() => setOpen(false)}
+              className="block w-full text-left py-2 text-sm font-medium text-slate-700 hover:text-[#D91A60]"
+            >
+              CoFriends
+            </Link>
+          )}
+
+          {/* About Mobile */}
           <Link
             href="/about"
             onClick={() => setOpen(false)}
-            className="block w-full text-left py-2 text-sm font-medium text-slate-700 hover:text-[#D91A60]"
+            className={`block w-full text-left py-2 text-sm ${
+              isAbout ? "font-bold text-[#D91A60]" : "font-medium text-slate-700 hover:text-[#D91A60]"
+            }`}
           >
             About
           </Link>
+
+          {/* Safety Mobile */}
           <button
             onClick={() => {
               setOpen(false);
@@ -223,6 +316,8 @@ export default function Navbar({
           >
             Safety
           </button>
+
+          {/* FAQs Mobile */}
           <button
             onClick={() => {
               setOpen(false);
@@ -233,13 +328,14 @@ export default function Navbar({
             FAQs
           </button>
 
+          {/* Login & Sign Up Mobile */}
           <div className="flex gap-3 pt-4 border-t border-slate-100">
             <button
               onClick={() => {
                 setOpen(false);
                 onOpenComingSoon("User Login");
               }}
-              className="flex-1 rounded-full border border-purple-200 py-2.5 text-xs font-bold text-purple-700 text-center"
+              className="flex-1 rounded-full border border-purple-200 py-2.5 text-xs font-bold text-purple-700 text-center cursor-pointer"
             >
               Login
             </button>
@@ -248,7 +344,7 @@ export default function Navbar({
                 setOpen(false);
                 onOpenComingSoon("Sign Up");
               }}
-              className="flex-1 rounded-full bg-[#D91A60] py-2.5 text-xs font-bold text-white text-center shadow-sm"
+              className="flex-1 rounded-full bg-[#D91A60] py-2.5 text-xs font-bold text-white text-center shadow-sm cursor-pointer"
             >
               Sign Up
             </button>
