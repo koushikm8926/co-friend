@@ -6,24 +6,28 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Sparkles, ArrowLeft, Send, CheckCircle2, X, Bell } from "lucide-react";
 import { toast } from "sonner";
 
-// CoFriend dual heart logo icon
-export function CoFriendLogo({ className = "h-9 w-auto", dark = false }: { className?: string; dark?: boolean }) {
-  return (
-    <div className="flex items-center gap-2.5">
-      <img
-        src="/images/cofriend-logo.png"
-        alt="CoFriend"
-        className="h-9 w-9 sm:h-10 sm:w-10 rounded-xl object-contain shadow-xs shrink-0 select-none"
-      />
-      <div className="flex flex-col">
-        <span className={`font-display text-[1.4rem] sm:text-[1.5rem] font-black tracking-tight leading-none ${dark ? "text-white" : "text-slate-900"}`}>
-          <span className="text-[#D91A60]">Co</span>{dark ? "friend" : "friend"}
-        </span>
-        <span className="text-[0.62rem] font-semibold uppercase tracking-[0.14em] text-slate-400 mt-0.5 whitespace-nowrap">
-          Social &amp; Lifestyle Companions
-        </span>
+// CoFriend full horizontal brand logo
+export function CoFriendLogo({ className = "", dark = false }: { className?: string; dark?: boolean }) {
+  if (dark) {
+    // In dark contexts (footer), wrap logo in a subtle semi-transparent light pill so colors remain correct
+    return (
+      <div className={`inline-flex items-center rounded-xl bg-white/10 px-3 py-1.5 backdrop-blur-sm ${className}`}>
+        <img
+          src="/images/cofriend-logo-full.png"
+          alt="CoFriend – Rental friend & Services"
+          className="h-9 sm:h-10 w-auto object-contain select-none shrink-0"
+          draggable={false}
+        />
       </div>
-    </div>
+    );
+  }
+  return (
+    <img
+      src="/images/cofriend-logo-full.png"
+      alt="CoFriend – Rental friend & Services"
+      className={`h-10 sm:h-12 w-auto object-contain select-none shrink-0 ${className}`}
+      draggable={false}
+    />
   );
 }
 

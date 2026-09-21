@@ -24,13 +24,13 @@ export default function Hero({
       {/* SEO H1 */}
       <h1 className="sr-only">Find a CoFriend. Share the Moment.</h1>
 
-      <div className="mx-auto max-w-[1400px] px-3 sm:px-5 lg:px-8 py-2 sm:py-3 lg:py-4">
+      <div className="w-full">
         {/* ── Outer container – clips the rounded card ─────────── */}
-        <div className="relative w-full rounded-2xl sm:rounded-3xl overflow-hidden bg-white shadow-sm border border-slate-100">
+        <div className="relative w-full overflow-hidden bg-white">
 
           {/* ── BACKGROUND: photo stretched full-width ────────────── */}
           <img
-            src="/images/hero-bg-clean@2x.png"
+            src="/images/hero-main.jpg"
             alt=""
             aria-hidden="true"
             className="absolute inset-0 w-full h-full object-cover object-right select-none pointer-events-none"
@@ -42,7 +42,7 @@ export default function Hero({
             className="absolute inset-0 pointer-events-none"
             style={{
               background:
-                "linear-gradient(to right, #ffffff 0%, #ffffff 28%, rgba(255,255,255,0.82) 44%, rgba(255,255,255,0.35) 60%, transparent 78%)",
+                "linear-gradient(to right, #ffffff 0%, #ffffff 22%, rgba(255,255,255,0.75) 38%, rgba(255,255,255,0.2) 55%, transparent 72%)",
             }}
           />
 
