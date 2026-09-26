@@ -120,12 +120,10 @@ export default function Hero({
               {/* Body */}
               <motion.p
                 variants={fadeUp}
-                className="text-[14px] sm:text-[15px] text-slate-500 leading-relaxed mb-7 sm:mb-8 max-w-[440px]"
+                className="text-[14px] sm:text-[15px] text-slate-500 leading-relaxed mb-7 sm:mb-8 max-w-[480px]"
               >
-                Find verified CoFriends for coffee, movies, shopping, travel,
-                fitness, events, study sessions and everyday experiences.
-                Choose who you&apos;d like to spend time with, select a service
-                and book a time that works for you.
+                Find verified CoFriends for coffee, movies, travel, fitness, and events.
+                <br className="hidden sm:inline" /> Choose who you&apos;d like to spend time with and book seamlessly.
               </motion.p>
 
               {/* CTAs */}
