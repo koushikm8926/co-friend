@@ -1,26 +1,34 @@
 import { render, screen, fireEvent } from '@testing-library/react';
-import { describe, it, expect, vi } from 'vitest';
-import FAQ from '@/components/FAQ';
+import { describe, it, expect } from 'vitest';
+import FAQ, { FAQS } from '@/components/FAQ';
 
 describe('FAQ', () => {
-  it('renders FAQ section and questions', () => {
+  it('renders FAQ section, tagline, and all 10 questions', () => {
     render(<FAQ onViewAll={() => {}} />);
 
-    expect(screen.getByText('QUICK ANSWERS')).toBeInTheDocument();
-    expect(screen.getByText(/Frequently Asked Questions/i)).toBeInTheDocument();
-    expect(screen.getByText('What is CoFriend?')).toBeInTheDocument();
-    expect(screen.getByText('Are CoFriends verified?')).toBeInTheDocument();
-    expect(screen.getByText('Is CoFriend a dating platform?')).toBeInTheDocument();
+    expect(screen.getByText('RENTAL FRIEND & SERVICES')).toBeInTheDocument();
+    expect(screen.getByRole('heading', { level: 2, name: /Frequently Asked Questions/i })).toBeInTheDocument();
+
+    expect(FAQS.length).toBe(10);
+    FAQS.forEach((faq) => {
+      expect(screen.getByText(faq.q)).toBeInTheDocument();
+    });
   });
 
-  it('expands accordion answer when question is clicked', () => {
+  it('has question 1 expanded by default and expands other answers when clicked', () => {
     render(<FAQ onViewAll={() => {}} />);
 
-    const questionBtn = screen.getByRole('button', { name: /What is CoFriend\?/i });
-    fireEvent.click(questionBtn);
+    // Item 1 is open by default
+    expect(
+      screen.getByText(/CoFriend is a rental friend and services platform that connects you with verified CoFriends/i)
+    ).toBeInTheDocument();
+
+    // Click on Question 2 ("Is CoFriend a dating app?")
+    const q2Btn = screen.getByRole('button', { name: /Is CoFriend a dating app\?/i });
+    fireEvent.click(q2Btn);
 
     expect(
-      screen.getByText(/CoFriend is India's most trusted social and lifestyle rental support services marketplace/i)
+      screen.getByText(/No\. CoFriend is not a dating app\. It is a rental friend and services platform/i)
     ).toBeInTheDocument();
   });
 });
