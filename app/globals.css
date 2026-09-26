@@ -191,3 +191,13 @@ html {
   scrollbar-color: #7c3aed #fafafd;
   scrollbar-width: thin;
 }
+
+/* Hide scrollbar utility */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
