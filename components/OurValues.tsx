@@ -59,7 +59,7 @@ export default function OurValues({
               OUR VALUES
             </p>
             <h2 className="font-display font-extrabold text-3xl sm:text-4xl lg:text-[44px] text-[#0F172A] leading-[1.15] tracking-tight">
-              People First. <span className="text-[#D91A60]">Always.</span>
+              People First. <span className="text-[#FC0264]">Always.</span>
             </h2>
           </Reveal>
 

@@ -2,15 +2,6 @@
 
 import { motion } from "framer-motion";
 
-const SERVICES = [
-  { id: "movies",   label: "Movies",   icon: "🎬" },
-  { id: "coffee",   label: "Coffee",   icon: "☕" },
-  { id: "shopping", label: "Shopping", icon: "🛍️" },
-  { id: "travel",   label: "Travel",   icon: "✈️" },
-  { id: "fitness",  label: "Fitness",  icon: "🏋️" },
-  { id: "events",   label: "Events",   icon: "🎉" },
-  { id: "more",     label: "More",     icon: "···" },
-];
 
 // Stagger container
 const container = {
@@ -84,7 +75,7 @@ export default function Hero({
                 className="text-[11px] sm:text-[13px] font-bold tracking-[0.22em] uppercase text-slate-500 mb-4"
               >
                 Real People.{" "}
-                <span className="text-[#D91A60]">Real Connections.</span>
+                <span className="text-[#FC0264]">Real Connections.</span>
               </motion.p>
 
               {/* Headline */}
@@ -98,14 +89,10 @@ export default function Hero({
                 <motion.span
                   variants={fadeUp}
                   className="block font-display font-extrabold leading-[1.05] tracking-tight text-[2.4rem] sm:text-[3.2rem] md:text-[3.8rem] lg:text-[3.2rem] xl:text-[4rem]"
-                  style={{
-                    background: "linear-gradient(90deg,#D91A60 0%,#f472b6 100%)",
-                    WebkitBackgroundClip: "text",
-                    backgroundClip: "text",
-                    color: "transparent",
-                  }}
                 >
-                  Share the Moment.
+                  <span className="text-pink-gradient">
+                    Share the Moment.
+                  </span>
                 </motion.span>
               </div>
 
@@ -132,12 +119,12 @@ export default function Hero({
                   id="hero-find-cofriend"
                   onClick={onFind}
                   aria-label="Find a CoFriend"
-                  whileHover={{ scale: 1.05, boxShadow: "0 12px 36px -6px rgba(217,26,96,0.55)" }}
+                  whileHover={{ scale: 1.05, boxShadow: "0 12px 36px -6px rgba(252,2,100,0.55)" }}
                   whileTap={{ scale: 0.96 }}
                   className="inline-flex items-center gap-2.5 px-7 sm:px-9 py-3.5 sm:py-4 rounded-full text-[14px] sm:text-[15px] font-bold text-white cursor-pointer whitespace-nowrap"
                   style={{
-                    background: "linear-gradient(92deg,#8B5CF6 0%,#D91A60 100%)",
-                    boxShadow: "0 8px 28px -6px rgba(217,26,96,0.45)",
+                    background: "linear-gradient(92deg,#8B5CF6 0%,#FC0264 100%)",
+                    boxShadow: "0 8px 28px -6px rgba(252,2,100,0.45)",
                   }}
                 >
                   <svg viewBox="0 0 20 20" fill="none" className="w-4 h-4" aria-hidden="true">
@@ -162,99 +149,12 @@ export default function Hero({
                   Become a CoFriend &nbsp;→
                 </motion.button>
               </motion.div>
-
-              {/* Trust Badges */}
-              <motion.div variants={fadeUp} className="flex flex-wrap items-center gap-x-6 gap-y-2.5">
-                {[
-                  {
-                    label: "Verified Profiles",
-                    svg: (
-                      <svg viewBox="0 0 18 18" fill="none" className="w-[18px] h-[18px] flex-shrink-0" aria-hidden="true">
-                        <path d="M9 1.5l2.15 4.36 4.8.7-3.48 3.39.82 4.79L9 12.4l-4.29 2.34.82-4.79L2.05 6.56l4.8-.7L9 1.5z" fill="#D91A60" />
-                      </svg>
-                    ),
-                  },
-                  {
-                    label: "Flexible Bookings",
-                    svg: (
-                      <svg viewBox="0 0 18 18" fill="none" className="w-[18px] h-[18px] flex-shrink-0" aria-hidden="true">
-                        <rect x="2.5" y="1.5" width="13" height="15" rx="2" stroke="#7C3AED" strokeWidth="1.5" />
-                        <path d="M6 5.5h6M6 9h4" stroke="#7C3AED" strokeWidth="1.5" strokeLinecap="round" />
-                        <circle cx="13" cy="13" r="3" fill="#7C3AED" />
-                        <path d="M11.8 13l.7.8 1.4-1.5" stroke="#fff" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" />
-                      </svg>
-                    ),
-                  },
-                  {
-                    label: "Safe Experiences",
-                    svg: (
-                      <svg viewBox="0 0 18 18" fill="none" className="w-[18px] h-[18px] flex-shrink-0" aria-hidden="true">
-                        <circle cx="7" cy="6.5" r="3" stroke="#D91A60" strokeWidth="1.5" />
-                        <path d="M2 16c0-2.76 2.24-5 5-5s5 2.24 5 5" stroke="#D91A60" strokeWidth="1.5" strokeLinecap="round" />
-                        <circle cx="13" cy="6.5" r="2.5" stroke="#D91A60" strokeWidth="1.5" />
-                        <path d="M11.5 14c.5-.5 1.2-.8 1.5-.8" stroke="#D91A60" strokeWidth="1.5" strokeLinecap="round" />
-                      </svg>
-                    ),
-                  },
-                ].map(({ label, svg }) => (
-                  <motion.div
-                    key={label}
-                    className="flex items-center gap-2"
-                    whileHover={{ scale: 1.04 }}
-                    transition={{ type: "spring", stiffness: 400 }}
-                  >
-                    {svg}
-                    <span className="text-[13px] sm:text-[14px] font-semibold text-slate-600">{label}</span>
-                  </motion.div>
-                ))}
-              </motion.div>
             </motion.div>
 
             {/* RIGHT: spacer */}
             <div className="hidden lg:flex flex-1" aria-hidden="true" />
           </div>
 
-          {/* ── SERVICES DOCK ─────────────────────────────────────── */}
-          <motion.div
-            className="absolute bottom-5 sm:bottom-6 right-3 sm:right-5 lg:right-6 z-20 pointer-events-auto"
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.75, ease: "easeOut" }}
-          >
-            <div
-              className="flex items-center divide-x divide-slate-200/70 px-2 py-3 rounded-2xl"
-              style={{
-                background: "rgba(255,255,255,0.92)",
-                backdropFilter: "blur(16px)",
-                WebkitBackdropFilter: "blur(16px)",
-                boxShadow: "0 16px 48px -10px rgba(0,0,0,0.22), 0 2px 10px rgba(0,0,0,0.08)",
-                border: "1px solid rgba(255,255,255,0.80)",
-              }}
-            >
-              {SERVICES.map((svc, i) => (
-                <motion.button
-                  key={svc.id}
-                  id={`hero-service-${svc.id}`}
-                  onClick={() => onOpenComingSoon?.(`${svc.label} service booking`)}
-                  title={`${svc.label}${svc.id === "more" ? "" : " — Coming Soon"}`}
-                  aria-label={`${svc.label} service`}
-                  initial={{ opacity: 0, y: 14 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.85 + i * 0.06, duration: 0.4, ease: "easeOut" }}
-                  whileHover={{ scale: 1.12, backgroundColor: "rgba(253,242,248,0.9)" }}
-                  whileTap={{ scale: 0.93 }}
-                  className="flex flex-col items-center gap-1 px-3.5 sm:px-5 py-1 rounded-xl cursor-pointer group"
-                >
-                  <span className="text-xl sm:text-2xl leading-none" aria-hidden="true">
-                    {svc.icon}
-                  </span>
-                  <span className="text-[10px] sm:text-[11px] font-semibold text-slate-700 group-hover:text-[#D91A60] transition-colors whitespace-nowrap">
-                    {svc.label}
-                  </span>
-                </motion.button>
-              ))}
-            </div>
-          </motion.div>
         </div>
       </div>
 
@@ -270,7 +170,7 @@ export default function Hero({
           whileHover={{ scale: 1.03 }}
           whileTap={{ scale: 0.96 }}
           className="flex-1 rounded-full py-4 text-[15px] font-bold text-white text-center cursor-pointer"
-          style={{ background: "linear-gradient(92deg,#8B5CF6 0%,#D91A60 100%)" }}
+          style={{ background: "linear-gradient(92deg,#8B5CF6 0%,#FC0264 100%)" }}
         >
           🔍 Find a CoFriend →
         </motion.button>

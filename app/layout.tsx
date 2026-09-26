@@ -27,7 +27,7 @@ const caveat = Caveat({
 });
 
 export const viewport: Viewport = {
-  themeColor: "#D91A60",
+  themeColor: "#FC0264",
 };
 
 export const metadata: Metadata = {
@@ -46,7 +46,7 @@ export default function RootLayout({
       lang="en"
       className={`${outfit.variable} ${plusJakartaSans.variable} ${dmSans.variable} ${caveat.variable} h-full antialiased`}
     >
-      <body className="min-h-full font-sans bg-[#FFFFFF] text-[#0F172A] selection:bg-[#D91A60] selection:text-white">
+      <body className="min-h-full font-sans bg-[#FFFFFF] text-[#0F172A] selection:bg-[#FC0264] selection:text-white">
         {children}
       </body>
     </html>

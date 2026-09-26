@@ -299,7 +299,7 @@ export default function Footer({
           <div>© 2024 CoFriend. All rights reserved.</div>
           <div className="flex items-center gap-1">
             <span>Made for Better Connections.</span>
-            <span className="text-[#D91A60]">♥</span>
+            <span className="text-[#FC0264]">♥</span>
           </div>
         </div>
 

@@ -44,7 +44,7 @@ export default function BecomePartner({ onBecome }: { onBecome: () => void }) {
                 onClick={onBecome}
                 whileHover={{ scale: 1.07, boxShadow: "0 12px 40px -8px rgba(0,0,0,0.3)" }}
                 whileTap={{ scale: 0.95 }}
-                className="mt-7 inline-flex items-center gap-2 rounded-full bg-white px-9 py-4 text-sm sm:text-base font-bold text-[#7C3AED] hover:text-[#D91A60] shadow-lg shadow-black/15 transition-colors cursor-pointer"
+                className="mt-7 inline-flex items-center gap-2 rounded-full bg-white px-9 py-4 text-sm sm:text-base font-bold text-[#7C3AED] hover:text-[#FC0264] shadow-lg shadow-black/15 transition-colors cursor-pointer"
               >
                 <span>Become a CoFriend</span>
                 <span className="font-bold">➔</span>

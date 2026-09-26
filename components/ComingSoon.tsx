@@ -19,11 +19,8 @@ export function CoFriendLogo({ className = "", dark = false }: { className?: str
           draggable={false}
         />
         <div className="flex flex-col leading-none">
-          <span className="font-display text-[1.35rem] font-black tracking-tight text-white">
-            <span className="text-[#D91A60]">Co</span>friend
-          </span>
-          <span className="text-[0.6rem] font-semibold uppercase tracking-[0.14em] text-slate-400 mt-0.5 whitespace-nowrap">
-            Rental friend &amp; Services
+          <span className="font-display text-[1.4rem] font-black tracking-tight text-white">
+            <span className="text-[#FC0264]">Co</span>friend
           </span>
         </div>
       </div>
@@ -33,7 +30,7 @@ export function CoFriendLogo({ className = "", dark = false }: { className?: str
   return (
     <img
       src="/images/cofriend-logo-full.png"
-      alt="CoFriend – Rental friend & Services"
+      alt="CoFriend"
       className={`h-10 sm:h-12 w-auto object-contain select-none shrink-0 ${className}`}
       draggable={false}
     />
@@ -75,10 +72,10 @@ export function ComingSoonPage({
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className="bg-white rounded-3xl p-8 sm:p-10 shadow-[0_20px_60px_-15px_rgba(217,26,96,0.15)] border border-pink-100 relative overflow-hidden"
+          className="bg-white rounded-3xl p-8 sm:p-10 shadow-[0_20px_60px_-15px_rgba(252,2,100,0.15)] border border-pink-100 relative overflow-hidden"
         >
-          <div className="inline-flex items-center gap-2 rounded-full bg-pink-50 border border-pink-200 px-4 py-1.5 text-xs font-bold text-[#D91A60] mb-5">
-            <Sparkles size={14} className="text-[#D91A60]" />
+          <div className="inline-flex items-center gap-2 rounded-full bg-pink-50 border border-pink-200 px-4 py-1.5 text-xs font-bold text-[#FC0264] mb-5">
+            <Sparkles size={14} className="text-[#FC0264]" />
             <span>COMING SOON</span>
           </div>
 
@@ -97,7 +94,7 @@ export function ComingSoonPage({
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="Enter your email for early access"
-                className="flex-1 rounded-full border border-slate-200 px-5 py-3 text-sm outline-none focus:border-[#D91A60] transition-colors"
+                className="flex-1 rounded-full border border-slate-200 px-5 py-3 text-sm outline-none focus:border-[#FC0264] transition-colors"
               />
               <button
                 type="submit"
@@ -117,7 +114,7 @@ export function ComingSoonPage({
           <div className="mt-8 pt-6 border-t border-slate-100 flex items-center justify-center">
             <Link
               href={backHref}
-              className="inline-flex items-center gap-2 text-sm font-bold text-slate-600 hover:text-[#D91A60] transition-colors"
+              className="inline-flex items-center gap-2 text-sm font-bold text-slate-600 hover:text-[#FC0264] transition-colors"
             >
               <ArrowLeft size={16} />
               <span>Back to Home Screen</span>
@@ -185,11 +182,11 @@ export function ComingSoonModal({
               <X className="h-4.5 w-4.5" />
             </button>
 
-            <div className="mx-auto grid h-14 w-14 place-items-center rounded-2xl bg-gradient-to-br from-pink-50 to-purple-50 border border-pink-100 text-[#D91A60] shadow-sm mb-4">
+            <div className="mx-auto grid h-14 w-14 place-items-center rounded-2xl bg-gradient-to-br from-pink-50 to-purple-50 border border-pink-100 text-[#FC0264] shadow-sm mb-4">
               <Bell size={24} />
             </div>
 
-            <span className="inline-block rounded-full bg-pink-50 border border-pink-200 px-3 py-1 text-[0.7rem] font-extrabold uppercase tracking-wider text-[#D91A60] mb-2">
+            <span className="inline-block rounded-full bg-pink-50 border border-pink-200 px-3 py-1 text-[0.7rem] font-extrabold uppercase tracking-wider text-[#FC0264] mb-2">
               Coming Soon
             </span>
 
@@ -208,7 +205,7 @@ export function ComingSoonModal({
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="Enter your email to get notified"
-                  className="rounded-full border border-slate-200 px-4 py-2.5 text-sm outline-none focus:border-[#D91A60] transition-colors"
+                  className="rounded-full border border-slate-200 px-4 py-2.5 text-sm outline-none focus:border-[#FC0264] transition-colors"
                 />
                 <button
                   type="submit"

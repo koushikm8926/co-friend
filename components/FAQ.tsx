@@ -23,12 +23,12 @@ function AccordionItem({ item, id, isOpen, onToggle }: { item: FAQItem; id: stri
   return (
     <motion.div
       className="rounded-2xl border border-slate-200/80 bg-white overflow-hidden"
-      whileHover={{ borderColor: "rgba(217,26,96,0.3)", boxShadow: "0 4px 20px -6px rgba(217,26,96,0.12)" }}
+      whileHover={{ borderColor: "rgba(252,2,100,0.3)", boxShadow: "0 4px 20px -6px rgba(252,2,100,0.12)" }}
       transition={{ duration: 0.2 }}
     >
       <button
         onClick={onToggle}
-        className="flex w-full items-center justify-between p-5 sm:p-6 text-left font-bold text-slate-900 hover:text-[#D91A60] transition-colors cursor-pointer"
+        className="flex w-full items-center justify-between p-5 sm:p-6 text-left font-bold text-slate-900 hover:text-[#FC0264] transition-colors cursor-pointer"
       >
         <span className="text-sm sm:text-base pr-4">{item.q}</span>
         <span className="grid h-7 w-7 place-items-center rounded-full bg-slate-100 text-slate-600 shrink-0">

@@ -107,7 +107,7 @@ export default function CoFriends({
               FEATURED COFRIENDS
             </span>
             <h2 className="font-display text-3xl sm:text-4xl font-extrabold text-slate-900 mt-1 tracking-tight">
-              Meet Our <span className="text-[#D91A60]">CoFriends</span>
+              Meet Our <span className="text-[#FC0264]">CoFriends</span>
             </h2>
             <p className="mt-1.5 text-xs sm:text-sm text-slate-500 max-w-md">
               Talented, friendly and verified CoFriends ready to share amazing experiences with you.
@@ -149,7 +149,7 @@ export default function CoFriends({
                   >
                     <Heart
                       size={13}
-                      className={favs.has(cf.id) ? "fill-[#D91A60] text-[#D91A60]" : ""}
+                      className={favs.has(cf.id) ? "fill-[#FC0264] text-[#FC0264]" : ""}
                     />
                   </button>
 
@@ -189,7 +189,7 @@ export default function CoFriends({
                   ₹{cf.price}/hr
                 </span>
 
-                <span className="grid h-6 w-6 place-items-center rounded-full bg-purple-600 text-white text-xs group-hover:bg-[#D91A60] transition-colors shadow-xs">
+                <span className="grid h-6 w-6 place-items-center rounded-full bg-purple-600 text-white text-xs group-hover:bg-[#FC0264] transition-colors shadow-xs">
                   ➔
                 </span>
               </div>

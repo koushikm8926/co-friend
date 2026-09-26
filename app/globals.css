@@ -6,7 +6,7 @@
   --font-accent: "Plus Jakarta Sans", sans-serif;
   --font-script: "Caveat", cursive;
   
-  --color-brand-pink: #D91A60;
+  --color-brand-pink: #FC0264;
   --color-brand-rose: #E11D48;
   --color-brand-purple: #7C3AED;
   --color-brand-blue: #2563EB;
@@ -28,7 +28,7 @@ body {
 }
 
 ::selection {
-  background: #D91A60;
+  background: #FC0264;
   color: #fff;
 }
 
@@ -47,28 +47,38 @@ body {
 
 /* Gradients */
 .text-gradient {
-  background: linear-gradient(92deg, #D91A60 0%, #A855F7 60%, #7C3AED 100%);
+  background: linear-gradient(92deg, #FC0264 0%, #A855F7 60%, #7C3AED 100%);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
 }
 
 .text-pink-gradient {
-  background: linear-gradient(92deg, #E11D48 0%, #DB2777 50%, #C026D3 100%);
+  background: linear-gradient(90deg, #FC0264 0%, #f472b6 100%);
   -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
   background-clip: text;
   color: transparent;
+  display: inline-block;
+}
+
+@supports not (-webkit-background-clip: text) {
+  .text-pink-gradient {
+    background: none;
+    color: #FC0264;
+    -webkit-text-fill-color: #FC0264;
+  }
 }
 
 .btn-cofriend-gradient {
-  background: linear-gradient(92deg, #8B5CF6 0%, #D91A60 100%);
+  background: linear-gradient(92deg, #8B5CF6 0%, #FC0264 100%);
   transition: transform 0.2s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.2s ease;
-  box-shadow: 0 8px 24px -6px rgba(217, 26, 96, 0.4);
+  box-shadow: 0 8px 24px -6px rgba(252, 2, 100, 0.4);
 }
 
 .btn-cofriend-gradient:hover {
   transform: translateY(-2px);
-  box-shadow: 0 12px 28px -6px rgba(217, 26, 96, 0.55);
+  box-shadow: 0 12px 28px -6px rgba(252, 2, 100, 0.55);
 }
 
 .btn-brand {

@@ -77,7 +77,7 @@ export default function Navbar({
               onClick={() => setCityMenuOpen(!cityMenuOpen)}
               className="flex items-center gap-1.5 rounded-full border border-slate-200 bg-slate-50/80 px-3.5 py-1.5 text-xs font-semibold text-slate-700 hover:bg-slate-100 transition-colors cursor-pointer"
             >
-              <MapPin size={13} className="text-[#D91A60]" />
+              <MapPin size={13} className="text-[#FC0264]" />
               <span>{city}</span>
               <ChevronDown size={13} className="text-slate-400" />
             </button>
@@ -96,12 +96,12 @@ export default function Navbar({
                     }}
                     className={`flex w-full items-center justify-between rounded-xl px-3 py-2 text-xs font-medium text-left transition-colors ${
                       city === c
-                        ? "bg-pink-50 text-[#D91A60] font-bold"
+                        ? "bg-pink-50 text-[#FC0264] font-bold"
                         : "text-slate-700 hover:bg-slate-50"
                     }`}
                   >
                     <span>{c}</span>
-                    {city === c && <span className="h-1.5 w-1.5 rounded-full bg-[#D91A60]" />}
+                    {city === c && <span className="h-1.5 w-1.5 rounded-full bg-[#FC0264]" />}
                   </button>
                 ))}
               </div>
@@ -116,7 +116,7 @@ export default function Navbar({
             <button
               onClick={() => handleNavClick("home")}
               className={`text-sm transition-colors cursor-pointer ${
-                isHome ? "font-bold text-[#D91A60]" : "font-medium text-slate-700 hover:text-[#D91A60]"
+                isHome ? "font-bold text-[#FC0264]" : "font-medium text-slate-700 hover:text-[#FC0264]"
               }`}
             >
               Home
@@ -125,7 +125,7 @@ export default function Navbar({
             <Link
               href="/"
               className={`text-sm transition-colors cursor-pointer ${
-                isHome ? "font-bold text-[#D91A60]" : "font-medium text-slate-700 hover:text-[#D91A60]"
+                isHome ? "font-bold text-[#FC0264]" : "font-medium text-slate-700 hover:text-[#FC0264]"
               }`}
             >
               Home
@@ -135,7 +135,7 @@ export default function Navbar({
           {/* Services */}
           <button
             onClick={() => onOpenComingSoon("Services booking & exploration")}
-            className="text-sm font-medium text-slate-700 hover:text-[#D91A60] transition-colors cursor-pointer"
+            className="text-sm font-medium text-slate-700 hover:text-[#FC0264] transition-colors cursor-pointer"
           >
             Services
           </button>
@@ -143,7 +143,7 @@ export default function Navbar({
           {/* CoFriends */}
           <button
             onClick={() => onOpenComingSoon("CoFriends discovery & profiles")}
-            className="text-sm font-medium text-slate-700 hover:text-[#D91A60] transition-colors cursor-pointer"
+            className="text-sm font-medium text-slate-700 hover:text-[#FC0264] transition-colors cursor-pointer"
           >
             CoFriends
           </button>
@@ -152,7 +152,7 @@ export default function Navbar({
           <Link
             href="/about"
             className={`text-sm transition-colors cursor-pointer ${
-              isAbout ? "font-bold text-[#D91A60]" : "font-medium text-slate-700 hover:text-[#D91A60]"
+              isAbout ? "font-bold text-[#FC0264]" : "font-medium text-slate-700 hover:text-[#FC0264]"
             }`}
           >
             About
@@ -161,7 +161,7 @@ export default function Navbar({
           {/* Safety */}
           <button
             onClick={() => onOpenComingSoon("Safety & Verification page")}
-            className="text-sm font-medium text-slate-700 hover:text-[#D91A60] transition-colors cursor-pointer"
+            className="text-sm font-medium text-slate-700 hover:text-[#FC0264] transition-colors cursor-pointer"
           >
             Safety
           </button>
@@ -169,7 +169,7 @@ export default function Navbar({
           {/* FAQs */}
           <button
             onClick={() => onOpenComingSoon("FAQs page")}
-            className="text-sm font-medium text-slate-700 hover:text-[#D91A60] transition-colors cursor-pointer"
+            className="text-sm font-medium text-slate-700 hover:text-[#FC0264] transition-colors cursor-pointer"
           >
             FAQs
           </button>
@@ -185,7 +185,7 @@ export default function Navbar({
           </button>
           <button
             onClick={() => onOpenComingSoon("New User Registration")}
-            className="rounded-full bg-[#D91A60] hover:bg-[#c21453] px-5 py-2 text-xs font-bold text-white shadow-md shadow-pink-500/20 transition-all cursor-pointer"
+            className="rounded-full bg-[#FC0264] hover:bg-[#e00258] px-5 py-2 text-xs font-bold text-white shadow-md shadow-pink-500/20 transition-all cursor-pointer"
           >
             Sign Up
           </button>
@@ -205,7 +205,7 @@ export default function Navbar({
       {open && (
         <div className="border-t border-slate-100 bg-white px-5 py-6 space-y-3 lg:hidden shadow-xl">
           <div className="flex items-center gap-2 pb-2 mb-2 border-b border-slate-100">
-            <MapPin size={15} className="text-[#D91A60]" />
+            <MapPin size={15} className="text-[#FC0264]" />
             <select
               value={city}
               onChange={(e) => setCity(e.target.value)}
@@ -224,7 +224,7 @@ export default function Navbar({
             <button
               onClick={() => handleNavClick("home")}
               className={`block w-full text-left py-2 text-sm ${
-                isHome ? "font-bold text-[#D91A60]" : "font-medium text-slate-700 hover:text-[#D91A60]"
+                isHome ? "font-bold text-[#FC0264]" : "font-medium text-slate-700 hover:text-[#FC0264]"
               }`}
             >
               Home
@@ -234,7 +234,7 @@ export default function Navbar({
               href="/"
               onClick={() => setOpen(false)}
               className={`block w-full text-left py-2 text-sm ${
-                isHome ? "font-bold text-[#D91A60]" : "font-medium text-slate-700 hover:text-[#D91A60]"
+                isHome ? "font-bold text-[#FC0264]" : "font-medium text-slate-700 hover:text-[#FC0264]"
               }`}
             >
               Home
@@ -247,7 +247,7 @@ export default function Navbar({
               setOpen(false);
               onOpenComingSoon("Services booking & exploration");
             }}
-            className="block w-full text-left py-2 text-sm font-medium text-slate-700 hover:text-[#D91A60]"
+            className="block w-full text-left py-2 text-sm font-medium text-slate-700 hover:text-[#FC0264]"
           >
             Services
           </button>
@@ -258,7 +258,7 @@ export default function Navbar({
               setOpen(false);
               onOpenComingSoon("CoFriends discovery & profiles");
             }}
-            className="block w-full text-left py-2 text-sm font-medium text-slate-700 hover:text-[#D91A60]"
+            className="block w-full text-left py-2 text-sm font-medium text-slate-700 hover:text-[#FC0264]"
           >
             CoFriends
           </button>
@@ -268,7 +268,7 @@ export default function Navbar({
             href="/about"
             onClick={() => setOpen(false)}
             className={`block w-full text-left py-2 text-sm ${
-              isAbout ? "font-bold text-[#D91A60]" : "font-medium text-slate-700 hover:text-[#D91A60]"
+              isAbout ? "font-bold text-[#FC0264]" : "font-medium text-slate-700 hover:text-[#FC0264]"
             }`}
           >
             About
@@ -280,7 +280,7 @@ export default function Navbar({
               setOpen(false);
               onOpenComingSoon("Safety & Verification page");
             }}
-            className="block w-full text-left py-2 text-sm font-medium text-slate-700 hover:text-[#D91A60]"
+            className="block w-full text-left py-2 text-sm font-medium text-slate-700 hover:text-[#FC0264]"
           >
             Safety
           </button>
@@ -291,7 +291,7 @@ export default function Navbar({
               setOpen(false);
               onOpenComingSoon("FAQs page");
             }}
-            className="block w-full text-left py-2 text-sm font-medium text-slate-700 hover:text-[#D91A60]"
+            className="block w-full text-left py-2 text-sm font-medium text-slate-700 hover:text-[#FC0264]"
           >
             FAQs
           </button>
@@ -312,7 +312,7 @@ export default function Navbar({
                 setOpen(false);
                 onOpenComingSoon("Sign Up");
               }}
-              className="flex-1 rounded-full bg-[#D91A60] py-2.5 text-xs font-bold text-white text-center shadow-sm cursor-pointer"
+              className="flex-1 rounded-full bg-[#FC0264] py-2.5 text-xs font-bold text-white text-center shadow-sm cursor-pointer"
             >
               Sign Up
             </button>

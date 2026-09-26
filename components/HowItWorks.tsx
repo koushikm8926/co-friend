@@ -53,7 +53,7 @@ export default function HowItWorks({
               </p>
               <h2 className="font-display font-extrabold text-3xl sm:text-4xl lg:text-[44px] text-[#0F172A] tracking-tight leading-[1.15]">
                 Simple Steps <br />
-                to Great <span className="text-[#D91A60]">Experiences.</span>
+                to Great <span className="text-[#FC0264]">Experiences.</span>
               </h2>
             </div>
           </Reveal>
@@ -77,18 +77,18 @@ export default function HowItWorks({
                   transition={{ type: "spring", stiffness: 350, damping: 20 }}
                 >
                   {/* Soft Pink Glow Circle */}
-                  <div className="grid h-20 w-20 sm:h-22 sm:w-22 place-items-center rounded-full bg-[#FCE7F3] shadow-sm text-[#D91A60] transition-transform duration-300 group-hover:scale-105">
+                  <div className="grid h-20 w-20 sm:h-22 sm:w-22 place-items-center rounded-full bg-[#FCE7F3] shadow-sm text-[#FC0264] transition-transform duration-300 group-hover:scale-105">
                     {step.num === "1" && (
                       <LayoutGrid className="w-8 h-8 sm:w-9 sm:h-9" strokeWidth={2.4} />
                     )}
                     {step.num === "2" && (
-                      <svg width="34" height="34" viewBox="0 0 24 24" fill="#D91A60" className="sm:w-9 sm:h-9">
+                      <svg width="34" height="34" viewBox="0 0 24 24" fill="#FC0264" className="sm:w-9 sm:h-9">
                         <circle cx="12" cy="7" r="4.5" />
                         <path d="M4 20c0-4 4-6.5 8-6.5s8 2.5 8 6.5v1H4v-1z" />
                       </svg>
                     )}
                     {step.num === "3" && (
-                      <svg width="34" height="34" viewBox="0 0 24 24" fill="#D91A60" className="sm:w-9 sm:h-9">
+                      <svg width="34" height="34" viewBox="0 0 24 24" fill="#FC0264" className="sm:w-9 sm:h-9">
                         <path d="M19 4h-1V2h-2v2H8V2H6v2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V9h14v11z" />
                         <circle cx="8" cy="12.5" r="1.1" fill="white" />
                         <circle cx="12" cy="12.5" r="1.1" fill="white" />

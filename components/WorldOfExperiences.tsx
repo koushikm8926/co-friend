@@ -52,7 +52,7 @@ export default function WorldOfExperiences() {
             </p>
             <h2 className="font-display font-extrabold text-3xl sm:text-4xl lg:text-[42px] text-[#0F172A] leading-[1.15] tracking-tight">
               So Many Ways to <br className="hidden sm:inline" />
-              Spend Time, <span className="text-[#D91A60]">Together.</span>
+              Spend Time, <span className="text-[#FC0264]">Together.</span>
             </h2>
           </Reveal>
 

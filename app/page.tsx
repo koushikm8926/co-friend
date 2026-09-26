@@ -5,6 +5,7 @@ import { Toaster, toast } from "sonner";
 import TopBar from "@/components/TopBar";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
+import WelcomeBanner from "@/components/WelcomeBanner";
 import Services from "@/components/Services";
 import HowItWorks from "@/components/HowItWorks";
 import CoFriends from "@/components/CoFriends";
@@ -59,7 +60,7 @@ export default function HomePage() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-white text-slate-900 antialiased selection:bg-[#D91A60] selection:text-white">
+    <div className="min-h-screen bg-white text-slate-900 antialiased selection:bg-[#FC0264] selection:text-white">
       {/* Top Blue Announcement Bar */}
       <TopBar />
 
@@ -77,6 +78,9 @@ export default function HomePage() {
           onBecome={() => openComingSoon("Partner Registration & Profile Creation")}
           onOpenComingSoon={(feature) => openComingSoon(feature)}
         />
+
+        {/* Welcome Trust Banner */}
+        <WelcomeBanner className="-mt-3 sm:-mt-4 relative z-20" />
 
         {/* 2. Explore Our Services */}
         <Services

@@ -55,7 +55,7 @@ export default function TrustVerification({
             </p>
             <h2 className="font-display font-extrabold text-3xl sm:text-4xl lg:text-[42px] text-[#0F172A] leading-[1.15] tracking-tight">
               A Trusted Community <br className="hidden sm:inline" />
-              <span className="text-[#D91A60]">Starts with Trust.</span>
+              <span className="text-[#FC0264]">Starts with Trust.</span>
             </h2>
           </Reveal>
 

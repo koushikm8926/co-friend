@@ -38,7 +38,7 @@ const WHY_COFRIEND = [
     title: "Flexible Bookings",
     desc: "Choose the time, date and service that works for you.",
     bg: "bg-[#FCE7F3]",
-    iconColor: "text-[#D91A60]",
+    iconColor: "text-[#FC0264]",
   },
   {
     icon: LayoutGrid,
@@ -52,7 +52,7 @@ const WHY_COFRIEND = [
     title: "Transparent Information",
     desc: "Clear profiles, services and pricing upfront.",
     bg: "bg-[#FCE7F3]",
-    iconColor: "text-[#D91A60]",
+    iconColor: "text-[#FC0264]",
   },
   {
     icon: Star,
@@ -67,7 +67,7 @@ const WHY_COFRIEND = [
     title: "A Safer Community",
     desc: "Built with safety, respect and trust at the core.",
     bg: "bg-[#FCE7F3]",
-    iconColor: "text-[#D91A60]",
+    iconColor: "text-[#FC0264]",
     fill: true,
   },
 ];
@@ -142,8 +142,8 @@ export default function AboutPage() {
             animate="show"
           >
             {/* Eyebrow */}
-            <motion.p variants={fadeUp} className="text-[11px] sm:text-[13px] font-bold tracking-[0.24em] uppercase text-[#D91A60] mb-4 flex items-center gap-2">
-              <span className="block h-px w-6 bg-[#D91A60]" />
+            <motion.p variants={fadeUp} className="text-[11px] sm:text-[13px] font-bold tracking-[0.24em] uppercase text-[#FC0264] mb-4 flex items-center gap-2">
+              <span className="block h-px w-6 bg-[#FC0264]" />
               ABOUT COFRIEND
             </motion.p>
 
@@ -154,7 +154,7 @@ export default function AboutPage() {
               </span>
               <span className="block font-display font-extrabold leading-[1.05] tracking-tight text-[2.4rem] sm:text-[3.2rem] md:text-[3.8rem] lg:text-[3.2rem] xl:text-[4rem]">
                 for{" "}
-                <span style={{ background: "linear-gradient(90deg,#D91A60 0%,#f472b6 100%)", WebkitBackgroundClip: "text", backgroundClip: "text", color: "transparent" }}>
+                <span className="text-pink-gradient">
                   Real-Life Moments.
                 </span>
               </span>
@@ -179,10 +179,10 @@ export default function AboutPage() {
                 onClick={() => openComingSoon("Find a CoFriend")}
               >
                 <motion.span
-                  whileHover={{ scale: 1.05, boxShadow: "0 12px 36px -6px rgba(217,26,96,0.5)" }}
+                  whileHover={{ scale: 1.05, boxShadow: "0 12px 36px -6px rgba(252,2,100,0.5)" }}
                   whileTap={{ scale: 0.96 }}
                   className="inline-flex items-center gap-2.5 px-7 sm:px-8 py-3.5 sm:py-4 rounded-full text-[14px] sm:text-[15px] font-bold text-white cursor-pointer whitespace-nowrap"
-                  style={{ background: "linear-gradient(92deg,#8B5CF6 0%,#D91A60 100%)", boxShadow: "0 8px 28px -6px rgba(217,26,96,0.4)" }}
+                  style={{ background: "linear-gradient(92deg,#8B5CF6 0%,#FC0264 100%)", boxShadow: "0 8px 28px -6px rgba(252,2,100,0.4)" }}
                 >
                   <svg viewBox="0 0 20 20" fill="none" className="w-4 h-4"><circle cx="9" cy="9" r="6" stroke="currentColor" strokeWidth="2" /><path d="M15 15l3 3" stroke="currentColor" strokeWidth="2" strokeLinecap="round" /></svg>
                   Find a CoFriend &nbsp;→
@@ -205,7 +205,7 @@ export default function AboutPage() {
             {/* Tagline */}
             <motion.div variants={fadeUp} className="flex items-center gap-3 text-[13px] sm:text-[14px] text-slate-600 font-medium">
               <span>For <strong className="text-slate-900 font-bold">Better Moments</strong></span>
-              <span className="text-[#D91A60] font-bold text-base">+</span>
+              <span className="text-[#FC0264] font-bold text-base">+</span>
               <span>For a <strong className="text-slate-900 font-bold">Brighter You</strong></span>
             </motion.div>
           </motion.div>
@@ -221,7 +221,7 @@ export default function AboutPage() {
               <p className="font-script text-2xl xl:text-3xl font-bold text-slate-800 leading-snug"
                 style={{ textShadow: "0 2px 12px rgba(255,255,255,0.9)" }}>
                 Different <br />People <br />Brighter <br />
-                <span className="text-[#D91A60]">Days ♥</span>
+                <span className="text-[#FC0264]">Days ♥</span>
               </p>
             </motion.div>
           </div>
@@ -452,7 +452,7 @@ export default function AboutPage() {
                 </p>
                 <h2 className="font-display font-extrabold text-3xl sm:text-4xl lg:text-[42px] xl:text-[46px] text-[#0F172A] leading-[1.14] tracking-tight mb-6 sm:mb-7">
                   A Simple Idea <br />
-                  For <span className="text-[#D91A60]">Happier Days.</span>
+                  For <span className="text-[#FC0264]">Happier Days.</span>
                 </h2>
 
                 <p className="text-[15px] sm:text-[16px] text-slate-600 leading-[1.75] mb-5 font-normal">
@@ -485,7 +485,7 @@ export default function AboutPage() {
                   OUR PURPOSE
                 </p>
                 <h2 className="font-display font-extrabold text-3xl sm:text-4xl lg:text-[44px] text-[#0F172A] leading-[1.15] tracking-tight mb-5">
-                  Connect. <span className="text-[#D91A60]">Experience. Belong.</span>
+                  Connect. <span className="text-[#FC0264]">Experience. Belong.</span>
                 </h2>
                 <p className="text-base sm:text-[17px] text-slate-600 leading-[1.7] max-w-xl">
                   We exist to make it easier for people to find genuine companionship for everyday experiences. CoFriend is not just about booking a person, it&apos;s about creating opportunities for real conversations, shared interests and memorable moments.
@@ -504,7 +504,7 @@ export default function AboutPage() {
                     transition={{ duration: 0.2 }}
                     className="flex flex-col items-center text-center group"
                   >
-                    <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-[#FCE7F3] flex items-center justify-center text-[#D91A60] shadow-sm group-hover:scale-110 transition-transform duration-300">
+                    <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-[#FCE7F3] flex items-center justify-center text-[#FC0264] shadow-sm group-hover:scale-110 transition-transform duration-300">
                       <Users className="w-8 h-8 sm:w-9 sm:h-9" strokeWidth={2.2} />
                     </div>
                     <h3 className="font-display font-bold text-lg sm:text-xl text-[#0F172A] mt-4 mb-1">
@@ -578,7 +578,7 @@ export default function AboutPage() {
             </p>
             <h2 className="font-display font-extrabold text-3xl sm:text-4xl lg:text-[44px] text-[#0F172A] leading-[1.15] tracking-tight">
               Designed for Real People.{" "}
-              <span className="text-[#D91A60]">Real Experiences.</span>
+              <span className="text-[#FC0264]">Real Experiences.</span>
             </h2>
           </Reveal>
 

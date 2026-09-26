@@ -23,9 +23,9 @@ export default function BottomCTA({ onFind }: { onFind: () => void }) {
               >
                 <svg width="140" height="75" viewBox="0 0 140 75" fill="none" xmlns="http://www.w3.org/2000/svg" className="overflow-visible select-none">
                   <path d="M10 65 C 30 65, 40 45, 55 35 C 70 25, 82 8, 65 14 C 48 20, 50 48, 82 38 C 105 30, 120 20, 128 17"
-                    stroke="#D91A60" strokeWidth="2" strokeDasharray="4 4" strokeLinecap="round" />
+                    stroke="#FC0264" strokeWidth="2" strokeDasharray="4 4" strokeLinecap="round" />
                   <g transform="translate(118, 5) rotate(18) scale(0.9)">
-                    <path d="M0 12 L24 0 L18 24 L11 15 L0 12 Z" fill="#D91A60" />
+                    <path d="M0 12 L24 0 L18 24 L11 15 L0 12 Z" fill="#FC0264" />
                     <path d="M18 24 L11 15 L14 18 Z" fill="#BE185D" />
                   </g>
                 </svg>
@@ -37,7 +37,7 @@ export default function BottomCTA({ onFind }: { onFind: () => void }) {
           <div className="flex flex-col items-center text-center">
             <Reveal>
               <h3 className="font-display text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 tracking-tight">
-                Good Company <span className="text-[#D91A60]">Is Just a Click Away.</span>
+                Good Company <span className="text-[#FC0264]">Is Just a Click Away.</span>
               </h3>
             </Reveal>
             <Reveal delay={0.1}>
@@ -48,7 +48,7 @@ export default function BottomCTA({ onFind }: { onFind: () => void }) {
             <Reveal delay={0.2}>
               <motion.button
                 onClick={onFind}
-                whileHover={{ scale: 1.06, boxShadow: "0 14px 40px -8px rgba(217,26,96,0.45)" }}
+                whileHover={{ scale: 1.06, boxShadow: "0 14px 40px -8px rgba(252,2,100,0.45)" }}
                 whileTap={{ scale: 0.96 }}
                 className="mt-7 rounded-full bg-gradient-to-r from-purple-600 via-fuchsia-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 px-9 py-4 text-sm sm:text-base font-bold text-white shadow-lg shadow-pink-500/25 flex items-center gap-2.5 cursor-pointer"
               >
@@ -69,7 +69,7 @@ export default function BottomCTA({ onFind }: { onFind: () => void }) {
               >
                 More <br />
                 Experiences <br />
-                <span className="text-[#D91A60] inline-flex items-center gap-1.5">Together ♥</span>
+                <span className="text-[#FC0264] inline-flex items-center gap-1.5">Together ♥</span>
               </motion.p>
             </div>
           </Reveal>

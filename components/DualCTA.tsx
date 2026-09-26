@@ -39,7 +39,7 @@ export default function DualCTA({
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.96 }}
                     className="inline-flex items-center gap-2 rounded-full px-6 sm:px-7 py-3 sm:py-3.5 text-xs sm:text-[14px] font-bold text-white shadow-md shadow-pink-500/30 cursor-pointer whitespace-nowrap"
-                    style={{ background: "linear-gradient(92deg, #7C3AED 0%, #D91A60 100%)" }}
+                    style={{ background: "linear-gradient(92deg, #7C3AED 0%, #FC0264 100%)" }}
                   >
                     Find a CoFriend <ArrowRight size={15} />
                   </motion.button>
@@ -49,7 +49,7 @@ export default function DualCTA({
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.96 }}
                       className="inline-flex items-center gap-2 rounded-full px-6 sm:px-7 py-3 sm:py-3.5 text-xs sm:text-[14px] font-bold text-white shadow-md shadow-pink-500/30 cursor-pointer whitespace-nowrap"
-                      style={{ background: "linear-gradient(92deg, #7C3AED 0%, #D91A60 100%)" }}
+                      style={{ background: "linear-gradient(92deg, #7C3AED 0%, #FC0264 100%)" }}
                     >
                       Find a CoFriend <ArrowRight size={15} />
                     </motion.span>

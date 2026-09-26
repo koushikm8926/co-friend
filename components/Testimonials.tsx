@@ -34,7 +34,7 @@ export default function Testimonials({
                 REAL STORIES. REAL CONNECTIONS.
               </span>
               <h2 className="font-display text-4xl sm:text-5xl font-extrabold text-slate-900 mt-2 tracking-tight">
-                What Our <span className="text-[#D91A60]">Community Says</span>
+                What Our <span className="text-[#FC0264]">Community Says</span>
               </h2>
             </div>
           </Reveal>
@@ -45,11 +45,11 @@ export default function Testimonials({
               </span>
               <div className="flex items-center gap-2">
                 <motion.button onClick={prev} aria-label="Previous review" whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}
-                  className="grid h-9 w-9 place-items-center rounded-full border border-slate-200 text-slate-600 hover:border-[#D91A60] hover:text-[#D91A60] transition-colors cursor-pointer">
+                  className="grid h-9 w-9 place-items-center rounded-full border border-slate-200 text-slate-600 hover:border-[#FC0264] hover:text-[#FC0264] transition-colors cursor-pointer">
                   <ChevronLeft size={18} />
                 </motion.button>
                 <motion.button onClick={next} aria-label="Next review" whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}
-                  className="grid h-9 w-9 place-items-center rounded-full border border-slate-200 text-slate-600 hover:border-[#D91A60] hover:text-[#D91A60] transition-colors cursor-pointer">
+                  className="grid h-9 w-9 place-items-center rounded-full border border-slate-200 text-slate-600 hover:border-[#FC0264] hover:text-[#FC0264] transition-colors cursor-pointer">
                   <ChevronRight size={18} />
                 </motion.button>
               </div>
@@ -63,11 +63,11 @@ export default function Testimonials({
             <Reveal key={r.id} delay={i * 0.12}>
               <motion.div
                 className="flex flex-col justify-between rounded-3xl border border-slate-100 bg-white p-7 sm:p-8 shadow-sm h-full"
-                whileHover={{ y: -6, boxShadow: "0 20px 50px -12px rgba(217,26,96,0.15)", borderColor: "rgba(217,26,96,0.2)" }}
+                whileHover={{ y: -6, boxShadow: "0 20px 50px -12px rgba(252,2,100,0.15)", borderColor: "rgba(252,2,100,0.2)" }}
                 transition={{ duration: 0.25 }}
               >
                 <div>
-                  <Quote size={28} className="text-[#D91A60]/40 fill-[#D91A60]/20 mb-4" />
+                  <Quote size={28} className="text-[#FC0264]/40 fill-[#FC0264]/20 mb-4" />
                   <p className="text-sm sm:text-base text-slate-600 leading-relaxed min-h-[80px]">
                     &ldquo;{r.comment}&rdquo;
                   </p>
